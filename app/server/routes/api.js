@@ -5,17 +5,7 @@ var request = require('request');
 jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
 
-var aws = require('aws-sdk');
-aws.config.update({
-  region: 'us-west-1',
-  accessKeyId: process.env.AWS_ACCESS,
-  secretAccessKey: process.env.AWS_SECRET
-});
-var s3 = new aws.S3();
-var s3BucketName = process.env.AWS_S3_BUCKET;
 
-var multer = require('multer')
-var multerS3 = require('multer-s3')
 var uuidv4 = require('uuid/v4');
 
 module.exports = function (router) {
@@ -393,75 +383,6 @@ module.exports = function (router) {
    */
   router.get('/ping', (req, res) => {
     res.sendStatus(200);
-  });
-
-  // multer S3 object to upload resumes
-  var upload = multer({
-    storage: multerS3({
-      s3: s3,
-      bucket: s3BucketName,
-      key: function (req, file, cb) {
-        var authToken = req.headers['x-access-token'];
-        jwt.verify(authToken, JWT_SECRET, (err, id) => {
-          cb(err, id + '.pdf');
-        });
-      },
-      limits: {
-        fileSize: 512 * 1024, // max upload size is 512kb
-      }
-    })
-  });
-
-  // upload the resume to AWS S3 using the multer object defined above
-  router.post('/resume/upload', upload.single('file'), (req, res) => {
-    res.send(200);
-  });
-
-  // get the resume of a given user
-  router.get('/resume/:id', isOwnerOrAdmin, (req, res) => {
-    // check to see if you can access this shiz and
-    // check if the file exists in s3 anddd
-    // take the id and put it in a jwt with 30 seconds of validity
-
-    var id = req.params.id;
-    var fileName = id + '.pdf';
-
-    var s3Params = {
-      Bucket: s3BucketName,
-      Key: fileName
-    };
-
-    s3.headObject(s3Params, (err, data) => {
-      if (err) {
-        res.sendStatus(404);
-      } else {
-        var token = jwt.sign({ fileName: fileName }, JWT_SECRET, { expiresIn: '30s' });
-        res.json({
-          token: token
-        });
-      }
-    });
-  });
-
-  router.get('/resume/view/:token', (req, res) => {
-    // get a token returned by the above object
-    // extract the filename then return the file
-
-    var token = req.params.token
-    jwt.verify(token, JWT_SECRET, (err, data) => {
-
-      if (err) {
-        res.sendStatus(401)
-      } else {
-        var s3Params = {
-          Bucket: s3BucketName,
-          Key: data.fileName
-        };
-
-        res.setHeader('Content-type', 'application/pdf');
-        s3.getObject(s3Params).createReadStream().pipe(res);
-      }
-    })
   });
 
   /* [ADMIN ONLY]
