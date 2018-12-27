@@ -335,21 +335,19 @@ schema.statics.validateProfile = function(profile, cb){
      return "reddedildi";
    }
 
+      if (this.status.confirmed && !this.status.paymentMade) {
+        return 'ödeme yapılmadı';
+       }
    if (this.status.confirmed) {
-     if (!this.status.paymentMade) {
-       return 'ödeme yapılmadı';
-     }
-     else {
        return "teyit edildi";
      }
-   }
+
+        if (this.status.admitted && !this.status.paymentMade) {
+          return 'ödeme yapılmadı';
+         }
 
    if (this.status.admitted) {
-     if (!this.status.paymentMade) {
-       return 'ödeme yapılmadı';
-     }
-     else {
-       return "kabul edildi";   }
+       return "kabul edildi";
 }
    if (this.status.completedProfile){
      return "teslim edildi";
