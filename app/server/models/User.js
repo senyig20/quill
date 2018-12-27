@@ -328,9 +328,6 @@ schema.statics.validateProfile = function(profile, cb){
    if (this.status.cancelled) {
      return 'iptal edildi';
    }
-   if (!this.status.paymentMade) {
-     return 'ödeme yapılmadı';
-   }
    if (this.status.declined) {
      return "reddedildi";
    }
