@@ -350,7 +350,7 @@ schema.statics.validateProfile = function(profile, cb){
      }
      else {
        return "kabul edildi";   }
-
+}
    if (this.status.completedProfile){
      return "teslim edildi";
    }
