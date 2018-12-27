@@ -1,0 +1,93 @@
+<div class="page">
+  <div class="divided title">
+    Teyit Formu
+  </div>
+
+  <div class="ui stackable page grid">
+    <div class="column">
+
+      <div class="ui form">
+
+        <div class="divided title">Ödeme Bilgileri</div>
+
+        <fieldset ng-disabled="pastConfirmation">
+
+         <div class="field">
+            <label> Dekont Yükleme (Zorunlu) </label>
+            <p>
+              Lütfen dekontunuzu buraya yükleyin!
+            </p>
+            <a
+              target="_blank"
+              href="https://go.hackmit.org/skill-sheets"
+              class="ui pink button">
+              Yükle
+            </a>
+          </div>
+
+            <div class="ui toggle checkbox">
+                <input
+                        type="checkbox"
+                        name="receiptConfirmation"
+                        ng-class="{true: 'checked', false: ''}[user.confirmation.receiptConfirmation]"
+                        ng-model="user.confirmation.receiptConfirmation"
+                        >
+                <label>Dekontumu yükledim.</label>
+            </div>
+
+
+          <br>
+          <br>
+          <br>
+
+          <div class="divided title">Legal Konular</div>
+
+          <div class="field">
+            <label> Katılım Şartnamesi </label>
+            <p>
+              <a
+                target="_blank"
+                href="https://go.hackmit.org/liability-waiver">
+                Şartname
+              </a>
+            </p>
+            <p>
+              Yasal sebeplerden dolayı okulumuz ve JA-RC yukarıdaki linkten ulaşabileceğiniz Katılım Şartnamesi'ni okumanızı ve kabul etmenizi istemektedir.
+            </p>
+            <p>
+              Aşağıdaki kutuya ismimi yazarak yukarıda bulunan Katılım Şartnamesi'ni okuduğumu ve şartlarını kabul ettiğimi beyan ederim.
+            </p>
+            <input type="text"
+                   name="signatureLiabilityWaiver"
+                   placeholder="İsminiz ve Soyisminiz."
+                   ng-model="user.confirmation.signatureLiability">
+          </div>
+
+
+          <br>
+          <br>
+
+          <div class="field">
+            <label>
+              Ekstra Notlar
+            </label>
+            <p>
+              Eklemeniz gereken bir şeyler varsa buraya ekleyebilirsiniz.
+            </p>
+            <textarea
+              ng-model="user.confirmation.notes"></textarea>
+          </div>
+
+          <div class="field" ng-hide="regIsClosed">
+            <button type="submit"
+                    class="fluid ui purple button"
+                    ng-click="submitForm()">
+              Gönder
+            </button>
+          </div>
+
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

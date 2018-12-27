@@ -1,0 +1,64 @@
+<div id="sidebar"
+     ng-class="{open: showSidebar}">
+  <div ui-sref="app.dashboard"
+       class="logo item">
+    <img src="assets/images/logo.svg">
+  </div>
+
+  <div ui-sref-active="active"
+       ui-sref="app.dashboard"
+       class="item">
+    Ana Sayfa
+  </div>
+
+  <div ng-show="currentUser.verified">
+
+    <div
+      ui-sref-active="active"
+      ui-sref="app.application"
+      ng-show="!currentUser.status.declined"
+      class="item">
+      Başvuru
+    </div>
+
+    <div
+      ui-sref-active="active"
+      ui-sref="app.confirmation"
+      ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined"
+      class="item">
+      Teyit
+    </div>
+
+
+    <div
+      ui-sref-active="active"
+      ui-sref="app.admin.stats"
+      class="item"
+      ng-show="currentUser.admin">
+      Admin
+    </div>
+
+  </div>
+
+  <a href="mailto:info@ja-rc.org" style="text-decoration:none; color:#fff">
+    <div class="item">
+      İletişim
+    </div>
+  </a>
+
+  <div class="item"
+       ng-click="logout()">
+    Çıkış Yap
+  </div>
+
+  <div class="note">
+    <a href="https://www.remixopolis.org" target="_blank" style="text-decoration:none; color:#fff">© Remixopolis 2019</a>
+  </div>
+
+</div>
+
+<div class="tab"
+  ng-click="toggleSidebar()">
+  <img ng-show="!showSidebar" src="assets/images/logo.svg" />
+  <span class="close" ng-show="showSidebar">&#x2715</span>
+</div>

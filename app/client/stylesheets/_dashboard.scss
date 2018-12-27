@@ -1,0 +1,79 @@
+#dashboard {
+  .status {
+    text-align: center;
+    p {
+      text-align: left;
+    }
+    .button {
+      margin-top: 12px;
+    }
+    .header {
+      font-size: 1.2em;
+    }
+    .state {
+      text-align: center;
+      padding: 12px 24px;
+      margin-bottom: 1em;
+      color: black;
+      font-size: 1.3em;
+      text-transform: uppercase;
+
+      &.doğrulanmamış {
+        background: $status-unverified-color;
+        color: white;
+
+      }
+
+      &.teslim.edilmedi {
+        background: $status-incomplete-color;
+        color: black;
+      }
+
+      &.teslim.edildi {
+        background: $status-submitted-color;
+        color: white;
+
+      }
+
+      &.bekleme.listesinde {
+        background: $status-waitlist-color;
+        color: white;
+
+      }
+
+      &.kabul.edildi {
+        background: $status-admitted-color;
+        color: white;
+
+      }
+
+      &.teyit.edildi {
+        background: $status-confirmed-color;
+        color: white;
+
+      }
+
+      &.checked.in {
+        background: $status-checkedin-color;
+      }
+
+      &.reddedildi {
+        background: $status-declined-color;
+        color: white;
+
+      }
+    }
+  }
+
+  .segment {
+    padding: 36px 36px 12px 36px;
+  }
+
+  .description {
+    margin-bottom: 24px;
+    .markdown {
+      text-align: left;
+      margin-bottom: 24px;
+    }
+  }
+}

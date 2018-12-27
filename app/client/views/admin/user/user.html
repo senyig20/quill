@@ -1,0 +1,197 @@
+<div class="ui top attached segment">
+
+  <div class="ui header">
+    {{selectedUser.profile.name ? selectedUser.profile.name : selectedUser.email}}
+    <span
+      ng-show="selectedUser.admin">
+      (Admin)
+    </span>
+  </div>
+
+</div>
+
+<div class="ui botom attached segment">
+
+  <div>
+    <p>
+      <strong> Status: </strong>
+      <span
+        class="ui label">
+        {{selectedUser.status.name.toUpperCase()}}
+      </span>
+    </p>
+    <p>
+      <strong> Admitted by: </strong> {{selectedUser.status.admittedBy ? selectedUser.status.admittedBy : 'N/A'}}
+    </p>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div class="ui form">
+
+    <fieldset ng-disabled="false">
+
+      <div class="ui header">
+        Basic Info
+      </div>
+
+      <div class="field">
+        <strong>
+          Created on:
+        </strong>
+        {{formatTime(selectedUser.timestamp)}}
+      </div>
+
+      <div class="field">
+        <strong>
+          Last Updated:
+        </strong>
+        {{formatTime(selectedUser.lastUpdated)}}
+      </div>
+
+
+      <div class="field">
+        <label> Email </label>
+        <input type="text" ng-model="selectedUser.email" />
+      </div>
+
+
+    </fieldset>
+
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div class="ui form">
+
+    <fieldset ng-disabled="false">
+
+      <div class="ui header">
+       Profile
+      </div>
+
+      <div class="field">
+        <label> Email </label>
+        <input type="email"
+               name="email"
+               disabled="disabled"
+               ng-model="selectedUser.email">
+      </div>
+
+      <div class="field">
+        <label> Full Name </label>
+        <input type="text"
+               name="name"
+               ng-model="selectedUser.profile.name">
+      </div>
+
+
+      <div class="field">
+        <label> School </label>
+        <input type="text"
+               name="school"
+               ng-model="selectedUser.profile.school">
+      </div>
+
+      <div class="field">
+        <label>Graduation Year</label>
+        <select
+          name="year"
+          ng-model="selectedUser.profile.graduationYear">
+          <option value="">Graduation Year</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="chap">Görevli Öğretmen</option>
+        </select>
+      </div>
+
+
+
+      <div class="field">
+        <label>Barbekü Gecesi'ne katılacak mısınız?</label>
+        <select
+                name="bbqChoice"
+                ng-model="selectedUser.profile.bbqChoice">
+          <option value="">Tercihim</option>
+
+          <option value=1>Evet</option>
+          <option value=0>Hayır</option>
+
+        </select>
+      </div>
+
+
+      <div class="field">
+        <label>Açılış Yemeği'ne katılacak mısınız?</label>
+        <select
+                name="openingChoice"
+                ng-model="selectedUser.profile.openingChoice">
+          <option value="">Tercihim</option>
+
+          <option value=1>Evet</option>
+          <option value=0>Hayır</option>
+
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Vejeteryan mısınız?</label>
+        <select
+                name="veggie"
+                ng-model="selectedUser.profile.veggie">
+          <option value="">Tercihim</option>
+
+          <option value=1>Evet</option>
+          <option value=0>Hayır</option>
+
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Remixopolis'i nasıl öğrendiniz?</label>
+        <input ng-model="selectedUser.profile.referral"
+               type="text">
+      </div>
+
+      <div class="field">
+        <div
+          ng-click="updateProfile()"
+          class="ui positive right labeled icon button">
+          Update Profile
+          <i class="checkmark icon"></i>
+        </div>
+      </div>
+
+    </fieldset>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div class="ui form">
+
+    <fieldset ng-disabled="false">
+
+      <div class="ui header">
+        Confirmation
+      </div>
+
+
+      <div class="field">
+        <label> Receipt </label>
+        <input type="url" ng-model="selectedUser.confirmation.receipt" />
+      </div>
+
+      <div class="ui divider"></div>
+
+      <div class="field">
+        <label> Additional Notes </label>
+        <textarea ng-model="selectedUser.confirmation.notes"></textarea>
+      </div>
+
+    </fieldset>
+
+  </div>
+</div>
