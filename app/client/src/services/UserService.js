@@ -73,6 +73,12 @@ angular.module('reg')
       makeAdmin: function(id){
         return $http.post(base + id + '/makeadmin');
       },
+      acceptPayment: function(id){
+        return $http.post(base + id + '/acceptpayment');
+      },
+      unacceptPayment: function(id){
+        return $http.post(base + id + '/unacceptpayment');
+      },
 
       removeAdmin: function(id){
         return $http.post(base + id + '/removeadmin');

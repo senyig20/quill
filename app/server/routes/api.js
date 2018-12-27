@@ -276,6 +276,18 @@ module.exports = function (router) {
     UserController.removeAdminById(id, user, defaultResponse(req, res));
   });
 
+  router.post('/users/:id/acceptpayment', isAdmin, function(req, res){
+    var id = req.params.id;
+    var user = req.user;
+    UserController.acceptPayment(id, user, defaultResponse(req, res));
+  });
+
+  router.post('/users/:id/unacceptpayment', isAdmin, function(req, res){
+    var id = req.params.id;
+    var user = req.user;
+    UserController.unacceptPayment(id, user, defaultResponse(req, res));
+  });
+
 
 
   // ---------------------------------------------

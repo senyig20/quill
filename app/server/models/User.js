@@ -89,6 +89,17 @@ var status = {
     required: true,
     default: false,
   },
+  paymentMade: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  cancelled: {
+    type: Boolean,
+    default: false,
+  },
+
+
   admittedBy: {
     type: String,
     validate: [
@@ -314,7 +325,12 @@ schema.statics.validateProfile = function(profile, cb){
    if (this.status.checkedIn) {
      return 'giriş yapıldı';
    }
-
+   if (this.status.cancelled) {
+     return 'iptal edildi';
+   }
+   if (!this.status.paymentMade) {
+     return 'ödeme yapılmadı';
+   }
    if (this.status.declined) {
      return "reddedildi";
    }

@@ -682,6 +682,50 @@ UserController.checkInById = function(id, user, callback){
   callback);
 };
 
+
+/**
+ * [ADMIN ONLY]
+ *
+ * Check in a user.
+ * @param  {String}   userId   User id of the user getting checked in.
+ * @param  {String}   user     User checking in this person.
+ * @param  {Function} callback args(err, user)
+ */
+UserController.acceptPayment = function(id, user, callback){
+  User.findOneAndUpdate({
+    _id: id,
+    verified: true
+  },{
+    $set: {
+      'status.paymentMade': true
+        }
+  }, {
+    new: true
+  },
+  callback);
+};
+/**
+ * [ADMIN ONLY]
+ *
+ * Check in a user.
+ * @param  {String}   userId   User id of the user getting checked in.
+ * @param  {String}   user     User checking in this person.
+ * @param  {Function} callback args(err, user)
+ */
+UserController.unacceptPayment = function(id, user, callback){
+  User.findOneAndUpdate({
+    _id: id,
+    verified: true
+  },{
+    $set: {
+      'status.paymentMade': false
+        }
+  }, {
+    new: true
+  },
+  callback);
+};
+
 /**
  * [ADMIN ONLY]
  *
@@ -690,7 +734,7 @@ UserController.checkInById = function(id, user, callback){
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
-UserController.checkOutById = function(id, user, callback){
+UserController.uncheckOutById = function(id, user, callback){
   User.findOneAndUpdate({
     _id: id,
     verified: true

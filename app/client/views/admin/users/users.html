@@ -156,8 +156,8 @@
                   <th>School</th>
                   <th>Grad</th>
                   <th>V/S/A/C</th>
-                  <th>Host</th>
-                  <th>$</th>
+                  <th>$$$</th>
+                  <th>Link</th>
                   <th></th>
                 </tr>
               </thead>
@@ -229,6 +229,10 @@
                       ng-if="user.status.admitted && user.status.declined"
                       class="red remove circle icon">
                     </i>
+                    <i
+                      ng-if="user.status.cancelled"
+                      class="red remove circle icon">
+                    </i>
 
                   </td>
 
@@ -236,8 +240,19 @@
                   <td
                     class="collapsing">
 
-                    <span ng-if="user.status.confirmed">
-                    </span>
+                    <button
+                      ng-click="toggleAdmin($event, user, $index)"
+                      class="ui circular mini basic green icon button">
+
+                      <i
+                        ng-if="!user.status.paymentMade"
+                        class="lira sign icon"></i>
+
+                      <i
+                        ng-if="user.status.paymentMade"
+                        class="green lira sign icon"></i>
+
+                    </button>
 
                   </td>
 

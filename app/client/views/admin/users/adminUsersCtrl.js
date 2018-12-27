@@ -168,7 +168,37 @@ angular.module('reg')
             });
         }
       };
+      $scope.acceptPayment = function($event, user, index) {
+        $event.stopPropagation();
 
+        if (!user.status.paymentMade){
+          swal({
+            title: "Whoa, wait a minute!",
+            text: "You are about accept " + user.profile.name + "'s payment'!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, accept the payment.",
+            closeOnConfirm: false
+            },
+            function(){
+              UserService
+                .acceptPayment(user._id)
+                .success(function(user){
+                  $scope.users[index] = user;
+                  swal("Accepted", user.profile.name + ' has been paid in.', "success");
+                });
+            }
+          );
+        } else {
+          UserService
+            .unacceptPayment(user._id)
+            .success(function(user){
+              $scope.users[index] = user;
+              swal("Accepted", user.profile.name + 's payment has been deleted.', "success");
+            });
+        }
+      };
       function formatTime(time){
         if (time) {
           return moment(time).format('MMMM Do YYYY, h:mm:ss a');
