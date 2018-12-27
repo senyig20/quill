@@ -330,6 +330,9 @@ angular.module('reg')
               },{
                 name: 'Additional Notes',
                 value: user.confirmation.notes
+              },{
+                name: 'Payment Verification',
+                value: user.status.paymentMade
               }
             ]
           }
