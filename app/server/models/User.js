@@ -339,9 +339,6 @@ schema.statics.validateProfile = function(profile, cb){
        return "teyit edildi";
      }
 
-        if (this.status.admitted && !this.status.paymentMade) {
-          return 'ödeme yapılmadı';
-         }
 
    if (this.status.admitted) {
        return "kabul edildi";
