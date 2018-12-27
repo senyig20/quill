@@ -1,14 +1,12 @@
-# McHacks Registration (a fork of techX/Quill)
+# JARC Remixopolis Registration (a fork of techX/Quill)
 Registration, for hackers!
 
 Quill is a registration system designed especially for hackathons. For hackers, it’s a clean and streamlined interface to submit registration and confirmation information. For hackathon organizers, it’s an easy way to manage applications, view registration stats, and more!
 
-![Login Splash](./docs/images/screenshots/login.png)
 
 # Features
 ## Quill for Users
 ### Dashboard
-![Dashboard](./docs/images/screenshots/dashboard.png)
 
 After users login, the Dashboard displays the user’s application status and status-specific prompts to resend a verification email, view/edit their application or confirmation forms.
 
@@ -25,7 +23,6 @@ Statuses:
 - User declined admission: the user has been admitted, but will not be attending the event
 
 ### Application
-![Application](./docs/images/screenshots/application.png)
 
 The Application tab takes users to their registration or confirmation form. It has the addition of a resume uploading feature that backends into an AWS S3 Bucket. 
 
@@ -36,12 +33,10 @@ Hackathons commonly allow participants to register and be admitted as a team. Th
 Admins can view stats, look through applications, or edit settings from the Admin panel.
 
 ### Stats
-![Stats](./docs/images/screenshots/stats.png) 
 
 The Stats tab summarizes useful registration statistics on the number of users in each stage of the process, demographic information, and miscellaneous event preferences like shirt sizes, dietary restrictions, or reimbursement requests.
 
 ### Users Table
-![Users table](./docs/images/screenshots/admin-users.png)
 
 The Users tab displays a table of users where admins can:
 1. Search for a user by name
@@ -53,7 +48,6 @@ The Users tab displays a table of users where admins can:
 7.  Mark users as checked-in at the event day-of
 
 ### Settings 
-![Settings](./docs/images/screenshots/settings.png)
 
 On the Settings tab, admins can easily control their event application timeline by setting registration / confirmation deadlines. They can also write custom waitlist, acceptance, and confirmation copy that users will see on their dashboard throughout the application process. The custom copy is interpreted as Markdown, so HTML and images can be added.
 
@@ -106,8 +100,8 @@ To customize the verification and confirmation emails for your event, put your n
 # Contributing
 Contributions to Quill are welcome and appreciated! Please take a look at [`CONTRIBUTING.md`][contribute] first.
 
-# McHacks
-For McHacks specific questions and changes, contact Kyle Rubenok [kyle@mchacks.ca][email].
+# JARC
+For JARC specific questions and changes, contact Yigit Sen [yigitsen@ja-rc.org][email].
 
 # License
 Copyright (c) 2015-2016 Edwin Zhang (https://github.com/ehzhang). Released under AGPLv3. See [`LICENSE.txt`][license] for details.
