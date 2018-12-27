@@ -336,12 +336,20 @@ schema.statics.validateProfile = function(profile, cb){
    }
 
    if (this.status.confirmed) {
-     return "teyit edildi";
+     if (!this.status.paymentMade) {
+       return 'ödeme yapılmadı';
+     }
+     else {
+       return "teyit edildi";
+     }
    }
 
    if (this.status.admitted) {
-     return "kabul edildi";
-   }
+     if (!this.status.paymentMade) {
+       return 'ödeme yapılmadı';
+     }
+     else {
+       return "kabul edildi";   }
 
    if (this.status.completedProfile){
      return "teslim edildi";
