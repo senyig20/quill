@@ -47,22 +47,4 @@ angular.module('reg')
             });
           });
       };
-      
-      $scope.sendAcceptEmails = function(){
-        swal({
-          title: "Are you sure?",
-          text: "This will send an email to every user who has been accepted and not confirmed. Are you sure?.",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
-          confirmButtonText: "Yes, send.",
-          closeOnConfirm: false
-          }, function(){
-            UserService
-              .sendAcceptEmails()
-              .then(function(){
-                sweetAlert('Your emails have been sent.');
-            });
-          });
-      };
     }]);
