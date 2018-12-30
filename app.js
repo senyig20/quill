@@ -8,9 +8,9 @@ var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 var morgan          = require('morgan');
 var cookieParser    = require('cookie-parser');
+var cors = require('cors')
 
 // cors configuration
-var cors 			= require('./cors');
 
 var mongoose        = require('mongoose');
 var port            = process.env.PORT || 3000;
@@ -23,6 +23,7 @@ var app             = express();
 
 // Connect to mongodb
 mongoose.connect(database);
+app.use(cors())
 
 app.use(morgan('dev'));
 app.use(cookieParser());
