@@ -56,6 +56,13 @@ angular.module('reg')
           });
       }
 
+      function checkvalue(val)
+      {
+          if(val==="others")
+             document.getElementById('ref').style.display='block';
+          else
+             document.getElementById('ref').style.display='none';
+      }
 
       function isMinor() {
         return !$scope.user.profile.adult;

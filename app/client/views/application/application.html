@@ -116,6 +116,20 @@
 
               <div class="field">
                 <label>Remixopolis'i nasıl öğrendiniz?</label>
+              <select name="ref" ng-model="user.profile.referral" onchange='checkvalue(this.value)'>
+                  <option>Seçenekler</option>
+                  <option value="Sosyal Medya">Sosyal Medya</option>
+                  <option value="Arkadaşlar">Arkadaşlar</option>
+                  <option value="Öğretmen">Öğretmen</option>
+                  <option value="Okul tanıtımı">Okul tanıtımı</option>
+                  <option value="Eski Katılımcı">Eski Katılımcı</option>
+
+                  <option value="others">Diğer</option>
+              </select>
+              <input type="text" name="ref" id="ref" style='display:none'ng-model="user.profile.referral"/>
+
+              <div class="field">
+                <label>Remixopolis'i nasıl öğrendiniz?</label>
                 <input ng-model="user.profile.referral"
                        type="text">
               </div>
