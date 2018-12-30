@@ -191,7 +191,7 @@ angular.module('reg')
                 .acceptPayment(user._id)
                 .success(function(user){
                   UserService
-                  .sendAcceptEmails(user.email);
+                  .sendPaymentEmails(user.email);
                   $scope.users[index] = user;
                   swal("Accepted", user.profile.name + ' has been paid in.', "success");
                 });
