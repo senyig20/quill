@@ -254,7 +254,7 @@ module.exports = function (router) {
     /**
    * Send emails to accepted applicants
    */
-  router.post('/users/sendacceptemails/:email', isAdmin, function(req, res){
+  router.post('/users/:email/sendacceptemails/', isAdmin, function(req, res){
     var email = req.params.email;
     UserController.sendEmailsToAdmitted(email, defaultResponse(req, res));
   });

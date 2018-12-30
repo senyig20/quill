@@ -88,7 +88,7 @@ angular.module('reg')
         return $http.post(base + 'sendlagemails');
       },
       sendAcceptEmails: function(email) {
-        return $http.post(base + 'sendacceptemails/'+ email);
+        return $http.post(base +email+ '/sendacceptemails');
       },
     };
   }
