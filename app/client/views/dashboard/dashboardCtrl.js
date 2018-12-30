@@ -54,7 +54,7 @@ angular.module('reg')
               !user.status.declined;
           case 'admittedAvaitingPayment':
             return !user.status.paymentMade &&
-                  user.status.admitted
+                  user.status.confirmed
 
           case 'admittedAndCannotConfirm':
             return pastConfirmation &&
@@ -62,7 +62,7 @@ angular.module('reg')
               !user.status.confirmed &&
               !user.status.declined;
           case 'confirmed':
-            return user.status.admitted && user.status.confirmed && !user.status.declined;
+            return user.status.admitted && user.status.confirmed && !user.status.declined && user.status.paymentMade;
           case 'declined':
             return user.status.declined;
         }

@@ -1,20 +1,22 @@
 angular.module('reg')
     .constant('EVENT_INFO', {
-        NAME: 'McHacks 2018',
+        NAME: 'Remixopolis 2019',
     })
     .constant('DASHBOARD', {
-        UNVERIFIED: 'You should have received an email asking you verify your email. Click the link in the email and you can start your application!',
-        INCOMPLETE_TITLE: 'You still need to complete your application!',
-        INCOMPLETE: 'If you do not complete your application before the [APP_DEADLINE], your application will not be considered!',
-        SUBMITTED_TITLE: 'Your application has been submitted!',
-        SUBMITTED: 'Feel free to edit it at any time. However, once registration is closed, you will not be able to edit it any further.\nPlease make sure your information is accurate before registration is closed!',
-        CLOSED_AND_INCOMPLETE_TITLE: 'Unfortunately, registration has closed!',
-        CLOSED_AND_INCOMPLETE: 'Because you have not completed your profile in time, you will not be will not be considered!',
-        ADMITTED_AND_CAN_CONFIRM_TITLE: 'You must confirm by [CONFIRM_DEADLINE].',
-        ADMITTED_AND_CANNOT_CONFIRM_TITLE: 'Your confirmation deadline of [CONFIRM_DEADLINE] has passed.',
-        ADMITTED_AND_CANNOT_CONFIRM: 'Although you were accepted, you did not complete your confirmation in time.\nUnfortunately, this means that you will not be able to attend the event, as we must begin to accept other applicants on the waitlist.\nWe hope to see you again next year!',
-        CONFIRMED_NOT_PAST_TITLE: 'You can edit your confirmation information until [CONFIRM_DEADLINE]',
-        DECLINED: 'We\'re sorry to hear that you won\'t be able to make it to McHacks 2018! :(\nMaybe next year! We hope you see you again soon.',
+        UNVERIFIED: 'Başvuruna başlayabilmen için önce e-postandaki doğrulama linkine tıklaman lazım!',
+        INCOMPLETE_TITLE: 'Başvurunu tamamlamayı unutma!',
+        INCOMPLETE: 'Başvurunu [APP_DEADLINE]\'a kadar tamamlamazsan başvurun değerlendirmeye alınmayacak!',
+        SUBMITTED_TITLE: 'Başvurunu aldık!',
+        SUBMITTED: 'Başvurular kapanana kadar düzenleme hakkın var.\nLütfen kayıtlar kapanmadan önce yazdıklarının doğru olduğundan emin ol!',
+        CLOSED_AND_INCOMPLETE_TITLE: 'Kayıtlar kapandı!',
+        CLOSED_AND_INCOMPLETE: 'Vaktinde başvurunu tamamlamadığın için katılamıyorsun!',
+        ADMITTED_AND_CAN_CONFIRM_TITLE: '[CONFIRM_DEADLINE]\'a kadar teyit etmen gerekiyor.',
+        ADMITTED_AND_CANNOT_CONFIRM_TITLE: 'Son teyit tarihi olan [CONFIRM_DEADLINE] geçti.',
+        ADMITTED_AND_CANNOT_CONFIRM: 'Kabul edilmene rağmen zamanında teyit etmedin.\nBu maalesef seni aramızda göremeyeceğiz anlamına geliyor.\nSeneye seni aramızda görme ümidiyle.',
+        CONFIRMED_NOT_PAST_TITLE: 'Teyit formunu [CONFIRM_DEADLINE]\'a kadar düzenleyebilirsin',
+        PAYMENT: 'Ödemeni doğrulamamız lazım.',
+        PAYMENT_TITLE: 'Manuel bir kontrolden sonra ana sayfanda başvuru durumun gözükecek. Bir sıkıntı çıkarsa sana ulaşacağız.',
+        DECLINED: 'Bu yıl gelemeyeceğini duyduğumuz için üzüldük. Umarız seneye gelebilirsin!',
     })
     .constant('TEAM',{
         NO_TEAM_REG_CLOSED: 'Unfortunately, it\'s too late to enter the event with a team.\nHowever, you can still form teams on your own before or during the event!',
