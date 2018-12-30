@@ -501,7 +501,7 @@ UserController.sendEmailsToNonCompleteProfiles = function(callback) {
 };
 
 UserController.sendEmailsToAdmitted = function(email, callback) {
-    Mailer.sendAcceptEmails(users);
+    Mailer.sendAcceptEmails(email);
     return callback(err);
 };
 
