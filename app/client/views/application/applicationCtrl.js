@@ -49,14 +49,14 @@ angular.module('reg')
                 text: "Başvurunu aldık!",
                 type: "success"
             },function() {
-                location.reload();
-            });
+                $state.go("app.dashboard");
+              });
           }, response => {
             swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
           });
       }
 
-    
+
       function isMinor() {
         return !$scope.user.profile.adult;
       }
