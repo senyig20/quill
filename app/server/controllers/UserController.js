@@ -500,12 +500,8 @@ UserController.sendEmailsToNonCompleteProfiles = function(callback) {
   });
 };
 
-UserController.sendEmailsToAdmitted = function(callback) {
-  User.find({"status.admitted": true, "status.confirmed" : false, "status.declined" : false}, 'email nickname', function (err, users) {
-    if (err) {
-      return callback(err);
-    }
-    Mailer.sendAcceptEmails(users);
+UserController.sendEmailsToAdmitted = function(email, callback) {
+    Mailer.sendAcceptEmails(email);
     return callback(err);
   });
 };

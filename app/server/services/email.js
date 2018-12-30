@@ -105,20 +105,17 @@ controller.sendLaggerEmails = function(users, callback) {
   }
 }
 
-controller.sendAcceptEmails = function(users, callback) {
-  for (var i = 0; i < users.length; i++) {
-    var user = users[i];
+controller.sendAcceptEmails = function(email, callback) {
     var options = {
-      to: user.email,
+      to: email,
       subject: "["+HACKATHON_NAME+"] -  Kabul Edildin!"
     };
 
     var locals = {
-      name: user.name,
       dashUrl: ROOT_URL
     };
 
-    console.log('Sending accepted email to address ' + user.email);
+    console.log('Sending accepted email to address ' + email);
     sendOne('email-accept', options, locals, function(err, info){
       if (err){
         console.log(err);
@@ -131,7 +128,7 @@ controller.sendAcceptEmails = function(users, callback) {
       }
     });
   }
-}
+
 
 controller.sendApplicationEmail = function(user, callback) {
   var options = {
