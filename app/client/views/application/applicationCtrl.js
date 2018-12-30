@@ -39,26 +39,14 @@ angular.module('reg')
        * TODO: JANK WARNING
        */
 
-      function _successModal() {
-        sweetAlert({
-          title: "Done!",
-          text: "Your application has been saved.",
-          type: "success",
-          showConfirmButton: false,
-          timer: 1500
-        }, function () {
-          swal.close();
-          $state.go('app.dashboard');
-        });
-      }
 
       function _updateUser(e){
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
           .then(response => {
-            swal("Tamamlandı!", "Başvurunu aldık.", "success").then(
+            swal("Tamamlandı!", "Başvurunu aldık.", "success"),function() {
               $state.go("app.dashboard");
-            );
+            });
           }, response => {
             swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
           });
