@@ -130,10 +130,6 @@ angular.module('reg')
                   .success(function(user){
                     $scope.users[index] = user;
                     swal("Accepted", user.profile.name + ' has been admitted.', "success");
-                    .sendSingleAdmittedEmail(user.email)
-                    .then(function(){
-                      sweetAlert('Your emails have been sent.');
-
                   });
 
               });

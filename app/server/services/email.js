@@ -133,30 +133,6 @@ controller.sendAcceptEmails = function(users, callback) {
   }
 }
 
-
-controller.sendSingleAdmittedEmail = function(email, callback) {
-    var options = {
-      to: email,
-      subject: "["+HACKATHON_NAME+"] -  Kabul Edildin!"
-    };
-
-    var locals = {
-      dashUrl: ROOT_URL
-    };
-
-    sendOne('email-accept', options, locals, function(err, info){
-      if (err){
-        console.log(err);
-      }
-      if (info){
-        console.log(info.message);
-      }
-      if (callback){
-        callback(err, info);
-      }
-    });
-  }
-}
 controller.sendApplicationEmail = function(user, callback) {
   var options = {
     to: user.email,
