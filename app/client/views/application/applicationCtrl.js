@@ -56,9 +56,9 @@ angular.module('reg')
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
           .then(response => {
-            swal("Tamamlandı!", "Başvurunu aldık.", "success").then(value => {
+            swal("Tamamlandı!", "Başvurunu aldık.", "success").then(
               $state.go("app.dashboard");
-            });
+            );
           }, response => {
             swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
           });
