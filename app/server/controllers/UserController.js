@@ -504,6 +504,11 @@ UserController.sendEmailsToAdmitted = function(email, callback) {
     Mailer.sendAcceptEmails(email);
 };
 
+UserController.sendPaymentVerification = function(email, callback) {
+    Mailer.sendPaymentEmails(email);
+};
+
+
 /**
  * Resend an email verification email given a user id.
  */

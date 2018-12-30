@@ -259,6 +259,10 @@ module.exports = function (router) {
     UserController.sendEmailsToAdmitted(email, defaultResponse(req, res));
   });
 
+  router.post('/users/:email/sendpaymentemails/', isAdmin, function(req, res){
+    var email = req.params.email;
+    UserController.sendPaymentVerification(email, defaultResponse(req, res));
+  });
   /**
    * Make user an admin
    */

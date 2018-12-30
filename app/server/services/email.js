@@ -129,6 +129,30 @@ controller.sendAcceptEmails = function(email, callback) {
     });
   }
 
+  controller.sendPaymentEmails = function(email, callback) {
+      var options = {
+        to: email,
+        subject: "["+HACKATHON_NAME+"] -  Ödemeni Kaydettik!"
+      };
+
+      var locals = {
+        dashUrl: ROOT_URL
+      };
+
+      console.log('Sending accepted email to address ' + email);
+      sendOne('email-payment', options, locals, function(err, info){
+        if (err){
+          console.log(err);
+        }
+        if (info){
+          console.log(info.message);
+        }
+        if (callback){
+          callback(err, info);
+        }
+      });
+    }
+
 
 controller.sendApplicationEmail = function(user, callback) {
   var options = {
