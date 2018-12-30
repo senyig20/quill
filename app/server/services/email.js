@@ -82,7 +82,7 @@ controller.sendLaggerEmails = function(users, callback) {
     var user = users[i];
     var options = {
       to: user.email,
-      subject: "[McHacks 2018] - First round applications close soon!"
+      subject: "["+HACKATHON_NAME+"] - Başvurular kapanmak üzere!"
     };
 
     var locals = {
@@ -110,7 +110,7 @@ controller.sendAcceptEmails = function(users, callback) {
     var user = users[i];
     var options = {
       to: user.email,
-      subject: "[McHacks 2018] -  You've been accepted!"
+      subject: "["+HACKATHON_NAME+"] -  Kabul Edildin!"
     };
 
     var locals = {
@@ -136,7 +136,7 @@ controller.sendAcceptEmails = function(users, callback) {
 controller.sendApplicationEmail = function(user, callback) {
   var options = {
     to: user.email,
-    subject: "[McHacks 2018] - We have received your application!"
+    subject: "["+HACKATHON_NAME+"] - Başvurunu Aldık!"
   };
 
   var locals = {
@@ -168,7 +168,7 @@ controller.sendVerificationEmail = function(email, token, callback) {
 
   var options = {
     to: email,
-    subject: "["+HACKATHON_NAME+"] - Verify your email"
+    subject: "["+HACKATHON_NAME+"] - E-Postanı Doğrula"
   };
 
   var locals = {
@@ -205,16 +205,16 @@ controller.sendPasswordResetEmail = function(email, token, callback) {
 
   var options = {
     to: email,
-    subject: "["+HACKATHON_NAME+"] - Password reset requested!"
+    subject: "["+HACKATHON_NAME+"] - Şifre Değişikliği İstendi!"
   };
 
   var locals = {
-    title: 'Password Reset Request',
+    title: 'Şifre Değişikliği İsteği',
     subtitle: '',
-    description: 'Somebody (hopefully you!) has requested that your password be reset. If ' +
-      'this was not you, feel free to disregard this email. This link will expire in one hour.',
+    description: 'Birisi (umarız sen!) şifreni değiştirmek için bir istekte bulundu. Eğer ' +
+      'bu sen değilsen, bu e-postayı silebilirsin. Link bir saat içinde geçersiz olacak.',
     actionUrl: ROOT_URL + '/reset/' + token,
-    actionName: "Reset Password"
+    actionName: "Şifreni Değiştir"
   };
 
   /**
@@ -246,12 +246,12 @@ controller.sendPasswordChangedEmail = function(email, callback){
 
   var options = {
     to: email,
-    subject: "["+HACKATHON_NAME+"] - Your password has been changed!"
+    subject: "["+HACKATHON_NAME+"] - Şifren Değişti!"
   };
 
   var locals = {
-    title: 'Password Updated',
-    body: 'Somebody (hopefully you!) has successfully changed your password.',
+    title: 'Şifren Değişti',
+    body: 'Birisi (umarız sen!) şifreni değiştirdi. Bu e-posta bilgilendirme amaçlı gönderildi.',
   };
 
   /**
