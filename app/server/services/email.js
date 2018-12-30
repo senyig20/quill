@@ -40,42 +40,45 @@ var controller = {};
 
 controller.transporter = transporter;
 
-function sendOne(templateName, options, data, callback){
 
+function sendOne(templateName, options, data, callback) {
   if (NODE_ENV === "dev") {
     console.log(templateName);
     console.log(JSON.stringify(data, "", 2));
   }
 
-  emailTemplates(templatesDir, function(err, template){
-    if (err) {
-      return callback(err);
+  const email = new Email({
+    message: {
+      from: EMAIL_ADDRESS
+    },
+    send: true,
+    transport: transporter
+  });
+
+  data.emailHeaderImage = EMAIL_HEADER_IMAGE;
+  data.emailAddress = EMAIL_ADDRESS;
+  data.hackathonName = HACKATHON_NAME;
+  data.twitterHandle = TWITTER_HANDLE;
+  data.facebookHandle = FACEBOOK_HANDLE;
+
+  email.send({
+    locals: data,
+    message: {
+      subject: options.subject,
+      to: options.to
+    },
+    template: path.join(__dirname, "..", "emails", templateName),
+  }).then(res => {
+    if (callback) {
+      callback(undefined, res)
     }
-
-    data.emailHeaderImage = EMAIL_HEADER_IMAGE;
-    data.emailAddress = EMAIL_ADDRESS;
-    data.hackathonName = HACKATHON_NAME;
-    data.twitterHandle = TWITTER_HANDLE;
-    data.facebookHandle = FACEBOOK_HANDLE;
-    template(templateName, data, function(err, html, text){
-      if (err) {
-        return callback(err);
-      }
-
-      transporter.sendMail({
-        from: EMAIL_CONTACT,
-        to: options.to,
-        subject: options.subject,
-        html: html,
-        text: text
-      }, function(err, info){
-        if(callback){
-          callback(err, info);
-        }
-      });
-    });
+  }).catch(err => {
+    if (callback) {
+      callback(err, undefined);
+    }
   });
 }
+
 
 controller.sendLaggerEmails = function(users, callback) {
   for (var i = 0; i < users.length; i++) {
@@ -103,7 +106,7 @@ controller.sendLaggerEmails = function(users, callback) {
       }
     });
   }
-}
+};
 
 controller.sendAcceptEmails = function(users, callback) {
   for (var i = 0; i < users.length; i++) {
@@ -131,8 +134,7 @@ controller.sendAcceptEmails = function(users, callback) {
       }
     });
   }
-}
-
+};
 
 controller.sendSingleAdmittedEmail = function(email, callback) {
     var options = {
@@ -156,7 +158,31 @@ controller.sendSingleAdmittedEmail = function(email, callback) {
       }
     });
   }
-}
+};
+
+controller.sendSingleAdmittedEmail = function(email, callback) {
+    var options = {
+      to: email,
+      subject: "["+HACKATHON_NAME+"] -  Kabul Edildin!"
+    };
+
+    var locals = {
+      dashUrl: ROOT_URL
+    };
+
+    sendOne('email-accept', options, locals, function(err, info){
+      if (err){
+        console.log(err);
+      }
+      if (info){
+        console.log(info.message);
+      }
+      if (callback){
+        callback(err, info);
+      }
+    });
+  }
+};
 controller.sendApplicationEmail = function(user, callback) {
   var options = {
     to: user.email,
@@ -179,7 +205,7 @@ controller.sendApplicationEmail = function(user, callback) {
       callback(err, info);
     }
   });
-}
+};
 
 /**
  * Send a verification email to a user, with a verification token to enter.
