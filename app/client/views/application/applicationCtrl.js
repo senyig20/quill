@@ -44,14 +44,19 @@ angular.module('reg')
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
           .then(response => {
-            swal("Tamamlandı!", "Başvurunu aldık.", "success"),function() {
-              $state.go("app.dashboard");
+            swal({
+                title: "Tamamlandı!",
+                text: "Başvurunu aldık!",
+                type: "success"
+            },function() {
+                location.reload();
             });
           }, response => {
             swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
           });
       }
 
+    
       function isMinor() {
         return !$scope.user.profile.adult;
       }
