@@ -89,7 +89,14 @@ angular.module('reg')
           }
         }
       })
-      
+      .state('app.payment', {
+        url: "/payment",
+        templateUrl: "views/payment/payment.html",
+        controller: 'PaymentCtrl',
+        data: {
+          requireAdmitted: true
+        }
+      })
       .state('app.admin', {
         views: {
           '': {

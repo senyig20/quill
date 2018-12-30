@@ -21,6 +21,13 @@
       Başvuru
     </div>
 
+        <div
+          ui-sref-active="active"
+          ui-sref="app.payment"
+          ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined"
+          class="item">
+          Ödeme Bilgileri
+        </div>
     <div
       ui-sref-active="active"
       ui-sref="app.confirmation"
