@@ -51,19 +51,18 @@ angular.module('reg')
           $state.go('app.dashboard');
         });
       }
-      function _updateUser(e) {
+
+      function _updateUser(e){
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
-          .success(function (data) {
-              _successModal();
-            }
-          })
-          .error(function (res) {
-            swal("Uh oh!", "Something went wrong.", "error");
-            $scope.submitButtonDisabled = false;
+          .then(response => {
+            swal("Tamamlandı!", "Başvurunu aldık.", "success").then(value => {
+              $state.go("app.dashboard");
+            });
+          }, response => {
+            swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
           });
       }
-
 
       function isMinor() {
         return !$scope.user.profile.adult;
