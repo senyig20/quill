@@ -514,6 +514,7 @@ UserController.sendEmailsToAdmitted = function(callback) {
 UserController.sendSingleEmailToAdmitted = function(email, callback){
       Mailer.sendSingleAdmittedEmail(email);
       return callback(err, user);
+  });
 };
 
 /**
