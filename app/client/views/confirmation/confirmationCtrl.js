@@ -30,13 +30,18 @@ angular.module('reg')
         UserService
           .updateConfirmation(user._id, confirmation)
           .then(response => {
-            swal("Harika!", "Teydini aldık!", "success").then(value => {
-              $state.go("app.dashboard");
-            });
+            swal({
+                title: "Tamamlandı!",
+                text: "Başvurunu aldık!",
+                type: "success"
+            },function() {
+                $state.go("app.dashboard");
+              });
           }, response => {
             swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
           });
       }
+
 
       function _setupForm(){
         // Semantic-UI form validation
