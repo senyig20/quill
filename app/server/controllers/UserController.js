@@ -510,6 +510,13 @@ UserController.sendEmailsToAdmitted = function(callback) {
   });
 };
 
+
+UserController.sendSingleEmailToAdmitted = function(email, callback){
+      Mailer.sendSingleAdmittedEmail(email);
+      return callback(err, user);
+  });
+};
+
 /**
  * Resend an email verification email given a user id.
  */

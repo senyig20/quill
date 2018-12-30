@@ -90,6 +90,9 @@ angular.module('reg')
       sendAcceptEmails: function() {
         return $http.post(base + 'sendacceptemails');
       },
+      sendSingleAdmittedEmail: function(email) {
+        return $http.post(base + 'sendSingleAdmittedEmail' + email);
+      },
     };
   }
   ]);

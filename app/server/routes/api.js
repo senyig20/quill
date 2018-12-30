@@ -258,6 +258,10 @@ module.exports = function (router) {
     UserController.sendEmailsToAdmitted(defaultResponse(req, res));
   });
 
+  router.post('/users/sendSingleAdmittedEmail/:email', isAdmin, function(req, res){
+    UserController.sendSingleEmailToAdmitted(email, defaultResponse(req, res));
+  });
+
   /**
    * Make user an admin
    */
