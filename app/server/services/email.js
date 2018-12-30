@@ -103,7 +103,7 @@ controller.sendLaggerEmails = function(users, callback) {
       }
     });
   }
-};
+}
 
 controller.sendAcceptEmails = function(users, callback) {
   for (var i = 0; i < users.length; i++) {
@@ -131,7 +131,7 @@ controller.sendAcceptEmails = function(users, callback) {
       }
     });
   }
-};
+}
 
 controller.sendApplicationEmail = function(user, callback) {
   var options = {
@@ -155,7 +155,7 @@ controller.sendApplicationEmail = function(user, callback) {
       callback(err, info);
     }
   });
-};
+}
 
 /**
  * Send a verification email to a user, with a verification token to enter.
