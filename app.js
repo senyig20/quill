@@ -40,15 +40,14 @@ app.use(express.static(__dirname + '/app/client'));
 
 var apiRouter = express.Router();
 require('./app/server/routes/api')(apiRouter);
-app.use('/api', cors, apiRouter);
+app.use('/api', apiRouter);
 
 var authRouter = express.Router();
 require('./app/server/routes/auth')(authRouter);
-app.use('/auth', cors, authRouter);
+app.use('/auth', authRouter);
 
 require('./app/server/routes')(app);
 
 // listen (start app with node server.js) ======================================
 app.listen(port);
 console.log("App listening on port " + port);
-
