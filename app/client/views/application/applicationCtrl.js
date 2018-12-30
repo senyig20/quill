@@ -40,7 +40,7 @@ angular.module('reg')
        */
 
       function _successModal() {
-        swal({
+        sweetAlert({
           title: "Done!",
           text: "Your application has been saved.",
           type: "success",
