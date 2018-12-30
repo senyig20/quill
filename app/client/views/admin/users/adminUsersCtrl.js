@@ -128,9 +128,14 @@ angular.module('reg')
                 UserService
                   .admitUser(user._id)
                   .success(function(user){
-                    .sendAcceptEmails(user.email);
-                    $scope.users[index] = user;
-                    swal("Accepted", user.profile.name + ' has been admitted.', "success");
+                    UserService
+                    .sendAcceptEmails(user.email)
+                    .success(function(user){
+                      $scope.users[index] = user;
+                      swal("Accepted", user.profile.name + ' has been admitted.', "success");
+                    })
+
+
                   });
 
               });
