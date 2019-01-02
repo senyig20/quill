@@ -1,4 +1,4 @@
-<div class="page">
+<div id="payment" class="page">
   <div class="divided title">
     Ödeme Bilgileri
   </div>
@@ -35,7 +35,7 @@
             <p>
               Dekontun açıklamasına lütfen aşağıdaki şekilde not düşünüz:
               <br>
-              {{user.profile.name}} - JARC Remixopolis 2019 Bireysel Katılımcı
+              <div ng-class="user.status.name">{{user.profile.name}}</div> - JARC Remixopolis 2019 Bireysel Katılımcı
             </p>
           </div>
           <br>
@@ -46,6 +46,8 @@
             </div>
             <br>
               <p>
+              Dekontun açıklamasına lütfen aşağıdaki şekilde not düşünüz:
+              <br>
               (Okul İsmi) - JARC Remixopolis 2019 Toplu Katılımcı Ödemeleri
               <br>
               Ve ödemenin yapılmasını takiben payment@remixopolis.org hesabına dekontun kopyasıyla birlikte ödemenin geçerli olduğu öğrencilerinin bir listesinin gönderilmesini rica ederiz.
