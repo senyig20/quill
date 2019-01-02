@@ -8,7 +8,9 @@
         <fieldset ng-disabled="pastConfirmation">
 
          <div class="field">
-            <label> Banka Hesap Bilgileri </label>
+           <div class="small title">
+             Banka Hesap Bilgileri:
+           </div>
             <p>
               Alıcı: İstanbul Özel Amerikan Robert Lisesi
               <br>
@@ -19,14 +21,25 @@
               IBAN: TR060004600339888000042349
               <br>
               Hesap Numarası: 0339-0042349
-              <br>
+
+            </p>
+            </div>
+        <div class="field">
+          <div class="small title">
+          Dekont Detayları - Bireysel Ödeme
+          </div>
+            <p>
               Dekontun açıklamasına lütfen aşağıdaki şekilde not düşünüz:
               <br>
               {{user.profile.name}} - JARC Remixopolis 2019 Bireysel Katılımcı
-              <br>
+            </p>
+          </div>
 
-              Veya okul olarak ödenilecekse
-              <br>
+          <div class="field">
+            <div class="small title">
+            Dekont Detayları - Toplu Ödeme
+            </div>
+              <p>
               (Okul İsmi) - JARC Remixopolis 2019 Toplu Katılımcı Ödemeleri
               <br>
               Ve ödemenin yapılmasını takiben payment@remixopolis.org hesabına dekontun kopyasıyla birlikte ödemenin geçerli olduğu öğrencilerinin bir listesinin gönderilmesini rica ederiz.
