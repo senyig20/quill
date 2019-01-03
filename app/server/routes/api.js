@@ -116,27 +116,6 @@ module.exports = function (router) {
       var type = req.query.type;
       var partial = req.query.partial;
       var adminID = req.query.adminID;
-
-      // console.log("api.js " + type + " " + adminID);
-
-      // function timeStamp() {
-      //   var now = new Date();
-      //   var date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
-      //   var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
-      //   var suffix = ( time[0] < 12 ) ? "AM" : "PM";
-      //   time[0] = ( time[0] < 12 ) ? time[0] : time[0] - 12;
-      //   time[0] = time[0] || 12;
-      //   for ( var i = 1; i < 3; i++ ) {
-      //     if ( time[i] < 10 ) {
-      //       time[i] = "0" + time[i];
-      //     }
-      //   }
-      //   return date.join("-") + "_" + time.join("-") + "_" + suffix;
-      // }
-      // console.log("Exporting users as CSV: " + timeStamp());
-
-
-
       var filename = " users" + ".csv";
       if (type != "undefined") filename = type + filename;
 
@@ -167,8 +146,12 @@ module.exports = function (router) {
             });
             res.statusCode = 200;
 
-            res.setHeader('Content-Type', 'application/pdf');
+            res.setHeader('Content-Type', 'text/csv');
             res.setHeader("x-filename", filename);
+
+            var xls = new XlsExport(users, 'sampleExport');
+            xls.exportToXLS('export2017.xls');
+
             res.status(200).csv(users, true);
           }
         });
