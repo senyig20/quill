@@ -1,6 +1,7 @@
 var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
 var request = require('request');
+var XlsExport = require('xlsexport');
 
 jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
