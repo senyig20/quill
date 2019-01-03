@@ -118,8 +118,6 @@ module.exports = function (router) {
       var adminID = req.query.adminID;
       var filename = " users" + ".csv";
       if (type != "undefined") filename = type + filename;
-      var XlsExport = require('./xls-export.js');
-      import XlsExport from XlsExport;
 
 
       var dataArray;
@@ -151,10 +149,6 @@ module.exports = function (router) {
 
             res.setHeader('Content-Type', 'text/csv');
             res.setHeader("x-filename", filename);
-
-            var xls = new XlsExport(users, 'sampleExport');
-            xls.exportToXLS('export2017.xls');
-
             res.status(200).csv(users, true);
           }
         });
