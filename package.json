@@ -9,7 +9,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.8.4",
     "bower": "^1.8.0",
-    "xlsexport",
+    "xlsexport": "1.5.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "dotenv": "^1.2.0",
