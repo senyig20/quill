@@ -1,8 +1,6 @@
 var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
 var request = require('request');
-var json2xls = require('json2xls');
-var fs = require('fs');
 
 jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
@@ -137,22 +135,6 @@ module.exports = function (router) {
             res.send(err);
             console.log(err);
           } else {
-            JSONUser=JSON.stringify(users);
-            var json111 = JSON.parse(JSONUser);
-            var xls = json2xls(json111);
-
-            var file = fs.writeFileSync('data.xlsx', xls, 'binary');
-            res.pipe(file);
-            file.on('finish', function () {
-                        file.close(callback); // close() is async, call callback after close completes.
-                    });
-                    file.on('error', function (err) {
-                        fs.unlink(dest); // Delete the file async. (But we don't check the result)
-                        if (callback)
-                            callback(err.message);
-                    });
-
-
             users = users.map(function(user) {
               // console.log("user was admitted at " + user.status.admittedAt);
               user.name = user.profile.name;
