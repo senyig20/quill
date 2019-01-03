@@ -1,6 +1,7 @@
 var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
 var request = require('request');
+var json2xls = require('json2xls');
 
 jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
@@ -128,6 +129,7 @@ module.exports = function (router) {
       var query = {};
       var queryAdmin = {};
       var lastAdminLastExportAccepted;
+      var JSONUser;
 
       function getMeow(lastAdminLastExportAccepted) {
         UserDB.find(query, {email: 1, profile: 1, verified:1, status: 1}).lean().exec({}, function(err, users) {
@@ -135,6 +137,9 @@ module.exports = function (router) {
             res.send(err);
             console.log(err);
           } else {
+            JSONUser=JSON.stringify(users);
+            var xls = json2xls(json);
+            fs.writeFileSync('data.xlsx', xls, 'binary');
             users = users.map(function(user) {
               // console.log("user was admitted at " + user.status.admittedAt);
               user.name = user.profile.name;
