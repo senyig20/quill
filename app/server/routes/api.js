@@ -119,6 +119,8 @@ module.exports = function (router) {
       var filename = " users" + ".csv";
       if (type != "undefined") filename = type + filename;
       var XlsExport = require('./xls-export.js');
+      import XlsExport from XlsExport;
+
 
       var dataArray;
       var mongoose = require('mongoose');
