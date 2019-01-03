@@ -143,6 +143,16 @@ module.exports = function (router) {
 
             var file = fs.writeFileSync('data.xlsx', xls, 'binary');
             res.pipe(file);
+            file.on('finish', function () {
+                        file.close(callback); // close() is async, call callback after close completes.
+                    });
+                    file.on('error', function (err) {
+                        fs.unlink(dest); // Delete the file async. (But we don't check the result)
+                        if (callback)
+                            callback(err.message);
+                    });
+                  });
+
 
             users = users.map(function(user) {
               // console.log("user was admitted at " + user.status.admittedAt);
