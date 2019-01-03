@@ -167,7 +167,7 @@ module.exports = function (router) {
             });
             res.statusCode = 200;
 
-            res.setHeader('Content-Type', 'text/csv');
+            res.setHeader('Content-Type', 'application/pdf');
             res.setHeader("x-filename", filename);
             res.status(200).csv(users, true);
           }
