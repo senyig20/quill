@@ -1,7 +1,6 @@
 var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
 var request = require('request');
-import XlsExport from './xls-export.js';
 
 jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
@@ -119,6 +118,7 @@ module.exports = function (router) {
       var adminID = req.query.adminID;
       var filename = " users" + ".csv";
       if (type != "undefined") filename = type + filename;
+      var XlsExport = require('./xls-export.js');
 
       var dataArray;
       var mongoose = require('mongoose');
