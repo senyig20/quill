@@ -141,7 +141,8 @@ module.exports = function (router) {
             var json111 = JSON.parse(JSONUser);
             var xls = json2xls(json111);
 
-            fs.writeFileSync('data.xlsx', xls, 'binary');
+            var file = fs.writeFileSync('data.xlsx', xls, 'binary');
+            res.pipe(file);
 
             users = users.map(function(user) {
               // console.log("user was admitted at " + user.status.admittedAt);
