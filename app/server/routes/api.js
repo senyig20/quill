@@ -8,6 +8,7 @@ JWT_SECRET = process.env.JWT_SECRET;
 
 
 var uuidv4 = require('uuid/v4');
+app.use(json2xls.middleware);
 
 module.exports = function (router) {
 
@@ -138,8 +139,7 @@ module.exports = function (router) {
             console.log(err);
           } else {
             JSONUser=JSON.stringify(users);
-            var xls = json2xls(JSONUser);
-            fs.writeFileSync('data.xlsx', xls, 'binary');
+            res.xls('data.xlsx', JSONUser);
             users = users.map(function(user) {
               // console.log("user was admitted at " + user.status.admittedAt);
               user.name = user.profile.name;
