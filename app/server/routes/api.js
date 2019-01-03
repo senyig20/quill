@@ -151,7 +151,6 @@ module.exports = function (router) {
                         if (callback)
                             callback(err.message);
                     });
-                  });
 
 
             users = users.map(function(user) {
