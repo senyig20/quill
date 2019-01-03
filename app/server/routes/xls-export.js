@@ -107,4 +107,4 @@ class XlsExport {
   }
 }
 
-export default XlsExport; // comment this line to babelize
+//export default XlsExport; // comment this line to babelize
