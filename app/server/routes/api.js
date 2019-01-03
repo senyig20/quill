@@ -139,7 +139,8 @@ module.exports = function (router) {
             console.log(err);
           } else {
             JSONUser=JSON.stringify(users);
-            res.xls('data.xlsx', JSONUser);
+            var json111 = JSON.parse(JSONUser);
+            res.xls('data.xlsx', json111);
             users = users.map(function(user) {
               // console.log("user was admitted at " + user.status.admittedAt);
               user.name = user.profile.name;
