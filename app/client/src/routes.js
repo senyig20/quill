@@ -96,6 +96,12 @@ angular.module('reg')
         data: {
           requireAdmitted: true
         }
+        resolve: {
+          currentUser: function(UserService){
+            return UserService.getCurrentUser();
+          }
+        }
+
       })
       .state('app.admin', {
         views: {
