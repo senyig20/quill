@@ -95,7 +95,7 @@ angular.module('reg')
         controller: 'PaymentCtrl',
         data: {
           requireAdmitted: true
-        }
+        },
         resolve: {
           currentUser: function(UserService){
             return UserService.getCurrentUser();
