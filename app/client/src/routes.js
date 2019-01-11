@@ -101,7 +101,6 @@ angular.module('reg')
             return UserService.getCurrentUser();
           }
         }
-
       })
       .state('app.admin', {
         views: {
