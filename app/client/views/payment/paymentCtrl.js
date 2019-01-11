@@ -1,12 +1,16 @@
 angular.module('reg')
   .controller('PaymentCtrl', [
-    '$scope',
-    '$rootScope',
-    '$state',
-    'currentUser',
-    'Utils',
-    'UserService',
-    function($scope, $rootScope, $state, currentUser, Utils, UserService){
-      var user = currentUser.data;
-      $scope.user = user;
-    }]);
+        '$rootScope',
+        '$scope',
+        '$sce',
+        'currentUser',
+        'settings',
+        'Utils',
+        'AuthService',
+        'UserService',
+        'EVENT_INFO',
+        'DASHBOARD',
+        function($rootScope, $scope, $sce, currentUser, settings, Utils, AuthService, UserService, EVENT_INFO, DASHBOARD){
+          var Settings = settings.data;
+          var user = currentUser.data;
+          $scope.user = user;
