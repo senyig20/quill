@@ -11,8 +11,23 @@
         <div class="divided title">Ödeme Bilgileri</div>
 
         <fieldset ng-disabled="pastConfirmation">
+          <div class="field">
+            <div class="ui toggle checkbox">
+              <input type="checkbox" ng-model="user.confirmation.groupPayment">
+              <label> Ödeme grup olarak yapıldı</label>
+            </div>
+          </div>
 
-         <div class="field">
+          <div class="field" ng-show="user.confirmation.groupPayment">
+              <label>Ödeme Grup Kodunuz</label>
+              <div id="groupid">
+                <input name="groupid"
+                       ng-model="user.confirmation.groupid"
+                       type="text">
+              </div>
+            </div>
+
+         <div class="field" ng-hide="user.confirmation.groupPayment">
             <label> Dekont Yükleme (Zorunlu) </label>
             <p>
               Lütfen dekontunuzu buraya yükleyin!
