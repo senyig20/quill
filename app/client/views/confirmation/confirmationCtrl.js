@@ -32,7 +32,7 @@ angular.module('reg')
           .then(response => {
             swal({
                 title: "Tamamlandı!",
-                text: "Başvurunu aldık!",
+                text: "Teyidini aldık!",
                 type: "success"
             },function() {
                 $state.go("app.dashboard");
