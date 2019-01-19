@@ -56,15 +56,6 @@ angular.module('reg')
                 }
               ]
             },
-            groupid: {
-              identifier: 'groupid',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Lütfen grup kodunu gir.'
-                }
-              ]
-            },
           }
         });
       }
