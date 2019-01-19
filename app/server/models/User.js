@@ -68,6 +68,8 @@ var confirmation = {
     type: Boolean,
     default: false,
   },
+  groupPayment: String,
+  groupid: String,
 
 
 
