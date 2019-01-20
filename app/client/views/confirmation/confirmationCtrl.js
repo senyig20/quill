@@ -60,7 +60,7 @@ angular.module('reg')
               identifier: 'receiptConfirmation',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'checked',
                   prompt: 'Lütfen yüklediğini/girdiğini doğrula.'
                 }
               ]
