@@ -102,14 +102,6 @@ angular.module('reg')
           }
         }
       })
-      .state('app.checkin', {
-        url: "/checkin",
-        templateUrl: "views/checkin/checkin.html",
-        controller: 'CheckinCtrl',
-        data: {
-          requireAdmin: true
-        }
-      })
       .state('app.admin', {
         views: {
           '': {
