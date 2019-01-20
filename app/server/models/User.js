@@ -74,6 +74,15 @@ var confirmation = {
   },
   groupid: String,
 
+  wantsReceipt: {
+    type: Boolean,
+    default: false,
+  },
+  namesurname: String,
+  address: String,
+  idNumber: String, 
+  phoneNumber: String,
+  groupid: String,
 
 
   signatureLiability: String,

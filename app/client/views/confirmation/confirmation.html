@@ -61,6 +61,51 @@
             </div>
           </div>
 
+          <div class="field">
+            <div class="ui toggle checkbox">
+              <input type="checkbox" ng-model="user.confirmation.wantsReceipt">
+              <label> Fatura kesilmesini talep ediyorum </label>
+            </div>
+          </div>
+
+          <div class="field" ng-show="user.confirmation.wantsReceipt">
+            <label>Fatura Isim ve Soyismi</label>
+            <div id="groupid">
+              <input name="groupid"
+                     ng-model="user.confirmation.namesurname"
+                     type="text">
+            </div>
+          </div>
+
+          <div class="field" ng-show="user.confirmation.wantsReceipt">
+            <label>Fatura Adresi</label>
+            <div id="groupid">
+              <input name="groupid"
+                     ng-model="user.confirmation.address"
+                     type="text">
+            </div>
+          </div>
+
+          <div class="field" ng-show="user.confirmation.wantsReceipt">
+            <label>Telefon Numarası</label>
+            <div id="groupid">
+              <input name="groupid"
+                     ng-model="user.confirmation.phoneNumber"
+                     type="text">
+            </div>
+          </div>
+
+          <div class="field" ng-show="user.confirmation.wantsReceipt">
+            <label>TC Kimlik Numarası</label>
+            <div id="groupid">
+              <input name="groupid"
+                     ng-model="user.confirmation.idNumber"
+                     type="text">
+            </div>
+          </div>
+
+
+
 
 
           <br>
