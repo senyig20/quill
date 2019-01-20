@@ -56,6 +56,15 @@ angular.module('reg')
                 }
               ]
             },
+            receiptConfirmation: {
+              identifier: 'receiptConfirmation',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Lütfen yüklediğini/girdiğini doğrula.'
+                }
+              ]
+            },
           }
         });
       }
