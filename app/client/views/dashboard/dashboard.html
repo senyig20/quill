@@ -146,22 +146,18 @@
           class="description"
           ng-if="dashState('admittedAndCanConfirm')">
 
-          <div class="markdown">
             <h4>
                 {{ DASHBOARD.ADMITTED_AND_CAN_CONFIRM_TITLE }}
             </h4>
-          </div>
 
           <div
             class="markdown"
             ng-bind-html="acceptanceText">
           </div>
 
-          <div class="markdown">
             <h4>
                 {{ DASHBOARD.ADMITTED_AND_CAN_CONFIRM }}
             </h4>
-          </div>
 
           <div class="ui purple button"
                ui-sref="app.confirmation">
