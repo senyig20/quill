@@ -34,7 +34,7 @@ function calculateStats(){
     bbqNight: 0,
     veggie: 0,
     receiptStatus: 0,
-
+    paid: 0,
     checkedIn: 0
   };
 
@@ -78,6 +78,7 @@ function calculateStats(){
 
         newStats.veggie += user.profile.veggie === "1" ? 1 : 0;
         newStats.receiptStatus += user.confirmation.receiptConfirmation ? 1 : 0;
+        newStats.paid += user.status.paymentMade ? 1 : 0;
 
         // Count schools
         if (!newStats.demo.schools[email]){
