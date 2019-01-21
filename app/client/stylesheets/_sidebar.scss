@@ -104,6 +104,7 @@
       visibility: 'visible';
       opacity: 1;
       @include transform(translate3d(0,0,0));
+      line-height: $sidebar-tab-size;
       padding: 0;
       text-align: center;
     }
