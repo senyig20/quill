@@ -37,16 +37,13 @@
             </div>
 
 
-
-
           <div class="field">
               <label>Doğum Gününüz</label>
-              <div class="ui calendar" id="bday">
-                <div class="ui input left icon">
-                  <i class="calendar icon"></i>
-                  <input type="text" name="bday"
-                         ng-model="user.profile.bday" placeholder="Doğum Gününüz">
-                </div>
+              <div id="bday">
+                <input name="bday"
+                       ng-model="user.profile.bday"
+                       placeholder="GG/AA/YYYY"
+                       type="text">
               </div>
             </div>
 
