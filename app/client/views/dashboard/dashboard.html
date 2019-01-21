@@ -175,29 +175,37 @@
 
         </div>
 
-        <div
-          class="description"
-          ng-if="dashState('admittedAvaitingPayment')">
-          <p>
-            <strong>
-                {{ DASHBOARD.PAYMENT_TITLE }}
-            </strong>
-          </p>
-          <p>
-            {{ DASHBOARD.PAYMENT }}
-          </p>
+                <div
+                  class="description"
+                  ng-if="dashState('admittedAvaitingPayment')">
+                  <div class="markdown">
+                    <h4>
+                        {{ DASHBOARD.PAYMENT_TITLE }}
+                    </h4>
+                  </div>
 
-          <div class="ui purple button"
-               ui-sref="app.confirmation">
-            Teyit formunu düzenle
-          </div>
+                  <div
+                    class="markdown"
+                    ng-bind-html="acceptanceText">
+                  </div>
 
-          <div class="ui red button"
-               ng-click="declineAdmission()">
-            Katılımını Reddet
-          </div>
+                  <div class="markdown">
+                    <h4>
+                        {{ DASHBOARD.PAYMENT }}
+                    </h4>
+                  </div>
 
-        </div>
+                  <div class="ui purple button"
+                       ui-sref="app.confirmation">
+                    Teyit formunu düzenle
+                  </div>
+
+                  <div class="ui red button"
+                       ng-click="declineAdmission()">
+                    Katılımını Reddet
+                  </div>
+
+                </div>
 
         <div
           class="description"
