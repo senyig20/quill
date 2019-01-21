@@ -80,7 +80,7 @@ var confirmation = {
   },
   namesurname: String,
   address: String,
-  idNumber: String, 
+  idNumber: String,
   phoneNumber: String,
   groupid: String,
 
@@ -347,7 +347,7 @@ schema.statics.validateProfile = function(profile, cb){
    }
 
       if (this.status.confirmed && !this.status.paymentMade) {
-        return 'ödeme yapılmadı';
+        return 'ödeme doğrulanıyor';
        }
    if (this.status.confirmed) {
        return "teyit edildi";

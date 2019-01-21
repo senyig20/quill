@@ -132,7 +132,7 @@ controller.sendAcceptEmails = function(email, callback) {
   controller.sendPaymentEmails = function(email, callback) {
       var options = {
         to: email,
-        subject: "["+HACKATHON_NAME+"] -  Ödemeni Kaydettik!"
+        subject: "["+HACKATHON_NAME+"] -  Ödemeni Doğruladık!"
       };
 
       var locals = {
