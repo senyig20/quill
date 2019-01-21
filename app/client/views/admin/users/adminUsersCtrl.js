@@ -352,8 +352,17 @@ $scope.getConfirmedCSV = function(){
                 name: 'Additional Notes',
                 value: user.confirmation.notes
               },{
-                name: 'Payment Verification',
+                name: 'Payment Controlled by JARC and Approved?',
                 value: user.status.paymentMade
+              },{
+                name: 'Group Payment?',
+                value: user.confirmation.groupPayment
+              },{
+                name: 'Group Payment ID (If by group)',
+                value: user.confirmation.groupid
+              },{
+                name: 'Receipt Upload Verification (If by themselves)',
+                value: user.confirmation.receiptConfirmation
               }
             ]
           }
