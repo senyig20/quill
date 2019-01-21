@@ -85,9 +85,7 @@ angular.module('reg')
         $.fn.form.settings.rules.allowMinors = function (value) {
           return minorsValidation();
         };
-        $('#bday').calendar({
-          type: 'date'
-        });
+
         // Semantic-UI form validation
         $('.ui.form').form({
           inline: true,
