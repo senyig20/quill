@@ -1,6 +1,6 @@
 @import 'branding';
 @import 'custom';
-$font-body:  'Helvetica', sans-serif;
+$font-body:  'Source Sans Pro', 'Helvetica Neue', 'Helvetica', sans-serif;
 $font-header: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
 
 // Login screen variables
@@ -59,7 +59,7 @@ body {
 
 body {
   margin: 0;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: 300;
 
   > .container {
