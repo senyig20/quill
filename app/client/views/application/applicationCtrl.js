@@ -10,9 +10,7 @@ angular.module('reg')
     'Session',
     'UserService',
     function ($scope, $rootScope, $state, $http, $window, currentUser, Settings, Session, UserService) {
-      $('#bday').calendar({
-        type: 'date'
-      });
+
       // Set up the user
       $scope.user = currentUser.data;
 
@@ -87,7 +85,9 @@ angular.module('reg')
         $.fn.form.settings.rules.allowMinors = function (value) {
           return minorsValidation();
         };
-
+        $('#bday').calendar({
+          type: 'date'
+        });
         // Semantic-UI form validation
         $('.ui.form').form({
           inline: true,
