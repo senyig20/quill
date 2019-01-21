@@ -361,7 +361,7 @@ $scope.getConfirmedCSV = function(){
                 name: 'Group Payment ID (If by group)',
                 value: user.confirmation.groupid
               },{
-                name: 'Receipt Upload Verification (If by themselves)',
+                name: 'Receipt Upload Verification (If by themselves) OR Group Payment ID Verification',
                 value: user.confirmation.receiptConfirmation
               }
             ]
