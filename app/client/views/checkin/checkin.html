@@ -81,6 +81,9 @@
       </div>
 
       <br />
+          <button type="button" style="margin-top: 20px; width:180px;" ng-click="getAllAdmittedCSV()" class="ui pink button">Export All Accepted Users</button>
+          <button type="button" style="margin-top: 20px; width:180px;" ng-click="getConfirmedCSV()" class="ui green button">Export Confirmed Users</button>
+          <button type="button" style="margin-top: 20px; width:180px;" ng-click="exportCSV()" class="ui teal button">Export All Users</button>
 
       <div class="ui divider"></div>
 
@@ -152,7 +155,12 @@
               <thead>
                 <tr>
                   <th>Name</th>
+                  <th>E-mail address</th>
                   <th>School</th>
+                  <th>Grad</th>
+                  <th>V/S/A/C</th>
+                  <th>$$$</th>
+                  <th>Link</th>
                   <th></th>
                 </tr>
               </thead>
@@ -168,12 +176,107 @@
 
                     </strong>
                   </td>
+                  <td>{{user.email}}</td>
                   <td>{{user.profile.school}}</td>
+                  <td
+                    class="collapsing">
+                    {{user.profile.graduationYear}}
+                  </td>
+                  <td
+                    class="collapsing">
 
+                    <!-- Verified -->
+                    <i
+                      ng-if="user.verified"
+                      class="green check circle icon">
+                    </i>
+                    <i
+                      ng-if="!user.verified"
+                      class="red remove circle icon">
+                    </i>
+
+                    <!-- Submitted -->
+                    <i
+                      ng-if="user.status.completedProfile"
+                      class="green check circle icon">
+                    </i>
+                    <i
+                      ng-if="!user.status.completedProfile"
+                      class="red remove circle icon">
+                    </i>
+
+                    <!-- Admitted -->
+                    <i
+                      ng-if="user.status.admitted"
+                      class="green check circle icon">
+                    </i>
+                    <i
+                      ng-if="!user.status.admitted"
+                      class="thin circle icon">
+                    </i>
+
+                    <!-- Confirmed -->
+                    <i
+                      ng-if="!user.status.admitted"
+                      class="circle thin icon">
+                    </i>
+                    <i
+                      ng-if="user.status.admitted && user.status.confirmed"
+                      class="green check circle icon">
+                    </i>
+                    <i
+                      ng-if="user.status.admitted && !user.status.confirmed && !user.status.declined"
+                      class="question icon">
+                    </i>
+                    <i
+                      ng-if="user.status.admitted && user.status.declined"
+                      class="red remove circle icon">
+                    </i>
+                    <i
+                      ng-if="user.status.cancelled"
+                      class="red remove circle icon">
+                    </i>
+
+                  </td>
+
+                  <!-- Host -->
+                  <td
+                    class="collapsing">
+
+                    <button
+                      ng-click="acceptPayment($event, user, $index)"
+                      class="ui circular mini basic green icon button">
+
+                      <i
+                        ng-if="!user.status.paymentMade"
+                        class="lira sign icon"></i>
+
+                      <i
+                        ng-if="user.status.paymentMade"
+                        class="green lira sign icon"></i>
+
+                    </button>
+
+                  </td>
 
 
                   <td
+                    class="collapsing">
+                    <button
+                      ng-click="goUser($event, user)"
+                      class="ui circular mini basic icon button">
+                      <i class="linkify icon"></i>
+                    </button>
+                  </td>
+
+                  <td
                     class="right aligned collapsing">
+
+                    <button
+                      class="accept ui circular mini basic green icon button"
+                      ng-click="acceptUser($event, user, $index)">
+                      <i class="add user icon"></i>
+                    </button>
 
                     <button
                       ng-click="toggleCheckIn($event, user, $index)"
@@ -189,6 +292,19 @@
 
                     </button>
 
+                    <button
+                      ng-click="toggleAdmin($event, user, $index)"
+                      class="ui circular mini basic green icon button">
+
+                      <i
+                        ng-if="!user.admin"
+                        class="spy outline icon"></i>
+
+                      <i
+                        ng-if="user.admin"
+                        class="green spy icon"></i>
+
+                    </button>
 
                   </td>
                 </tr>
