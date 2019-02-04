@@ -7,7 +7,7 @@ angular.module('reg')
         INCOMPLETE_TITLE: 'Başvurunu tamamlamayı unutma!',
         INCOMPLETE: 'Başvurunu [APP_DEADLINE]\'a kadar tamamlamazsan başvurun değerlendirmeye alınmayacak!',
         SUBMITTED_TITLE: 'Başvurunu aldık!',
-        SUBMITTED: 'Başvurular kapanana kadar düzenleme hakkın var.\nLütfen kayıtlar kapanmadan önce yazdıklarının doğru olduğundan emin ol!',
+        SUBMITTED: 'Başvuruları değerlendirdiğimizde sonucun e-posta adresine gönderilecek.',
         CLOSED_AND_INCOMPLETE_TITLE: 'Kayıtlar kapandı!',
         CLOSED_AND_INCOMPLETE: 'Vaktinde başvurunu tamamlamadığın için katılamıyorsun!',
         ADMITTED_AND_CAN_CONFIRM_TITLE: '[CONFIRM_DEADLINE]\'a kadar teyit etmen gerekiyor.',
