@@ -1,73 +1,193 @@
+<div class="ui segment">
 
-   <body>
-      <div class="dont-print">
-         <canvas id="labelCanvas" width="520" height="299" style="border-style: none; display: none;"></canvas>
-         <p class="header-text">Remixopolis Check-In</p>
-         <div class="ui icon input sb">
-           <div class="ui stackable grid">
-             <div class="three wide column">
-               <div class="ui header">
-                 Search
-               </div>
-               <div class="ui form">
-                 <div class="field">
-                   <div class="ui icon fluid input">
-                     <input type="text" placeholder="Search..." ng-model="queryText" ng-model-options="{debounce: 300}">
-                     <i class="search icon"></i>
-                   </div>
-                 </div>
-
-
-
-
-                       <button ng-repeat="page in pages" ng-class="page == currentPage ? 'active pink' : ''" ng-click="goToPage(page)" class="ui icon basic page button">
-                         {{page}}
-                       </button>
-
-                           </div>
-                           <div id="table-container" class="thirteen wide column">
-                             <div class="ui header">
-                               Users
-                             </div>
-                             <div class="ui long user modal">
-                               <i class="close icon"></i>
-                               <div class="header">
-                                 {{selectedUser.profile.name ? selectedUser.profile.name : selectedUser.email}}
-                                 <span
-                                   ng-show="selectedUser.admin">
-                                   (Admin)
-                                 </span>
-                               </div>
-                               <div class="content">
-
-            <i class="search icon"></i>
-         </div>
-         <div class="search-results">
-            <div class="ui relaxed divided items" id="results">
-               <!-- <div class="item">
-                  <div class="content">
-                      <a class="header">${Name}</a>
-                      <div class="meta">
-                          ${School}
-                      </div>
-                      <div class="extra">
-                          <div class="ui right floated primary button">
-                              Print Label
-                              <i class="right chevron icon"></i>
-                          </div>
-                      </div>
-                  </div>
-                  </div> -->
-            </div>
-         </div>
+  <div class="ui stackable grid">
+    <div class="three wide column">
+      <div class="ui header">
+        Search
       </div>
-      <img class="to-print" src="" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.min.js"></script>
-      <script src="jwt-decode.min.js"></script>
-      <script src="config.js"></script>
-      <script src="api.js"></script>
-      <script src="index.js"></script>
-   </body>
+      <div class="ui form">
+        <div class="field">
+          <div class="ui icon fluid input">
+            <input type="text" placeholder="Search..." ng-model="queryText" ng-model-options="{debounce: 300}">
+            <i class="search icon"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui form">
+        <div class="grouped fields">
+          <div class="field">
+              <div class="ui checkbox">
+                  <input
+                  type="checkbox"
+                  name="completedProfile"
+                  ng-model="statusFilters.completedProfile"
+                  ng-change="applyStatusFilter()">
+                  <label>Completed Profile</label>
+              </div>
+          </div>
+          <div class="field">
+              <div class="ui checkbox">
+                  <input
+                  type="checkbox"
+                  name="admitted"
+                  ng-model="statusFilters.admitted"
+                  ng-change="applyStatusFilter()">
+                  <label>Admitted</label>
+              </div>
+          </div>
+          <div class="field">
+              <div class="ui checkbox">
+                  <input
+                  type="checkbox"
+                  name="confirmed"
+                  ng-model="statusFilters.confirmed"
+                  ng-change="applyStatusFilter()">
+                  <label>Confirmed</label>
+              </div>
+          </div>
+          <div class="field">
+              <div class="ui checkbox">
+                  <input
+                  type="checkbox"
+                  name="declined"
+                  ng-model="statusFilters.declined"
+                  ng-change="applyStatusFilter()">
+                  <label>Declined</label>
+              </div>
+          </div>
+          <div class="field">
+              <div class="ui checkbox">
+                  <input
+                  type="checkbox"
+                  name="checkedIn"
+                  ng-model="statusFilters.checkedIn"
+                  ng-change="applyStatusFilter()">
+                  <label>Checked In</label>
+              </div>
+          </div>
+          <div class="field">
+              <div class="ui checkbox">
+                  <input
+                  type="checkbox"
+                  name="verified"
+                  ng-model="statusFilters.verified"
+                  ng-change="applyStatusFilter()">
+                  <label>Verified</label>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+          <button type="button" style="margin-top: 20px; width:180px;" ng-click="getAllAdmittedCSV()" class="ui pink button">Export All Accepted Users</button>
+          <button type="button" style="margin-top: 20px; width:180px;" ng-click="getConfirmedCSV()" class="ui green button">Export Confirmed Users</button>
+          <button type="button" style="margin-top: 20px; width:180px;" ng-click="exportCSV()" class="ui teal button">Export All Users</button>
+
+      <div class="ui divider"></div>
+
+      <button ng-repeat="page in pages" ng-class="page == currentPage ? 'active pink' : ''" ng-click="goToPage(page)" class="ui icon basic page button">
+        {{page}}
+      </button>
+
+          </div>
+          <div id="table-container" class="thirteen wide column">
+            <div class="ui header">
+              Users
+            </div>
+            <div class="ui long user modal">
+              <i class="close icon"></i>
+              <div class="header">
+                {{selectedUser.profile.name ? selectedUser.profile.name : selectedUser.email}}
+                <span
+                  ng-show="selectedUser.admin">
+                  (Admin)
+                </span>
+              </div>
+              <div class="content">
+
+                <div>
+                  <div class="ui header">
+                    Status:
+                    <div
+                      class="ui label">
+                      {{selectedUser.status.name.toUpperCase()}}
+                    </div>
+                  </div>
+                  <p>
+                    <strong> Admitted by: </strong> {{selectedUser.status.admittedBy ? selectedUser.status.admittedBy : 'N/A'}}
+                  </p>
+                </div>
+
+                <div ng-repeat="section in selectedUser.sections">
+                  <div class="ui divider"></div>
+
+                  <h3> {{section.title}} </h3>
+
+                  <p ng-repeat="field in section.fields">
+                    <strong> {{field.name}}: </strong>
+
+                    <span ng-show="field.type === 'boolean'">
+                      <i class="red circle remove icon" ng-show="!field.value"></i>
+                      <i class="green circle check icon" ng-show="field.value"></i>
+                    </span>
+
+                    <span ng-if="field.type == null">
+                      {{field.value}}
+                    </span>
+                  </p>
+
+                </div>
+
+              </div>
+            </div>
+
+            <table
+              class="ui celled selectable compact users table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>School</th>
+                  <th>Check In</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  ng-click="selectUser(user)"
+                  ng-repeat="user in users"
+                  ng-class="rowClass(user)">
+                  <td>
+                    <strong>
+                      {{user.profile.name}}
+                      &nbsp;
+
+                    </strong>
+                  </td>
+                  <td>{{user.profile.school}}</td>
+
+                  <td
+                    class="collapsing">
+                    <button
+                      ng-click="toggleCheckIn($event, user, $index)"
+                      class="ui circular mini basic green icon button">
+
+                      <i
+                        ng-if="!user.status.checkedIn"
+                        class="flag outline icon"></i>
+
+                      <i
+                        ng-if="user.status.checkedIn"
+                        class="green flag icon"></i>
+
+                    </button>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </div>
