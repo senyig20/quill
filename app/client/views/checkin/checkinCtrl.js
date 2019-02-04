@@ -1,5 +1,5 @@
 angular.module('reg')
-  .controller('AdminUsersCtrl',[
+  .controller('CheckinCtrl',[
     '$scope',
     '$state',
     '$stateParams',
