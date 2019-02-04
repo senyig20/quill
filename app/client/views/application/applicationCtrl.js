@@ -11,6 +11,19 @@ angular.module('reg')
     'UserService',
     function ($scope, $rootScope, $state, $http, $window, currentUser, Settings, Session, UserService) {
 
+      $(document).ready(function() {
+        $('#number').bind("cut copy paste drag drop", function(e) {
+            e.preventDefault();
+        });
+      });
+      function isNumberKey(evt) {
+          var charCode = (evt.which) ? evt.which : evt.keyCode;
+          if (charCode > 31 && (charCode < 48 || charCode > 57))
+              return false;
+          return true;
+      }
+
+
       // Set up the user
       $scope.user = currentUser.data;
 
