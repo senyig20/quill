@@ -4,7 +4,42 @@
          <canvas id="labelCanvas" width="520" height="299" style="border-style: none; display: none;"></canvas>
          <p class="header-text">Remixopolis Check-In</p>
          <div class="ui icon input sb">
-            <input type="text" id="query" placeholder="Name or Email">
+           <div class="ui stackable grid">
+             <div class="three wide column">
+               <div class="ui header">
+                 Search
+               </div>
+               <div class="ui form">
+                 <div class="field">
+                   <div class="ui icon fluid input">
+                     <input type="text" placeholder="Search..." ng-model="queryText" ng-model-options="{debounce: 300}">
+                     <i class="search icon"></i>
+                   </div>
+                 </div>
+
+
+
+
+                       <button ng-repeat="page in pages" ng-class="page == currentPage ? 'active pink' : ''" ng-click="goToPage(page)" class="ui icon basic page button">
+                         {{page}}
+                       </button>
+
+                           </div>
+                           <div id="table-container" class="thirteen wide column">
+                             <div class="ui header">
+                               Users
+                             </div>
+                             <div class="ui long user modal">
+                               <i class="close icon"></i>
+                               <div class="header">
+                                 {{selectedUser.profile.name ? selectedUser.profile.name : selectedUser.email}}
+                                 <span
+                                   ng-show="selectedUser.admin">
+                                   (Admin)
+                                 </span>
+                               </div>
+                               <div class="content">
+
             <i class="search icon"></i>
          </div>
          <div class="search-results">
