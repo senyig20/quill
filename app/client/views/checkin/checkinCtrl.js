@@ -55,7 +55,7 @@ angular.module('reg')
 
 
       $scope.goToPage = function(page){
-        $state.go('app.admin.users', {
+        $state.go('app.checkin', {
           page: page,
           size: $stateParams.size || 100
         });
@@ -64,7 +64,7 @@ angular.module('reg')
       $scope.goUser = function($event, user){
         $event.stopPropagation();
 
-        $state.go('app.admin.user', {
+        $state.go('app.checkin', {
           id: user._id
         });
       };
