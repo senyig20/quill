@@ -79,7 +79,7 @@ angular.module('reg')
 
       .state('app.checkin', {
         url: "/checkin",
-        templateUrl: "views/checkin/login.html",
+        templateUrl: "views/checkin/checkin.html",
         data:{
             requireAdmin: true
         }
