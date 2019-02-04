@@ -15,75 +15,8 @@
 
       </div>
 
-      <div class="ui form">
-        <div class="grouped fields">
-          <div class="field">
-              <div class="ui checkbox">
-                  <input
-                  type="checkbox"
-                  name="completedProfile"
-                  ng-model="statusFilters.completedProfile"
-                  ng-change="applyStatusFilter()">
-                  <label>Completed Profile</label>
-              </div>
-          </div>
-          <div class="field">
-              <div class="ui checkbox">
-                  <input
-                  type="checkbox"
-                  name="admitted"
-                  ng-model="statusFilters.admitted"
-                  ng-change="applyStatusFilter()">
-                  <label>Admitted</label>
-              </div>
-          </div>
-          <div class="field">
-              <div class="ui checkbox">
-                  <input
-                  type="checkbox"
-                  name="confirmed"
-                  ng-model="statusFilters.confirmed"
-                  ng-change="applyStatusFilter()">
-                  <label>Confirmed</label>
-              </div>
-          </div>
-          <div class="field">
-              <div class="ui checkbox">
-                  <input
-                  type="checkbox"
-                  name="declined"
-                  ng-model="statusFilters.declined"
-                  ng-change="applyStatusFilter()">
-                  <label>Declined</label>
-              </div>
-          </div>
-          <div class="field">
-              <div class="ui checkbox">
-                  <input
-                  type="checkbox"
-                  name="checkedIn"
-                  ng-model="statusFilters.checkedIn"
-                  ng-change="applyStatusFilter()">
-                  <label>Checked In</label>
-              </div>
-          </div>
-          <div class="field">
-              <div class="ui checkbox">
-                  <input
-                  type="checkbox"
-                  name="verified"
-                  ng-model="statusFilters.verified"
-                  ng-change="applyStatusFilter()">
-                  <label>Verified</label>
-              </div>
-          </div>
-        </div>
-      </div>
-
+  
       <br />
-          <button type="button" style="margin-top: 20px; width:180px;" ng-click="getAllAdmittedCSV()" class="ui pink button">Export All Accepted Users</button>
-          <button type="button" style="margin-top: 20px; width:180px;" ng-click="getConfirmedCSV()" class="ui green button">Export Confirmed Users</button>
-          <button type="button" style="margin-top: 20px; width:180px;" ng-click="exportCSV()" class="ui teal button">Export All Users</button>
 
       <div class="ui divider"></div>
 
