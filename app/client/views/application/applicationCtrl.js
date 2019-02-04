@@ -80,7 +80,41 @@ angular.module('reg')
         }
         return true;
       }
+      $scope.formatDate = function(date){
+        if (!date){
+          return "Invalid Date";
+        }
 
+        // Hack for timezone
+        return moment(date).format('dddd, MMMM Do YYYY, h:mm a') +
+          " " + date.toTimeString().split(' ')[2];
+      };
+
+      // Take a date and remove the seconds.
+      function cleanDate(date){
+        return new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          date.getDate(),
+          date.getHours(),
+          date.getMinutes()
+        );
+      }
+
+      $scope.updateRegistrationTimes = function(){
+        // Clean the dates and turn them to ms.
+        var bday = cleanDate($scope.settings.timeOpen).getTime();
+
+        if (bday < 0 || bday === undefined){
+          return swal('Oops...', 'You need to enter valid times.', 'error');
+        }
+
+        SettingsService
+          .updateRegistrationTimes(open, close)
+          .success(function(settings){
+            updateSettings(settings);
+          });
+        };
       function _setupForm(){
         // Custom minors validation rule
         $.fn.form.settings.rules.allowMinors = function (value) {
