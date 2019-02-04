@@ -39,10 +39,10 @@ var profile = {
   },
 
   bday: {
-    type: String,
+    type: Date,
     min: 1,
   },
-  phoneNumber: String,
+  phoneNumber: Number,
   openingChoice: {
     type: String,
     min: 1,
