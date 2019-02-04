@@ -733,7 +733,7 @@ UserController.unacceptPayment = function(id, user, callback){
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
-UserController.uncheckOutById = function(id, user, callback){
+UserController.checkOutById = function(id, user, callback){
   User.findOneAndUpdate({
     _id: id,
     verified: true
