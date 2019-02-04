@@ -68,7 +68,7 @@
 
               <div class="field">
                 <label>Cep Telefonu Numaranız</label>
-                <input type="text" ng-model="user.profile.phoneNumber" class="form-control" name="phoneNumber" id="phoneNumber" onkeypress="return isNumberKey(event)" >
+                <input pattern="[0-9.]+" type="number" ng-model="user.profile.phoneNumber" name="phoneNumber" id="phoneNumber" >
               </div>
 
 
