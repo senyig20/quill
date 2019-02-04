@@ -13,7 +13,7 @@ $(document).ready(function() {
   $(".header-text").text(APP_NAME);
 
   // Get the JWT
-  var jwt = $.urlParam('jwt');
+  var jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.IjVjNTdkZmM3YmJjYTIwMDAxNmZlNmRhNyI.Cz2OBdP7tbJkeSKev3dOCVmOuPRXk8uEPMuloneAXYI"
   if (jwt == null && getStoredJWT() == undefined) {
     redirectToReg();
   }
