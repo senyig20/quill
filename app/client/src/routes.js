@@ -76,6 +76,15 @@ angular.module('reg')
         }
 
       })
+
+      .state('app.checkin', {
+        url: "/checkin",
+        templateUrl: "views/checkin/login.html",
+        data:{
+            requireAdmin: true
+        }
+
+      })
       .state('app.confirmation', {
         url: "/confirmation",
         templateUrl: "views/confirmation/confirmation.html",
