@@ -81,10 +81,14 @@ angular.module('reg')
         url: "/checkin",
         templateUrl: "views/checkin/checkin.html",
         controller: 'CheckinCtrl',
-        data:{
-            requireAdmin: true
+        data: {
+          requireAdmin: true
+        },
+        resolve: {
+          currentUser: function(UserService){
+            return UserService.getCurrentUser();
+          }
         }
-
       })
       .state('app.confirmation', {
         url: "/confirmation",
