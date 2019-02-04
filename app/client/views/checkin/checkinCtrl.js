@@ -88,6 +88,7 @@ angular.module('reg')
                 .success(function(user){
                   $scope.users[index] = user;
                   swal("Accepted", user.profile.name + ' has been checked in.', "success");
+                  drawLabel(user.profile.name, user.profile.school);
                 });
             }
           );
@@ -293,7 +294,24 @@ $scope.getConfirmedCSV = function(){
 
 
 
+function openInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
 
+function drawLabel(name, school) {
+  var canvas = document.getElementById("labelCanvas");
+  var context = canvas.getContext("2d");
+
+  // Clear canvas
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.font = 'bold 35px Open Sans';
+  context.fillText(name, canvas.width/2 - context.measureText(name).width/2, 100);
+  context.font = '23px Open Sans';
+  context.fillText(school, canvas.width/2 - context.measureText(school).width/2, 140);
+        var dataURL = canvas.toDataURL("image/png");
+        openInNewTab(dataURL);
+  }
       function generateSections(user){
         return [
           {
