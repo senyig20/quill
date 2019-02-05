@@ -2,138 +2,85 @@
   <div class="divided title">
     Check-In
   </div>
-<div class="ui segment">
+  <div class="ui segment">
 
-  <div class="ui stackable grid">
-    <div class="three wide column">
-      <div class="ui header">
-        Search
-      </div>
-      <div class="ui form">
-        <div class="field">
-          <div class="ui icon fluid input">
-            <input type="text" placeholder="Search..." ng-model="queryText" ng-model-options="{debounce: 300}">
-            <i class="search icon"></i>
+    <div class="ui stackable grid">
+      <div class="three wide column">
+        <div class="ui header">
+          Search
+        </div>
+        <div class="ui form">
+          <div class="field">
+            <div class="ui icon fluid input">
+              <input ng-model="queryText" ng-model-options="{debounce: 300}" placeholder="Search..." type="text">
+              <i class="search icon"></i>
+            </div>
           </div>
+
         </div>
 
+
+        <br />
+
+        <div class="ui divider"></div>
+
+        <button class="ui icon basic page button" ng-class="page == currentPage ? 'active pink' : ''" ng-click="goToPage(page)" ng-repeat="page in pages">
+          {{page}}
+        </button>
+
       </div>
-
-
-      <br />
-
-      <div class="ui divider"></div>
-
-      <button ng-repeat="page in pages" ng-class="page == currentPage ? 'active pink' : ''" ng-click="goToPage(page)" class="ui icon basic page button">
-        {{page}}
-      </button>
-
-          </div>
-          <div id="table-container" class="thirteen wide column">
-            <div class="ui header">
-              Users
-            </div>
-            <div class="ui long user modal">
-              <i class="close icon"></i>
-              <div class="header">
-                {{selectedUser.profile.name ? selectedUser.profile.name : selectedUser.email}}
-                <span
-                  ng-show="selectedUser.admin">
-                  (Admin)
-                </span>
-              </div>
-              <div class="content">
-
-                <div>
-                  <div class="ui header">
-                    Status:
-                    <div
-                      class="ui label">
-                      {{selectedUser.status.name.toUpperCase()}}
-                    </div>
-                  </div>
-                  <p>
-                    <strong> Admitted by: </strong> {{selectedUser.status.admittedBy ? selectedUser.status.admittedBy : 'N/A'}}
-                  </p>
-                </div>
-
-                <div ng-repeat="section in selectedUser.sections">
-                  <div class="ui divider"></div>
-
-                  <h3> {{section.title}} </h3>
-
-                  <p ng-repeat="field in section.fields">
-                    <strong> {{field.name}}: </strong>
-
-                    <span ng-show="field.type === 'boolean'">
-                      <i class="red circle remove icon" ng-show="!field.value"></i>
-                      <i class="green circle check icon" ng-show="field.value"></i>
-                    </span>
-
-                    <span ng-if="field.type == null">
-                      {{field.value}}
-                    </span>
-                  </p>
-
-                </div>
-
-              </div>
-
-              <div class="actions">
-                <div class="ui positive right labeled icon button">
-                  Nothing
-                  <i class="checkmark icon"></i>
-                </div>
-              </div>
-            </div>
-
-            <table
-              class="ui celled selectable compact users table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>School</th>
-                  <th>Check In Attendee</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
+      <div class="thirteen wide column" id="table-container">
+        <div class="ui header">
+          Users
+        </div>
+        <table
+                class="ui celled selectable compact users table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>School</th>
+            <th>Check In Attendee</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr
+                  ng-class="rowClass(user)"
                   ng-click="selectUser(user)"
-                  ng-repeat="user in users"
-                  ng-class="rowClass(user)">
-                  <td>
-                    <strong>
-                      {{user.profile.name}}
-                      &nbsp;
+                  ng-repeat="user in users">
+            <td>
+              <strong>
+                {{user.profile.name}}
+                &nbsp;
 
-                    </strong>
-                  </td>
-                  <td>{{user.profile.school}}</td>
+              </strong>
+            </td>
+            <td>{{user.profile.school}}</td>
 
-                  <td
+            <td
                     class="aligned">
 
-                    <button
-                      ng-click="toggleCheckIn($event, user, $index)"
-                      class="ui circular mini basic green icon button">
+              <button
+                      class="ui circular mini basic green icon button"
+                      ng-click="toggleCheckIn($event, user, $index)">
 
-                      <i
-                        ng-if="!user.status.checkedIn"
-                        class="flag outline icon"></i>
+                <i
+                        class="flag outline icon"
+                        ng-if="!user.status.checkedIn"></i>
 
-                      <i
-                        ng-if="user.status.checkedIn"
-                        class="green flag icon"></i>
+                <i
+                        class="green flag icon"
+                        ng-if="user.status.checkedIn"></i>
 
-                    </button>
+              </button>
 
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <canvas id="labelCanvas" width="520" height="299" style="border-style: none; display: none;"></canvas>
-
-          </div>
-        </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <canvas height="299" id="labelCanvas" style="border-style: none; display: none;" width="520"></canvas>
 
       </div>
+    </div>
+
+  </div>
+</div>
