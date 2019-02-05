@@ -150,6 +150,81 @@ angular.module('reg')
                 openInNewTab(dataURL);
             }
 
+            function generateSections(user) {
+                return [
+                    {
+                        name: 'Basic Info',
+                        fields: [
+                            {
+                                name: 'Created On',
+                                value: formatTime(user.timestamp)
+                            }, {
+                                name: 'Last Updated',
+                                value: formatTime(user.lastUpdated)
+                            }, {
+                                name: 'Confirm By',
+                                value: formatTime(user.status.confirmBy) || 'N/A'
+                            }, {
+                                name: 'Checked In',
+                                value: formatTime(user.status.checkInTime) || 'N/A'
+                            }, {
+                                name: 'Email',
+                                value: user.email
+                            }
+                        ]
+                    }, {
+                        name: 'Profile',
+                        fields: [
+                            {
+                                name: 'Name',
+                                value: user.profile.name
+                            }, {
+                                name: 'School',
+                                value: user.profile.school
+                            }, {
+                                name: 'Graduation Year',
+                                value: user.profile.graduationYear
+                            }
+                        ]
+                    }, {
+                        name: 'Confirmation',
+                        fields: [
+                            {
+                                name: 'Phone Number',
+                                value: user.profile.phoneNumber
+                            }, {
+                                name: 'BBQ Reservation?',
+                                value: user.profile.bbqChoice
+                            }, {
+                                name: 'Opening Night Reservation?',
+                                value: user.profile.openingChoice
+                            }, {
+                                name: 'Veggie?',
+                                value: user.profile.veggie
+                            }, {
+                                name: 'ReceiptUploaded?',
+                                value: user.confirmation.receiptConfirmation
+                            }, {
+                                name: 'Additional Notes',
+                                value: user.confirmation.notes
+                            }, {
+                                name: 'Payment Controlled by JARC and Approved?',
+                                value: user.status.paymentMade
+                            }, {
+                                name: 'Group Payment?',
+                                value: user.confirmation.groupPayment
+                            }, {
+                                name: 'Group Payment ID (If by group)',
+                                value: user.confirmation.groupid
+                            }, {
+                                name: 'Receipt Upload Verification (If by themselves) OR Group Payment ID Verification',
+                                value: user.confirmation.receiptConfirmation
+                            }
+                        ]
+                    }
+                ];
+            }
+
             $scope.selectUser = selectUser;
 
         }]);
