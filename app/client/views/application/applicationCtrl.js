@@ -198,7 +198,7 @@ angular.module('reg')
               if ($('.ui.form').form('is valid')){
                 _updateUser();
               } else {
-                swal("Hay Aksi!", "Lütfen Formun Gerekli Olan Sorularını Doldur", "error");
+                swal("Hay Aksi!", "Lütfen Formun Gerekli Olan Sorularını Doldur", "error", {confirmButtonColor: "#31517e",});
               }
             };
           }]);
