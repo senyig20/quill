@@ -40,7 +40,11 @@ angular.module('reg')
                 $state.go("app.dashboard");
               });
           }, response => {
-            swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
+            swal({
+                title: "Hay Aksi!",
+                text: "Bir şeyler yanlış gitti.",
+                type: "error",
+                confirmButtonColor: "#31517e"});
           });
       }
 
