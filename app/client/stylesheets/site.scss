@@ -74,10 +74,10 @@ body {
 .sweet-alert {
   font-family: $font-body;
 }
-.swal-button--confirm {
+
+.sweet-alert button.confirm {
   background-color: #31517e !important;
 }
-
 /**
  * Semantic-UI Overrides for squareishness
  */
