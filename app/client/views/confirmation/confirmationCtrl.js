@@ -49,6 +49,7 @@ angular.module('reg')
       }
 
 
+
       function _setupForm(){
         // Semantic-UI form validation
         $('.ui.form').form({
