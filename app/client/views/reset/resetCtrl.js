@@ -14,7 +14,7 @@ angular.module('reg')
         var confirm = $scope.confirm;
 
         if (password !== confirm){
-          $scope.error = "Passwords don't match!";
+          $scope.error = "Şifreler uyuşmuyor!";
           $scope.confirm = "";
           return;
         }
@@ -24,10 +24,10 @@ angular.module('reg')
           $scope.password,
           function(message){
             sweetAlert({
-              title: "Neato!",
-              text: "Your password has been changed!",
+              title: "Harika!",
+              text: "Şifren değiştirildi!",
               type: "success",
-              confirmButtonColor: "#e76482"
+              confirmButtonColor: "#31517e"
             }, function(){
               $state.go('login');
             });

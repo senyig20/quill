@@ -48,7 +48,9 @@ angular.module('reg')
             swal({
                 title: "Tamamlandı!",
                 text: "Başvurunu aldık!",
-                type: "success"
+                type: "success",
+                confirmButtonColor: "#31517e"
+
             },function() {
                 $state.go("app.dashboard");
               });

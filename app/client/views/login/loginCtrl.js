@@ -47,10 +47,10 @@ angular.module('reg')
         var email = $scope.email;
         AuthService.sendResetEmail(email);
         sweetAlert({
-          title: "Don't Sweat!",
-          text: "An email should be sent to you shortly.",
+          title: "E-Posta Kutunu Kontrol Et!",
+          text: "Az sonra bir e-posta gelecek.",
           type: "success",
-          confirmButtonColor: "#e76482"
+          confirmButtonColor: "#31517e"
         });
       };
 

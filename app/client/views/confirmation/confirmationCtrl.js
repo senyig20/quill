@@ -33,7 +33,9 @@ angular.module('reg')
             swal({
                 title: "Tamamlandı!",
                 text: "Teyidini aldık!",
-                type: "success"
+                type: "success",
+                confirmButtonColor: "#31517e"
+
             },function() {
                 $state.go("app.dashboard");
               });
