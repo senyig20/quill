@@ -216,6 +216,7 @@ UserController.getAll = function (callback) {
 UserController.getAllXLS = function (callback) {
   data =   User.find().lean();
   var json2xls = require('json2xls');
+  var fs = require('file-system');
   var xls = json2xls(data);
   fs.writeFileSync('data.xlsx', xls, 'binary');
 };
