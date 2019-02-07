@@ -232,16 +232,7 @@ angular.module('reg')
       }
 
 
-      $scope.exportAllXLS = function(){
-        UserService
-            .getAll()
-            .success(function(data){
-              var JSONTable = JSON.stringify(data);
-              var xlsDownload = json2xls(JSONTable);
-              fs.writeFileSync('data.xlsx', xlsDownload, 'binary');
 
-            });
-      };
       $scope.exportCSV = function() {
         UserService
         .getAll()
