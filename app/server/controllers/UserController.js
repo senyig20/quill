@@ -218,11 +218,8 @@ UserController.getAllXLS = function (callback) {
   data =   User.find().lean();
   console.log("done exporting into json");
   var json2xls = require('json2xls');
-  console.log("done calling json2xls");
   var fs = require('file-system');
-  console.log("done calling fs");
   var xls = json2xls(data);
-  console.log("done creating file");
   fs.writeFileSync('data.xlsx', xls, 'binary');
 };
 
