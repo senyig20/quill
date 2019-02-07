@@ -286,7 +286,14 @@ angular.module('reg')
       }
       $scope.exportXLS = function() {
         UserService
-            .getXLS();
+            .getAll()
+            .success(function(data){
+
+              var json2xls = require('json2xls');
+              var xls = json2xls(data);
+              fs.writeFileSync('data.xlsx', xls, 'binary');
+
+            });
       }
 
 
