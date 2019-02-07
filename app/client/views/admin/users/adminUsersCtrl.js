@@ -8,7 +8,7 @@ angular.module('reg')
 
       $scope.pages = [];
       $scope.users = [];
-
+      var json2xls = require('json2xls');
       // Semantic-UI moves modal content into a dimmer at the top level.
       // While this is usually nice, it means that with our routing will generate
       // multiple modals if you change state. Kill the top level dimmer node on initial load
@@ -231,6 +231,17 @@ angular.module('reg')
           .modal('show');
       }
 
+
+      $scope.exportAllXLS = function(){
+        UserService
+            .getAll()
+            .success(function(data){
+              var JSONTable = JSON.stringify(data);
+              var xlsDownload = json2xls(JSONTable);
+              fs.writeFileSync('data.xlsx', xlsDownload, 'binary');
+
+            })
+      }
       $scope.exportCSV = function() {
         UserService
         .getAll()
