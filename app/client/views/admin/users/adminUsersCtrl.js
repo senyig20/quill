@@ -241,7 +241,7 @@ angular.module('reg')
               fs.writeFileSync('data.xlsx', xlsDownload, 'binary');
 
             });
-      };
+      }
       $scope.exportCSV = function() {
         UserService
         .getAll()
