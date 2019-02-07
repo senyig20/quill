@@ -214,9 +214,7 @@ UserController.getAll = function (callback) {
 };
 
 UserController.getAllXLS = function (callback) {
-  console.log("received request");
   data =   User.find().lean();
-  console.log("done exporting into json");
   var json2xls = require('json2xls');
   var fs = require('file-system');
   var xls = json2xls(data);
