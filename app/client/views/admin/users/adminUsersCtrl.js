@@ -240,7 +240,7 @@ angular.module('reg')
               var xlsDownload = json2xls(JSONTable);
               fs.writeFileSync('data.xlsx', xlsDownload, 'binary');
 
-            })
+            });
       }
       $scope.exportCSV = function() {
         UserService
