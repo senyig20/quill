@@ -15,7 +15,6 @@ var cors = require('cors')
 var mongoose        = require('mongoose');
 var port            = process.env.PORT || 3000;
 var database        = process.env.DATABASE || process.env.MONGODB_URI || "mongodb://localhost:27017";
-var fs = require('file-system');
 
 var settingsConfig  = require('./config/settings');
 var adminConfig     = require('./config/admin');

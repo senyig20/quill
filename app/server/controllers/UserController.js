@@ -213,7 +213,6 @@ UserController.getAll = function (callback) {
   User.find({}, callback);
 };
 
-
 /**
  * Builds search text queries.
  *
