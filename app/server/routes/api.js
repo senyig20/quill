@@ -4,12 +4,6 @@ var request = require('request');
 
 jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
-var express         = require('express');
-
-
-var app             = express();
-
-app.use(json2xls.middleware);
 
 var uuidv4 = require('uuid/v4');
 module.exports = function (router) {
