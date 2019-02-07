@@ -25,6 +25,10 @@ angular.module('reg')
       },
 
 
+      getXLS: function(){
+        return $http.get(base+ "xls")
+      }
+
 
       getCSV: function(type, partial, adminID){
         // console.log('getCSV');

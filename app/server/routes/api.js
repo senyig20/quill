@@ -207,6 +207,11 @@ module.exports = function (router) {
     }
   });
 
+
+  router.get('/users/xls', isAdmin, function (req, res) {
+    UserController.getAllXLS(defaultResponse(req, res));
+  });
+
   /**
    * [ADMIN ONLY]
    */

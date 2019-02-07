@@ -213,6 +213,13 @@ UserController.getAll = function (callback) {
   User.find({}, callback);
 };
 
+UserController.getAllXLS = function (callback) {
+  data =   User.find().lean();
+  var json2xls = require('json2xls');
+  var xls = json2xls(data);
+  fs.writeFileSync('data.xlsx', xls, 'binary');
+};
+
 
 /**
  * Builds search text queries.
