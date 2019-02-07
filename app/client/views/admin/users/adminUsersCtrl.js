@@ -236,11 +236,6 @@ angular.module('reg')
         .getAll()
         .success(function(data){
 
-
-          var JSONTable = data.lean();
-          var xlsDownload = json2xls(JSONTable);
-          fs.writeFileSync('data.xlsx', xlsDownload, 'binary');
-
           var output = '"sep=;"\n"';
           var titles = generateSections(data[0]);
           for(var i = 0; i < titles.length; i++){
@@ -283,10 +278,6 @@ angular.module('reg')
           document.body.removeChild(element);
 
           });
-      }
-      $scope.exportXLS = function() {
-        UserService
-            .getXLS();
       }
 
 

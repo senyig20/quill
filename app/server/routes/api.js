@@ -5,6 +5,7 @@ var request = require('request');
 jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
 
+
 var uuidv4 = require('uuid/v4');
 module.exports = function (router) {
 
@@ -204,12 +205,6 @@ module.exports = function (router) {
       UserController.getAll(defaultResponse(req, res));
 
     }
-  });
-
-
-  router.get('/users/xls', isAdmin, function (req, res) {
-    data =   User.find().lean();
-    res.xls('data.xlsx', data);
   });
 
   /**

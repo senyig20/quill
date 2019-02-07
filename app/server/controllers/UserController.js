@@ -213,13 +213,6 @@ UserController.getAll = function (callback) {
   User.find({}, callback);
 };
 
-UserController.getAllXLS = function (callback) {
-  console.log("received request");
-  data =   User.find().lean();
-  return xls;
-};
-
-
 /**
  * Builds search text queries.
  *
