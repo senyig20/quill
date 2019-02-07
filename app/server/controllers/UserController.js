@@ -223,7 +223,7 @@ UserController.getAllXLS = function (callback) {
   console.log("done calling fs");
   var xls = json2xls(data);
   console.log("done creating file");
-  fs.writeFileSync('data.xlsx', xls, 'utf8');
+  fs.writeFileSync('data.xlsx', xls, 'binary');
 };
 
 
