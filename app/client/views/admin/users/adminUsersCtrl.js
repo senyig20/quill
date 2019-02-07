@@ -274,7 +274,6 @@ angular.module('reg')
                   output += ' "' + field.replace(/(\r\n|\n|\r)/gm," ") + '";';
                 } catch (err){
                   output += ' "' + field + '";';
-
                 }
               }
             }
