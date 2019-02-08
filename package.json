@@ -18,7 +18,6 @@
     "json2xls": "0.1.2",
     "csv-express": "^1.2.2",
     "multer-s3": "^2.7.0",
-    "export-from-json": "~1.1.1",
     "express": "^4.9.8",
     "gulp": "^3.9.1",
     "file-system": "2.2.2",
