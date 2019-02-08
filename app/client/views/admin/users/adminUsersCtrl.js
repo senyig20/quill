@@ -271,7 +271,16 @@ angular.module('reg')
           }
 
 
+          $scope.exportXLS = function() {
+            UserService
+                .getAll()
+                .success(function(data){
+                  const info = data.lean();
+                  const fileName = 'download';
+                  const exportType = 'xls';
+                  window.exportFromJSON({ info, fileName, exportType });
 
+                });
       }
 
 
@@ -285,16 +294,7 @@ $scope.getConfirmedCSV = function(){
   UserService.getConfirmedCSV();
 };
 
-          $scope.exportXLS = function() {
-              UserService
-                  .getAll()
-                  .success(function(data){
-                      const info = data.lean();
-                      const fileName = 'download';
-                      const exportType = 'xls';
-                      window.exportFromJSON({ info, fileName, exportType });
 
-                  });};
 
 
       function generateSections(user){
