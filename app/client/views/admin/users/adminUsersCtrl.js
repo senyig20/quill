@@ -1,4 +1,3 @@
-
 angular.module('reg')
   .controller('AdminUsersCtrl',[
     '$scope',
@@ -270,17 +269,15 @@ angular.module('reg')
             output += "\n";
           }
 
+          var element = document.createElement('a');
+          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
+          element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
+          element.style.display = 'none';
+          document.body.appendChild(element);
+          element.click();
+          document.body.removeChild(element);
 
-          $scope.exportXLS = function() {
-            UserService
-                .getAll()
-                .success(function(data){
-                  const info = data.lean();
-                  const fileName = 'download';
-                  const exportType = 'xls';
-                  window.exportFromJSON({ info, fileName, exportType });
-
-                });
+          });
       }
 
 
