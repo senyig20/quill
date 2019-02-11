@@ -24,6 +24,16 @@
               <div class="ui checkbox">
                 <input
                         type="checkbox"
+                        name="admitted"
+                        ng-model="statusFilters.admitted"
+                        ng-change="applyStatusFilter()">
+                <label>Admitted</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox">
+                <input
+                        type="checkbox"
                         name="confirmed"
                         ng-model="statusFilters.confirmed"
                         ng-change="applyStatusFilter()">
