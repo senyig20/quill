@@ -23,11 +23,12 @@
             <div class="field">
               <div class="ui checkbox">
                 <input
-                        type="hidden"
-                        checked
+                        type="checkbox"
                         name="confirmed"
                         ng-model="statusFilters.confirmed"
-                        ng-change="applyStatusFilter()">
+                        ng-change="applyStatusFilter()"
+                        checked
+                        style="opacity:0;">
                 <label>Confirmed</label>
               </div>
             </div>
