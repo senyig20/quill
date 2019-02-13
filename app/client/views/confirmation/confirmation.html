@@ -18,27 +18,8 @@
             </div>
           </div>
 
-          <div class="field" ng-show="user.confirmation.groupPayment">
-              <label>Ödeme Grup Kodunuz</label>
-              <div id="groupid">
-                <input name="groupid"
-                       ng-model="user.confirmation.groupid"
-                       type="text">
-              </div>
-            </div>
-            <div class="field" ng-show="user.confirmation.groupPayment">
-              <div class="ui checkbox" >
-                  <input
-                          type="checkbox"
-                          name="receiptConfirmation"
-                          ng-model="user.confirmation.receiptConfirmation"
-                          >
-                  <label>Grup numaramı doğru girdiğimi teyit ediyorum.</label>
-              </div>
-            </div>
 
-
-         <div class="field" ng-hide="user.confirmation.groupPayment">
+         <div class="field">
             <label> Dekont Yükleme (Zorunlu) </label>
             <p>
               Lütfen dekontunuzu buraya yükleyin!
@@ -50,7 +31,7 @@
               Yükle
             </a>
           </div>
-          <div class="field" ng-hide="user.confirmation.groupPayment">
+          <div class="field" >
             <div class="ui checkbox" >
                 <input
                         type="checkbox"
@@ -113,7 +94,7 @@
           <br>
           <br>
 
-          <div class="divided title">Legal Konular</div>
+          <div class="divided title">Yasal Konular</div>
 
           <div class="field">
             <label> Katılım Şartnamesi </label>
