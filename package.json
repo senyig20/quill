@@ -5,7 +5,6 @@
   "private": "true",
   "dependencies": {
 <<<<<<< HEAD
-<<<<<<< HEAD
     "angular": "^1.7.5",
     "angular-ui-router": "^1.0.20",
     "async": "^2.6.1",
@@ -35,16 +34,11 @@
     "aws-sdk": "^2.177.0",
     "bcrypt-nodejs": "0.0.3",
 =======
-=======
->>>>>>> parent of 35220d4... Getting rid of bower
     "async": "^1.4.2",
     "aws-sdk": "^2.177.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.8.4",
     "bower": "^1.8.0",
-<<<<<<< HEAD
->>>>>>> parent of 35220d4... Getting rid of bower
-=======
 >>>>>>> parent of 35220d4... Getting rid of bower
     "xlsexport": "1.5.2",
     "cookie-parser": "^1.4.3",
@@ -80,9 +74,6 @@
     "underscore": "^1.8.3",
     "validator": "^3.40.1"
 
-<<<<<<< HEAD
->>>>>>> parent of 35220d4... Getting rid of bower
-=======
 >>>>>>> parent of 35220d4... Getting rid of bower
   },
   "scripts": {
@@ -96,9 +87,6 @@
 =======
     "config": "cp .env.config .env",
     "postinstall": "bower install && gulp build"
-<<<<<<< HEAD
->>>>>>> parent of 35220d4... Getting rid of bower
-=======
 >>>>>>> parent of 35220d4... Getting rid of bower
   },
   "devDependencies": {
@@ -114,11 +102,7 @@
   },
   "engines": {
 <<<<<<< HEAD
-<<<<<<< HEAD
     "node": "10.14.1"
-=======
-    "node": "7.4.0"
->>>>>>> parent of 35220d4... Getting rid of bower
 =======
     "node": "7.4.0"
 >>>>>>> parent of 35220d4... Getting rid of bower
