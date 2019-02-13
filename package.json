@@ -30,7 +30,6 @@
     "underscore": "^1.9.1",
     "validator": "^10.10.0",
     "vinyl-source-stream": "^2.0.0",
-
     "aws-sdk": "^2.177.0",
     "bcrypt-nodejs": "0.0.3",
     "xlsexport": "1.5.2",
@@ -53,7 +52,6 @@
     "passport-local": "^1.0.0",
     "angular-animate": "^1.7.7",
     "animate.css": "^3.7.0",
-    "semantic-ui": "^2.4.2"
   },
   "scripts": {
     "mongo": "mongod --dbpath db",
