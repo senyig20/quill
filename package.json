@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": "true",
   "dependencies": {
+<<<<<<< HEAD
     "angular": "^1.7.5",
     "angular-ui-router": "^1.0.20",
     "async": "^2.6.1",
@@ -32,6 +33,13 @@
     "vinyl-source-stream": "^2.0.0",
     "aws-sdk": "^2.177.0",
     "bcrypt-nodejs": "0.0.3",
+=======
+    "async": "^1.4.2",
+    "aws-sdk": "^2.177.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.8.4",
+    "bower": "^1.8.0",
+>>>>>>> parent of 35220d4... Getting rid of bower
     "xlsexport": "1.5.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
@@ -49,9 +57,24 @@
     "gulp-sourcemaps": "^1.12.0",
     "gulp-uglify": "^1.5.4",
     "handlebars": "^4.0.11",
+<<<<<<< HEAD
     "passport-local": "^1.0.0",
     "angular-animate": "^1.7.7",
     "animate.css": "^3.7.0"
+=======
+    "jsonwebtoken": "5.0.4",
+    "method-override": "^2.3.5",
+    "moment": "^2.10.3",
+    "mongoose": "^4.13.9",
+    "morgan": "^1.6.1",
+    "nodemailer": "^1.4.0",
+    "nodemailer-smtp-transport": "^1.0.3",
+    "passport-local": "^1.0.0",
+    "request": "^2.60.0",
+    "underscore": "^1.8.3",
+    "validator": "^3.40.1"
+
+>>>>>>> parent of 35220d4... Getting rid of bower
   },
   "scripts": {
     "mongo": "mongod --dbpath db",
@@ -59,7 +82,12 @@
     "dev": "nodemon app.js",
     "watch": "gulp server",
     "prod": "gulp build && node app.js",
+<<<<<<< HEAD
     "config": "cp .env.config .env"
+=======
+    "config": "cp .env.config .env",
+    "postinstall": "bower install && gulp build"
+>>>>>>> parent of 35220d4... Getting rid of bower
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -73,6 +101,10 @@
     "nodemon": "^1.18.9"
   },
   "engines": {
+<<<<<<< HEAD
     "node": "10.14.1"
+=======
+    "node": "7.4.0"
+>>>>>>> parent of 35220d4... Getting rid of bower
   }
 }
