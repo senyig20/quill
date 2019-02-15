@@ -26,7 +26,21 @@ angular.module('reg')
           }
         }
       })
-      .state('app', {
+        .state('register', {
+          url: "/register",
+          templateUrl: "views/register/register.html",
+          controller: 'RegisterCtrl',
+          data: {
+            requireLogin: false
+          },
+          resolve: {
+            'settings': function(SettingsService){
+              return SettingsService.getPublicSettings();
+            }
+          }
+        })
+
+        .state('app', {
         views: {
           '': {
             templateUrl: "views/base.html"

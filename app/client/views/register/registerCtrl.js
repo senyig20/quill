@@ -1,5 +1,5 @@
 angular.module('reg')
-  .controller('LoginCtrl', [
+  .controller('RegisterCtrl', [
     '$scope',
     '$http',
     '$state',
@@ -27,14 +27,13 @@ angular.module('reg')
         $scope.error = null;
       }
 
+      $scope.loginPage = function(){
+        $state.go('login');
+      };
       $scope.login = function(){
         resetError();
         AuthService.loginWithPassword(
           $scope.email, $scope.password, onSuccess, onError);
-      };
-
-      $scope.goToRegister = function(){
-        $state.go('register');
       };
 
       $scope.register = function(){
