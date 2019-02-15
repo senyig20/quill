@@ -14,9 +14,8 @@
           {{error}}
         </div>
 
-        <div ng-show="loginState === 'login'">
           <div class="ui login-password form">
-            <form ng-submit="login()">
+            <form ng-submit="register()">
               <div class="field">
                 <label> E-Posta</label>
                 <input type="email"
@@ -57,7 +56,6 @@
             <div class="ui divider"></div>
             <div class="field">
               <button id="login"
-                      type="submit"
                       class="fluid ui register button"
                       ng-click="loginPage()">
                 Giriş Sayfasına Dön

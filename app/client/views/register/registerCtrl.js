@@ -13,7 +13,6 @@ angular.module('reg')
       $scope.regIsOpen = Utils.isRegOpen(Settings);
 
       // Start state for login
-      $scope.loginState = 'login';
 
       function onSuccess() {
         $state.go('app.dashboard');
