@@ -29,31 +29,11 @@ angular.module('reg')
       $scope.loginPage = function(){
         $state.go('login');
       };
-      $scope.login = function(){
-        resetError();
-        AuthService.loginWithPassword(
-          $scope.email, $scope.password, onSuccess, onError);
-      };
 
       $scope.register = function(){
         resetError();
         AuthService.register(
           $scope.email, $scope.password, onSuccess, onError);
-      };
-
-      $scope.setLoginState = function(state) {
-        $scope.loginState = state;
-      };
-
-      $scope.sendResetEmail = function() {
-        var email = $scope.email;
-        AuthService.sendResetEmail(email);
-        sweetAlert({
-          title: "E-Posta Kutunu Kontrol Et!",
-          text: "Az sonra bir e-posta gelecek.",
-          type: "success",
-          confirmButtonColor: "#31517e"
-        });
       };
 
     }
