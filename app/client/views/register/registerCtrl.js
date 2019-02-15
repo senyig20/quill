@@ -31,6 +31,13 @@ angular.module('reg')
       };
 
       $scope.register = function(){
+        if ($scope.password != $scope.confirmpassword) {
+          input.setCustomValidity('Password Must be Matching.');
+        } else {
+          // input is valid -- reset the error message
+          input.setCustomValidity('');
+        }
+
         resetError();
         AuthService.register(
           $scope.email, $scope.password, onSuccess, onError);

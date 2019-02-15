@@ -24,6 +24,13 @@ angular.module('reg')
         }
       }
 
+      function registerFailure(data, cb){
+          $state.go('register');
+          if (cb) {
+              cb(data);
+          }
+      }
+
       authService.loginWithPassword = function(email, password, onSuccess, onFailure) {
         return $http
           .post('/auth/login', {
@@ -69,7 +76,7 @@ angular.module('reg')
             loginSuccess(data, onSuccess);
           })
           .error(function(data){
-            loginFailure(data, onFailure);
+              registerFailure(data, onFailure);
           });
       };
 
