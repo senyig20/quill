@@ -66,11 +66,12 @@ angular.module('reg')
         $state.go('login');
       };
 
-      authService.register = function(email, password, onSuccess, onFailure) {
+      authService.register = function(email, password, confirmpassword, onSuccess, onFailure) {
         return $http
           .post('/auth/register', {
             email: email,
-            password: password
+            password: password,
+              confirmpassword : confirmpassword,
           })
           .success(function(data){
             loginSuccess(data, onSuccess);

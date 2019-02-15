@@ -135,13 +135,21 @@ UserController.loginWithPassword = function(email, password, callback){
  * @param  {String}   password [description]
  * @param  {Function} callback args(err, user)
  */
-UserController.createUser = function(email, password, callback) {
+UserController.createUser = function(email, password, confirmpassword, callback) {
 
   if (typeof email !== "string"){
     return callback({
       message: "Not a valid email."
     });
   }
+
+  if ( password !== confirmpassword){
+    return callback({
+      message: "Passwords do not match."
+    });
+  }
+
+
 
   email = email.toLowerCase();
 

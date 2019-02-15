@@ -31,15 +31,9 @@ angular.module('reg')
       };
 
       $scope.register = function(){
-        if ($scope.password != $scope.confirmpassword) {
-
-
-        } else {
-            resetError();
-            AuthService.register(
-                $scope.email, $scope.password, onSuccess, onError);
-        }
-
+        resetError();
+        AuthService.register(
+          $scope.email, $scope.password, $scope.confirmpassword, onSuccess, onError);
       };
 
     }
