@@ -32,7 +32,8 @@ angular.module('reg')
 
       $scope.register = function(){
         resetError();
-        AuthService.register(
+          $scope.loading = true;
+          AuthService.register(
           $scope.email, $scope.password, $scope.confirmpassword, onSuccess, onError);
       };
 
