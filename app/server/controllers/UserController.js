@@ -220,6 +220,15 @@ UserController.getByToken = function (token, callback) {
 UserController.getAll = function (callback) {
   User.find({}, callback);
 };
+UserController.sendEmailsToNonConfirmedProfiles = function(callback) {
+  User.find({"status.admitted": true, "status.confirmed": false}, 'email nickname', function (err, users) {
+    if (err) {
+      return callback(err);
+    }
+    Mailer.sendLaggerPaymentEmails(users);
+    return callback(err);
+  });
+};
 
 /**
  * Builds search text queries.

@@ -126,6 +126,10 @@ angular.module('reg')
       unacceptPayment: function(id){
         return $http.post(base + id + '/unacceptpayment');
       },
+      sendLaggerPaymentEmails: function() {
+        return $http.post(base + 'sendlagpayemails');
+      },
+
 
       removeAdmin: function(id){
         return $http.post(base + id + '/removeadmin');

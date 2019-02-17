@@ -258,7 +258,9 @@ module.exports = function (router) {
 
     UserController.declineById(id, defaultResponse(req, res));
   });
-
+  router.post('/users/sendlagpayemails', isAdmin, function(req, res){
+      UserController.sendEmailsToNonConfirmedProfiles(defaultResponse(req, res));
+    });
   /**
    * Update a user's password.
    * {
