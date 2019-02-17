@@ -29,23 +29,24 @@ angular.module('reg')
       $scope.fromNow = function (date) {
         return moment(date).fromNow();
       };
-      $scope.sendLaggerPaymentEmails = function(){
-                 swal(
-                     title: "Are you sure?",
-                     text: "This will send an email to every user who has not confirmed an application. Are you sure?.",
-                     type: "warning",
-                     showCancelButton: true,
-                     confirmButtonColor: "#DD6B55",
-                     confirmButtonText: "Yes, send.",
-                     closeOnConfirm: false
-             }, function(){
-                 UserService
-                     .sendLaggerPaymentEmails()
-                     .then(function(){
-                         sweetAlert('Your emails have been sent.');
-                     });
-             });
-     };
+
+              $scope.sendLaggerPaymentEmails = function(){
+                  swal({
+                      title: "Are you sure?",
+                      text: "This will send an email to every user who has not confirmed an application. Are you sure?.",
+                      type: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#DD6B55",
+                      confirmButtonText: "Yes, send.",
+                      closeOnConfirm: false
+                  }, function(){
+                      UserService
+                          .sendLaggerPaymentEmails()
+                          .then(function(){
+                              sweetAlert('Your emails have been sent.');
+                          });
+                  });
+              };
       $scope.sendLaggerEmails = function(){
         swal({
           title: "Are you sure?",
