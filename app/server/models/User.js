@@ -332,7 +332,7 @@ schema.statics.validateProfile = function(profile, cb){
  schema.virtual('status.name').get(function(){
 
    if (this.status.checkedIn) {
-     return 'giriş yapıldı';
+     return 'okula giriş yapıldı';
    }
    if (this.status.cancelled) {
      return 'iptal edildi';
@@ -357,10 +357,10 @@ schema.statics.validateProfile = function(profile, cb){
    }
 
    if (!this.verified){
-     return "doğrulanmamış";
+     return "e-posta doğrulanmamış";
    }
 
-   return "teslim edilmedi";
+   return "tamamlanmadı";
 
  });
 

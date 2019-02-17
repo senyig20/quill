@@ -15,10 +15,12 @@ angular.module('reg')
       // Start state for login
 
       function onSuccess() {
+        $scope.loading = false;
         $state.go('app.dashboard');
       }
 
       function onError(data){
+        $scope.loading = false;
         $scope.error = data.message;
       }
 

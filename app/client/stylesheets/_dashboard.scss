@@ -18,13 +18,13 @@
       font-size: 1.3em;
       text-transform: uppercase;
 
-      &.doğrulanmamış {
+      &.e-posta.doğrulanmamış {
         background: $status-unverified-color;
         color: white;
 
       }
 
-      &.teslim.edilmedi {
+      &.tamamlanmadı {
         background: $status-incomplete-color;
         color: black;
       }
@@ -53,7 +53,7 @@
 
       }
 
-      &.checked.in {
+      &.okula.giriş.yapıldı {
         background: $status-checkedin-color;
       }
 
