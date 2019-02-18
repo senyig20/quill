@@ -283,15 +283,198 @@ angular.module('reg')
 
 
             $scope.getAllAdmittedCSV = function () {
-                console.log("Requesting server to export ALL admitted users as CSV file");
-                UserService.getAllAdmittedCSV();
-            };
+                UserService
+                    .getAllAdmitted()
+                    .success(function (data) {
+
+                        var output = '"sep=;"\n"';
+                        var titles = generateSections(data[0]);
+                        for (var i = 0; i < titles.length; i++) {
+                            for (var j = 0; j < titles[i].fields.length; j++) {
+                                if (j == titles[i].fields.length) {
+                                    output += titles[i].fields[j].name + '";';
+                                } else {
+                                    output += titles[i].fields[j].name + '"; "';
+                                }
+                            }
+                        }
+                        output += '\n';
+
+                        for (var rows = 0; rows < data.length; rows++) {
+                            row = generateSections(data[rows]);
+                            for (var i = 0; i < row.length; i++) {
+                                for (var j = 0; j < row[i].fields.length; j++) {
+                                    if (!row[i].fields[j].value) {
+                                        output += ";";
+                                        continue;
+                                    }
+                                    var field = row[i].fields[j].value;
+                                    try {
+                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                    } catch (err) {
+                                        output += ' "' + field + '";';
+                                    }
+                                }
+                            }
+                            output += "\n";
+                        }
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
+                        element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+                    });
+            }
 
             $scope.getConfirmedCSV = function () {
                 console.log("Requesting server to export confirmed users as CSV file");
-                UserService.getConfirmedCSV();
-            };
+                UserService
+                    .getAllConfirmed()
+                    .success(function (data) {
 
+                        var output = '"sep=;"\n"';
+                        var titles = generateSections(data[0]);
+                        for (var i = 0; i < titles.length; i++) {
+                            for (var j = 0; j < titles[i].fields.length; j++) {
+                                if (j == titles[i].fields.length) {
+                                    output += titles[i].fields[j].name + '";';
+                                } else {
+                                    output += titles[i].fields[j].name + '"; "';
+                                }
+                            }
+                        }
+                        output += '\n';
+
+                        for (var rows = 0; rows < data.length; rows++) {
+                            row = generateSections(data[rows]);
+                            for (var i = 0; i < row.length; i++) {
+                                for (var j = 0; j < row[i].fields.length; j++) {
+                                    if (!row[i].fields[j].value) {
+                                        output += ";";
+                                        continue;
+                                    }
+                                    var field = row[i].fields[j].value;
+                                    try {
+                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                    } catch (err) {
+                                        output += ' "' + field + '";';
+                                    }
+                                }
+                            }
+                            output += "\n";
+                        }
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
+                        element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+                    });
+            }
+            $scope.getUnpaidCSV = function () {
+                console.log("Requesting server to export confirmed users as CSV file");
+                UserService
+                    .getAllUnpaid()
+                    .success(function (data) {
+
+                        var output = '"sep=;"\n"';
+                        var titles = generateSections(data[0]);
+                        for (var i = 0; i < titles.length; i++) {
+                            for (var j = 0; j < titles[i].fields.length; j++) {
+                                if (j == titles[i].fields.length) {
+                                    output += titles[i].fields[j].name + '";';
+                                } else {
+                                    output += titles[i].fields[j].name + '"; "';
+                                }
+                            }
+                        }
+                        output += '\n';
+
+                        for (var rows = 0; rows < data.length; rows++) {
+                            row = generateSections(data[rows]);
+                            for (var i = 0; i < row.length; i++) {
+                                for (var j = 0; j < row[i].fields.length; j++) {
+                                    if (!row[i].fields[j].value) {
+                                        output += ";";
+                                        continue;
+                                    }
+                                    var field = row[i].fields[j].value;
+                                    try {
+                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                    } catch (err) {
+                                        output += ' "' + field + '";';
+                                    }
+                                }
+                            }
+                            output += "\n";
+                        }
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
+                        element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+                    });
+            }
+
+            $scope.getFinalCSV = function () {
+                console.log("Requesting server to export confirmed users as CSV file");
+                UserService
+                    .getAllFinal()
+                    .success(function (data) {
+
+                        var output = '"sep=;"\n"';
+                        var titles = generateSections(data[0]);
+                        for (var i = 0; i < titles.length; i++) {
+                            for (var j = 0; j < titles[i].fields.length; j++) {
+                                if (j == titles[i].fields.length) {
+                                    output += titles[i].fields[j].name + '";';
+                                } else {
+                                    output += titles[i].fields[j].name + '"; "';
+                                }
+                            }
+                        }
+                        output += '\n';
+
+                        for (var rows = 0; rows < data.length; rows++) {
+                            row = generateSections(data[rows]);
+                            for (var i = 0; i < row.length; i++) {
+                                for (var j = 0; j < row[i].fields.length; j++) {
+                                    if (!row[i].fields[j].value) {
+                                        output += ";";
+                                        continue;
+                                    }
+                                    var field = row[i].fields[j].value;
+                                    try {
+                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                    } catch (err) {
+                                        output += ' "' + field + '";';
+                                    }
+                                }
+                            }
+                            output += "\n";
+                        }
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
+                        element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+                    });
+            }
 
             function generateSections(user) {
                 return [

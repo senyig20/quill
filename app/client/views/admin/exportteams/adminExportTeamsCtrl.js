@@ -83,7 +83,7 @@ angular.module('reg')
                 if (user.admin) {
                     return 'admin';
                 }
-                if (user.status.confirmed) {
+                if (user.confirmation.sponsorSelected) {
                     return 'positive';
                 }
                 if (user.status.admitted && !user.status.confirmed) {

@@ -233,6 +233,20 @@ UserController.getAllSponsorSubmitted = function (callback) {
     User.find({"confirmation.sponsorSelected": true}, callback);
 };
 
+UserController.getAllAdmitted = function (callback) {
+    User.find({"status.admitted": true}, callback);
+};
+
+UserController.getAllConfirmed = function (callback) {
+    User.find({"status.confirmed": true}, callback);
+};
+UserController.getAllUnpaid= function (callback) {
+    User.find({"status.confirmed": true, "status.paymentMade": false}, callback);
+};
+
+UserController.getAllFinal= function (callback) {
+    User.find({"status.confirmed": true, "status.paymentMade": true}, callback);
+};
 /**
  * Builds search text queries.
  *

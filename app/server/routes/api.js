@@ -111,74 +111,6 @@ module.exports = function (router) {
         };
     }
 
-    router.get('/users/exportcsv', isAdmin, function (req, res, next) {
-
-        var type = req.query.type;
-        var partial = req.query.partial;
-        var adminID = req.query.adminID;
-        var filename = " users" + ".csv";
-        if (type != "undefined") filename = type + filename;
-
-
-        var dataArray;
-        var mongoose = require('mongoose');
-        var csv = require('csv-express');
-
-        var UserDB = mongoose.model('User');
-        var query = {};
-        var queryAdmin = {};
-        var lastAdminLastExportAccepted;
-        var JSONUser;
-
-        function getMeow(lastAdminLastExportAccepted) {
-            UserDB.find(query, {email: 1, profile: 1, verified: 1, status: 1}).lean().exec({}, function (err, users) {
-                if (err) {
-                    res.send(err);
-                    console.log(err);
-                } else {
-                    users = users.map(function (user) {
-                        // console.log("user was admitted at " + user.status.admittedAt);
-                        user.name = user.profile.name;
-                        user.admitted = user.status.admitted;
-                        user.confirmed = user.status.confirmed;
-                        delete user.profile;
-                        delete user.status;
-                        delete user._id;
-                        return user;
-                    });
-                    res.statusCode = 200;
-
-                    res.setHeader('Content-Type', 'text/csv');
-                    res.setHeader("x-filename", filename);
-                    res.status(200).csv(users, true);
-                }
-            });
-        }
-
-        if (type != "undefined") {
-            query["status." + type] = true;
-            queryAdmin["_id"] = adminID;
-        }
-
-
-        UserDB.findOne(queryAdmin, 'adminLastExportAccepted', function (err, admin) {
-            if (err)
-                return handleError(err);
-            else {
-                lastAdminLastExportAccepted = admin.adminLastExportAccepted;
-
-                if (type == "admitted" && partial) {
-                    // console.log(type + " " + adminID);
-                    admin.adminLastExportAccepted = Date.now();
-                    admin.save();
-                    query["status.admittedAt"] = {$gt: lastAdminLastExportAccepted};
-                    query["status.confirmed"] = false;
-                }
-
-                getMeow(lastAdminLastExportAccepted);
-            }
-        });
-    });
 
     /**
      *  API!
@@ -210,6 +142,22 @@ module.exports = function (router) {
 
     router.get('/users/sponsorsSelected', isAdmin, function (req, res) {
             UserController.getAllSponsorSubmitted(defaultResponse(req, res));
+
+    });
+    router.get('/users/allConfirmed', isAdmin, function (req, res) {
+        UserController.getAllConfirmed(defaultResponse(req, res));
+
+    });
+    router.get('/users/allAdmitted', isAdmin, function (req, res) {
+        UserController.getAllAdmitted(defaultResponse(req, res));
+
+    });
+    router.get('/users/allUnpaid', isAdmin, function (req, res) {
+        UserController.getAllUnpaid(defaultResponse(req, res));
+
+    });
+    router.get('/users/allFinal', isAdmin, function (req, res) {
+        UserController.getAllFinal(defaultResponse(req, res));
 
     });
 

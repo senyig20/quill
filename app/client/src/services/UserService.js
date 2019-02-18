@@ -27,6 +27,19 @@ angular.module('reg')
                 getAllCompaniesSelected: function(){
                     return $http.get(base + 'sponsorsSelected');
                 },
+                getAllAdmitted: function(){
+                    return $http.get(base + 'allAdmitted');
+                },
+                getAllConfirmed: function(){
+                    return $http.get(base + 'allConfirmed');
+                },
+                getAllUnpaid: function(){
+                    return $http.get(base+ 'allUnpaid');
+                },
+
+                getAllFinal: function(){
+                    return $http.get(base+ 'allFinal');
+                },
                 getCSV: function (type, partial, adminID) {
                     // console.log('getCSV');
                     console.log(type);
