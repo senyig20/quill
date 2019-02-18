@@ -78,6 +78,10 @@ var confirmation = {
     signatureLiability: String,
     firstSponsorChoice: String,
     secondSponsorChoice: String,
+    sponsorSelected: {
+        type: Boolean,
+        default: false,
+    },
 };
 
 var status = {

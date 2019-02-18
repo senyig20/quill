@@ -100,7 +100,7 @@ angular.module('reg')
 
             $scope.exportCSV = function () {
                 UserService
-                    .getAll()
+                    .getAllCompaniesSelected()
                     .success(function (data) {
 
                         var output = '"sep=;"\n"';

@@ -228,6 +228,11 @@ UserController.sendEmailsToNonConfirmedProfiles = function (callback) {
     });
 };
 
+
+UserController.getAllCriteria = function (criteria, callback) {
+    User.find({criteria}, callback);
+};
+
 /**
  * Builds search text queries.
  *
