@@ -41,6 +41,9 @@ var schema = new mongoose.Schema({
   },
   allowMinors: {
     type: Boolean
+  },
+  enableSponsors: {
+    type: Boolean
   }
 });
 

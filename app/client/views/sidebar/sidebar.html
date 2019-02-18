@@ -39,7 +39,7 @@
     <div
       ui-sref-active="active"
       ui-sref="app.sponsor"
-      ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined"
+      ng-show="settings.enableSponsors"
       class="item">
       Firma Tercihi
     </div>

@@ -482,5 +482,9 @@ module.exports = function (router) {
     var allowMinors = req.body.allowMinors;
     SettingsController.updateField('allowMinors', allowMinors, defaultResponse(req, res));
   });
+  router.put('/settings/sponsors', isAdmin, function (req, res) {
+    var selectSponsors = req.body.selectSponsors;
+    SettingsController.updateField('enableSponsors', selectSponsors, defaultResponse(req, res));
+  });
 
 };

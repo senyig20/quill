@@ -21,7 +21,7 @@ angular.module('reg')
 
         $scope.settings = settings;
       }
-      
+
       // Additional Options --------------------------------------
 
       $scope.updateAllowMinors = function () {
@@ -36,6 +36,17 @@ angular.module('reg')
           });
       };
 
+      $scope.updateSelectSponsors = function () {
+        SettingsService
+          .updateSelectSponsors($scope.settings.enableSponsors)
+          .success(function (data) {
+            $scope.settings.enableSponsors = data.enableSponsors;
+            const successText = $scope.settings.enableSponsors ?
+              "Sponsor selections are open." :
+              "Sponsor selections are now closed.."
+            swal("Looks good!", successText, "success");
+          });
+      };
       // Whitelist --------------------------------------
 
       SettingsService

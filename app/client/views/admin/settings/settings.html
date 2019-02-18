@@ -90,13 +90,22 @@ class="ui green segment">
       <div class="grouped fields">
         <div class="field">
           <div class="ui toggle checkbox">
-              <input 
+              <input
               type="checkbox"
               name="allowMinors"
               ng-class="{true: 'checked', false: ''}[settings.allowMinors]"
               ng-model="settings.allowMinors"
               ng-change="updateAllowMinors()">
               <label>Allow minors</label>
+          </div>
+          <div class="ui toggle checkbox">
+              <input
+              type="checkbox"
+              name="allowMinors"
+              ng-class="{true: 'checked', false: ''}[settings.enableSponsors]"
+              ng-model="settings.enableSponsors"
+              ng-change="updateSelectSponsors()">
+              <label>Open Company Selections</label>
           </div>
         </div>
       </div>

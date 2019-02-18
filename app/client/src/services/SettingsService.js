@@ -44,8 +44,13 @@ angular.module('reg')
         });
       },
       updateAllowMinors: function(allowMinors){
-        return $http.put(base + 'minors', { 
-          allowMinors: allowMinors 
+        return $http.put(base + 'minors', {
+          allowMinors: allowMinors
+        });
+      },
+      updateSelectSponsors: function(selectSponsors){
+        return $http.put(base + 'sponsors', {
+          selectSponsors: selectSponsors 
         });
       },
     };
