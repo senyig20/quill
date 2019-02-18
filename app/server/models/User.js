@@ -31,6 +31,11 @@ var profile = {
     max: 300
   },
 
+  chap: {
+    type: Boolean,
+    default: false,
+  },
+
   bday: {
     type: Date,
     min: 1,
