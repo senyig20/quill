@@ -47,24 +47,10 @@
               </div>
             </div>
 
-
-
-              <div class="field">
-                <label>Mezuniyet Yılı/Görevli Öğretmen</label>
-                <select
-                        name="year"
-                        ng-model="user.profile.graduationYear">
-                  <option value="">Mezuniyet Yılı/Görevli Öğretmen</option>
-                  <option value="2019">2019</option>
-                  <option value="2020">2020</option>
-                  <option value="2021">2021</option>
-                  <option value="2022">2022</option>
-                  <option value="2023">2023</option>
-                  <option value="chap">Görevli Öğretmen</option>
-
-                </select>
-              </div>
-
+            <div class="ui toggle checkbox">
+                        <input type="checkbox" ng-model="user.profile.chap">
+                        <label> Okulumun danışman öğretmeni olarak katılıyorum.</label>
+                      </div>
 
               <div class="field">
                 <label>Cep Telefonu Numaranız</label>
