@@ -15,12 +15,6 @@ angular.module('reg')
             // to prevent this.
             $('.ui.dimmer').remove();
             // Populate the size of the modal for when it appears, with an arbitrary user.
-            $scope.selectedUser = {};
-            $scope.selectedUser.sections = generateSections({
-                status: '', confirmation: {
-                    dietaryRestrictions: []
-                }, profile: ''
-            });
 
             function updatePage(data) {
                 $scope.users = data.users;
@@ -104,13 +98,6 @@ angular.module('reg')
                 }
             };
 
-
-            function formatTime(time) {
-                if (time) {
-                    return moment(time).format('MMMM Do YYYY, h:mm:ss a');
-                }
-            }
-
             $scope.rowClass = function (user) {
                 if (user.admin) {
                     return 'admin';
@@ -123,12 +110,6 @@ angular.module('reg')
                 }
             };
 
-            function selectUser(user) {
-                $scope.selectedUser = user;
-                $scope.selectedUser.sections = generateSections(user);
-                $('.long.user.modal')
-                    .modal('show');
-            }
 
 
             function openInNewTab(url) {
@@ -149,82 +130,5 @@ angular.module('reg')
                 var dataURL = canvas.toDataURL("image/png");
                 openInNewTab(dataURL);
             }
-
-            function generateSections(user) {
-                return [
-                    {
-                        name: 'Basic Info',
-                        fields: [
-                            {
-                                name: 'Created On',
-                                value: formatTime(user.timestamp)
-                            }, {
-                                name: 'Last Updated',
-                                value: formatTime(user.lastUpdated)
-                            }, {
-                                name: 'Confirm By',
-                                value: formatTime(user.status.confirmBy) || 'N/A'
-                            }, {
-                                name: 'Checked In',
-                                value: formatTime(user.status.checkInTime) || 'N/A'
-                            }, {
-                                name: 'Email',
-                                value: user.email
-                            }
-                        ]
-                    }, {
-                        name: 'Profile',
-                        fields: [
-                            {
-                                name: 'Name',
-                                value: user.profile.name
-                            }, {
-                                name: 'School',
-                                value: user.profile.school
-                            }, {
-                                name: 'Graduation Year',
-                                value: user.profile.graduationYear
-                            }
-                        ]
-                    }, {
-                        name: 'Confirmation',
-                        fields: [
-                            {
-                                name: 'Phone Number',
-                                value: user.profile.phoneNumber
-                            }, {
-                                name: 'BBQ Reservation?',
-                                value: user.profile.bbqChoice
-                            }, {
-                                name: 'Opening Night Reservation?',
-                                value: user.profile.openingChoice
-                            }, {
-                                name: 'Veggie?',
-                                value: user.profile.veggie
-                            }, {
-                                name: 'ReceiptUploaded?',
-                                value: user.confirmation.receiptConfirmation
-                            }, {
-                                name: 'Additional Notes',
-                                value: user.confirmation.notes
-                            }, {
-                                name: 'Payment Controlled by JARC and Approved?',
-                                value: user.status.paymentMade
-                            }, {
-                                name: 'Group Payment?',
-                                value: user.confirmation.groupPayment
-                            }, {
-                                name: 'Group Payment ID (If by group)',
-                                value: user.confirmation.groupid
-                            }, {
-                                name: 'Receipt Upload Verification (If by themselves) OR Group Payment ID Verification',
-                                value: user.confirmation.receiptConfirmation
-                            }
-                        ]
-                    }
-                ];
-            }
-
-            $scope.selectUser = selectUser;
 
         }]);
