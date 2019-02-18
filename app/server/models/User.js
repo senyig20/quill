@@ -27,7 +27,12 @@ var profile = {
   chap: Boolean,
 
 
-  
+  graduationYear: {
+    type: String,
+    enum: {
+      values: '2019,2020,2021,2022,2023,chap'.split(','),
+    },
+  },
 
   referral: {
     type: String,
