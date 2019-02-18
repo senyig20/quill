@@ -18,14 +18,9 @@ angular.module('reg')
 
             _setupForm();
 
-            $scope.fileName = user._id + "_" + user.profile.name.split(" ").join("_");
-
-
             function _updateUser(e) {
                 var confirmation = $scope.user.confirmation;
                 // Get the dietary restrictions as an array
-                var drs = [];
-
 
                 UserService
                     .updateConfirmation(user._id, confirmation)
