@@ -76,9 +76,9 @@ var confirmation = {
   idNumber: String,
   phoneNumber: String,
   groupid: String,
-
-
   signatureLiability: String,
+  firstSponsorChoice: String,
+  secondSponsorChoice: String,
 };
 
 var status = {

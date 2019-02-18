@@ -117,6 +117,19 @@ angular.module('reg')
           }
         }
       })
+      .state('app.sponsor', {
+        url: "/sponsor",
+        templateUrl: "views/sponsor/sponsor.html",
+        controller: 'SponsorCtrl',
+        data: {
+          requireAdmitted: true
+        },
+        resolve: {
+          currentUser: function(UserService){
+            return UserService.getCurrentUser();
+          }
+        }
+      })
       .state('app.payment', {
         url: "/payment",
         templateUrl: "views/payment/payment.html",

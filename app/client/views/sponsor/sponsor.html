@@ -1,0 +1,51 @@
+<div class="page">
+  <div class="divided title">
+    Firma Tercihi
+  </div>
+
+  <div class="ui stackable page grid">
+    <div class="column">
+
+      <div class="ui form">
+
+        <div class="divided title">Ödeme Bilgileri</div>
+
+
+            <div class="field">
+                <label>İlk Şirket Tercihiniz</label>
+                <select
+                        name="choice1"
+                        ng-model="user.confirmation.firstSponsorChoice">
+                    <option value="">Tercihim</option>
+                    <option value="Tercih 1">Tercih 1</option>
+                    <option value="Tercih 2">Tercih 2</option>
+                    <option value="Tercih 3">Tercih 3</option>
+                    <option value="Tercih 4">Tercih 4</option>
+                </select>
+            </div>
+
+          <div class="field">
+              <label>İkinci Şirket Tercihiniz</label>
+              <select
+                      name="choice2"
+                      ng-model="user.confirmation.secondSponsorChoice">
+                  <option value="">Tercihim</option>
+                  <option value="Tercih 1">Tercih 1</option>
+                  <option value="Tercih 2">Tercih 2</option>
+                  <option value="Tercih 3">Tercih 3</option>
+                  <option value="Tercih 4">Tercih 4</option>
+              </select>
+          </div>
+
+          <div class="field" ng-hide="regIsClosed">
+            <button type="submit"
+                    class="fluid ui purple button"
+                    ng-click="submitForm()">
+              Gönder
+            </button>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
