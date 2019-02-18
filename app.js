@@ -1,5 +1,6 @@
 // Load the dotfiles.
 require('dotenv').load({silent: true});
+require('newrelic');
 
 var express         = require('express');
 
