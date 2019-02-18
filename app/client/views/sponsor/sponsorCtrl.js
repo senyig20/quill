@@ -54,8 +54,12 @@ angular.module('reg')
               identifier: 'choice1',
               rules: [
                 {
+                  type: 'different[choice2]',
+                  prompt: 'Lütfen tercihlerini farklı şirketlerden yap.'
+                },
+                {
                   type: 'empty',
-                  prompt: 'Lütfen okuduğunu doğrula.'
+                  prompt: 'Lütfen tercihini yap.'
                 }
               ]
             },
@@ -63,8 +67,12 @@ angular.module('reg')
               identifier: 'choice2',
               rules: [
                 {
+                  type: 'different[choice1]',
+                  prompt: 'Lütfen tercihlerini farklı şirketlerden yap.'
+                },
+                {
                   type: 'empty',
-                  prompt: 'Lütfen okuduğunu doğrula.'
+                  prompt: 'Lütfen tercihini yap.'
                 }
               ]
             },
