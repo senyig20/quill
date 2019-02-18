@@ -22,14 +22,15 @@ angular.module('reg')
 
 
       function _updateUser(e){
-        var sponsor = $scope.user.sponsor;
+        var sponsors = $scope.user.sponsors;
+        // Get the dietary restrictions as an array
 
         UserService
-          .updateSponsors(user._id, sponsor)
+          .updateConfirmation(user._id, sponsors)
           .then(response => {
             swal({
                 title: "Tamamlandı!",
-                text: "Şirket kayıtlarını aldık!",
+                text: "Şirket kayıtlarını aldık aldık!",
                 type: "success",
                 confirmButtonColor: "#31517e"
 
