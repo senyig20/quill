@@ -16,6 +16,5 @@
     "tests"
   ],
   "dependencies": {
-    "sweetalert": "~1.0.1",
   }
 }
