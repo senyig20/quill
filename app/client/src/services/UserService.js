@@ -87,11 +87,7 @@ angular.module('reg')
           profile: profile
         });
       },
-      updateSponsors: function(id, confirmation){
-              return $http.put(base + id + '/sponsor', {
-                sponsors: sponsors
-              });
-            },
+
       updateConfirmation: function(id, confirmation){
         return $http.put(base + id + '/confirm', {
           confirmation: confirmation

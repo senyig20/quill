@@ -106,11 +106,7 @@ var status = {
     default: false,
   },
 
-  sponsorChosen: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
+
   admittedBy: {
     type: String,
     validate: [
@@ -142,16 +138,6 @@ var status = {
   },
 };
 
-
-
-var sponsor = {
-  /**
-   * Whether or not the user's profile has been completed.
-   * @type {Object}
-   */
-   choice1: String,
-   choice2: String,
-};
 // define the schema for our admin model
 var schema = new mongoose.Schema({
 
@@ -216,7 +202,7 @@ var schema = new mongoose.Schema({
    * Extension of the user model, but can only be edited after acceptance.
    */
   confirmation: confirmation,
-  sponsors: sponsors,
+
   status: status,
 
 });
