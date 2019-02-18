@@ -149,7 +149,7 @@ angular.module('reg')
 
             function generateSections(user) {
                 return [
-                    {{
+                    {
                         name: 'Profile',
                         fields: [
                             {
@@ -158,6 +158,9 @@ angular.module('reg')
                             }, {
                                 name: 'School',
                                 value: user.profile.school
+                            }, {
+                                name: 'Graduation Year',
+                                value: user.profile.graduationYear
                             }
                         ]
                     }, {
@@ -178,3 +181,4 @@ angular.module('reg')
             $scope.selectUser = selectUser;
 
         }]);
+
