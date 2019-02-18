@@ -57,8 +57,6 @@ var profile = {
 
 // Only after confirmed
 var confirmation = {
-    dietaryRestrictions: [String],
-
     notes: String,
     receipt: String,
     receiptConfirmation: {

@@ -18,13 +18,10 @@ angular.module('reg')
 
             _setupForm();
 
-            $scope.fileName = user._id + "_" + user.profile.name.split(" ").join("_");
-
             function _updateUser(e) {
                 $scope.user.confirmation.sponsorSelected = true;
                 var confirmation = $scope.user.confirmation;
                 // Get the dietary restrictions as an array
-                var drs = [];
 
 
                 UserService
@@ -44,7 +41,6 @@ angular.module('reg')
                         swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
                     });
             }
-
 
             function _setupForm() {
                 // Semantic-UI form validation
