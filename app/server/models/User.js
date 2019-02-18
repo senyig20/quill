@@ -24,7 +24,10 @@ var profile = {
     min: 1,
     max: 150,
   },
-  chap: Boolean,
+  chap: {
+   type: Boolean,
+   default: false,
+ },
 
 
   graduationYear: {
