@@ -40,46 +40,6 @@ angular.module('reg')
                 getAllFinal: function(){
                     return $http.get(base+ 'allFinal');
                 },
-                getCSV: function (type, partial, adminID) {
-                    // console.log('getCSV');
-                    console.log(type);
-                    adminID = Session.getUserId();
-                    console.log(adminID);
-                    return $http.get(base + 'exportcsv?type=' + type + '&adminID=' + adminID).success(function (data, status, headers) {
-                        headers = headers();
-                        var filename = headers['x-filename'];
-                        var contentType = headers['content-type'];
-
-                        var linkElement = document.createElement('a');
-                        try {
-                            var blob = new Blob([data], {type: contentType});
-                            var url = window.URL.createObjectURL(blob);
-                            linkElement.setAttribute('href', url);
-                            linkElement.setAttribute("download", filename);
-                            var clickEvent = new MouseEvent("click", {
-                                "view": window,
-                                "bubbles": true,
-                                "cancelable": false
-                            });
-                            linkElement.dispatchEvent(clickEvent);
-                        } catch (ex) {
-                            console.log(ex);
-                        }
-                    }).error(function (data) {
-                        console.log(data);
-                    });
-                },
-
-
-                getAdmittedCSV: function () {
-                    console.log("getAdmittedCSV");
-                    this.getCSV("admitted", true);
-                },
-
-                getConfirmedCSV: function () {
-                    console.log("getConfirmedCSV");
-                    this.getCSV("confirmed");
-                },
 
                 getPage: function (page, size, text, statusFilters) {
                     return $http.get(users + '?' + $.param(
