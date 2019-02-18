@@ -18,6 +18,6 @@ angular.module('reg')
         PAYMENT: 'Manuel bir kontrolden sonra ana sayfanda başvuru durumun gözükecek. Bir sıkıntı çıkarsa sana ulaşacağız.',
         DECLINED: 'Bu yıl gelemeyeceğini duyduğumuz için üzüldük. Umarız seneye gelebilirsin!',
     })
-    .constant('TEAM',{
+    .constant('TEAM', {
         NO_TEAM_REG_CLOSED: 'Unfortunately, it\'s too late to enter the event with a team.\nHowever, you can still form teams on your own before or during the event!',
     });

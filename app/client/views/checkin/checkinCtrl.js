@@ -33,6 +33,7 @@ angular.module('reg')
                 }
                 $scope.pages = p;
             }
+
             UserService
                 .getPage($stateParams.page, $stateParams.size, $stateParams.query, $scope.statusFilters)
                 .success(function (data) {
@@ -128,7 +129,6 @@ angular.module('reg')
                 $('.long.user.modal')
                     .modal('show');
             }
-
 
 
             function openInNewTab(url) {

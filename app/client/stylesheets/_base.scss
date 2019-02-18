@@ -8,7 +8,7 @@
     min-height: 100%;
     padding-left: $sidebar-width;
     background: white;
-    box-shadow: 0 0 8px rgba(0,0,0,.4);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .4);
 
     transition: padding-left $sidebar-transition-time;
 
@@ -22,6 +22,7 @@
 @media only screen and (max-width: 768px) {
   #base > .content {
     padding-left: 0;
+
     > .container {
       padding: 0;
     }

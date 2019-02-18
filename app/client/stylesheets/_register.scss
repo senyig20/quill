@@ -20,6 +20,7 @@
       .logo {
         max-width: 200px;
         margin: .5rem auto 1rem auto;
+
         img {
           width: 200px;
           height: 100px;
@@ -28,9 +29,11 @@
 
       .button {
         color: white;
+
         &.login {
           background: $login-color;
         }
+
         &.register {
           background: $register-color
         }

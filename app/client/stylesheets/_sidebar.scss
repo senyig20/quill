@@ -23,11 +23,13 @@
       opacity: 1;
       border-left: 8px solid lighten($sidebar-color, 10%);
     }
+
     &:hover {
       cursor: pointer;
       background: darken($sidebar-color, 2%);
       opacity: 1;
     }
+
     &:active {
       background: darken($sidebar-color, 5%);
       opacity: 1;
@@ -37,6 +39,7 @@
       opacity: 1;
       padding: 48px;
       margin: auto auto auto auto;
+
       img {
         width: auto;
         height: 100px;
@@ -55,7 +58,7 @@
   }
 
   // Tab is the sibling of the sidebar
-  +.tab {
+  + .tab {
     position: fixed;
     width: $sidebar-tab-size;
     height: $sidebar-tab-size;
@@ -68,7 +71,7 @@
     visibility: 'hidden';
     opacity: 0;
 
-    @include transform(translate3d($sidebar-width, 0,0));
+    @include transform(translate3d($sidebar-width, 0, 0));
     @include transition-duration($sidebar-transition-time);
 
     cursor: pointer;
@@ -88,8 +91,9 @@
     // When the sidebar is open
     &.open {
       // Transform the sidebar to original position
-      @include transform(translate3d(0,0,0));
-      +.tab {
+      @include transform(translate3d(0, 0, 0));
+
+      + .tab {
         // Transform the tab to the side of the sidebar
         @include transform(translate3d($sidebar-width, 0, 0));
 
@@ -99,11 +103,12 @@
         padding: 0;
       }
     }
+
     // When the tab is closed.
-    +.tab {
+    + .tab {
       visibility: 'visible';
       opacity: 1;
-      @include transform(translate3d(0,0,0));
+      @include transform(translate3d(0, 0, 0));
       line-height: $sidebar-tab-size;
       padding: 0;
       text-align: center;

@@ -1,103 +1,105 @@
 <div class="page">
-  <div class="divided title">
-    Check-In
-  </div>
-  <div class="ui segment">
-
-    <div class="ui stackable grid">
-      <div class="three wide column">
-        <div class="ui header">
-          Search
-        </div>
-        <div class="ui form">
-          <div class="field">
-            <div class="ui icon fluid input">
-              <input ng-model="queryText" ng-model-options="{debounce: 300}" placeholder="Search..." type="text">
-              <i class="search icon"></i>
-            </div>
-          </div>
-
-        </div>
-        <div class="ui form">
-          <div class="grouped fields">
-            <div class="field">
-              <div class="ui checkbox">
-                <input
-                        type="checkbox"
-                        name="confirmed"
-                        ng-model="statusFilters.confirmed"
-                        ng-change="applyStatusFilter()"
-                        checked
-                        style="opacity:0">
-                <label>Confirmed</label>
-              </div>
-            </div>
-            </div>
-        </div>
-
-
-        <br />
-
-        <div class="ui divider"></div>
-
-        <button class="ui icon basic page button" ng-class="page == currentPage ? 'active pink' : ''" ng-click="goToPage(page)" ng-repeat="page in pages">
-          {{page}}
-        </button>
-
-      </div>
-      <div class="thirteen wide column" id="table-container">
-        <div class="ui header">
-          Users
-        </div>
-
-        <table
-                class="ui celled selectable compact users table">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>School</th>
-            <th>Check In Attendee</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr
-                  ng-class="rowClass(user)"
-                  ng-click="selectUser(user)"
-                  ng-repeat="user in users">
-            <td>
-              <strong>
-                {{user.profile.name}}
-                &nbsp;
-
-              </strong>
-            </td>
-            <td>{{user.profile.school}}</td>
-
-            <td
-                    class="aligned">
-
-              <button
-                      class="ui circular mini basic green icon button"
-                      ng-click="toggleCheckIn($event, user, $index)">
-
-                <i
-                        class="flag outline icon"
-                        ng-if="!user.status.checkedIn"></i>
-
-                <i
-                        class="green flag icon"
-                        ng-if="user.status.checkedIn"></i>
-
-              </button>
-
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <canvas height="299" id="labelCanvas" style="border-style: none; display: none;" width="520"></canvas>
-
-      </div>
+    <div class="divided title">
+        Check-In
     </div>
+    <div class="ui segment">
 
-  </div>
+        <div class="ui stackable grid">
+            <div class="three wide column">
+                <div class="ui header">
+                    Search
+                </div>
+                <div class="ui form">
+                    <div class="field">
+                        <div class="ui icon fluid input">
+                            <input ng-model="queryText" ng-model-options="{debounce: 300}" placeholder="Search..."
+                                   type="text">
+                            <i class="search icon"></i>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ui form">
+                    <div class="grouped fields">
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input
+                                        type="checkbox"
+                                        name="confirmed"
+                                        ng-model="statusFilters.confirmed"
+                                        ng-change="applyStatusFilter()"
+                                        checked
+                                        style="opacity:0">
+                                <label>Confirmed</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br/>
+
+                <div class="ui divider"></div>
+
+                <button class="ui icon basic page button" ng-class="page == currentPage ? 'active pink' : ''"
+                        ng-click="goToPage(page)" ng-repeat="page in pages">
+                    {{page}}
+                </button>
+
+            </div>
+            <div class="thirteen wide column" id="table-container">
+                <div class="ui header">
+                    Users
+                </div>
+
+                <table
+                        class="ui celled selectable compact users table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>School</th>
+                        <th>Check In Attendee</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr
+                            ng-class="rowClass(user)"
+                            ng-click="selectUser(user)"
+                            ng-repeat="user in users">
+                        <td>
+                            <strong>
+                                {{user.profile.name}}
+                                &nbsp;
+
+                            </strong>
+                        </td>
+                        <td>{{user.profile.school}}</td>
+
+                        <td
+                                class="aligned">
+
+                            <button
+                                    class="ui circular mini basic green icon button"
+                                    ng-click="toggleCheckIn($event, user, $index)">
+
+                                <i
+                                        class="flag outline icon"
+                                        ng-if="!user.status.checkedIn"></i>
+
+                                <i
+                                        class="green flag icon"
+                                        ng-if="user.status.checkedIn"></i>
+
+                            </button>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <canvas height="299" id="labelCanvas" style="border-style: none; display: none;" width="520"></canvas>
+
+            </div>
+        </div>
+
+    </div>
 </div>

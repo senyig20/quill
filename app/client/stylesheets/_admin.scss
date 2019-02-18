@@ -18,6 +18,7 @@
 
       &.admin {
         background: lighten($brand-secondary, 50%) !important;
+
         &:hover {
           background: lighten($brand-secondary, 45%) !important;
         }

@@ -1,257 +1,256 @@
 <div id="dashboard" class="page">
-  <div class="divided title">
-    Ana Sayfa
-  </div>
-
-  <div class="ui stackable centered page grid">
-    <div class="column">
-      <div class="ui status segment">
-        <div class="small title">
-          Başvuru Durumun:
-        </div>
-        <br>
-
-        <div
-          class="state"
-          ng-class="user.status.name"
-          ng-if="!showWaitlist && !dashState('admittedAndCannotConfirm')">
-          {{user.status.name}}
-        </div>
-
-        <div
-          class="declined state"
-          ng-if="dashState('admittedAndCannotConfirm')">
-          Başvuru Geçerlilik Süresi Geçmiş
-        </div>
-
-
-        <div
-          ng-if="showWaitlist"
-          class="waitlist state">
-          Bekleme Listesinde
-        </div>
-
-        <div class="ui divider"></div>
-
-        <div ng-if="user.profile.name.length > 0">
-          <p>
-            <strong>
-              Merhaba {{user.profile.name}}!
-            </strong>
-          </p>
-          <p>
-          </p>
-        </div>
-
-        <div
-          ng-if="dashState('unverified')"
-          class="description">
-          <p>
-            <strong>
-            E-Postanı ({{user.email}}) daha doğrulamamışsın!
-            </strong>
-          </p>
-          <p>
-            {{ DASHBOARD.UNVERIFIED }}
-          </p>
-          <div class="ui purple button" ng-click="resendEmail()">
-            Doğrulama E-Postasını Tekrar Gönder
-          </div>
-        </div>
-
-        <div
-          ng-class="settings.timeClose"
-          ng-if="!dashState('admittedAndCanConfirm') || !dashState('admittedAndCannotConfirm') || !dashState('confirmed') || !dashState('declined')">
-          <strong>
-            Son Kayıt Tarihi:
-          </strong>
-          13 Mayıs 2019 23:59
-        </div>
-
-        <div
-          ng-class="settings.timeConfirm"
-          ng-if="dashState('admittedAndCanConfirm') || dashState('admittedAndCannotConfirm') || dashState('confirmed') || dashState('declined')">
-          <strong>
-            Son Teyit Tarihi:
-          </strong>
-         <br>
-         1 Mayıs 2019 23:59 (Erken Kayıt)
-         <br>
-         13 Mayıs 2019 23:59 (Geç Kayıt)
-        </div>
-<br>
-        <div
-          ng-if="dashState('openAndIncomplete')"
-          class="description">
-          <p>
-            <strong>
-                {{ DASHBOARD.INCOMPLETE_TITLE }}
-            </strong>
-          </p>
-          <p>
-            {{ DASHBOARD.INCOMPLETE }}
-          </p>
-
-          <div class="ui purple button"
-               ui-sref="app.application">
-            Başvurunu Tamamla
-          </div>
-
-        </div>
-
-        <div
-          ng-if="dashState('openAndSubmitted')"
-          class="description">
-          <p>
-            <strong>
-                {{ DASHBOARD.SUBMITTED_TITLE }}
-            </strong>
-          </p>
-          <p>
-            {{ DASHBOARD.SUBMITTED }}
-          </p>
-
-
-
-        </div>
-
-        <div
-          ng-if="dashState('closedAndIncomplete')">
-          <p>
-            <strong>
-                {{ DASHBOARD.CLOSED_AND_INCOMPLETE_TITLE }}
-            </strong>
-          </p>
-          <p>
-            {{ DASHBOARD.CLOSED_AND_INCOMPLETE }}
-          </p>
-        </div>
-
-        <div
-          ng-if="dashState('closedAndSubmitted')"
-          class="description" >
-
-          <div
-            class="markdown"
-            ng-bind-html="waitlistText">
-          </div>
-
-
-        </div>
-
-        <div
-          class="description"
-          ng-if="dashState('admittedAndCanConfirm')">
-
-          <div class="markdown">
-            <h4>
-                {{ DASHBOARD.ADMITTED_AND_CAN_CONFIRM_TITLE }}
-            </h4>
-          </div>
-
-          <div
-            class="markdown"
-            ng-bind-html="acceptanceText">
-          </div>
-
-          <div class="markdown">
-            <h4>
-                {{ DASHBOARD.ADMITTED_AND_CAN_CONFIRM }}
-            </h4>
-          </div>
-
-          <div class="ui purple button"
-               ui-sref="app.confirmation">
-            Katılımını Teyit Et
-          </div>
-
-          <div class="ui red button"
-               ng-click="declineAdmission()">
-            Katılımını Reddet
-          </div>
-
-        </div>
-
-        <div
-          class="description"
-          ng-if="dashState('admittedAvaitingPayment')">
-          <p>
-            <strong>
-                {{ DASHBOARD.PAYMENT_TITLE }}
-            </strong>
-          </p>
-          <p>
-            {{ DASHBOARD.PAYMENT }}
-          </p>
-
-          <div class="ui purple button"
-               ui-sref="app.confirmation">
-            Teyit formunu düzenle
-          </div>
-
-          <div class="ui red button"
-               ng-click="declineAdmission()">
-            Katılımını Reddet
-          </div>
-
-        </div>
-
-        <div
-          class="description"
-          ng-if="dashState('admittedAndCannotConfirm')">
-
-          <div class="markdown">
-            <h4>
-                {{ DASHBOARD.ADMITTED_AND_CANNOT_CONFIRM_TITLE }}
-            </h4>
-
-            <p>
-                {{ DASHBOARD.ADMITTED_AND_CANNOT_CONFIRM }}
-            </p>
-          </div>
-
-        </div>
-
-        <div
-          class="description"
-          ng-if="dashState('confirmed')">
-
-          <div
-            ng-show="!pastConfirmation"
-            class="markdown">
-            <h4>
-                {{ DASHBOARD.CONFIRMED_NOT_PAST_TITLE }}
-            </h4>
-          </div>
-
-          <div
-            class="markdown"
-            ng-bind-html="confirmationText">
-          </div>
-
-          <div class="ui purple button"
-               ui-sref="app.confirmation">
-            Teyit Bilgilerini {{pastConfirmation ? 'Görüntüle' : 'Düzenle'}}
-          </div>
-
-          <div class="ui red button"
-               ng-click="declineAdmission()">
-            Katılımı Reddet
-          </div>
-
-        </div>
-
-        <div
-          class="description"
-          ng-if="dashState('declined')">
-
-          <p>
-            {{ DASHBOARD.DECLINED }}
-          </p>
-        </div>
-
-      </div>
-
+    <div class="divided title">
+        Ana Sayfa
     </div>
-  </div>
+
+    <div class="ui stackable centered page grid">
+        <div class="column">
+            <div class="ui status segment">
+                <div class="small title">
+                    Başvuru Durumun:
+                </div>
+                <br>
+
+                <div
+                        class="state"
+                        ng-class="user.status.name"
+                        ng-if="!showWaitlist && !dashState('admittedAndCannotConfirm')">
+                    {{user.status.name}}
+                </div>
+
+                <div
+                        class="declined state"
+                        ng-if="dashState('admittedAndCannotConfirm')">
+                    Başvuru Geçerlilik Süresi Geçmiş
+                </div>
+
+
+                <div
+                        ng-if="showWaitlist"
+                        class="waitlist state">
+                    Bekleme Listesinde
+                </div>
+
+                <div class="ui divider"></div>
+
+                <div ng-if="user.profile.name.length > 0">
+                    <p>
+                        <strong>
+                            Merhaba {{user.profile.name}}!
+                        </strong>
+                    </p>
+                    <p>
+                    </p>
+                </div>
+
+                <div
+                        ng-if="dashState('unverified')"
+                        class="description">
+                    <p>
+                        <strong>
+                            E-Postanı ({{user.email}}) daha doğrulamamışsın!
+                        </strong>
+                    </p>
+                    <p>
+                        {{ DASHBOARD.UNVERIFIED }}
+                    </p>
+                    <div class="ui purple button" ng-click="resendEmail()">
+                        Doğrulama E-Postasını Tekrar Gönder
+                    </div>
+                </div>
+
+                <div
+                        ng-class="settings.timeClose"
+                        ng-if="!dashState('admittedAndCanConfirm') || !dashState('admittedAndCannotConfirm') || !dashState('confirmed') || !dashState('declined')">
+                    <strong>
+                        Son Kayıt Tarihi:
+                    </strong>
+                    13 Mayıs 2019 23:59
+                </div>
+
+                <div
+                        ng-class="settings.timeConfirm"
+                        ng-if="dashState('admittedAndCanConfirm') || dashState('admittedAndCannotConfirm') || dashState('confirmed') || dashState('declined')">
+                    <strong>
+                        Son Teyit Tarihi:
+                    </strong>
+                    <br>
+                    1 Mayıs 2019 23:59 (Erken Kayıt)
+                    <br>
+                    13 Mayıs 2019 23:59 (Geç Kayıt)
+                </div>
+                <br>
+                <div
+                        ng-if="dashState('openAndIncomplete')"
+                        class="description">
+                    <p>
+                        <strong>
+                            {{ DASHBOARD.INCOMPLETE_TITLE }}
+                        </strong>
+                    </p>
+                    <p>
+                        {{ DASHBOARD.INCOMPLETE }}
+                    </p>
+
+                    <div class="ui purple button"
+                         ui-sref="app.application">
+                        Başvurunu Tamamla
+                    </div>
+
+                </div>
+
+                <div
+                        ng-if="dashState('openAndSubmitted')"
+                        class="description">
+                    <p>
+                        <strong>
+                            {{ DASHBOARD.SUBMITTED_TITLE }}
+                        </strong>
+                    </p>
+                    <p>
+                        {{ DASHBOARD.SUBMITTED }}
+                    </p>
+
+
+                </div>
+
+                <div
+                        ng-if="dashState('closedAndIncomplete')">
+                    <p>
+                        <strong>
+                            {{ DASHBOARD.CLOSED_AND_INCOMPLETE_TITLE }}
+                        </strong>
+                    </p>
+                    <p>
+                        {{ DASHBOARD.CLOSED_AND_INCOMPLETE }}
+                    </p>
+                </div>
+
+                <div
+                        ng-if="dashState('closedAndSubmitted')"
+                        class="description">
+
+                    <div
+                            class="markdown"
+                            ng-bind-html="waitlistText">
+                    </div>
+
+
+                </div>
+
+                <div
+                        class="description"
+                        ng-if="dashState('admittedAndCanConfirm')">
+
+                    <div class="markdown">
+                        <h4>
+                            {{ DASHBOARD.ADMITTED_AND_CAN_CONFIRM_TITLE }}
+                        </h4>
+                    </div>
+
+                    <div
+                            class="markdown"
+                            ng-bind-html="acceptanceText">
+                    </div>
+
+                    <div class="markdown">
+                        <h4>
+                            {{ DASHBOARD.ADMITTED_AND_CAN_CONFIRM }}
+                        </h4>
+                    </div>
+
+                    <div class="ui purple button"
+                         ui-sref="app.confirmation">
+                        Katılımını Teyit Et
+                    </div>
+
+                    <div class="ui red button"
+                         ng-click="declineAdmission()">
+                        Katılımını Reddet
+                    </div>
+
+                </div>
+
+                <div
+                        class="description"
+                        ng-if="dashState('admittedAvaitingPayment')">
+                    <p>
+                        <strong>
+                            {{ DASHBOARD.PAYMENT_TITLE }}
+                        </strong>
+                    </p>
+                    <p>
+                        {{ DASHBOARD.PAYMENT }}
+                    </p>
+
+                    <div class="ui purple button"
+                         ui-sref="app.confirmation">
+                        Teyit formunu düzenle
+                    </div>
+
+                    <div class="ui red button"
+                         ng-click="declineAdmission()">
+                        Katılımını Reddet
+                    </div>
+
+                </div>
+
+                <div
+                        class="description"
+                        ng-if="dashState('admittedAndCannotConfirm')">
+
+                    <div class="markdown">
+                        <h4>
+                            {{ DASHBOARD.ADMITTED_AND_CANNOT_CONFIRM_TITLE }}
+                        </h4>
+
+                        <p>
+                            {{ DASHBOARD.ADMITTED_AND_CANNOT_CONFIRM }}
+                        </p>
+                    </div>
+
+                </div>
+
+                <div
+                        class="description"
+                        ng-if="dashState('confirmed')">
+
+                    <div
+                            ng-show="!pastConfirmation"
+                            class="markdown">
+                        <h4>
+                            {{ DASHBOARD.CONFIRMED_NOT_PAST_TITLE }}
+                        </h4>
+                    </div>
+
+                    <div
+                            class="markdown"
+                            ng-bind-html="confirmationText">
+                    </div>
+
+                    <div class="ui purple button"
+                         ui-sref="app.confirmation">
+                        Teyit Bilgilerini {{pastConfirmation ? 'Görüntüle' : 'Düzenle'}}
+                    </div>
+
+                    <div class="ui red button"
+                         ng-click="declineAdmission()">
+                        Katılımı Reddet
+                    </div>
+
+                </div>
+
+                <div
+                        class="description"
+                        ng-if="dashState('declined')">
+
+                    <p>
+                        {{ DASHBOARD.DECLINED }}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>

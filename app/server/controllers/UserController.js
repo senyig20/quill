@@ -10,10 +10,9 @@ var moment = require('moment');
 var UserController = {};
 
 
-
 // Tests a string if it ends with target s
-function endsWith(s, test){
-  return test.indexOf(s, test.length - s.length) !== -1;
+function endsWith(s, test) {
+    return test.indexOf(s, test.length - s.length) !== -1;
 }
 
 /**
@@ -22,51 +21,51 @@ function endsWith(s, test){
  * @param  {Function} callback args(err, true, false)
  * @return {[type]}            [description]
  */
-function canRegister(email, password, callback){
+function canRegister(email, password, callback) {
 
-  if (!password || password.length < 6){
-    return callback({ message: "Password must be 6 or more characters."}, false);
-  }
-
-  // Check if its within the registration window.
-  Settings.getRegistrationTimes(function(err, times){
-    if (err) {
-      callback(err);
+    if (!password || password.length < 6) {
+        return callback({message: "Password must be 6 or more characters."}, false);
     }
 
-    var now = Date.now();
-
-    if (now < times.timeOpen){
-      return callback({
-        message: "Registration opens in " + moment(times.timeOpen).fromNow() + "!"
-      });
-    }
-
-    if (now > times.timeClose){
-      return callback({
-        message: "Sorry, registration is closed."
-      });
-    }
-
-    // Check for emails.
-    Settings.getWhitelistedEmails(function(err, emails){
-      if (err || !emails){
-        return callback(err);
-      }
-      for (var i = 0; i < emails.length; i++) {
-        if (validator.isEmail(email) && endsWith(emails[i], email)){
-          return callback(null, true);
+    // Check if its within the registration window.
+    Settings.getRegistrationTimes(function (err, times) {
+        if (err) {
+            callback(err);
         }
-      }
-      // return callback({
-      //   message: "Not a valid educational email."
-      // }, false);
 
-      // Opt out the educational email check function
-      return callback(null,true);
+        var now = Date.now();
+
+        if (now < times.timeOpen) {
+            return callback({
+                message: "Registration opens in " + moment(times.timeOpen).fromNow() + "!"
+            });
+        }
+
+        if (now > times.timeClose) {
+            return callback({
+                message: "Sorry, registration is closed."
+            });
+        }
+
+        // Check for emails.
+        Settings.getWhitelistedEmails(function (err, emails) {
+            if (err || !emails) {
+                return callback(err);
+            }
+            for (var i = 0; i < emails.length; i++) {
+                if (validator.isEmail(email) && endsWith(emails[i], email)) {
+                    return callback(null, true);
+                }
+            }
+            // return callback({
+            //   message: "Not a valid educational email."
+            // }, false);
+
+            // Opt out the educational email check function
+            return callback(null, true);
+        });
+
     });
-
-  });
 }
 
 /**
@@ -74,10 +73,10 @@ function canRegister(email, password, callback){
  * @param  {String}   token    auth token
  * @param  {Function} callback args(err, token, user)
  */
-UserController.loginWithToken = function(token, callback){
-  User.getByToken(token, function(err, user){
-    return callback(err, token, user);
-  });
+UserController.loginWithToken = function (token, callback) {
+    User.getByToken(token, function (err, user) {
+        return callback(err, token, user);
+    });
 };
 
 /**
@@ -86,47 +85,47 @@ UserController.loginWithToken = function(token, callback){
  * @param  {String}   password Password
  * @param  {Function} callback args(err, token, user)
  */
-UserController.loginWithPassword = function(email, password, callback){
+UserController.loginWithPassword = function (email, password, callback) {
 
-  if (!password || password.length === 0){
-    return callback({
-      message: 'Please enter a password'
-    });
-  }
-
-  if (!validator.isEmail(email)){
-    return callback({
-      message: 'Invalid email'
-    });
-  }
-
-  User
-    .findOneByEmail(email)
-    .select('+password')
-    .exec(function(err, user){
-      if (err) {
-        return callback(err);
-      }
-      if (!user) {
+    if (!password || password.length === 0) {
         return callback({
-          message: "We couldn't find you!"
+            message: 'Please enter a password'
         });
-      }
-      if (!user.checkPassword(password)) {
+    }
+
+    if (!validator.isEmail(email)) {
         return callback({
-          message: "That's not the right password."
+            message: 'Invalid email'
         });
-      }
+    }
 
-      // yo dope nice login here's a token for your troubles
-      var token = user.generateAuthToken();
+    User
+        .findOneByEmail(email)
+        .select('+password')
+        .exec(function (err, user) {
+            if (err) {
+                return callback(err);
+            }
+            if (!user) {
+                return callback({
+                    message: "We couldn't find you!"
+                });
+            }
+            if (!user.checkPassword(password)) {
+                return callback({
+                    message: "That's not the right password."
+                });
+            }
 
-      var u = user.toJSON();
+            // yo dope nice login here's a token for your troubles
+            var token = user.generateAuthToken();
 
-      delete u.password;
+            var u = user.toJSON();
 
-      return callback(null, token, u);
-  });
+            delete u.password;
+
+            return callback(null, token, u);
+        });
 };
 
 /**
@@ -135,81 +134,80 @@ UserController.loginWithPassword = function(email, password, callback){
  * @param  {String}   password [description]
  * @param  {Function} callback args(err, user)
  */
-UserController.createUser = function(email, password, confirmpassword, callback) {
+UserController.createUser = function (email, password, confirmpassword, callback) {
 
-  if (typeof email !== "string"){
-    return callback({
-      message: "Not a valid email."
-    });
-  }
-
-  if ( password !== confirmpassword){
-    return callback({
-      message: "Passwords do not match."
-    });
-  }
-
-
-
-  email = email.toLowerCase();
-
-  // Check that there isn't a user with this email already.
-  canRegister(email, password, function(err, valid){
-
-    if (err || !valid){
-      return callback(err);
+    if (typeof email !== "string") {
+        return callback({
+            message: "Not a valid email."
+        });
     }
 
-    User
-      .findOneByEmail(email)
-      .exec(function(err, user){
+    if (password !== confirmpassword) {
+        return callback({
+            message: "Passwords do not match."
+        });
+    }
 
-        if (err) {
-          return callback(err);
+
+    email = email.toLowerCase();
+
+    // Check that there isn't a user with this email already.
+    canRegister(email, password, function (err, valid) {
+
+        if (err || !valid) {
+            return callback(err);
         }
 
-        if (user) {
-          return callback({
-            message: 'An account for this email already exists.'
-          });
-        } else {
+        User
+            .findOneByEmail(email)
+            .exec(function (err, user) {
 
-          // Make a new user
-          var u = new User();
-          u.email = email;
-          u.password = User.generateHash(password);
-          u.save(function(err){
-            if (err){
-              return callback({
-                message: "Not a valid email."
-              });
-            } else {
-              // yay! success.
-              var token = u.generateAuthToken();
-
-              // Send over a verification email
-              var verificationToken = u.generateEmailVerificationToken();
-              Mailer.sendVerificationEmail(email, verificationToken);
-
-              return callback(
-                null,
-                {
-                  token: token,
-                  user: u
+                if (err) {
+                    return callback(err);
                 }
-              );
-            }
 
-          });
+                if (user) {
+                    return callback({
+                        message: 'An account for this email already exists.'
+                    });
+                } else {
 
-        }
+                    // Make a new user
+                    var u = new User();
+                    u.email = email;
+                    u.password = User.generateHash(password);
+                    u.save(function (err) {
+                        if (err) {
+                            return callback({
+                                message: "Not a valid email."
+                            });
+                        } else {
+                            // yay! success.
+                            var token = u.generateAuthToken();
 
+                            // Send over a verification email
+                            var verificationToken = u.generateEmailVerificationToken();
+                            Mailer.sendVerificationEmail(email, verificationToken);
+
+                            return callback(
+                                null,
+                                {
+                                    token: token,
+                                    user: u
+                                }
+                            );
+                        }
+
+                    });
+
+                }
+
+            });
     });
-  });
 };
 
 UserController.getByToken = function (token, callback) {
-  User.getByToken(token, callback);
+    User.getByToken(token, callback);
 };
 
 /**
@@ -218,16 +216,16 @@ UserController.getByToken = function (token, callback) {
  * @param  {Function} callback args(err, user)
  */
 UserController.getAll = function (callback) {
-  User.find({}, callback);
+    User.find({}, callback);
 };
-UserController.sendEmailsToNonConfirmedProfiles = function(callback) {
-  User.find({"status.admitted": true, "status.confirmed": false}, 'email nickname', function (err, users) {
-    if (err) {
-      return callback(err);
-    }
-    Mailer.sendLaggerPaymentEmails(users);
-    return callback(err);
-  });
+UserController.sendEmailsToNonConfirmedProfiles = function (callback) {
+    User.find({"status.admitted": true, "status.confirmed": false}, 'email nickname', function (err, users) {
+        if (err) {
+            return callback(err);
+        }
+        Mailer.sendLaggerPaymentEmails(users);
+        return callback(err);
+    });
 };
 
 /**
@@ -237,14 +235,14 @@ UserController.sendEmailsToNonConfirmedProfiles = function(callback) {
  * @returns {Object} queries    text queries
  */
 function buildTextQueries(searchText) {
-  const queries = [];
-  if (searchText.length > 0) {
-    const re = new RegExp(searchText, 'i');
-    queries.push({ 'email': re });
-    queries.push({ 'profile.name': re });
-    queries.push({ 'profile.school': re});
-  }
-  return queries;
+    const queries = [];
+    if (searchText.length > 0) {
+        const re = new RegExp(searchText, 'i');
+        queries.push({'email': re});
+        queries.push({'profile.name': re});
+        queries.push({'profile.school': re});
+    }
+    return queries;
 }
 
 /**
@@ -255,21 +253,21 @@ function buildTextQueries(searchText) {
  * @returns {Object} queries  status queries
  */
 function buildStatusQueries(statusFilters) {
-  const queries = [];
-  for (var key in statusFilters) {
-    if (statusFilters.hasOwnProperty(key)) {
-      // Convert to boolean
-      const hasStatus = (statusFilters[key] === 'true');
-      if (hasStatus) {
-        var q = {};
-        // Verified is a prop on user object
-        var queryKey = (key === 'verified' ? key : 'status.' + key);
-        q[queryKey] = true;
-        queries.push(q);
-      }
+    const queries = [];
+    for (var key in statusFilters) {
+        if (statusFilters.hasOwnProperty(key)) {
+            // Convert to boolean
+            const hasStatus = (statusFilters[key] === 'true');
+            if (hasStatus) {
+                var q = {};
+                // Verified is a prop on user object
+                var queryKey = (key === 'verified' ? key : 'status.' + key);
+                q[queryKey] = true;
+                queries.push(q);
+            }
+        }
     }
-  }
-  return queries;
+    return queries;
 }
 
 /**
@@ -284,18 +282,18 @@ function buildStatusQueries(statusFilters) {
  * @returns {Object} findQuery     query object
  */
 function buildFindQuery(textQueries, statusQueries) {
-  const findQuery = {};
-  if (textQueries.length > 0 && statusQueries.length > 0) {
-    var queryRoot = [];
-    queryRoot.push({ '$or': textQueries });
-    queryRoot.push({ '$and': statusQueries });
-    findQuery.$and = queryRoot;
-  } else if (textQueries.length > 0) {
-    findQuery.$or = textQueries;
-  } else if (statusQueries.length > 0) {
-    findQuery.$and = statusQueries;
-  }
-  return findQuery;
+    const findQuery = {};
+    if (textQueries.length > 0 && statusQueries.length > 0) {
+        var queryRoot = [];
+        queryRoot.push({'$or': textQueries});
+        queryRoot.push({'$and': statusQueries});
+        findQuery.$and = queryRoot;
+    } else if (textQueries.length > 0) {
+        findQuery.$or = textQueries;
+    } else if (statusQueries.length > 0) {
+        findQuery.$and = statusQueries;
+    }
+    return findQuery;
 }
 
 
@@ -305,48 +303,48 @@ function buildFindQuery(textQueries, statusQueries) {
  * @param  {[type]}   size     size of the page
  * @param  {Function} callback args(err, {users, page, totalPages})
  */
-UserController.getPage = function(query, callback){
-  var page = query.page;
-  var size = parseInt(query.size);
-  var searchText = query.text;
-  var statusFilters = query.statusFilters;
+UserController.getPage = function (query, callback) {
+    var page = query.page;
+    var size = parseInt(query.size);
+    var searchText = query.text;
+    var statusFilters = query.statusFilters;
 
-  // Build a query for the search text
-  var textQueries = buildTextQueries(searchText);
-  // Build a query for each status
-  var statusQueries = buildStatusQueries(statusFilters);
+    // Build a query for the search text
+    var textQueries = buildTextQueries(searchText);
+    // Build a query for each status
+    var statusQueries = buildStatusQueries(statusFilters);
 
-  // Build find query
-  var findQuery = buildFindQuery(textQueries, statusQueries);
+    // Build find query
+    var findQuery = buildFindQuery(textQueries, statusQueries);
 
-  User
-    .find(findQuery)
-    .sort({
-      'profile.name': 'asc'
-    })
-    .select('+status.admittedBy')
-    .skip(page * size)
-    .limit(size)
-    .exec(function (err, users){
-      if (err || !users){
-        return callback(err);
-      }
+    User
+        .find(findQuery)
+        .sort({
+            'profile.name': 'asc'
+        })
+        .select('+status.admittedBy')
+        .skip(page * size)
+        .limit(size)
+        .exec(function (err, users) {
+            if (err || !users) {
+                return callback(err);
+            }
 
-      User.count(findQuery).exec(function(err, count){
+            User.count(findQuery).exec(function (err, count) {
 
-        if (err){
-          return callback(err);
-        }
+                if (err) {
+                    return callback(err);
+                }
 
-        return callback(null, {
-          users: users,
-          page: page,
-          size: size,
-          totalPages: Math.ceil(count / size)
+                return callback(null, {
+                    users: users,
+                    page: page,
+                    size: size,
+                    totalPages: Math.ceil(count / size)
+                });
+            });
+
         });
-      });
-
-    });
 };
 
 /**
@@ -354,8 +352,8 @@ UserController.getPage = function(query, callback){
  * @param  {String}   id       User id
  * @param  {Function} callback args(err, user)
  */
-UserController.getById = function (id, callback){
-  User.findById(id, callback);
+UserController.getById = function (id, callback) {
+    User.findById(id, callback);
 };
 
 /**
@@ -365,54 +363,54 @@ UserController.getById = function (id, callback){
  * @param  {Object}   profile  Profile object
  * @param  {Function} callback Callback with args (err, user)
  */
-UserController.updateProfileById = function (id, profile, callback){
+UserController.updateProfileById = function (id, profile, callback) {
 
-  // Validate the user profile, and mark the user as profile completed
-  // when successful.
-  User.validateProfile(profile, function(err){
+    // Validate the user profile, and mark the user as profile completed
+    // when successful.
+    User.validateProfile(profile, function (err) {
 
-    if (err){
-      return callback({message: 'invalid profile'});
-    }
-
-    // Check if its within the registration window.
-    Settings.getRegistrationTimes(function(err, times){
-      if (err) {
-        callback(err);
-      }
-
-      var now = Date.now();
-
-      if (now < times.timeOpen){
-        return callback({
-          message: "Registration opens in " + moment(times.timeOpen).fromNow() + "!"
-        });
-      }
-
-      if (now > times.timeClose){
-        return callback({
-          message: "Sorry, registration is closed."
-        });
-      }
-    });
-
-    User.findOneAndUpdate({
-      _id: id,
-      verified: true
-    },
-      {
-        $set: {
-          'lastUpdated': Date.now(),
-          'profile': profile,
-          'status.completedProfile': true
+        if (err) {
+            return callback({message: 'invalid profile'});
         }
-      },
-      {
-        new: true
-      },
-      callback);
 
-  });
+        // Check if its within the registration window.
+        Settings.getRegistrationTimes(function (err, times) {
+            if (err) {
+                callback(err);
+            }
+
+            var now = Date.now();
+
+            if (now < times.timeOpen) {
+                return callback({
+                    message: "Registration opens in " + moment(times.timeOpen).fromNow() + "!"
+                });
+            }
+
+            if (now > times.timeClose) {
+                return callback({
+                    message: "Sorry, registration is closed."
+                });
+            }
+        });
+
+        User.findOneAndUpdate({
+                _id: id,
+                verified: true
+            },
+            {
+                $set: {
+                    'lastUpdated': Date.now(),
+                    'profile': profile,
+                    'status.completedProfile': true
+                }
+            },
+            {
+                new: true
+            },
+            callback);
+
+    });
 };
 
 /**
@@ -422,41 +420,41 @@ UserController.updateProfileById = function (id, profile, callback){
  * @param  {Object}   confirmation  Confirmation object
  * @param  {Function} callback      Callback with args (err, user)
  */
-UserController.updateConfirmationById = function (id, confirmation, callback){
+UserController.updateConfirmationById = function (id, confirmation, callback) {
 
-  User.findById(id, function(err, user){
+    User.findById(id, function (err, user) {
 
-    if(err || !user){
-      return callback(err);
-    }
-
-    // Make sure that the user followed the deadline, but if they're already confirmed
-    // that's okay.
-    if (Date.now() >= user.status.confirmBy && !user.status.confirmed){
-      return callback({
-        message: "You've missed the confirmation deadline."
-      });
-    }
-
-    // You can only confirm acceptance if you're admitted and haven't declined.
-    User.findOneAndUpdate({
-      '_id': id,
-      'verified': true,
-      'status.admitted': true,
-      'status.declined': {$ne: true}
-    },
-      {
-        $set: {
-          'lastUpdated': Date.now(),
-          'confirmation': confirmation,
-          'status.confirmed': true,
+        if (err || !user) {
+            return callback(err);
         }
-      }, {
-        new: true
-      },
-      callback);
 
-  });
+        // Make sure that the user followed the deadline, but if they're already confirmed
+        // that's okay.
+        if (Date.now() >= user.status.confirmBy && !user.status.confirmed) {
+            return callback({
+                message: "You've missed the confirmation deadline."
+            });
+        }
+
+        // You can only confirm acceptance if you're admitted and haven't declined.
+        User.findOneAndUpdate({
+                '_id': id,
+                'verified': true,
+                'status.admitted': true,
+                'status.declined': {$ne: true}
+            },
+            {
+                $set: {
+                    'lastUpdated': Date.now(),
+                    'confirmation': confirmation,
+                    'status.confirmed': true,
+                }
+            }, {
+                new: true
+            },
+            callback);
+
+    });
 };
 
 /**
@@ -465,25 +463,25 @@ UserController.updateConfirmationById = function (id, confirmation, callback){
  * @param  {String}   id            Id of the user
  * @param  {Function} callback      Callback with args (err, user)
  */
-UserController.declineById = function (id, callback){
+UserController.declineById = function (id, callback) {
 
-  // You can only decline if you've been accepted.
-  User.findOneAndUpdate({
-    '_id': id,
-    'verified': true,
-    'status.admitted': true,
-    'status.declined': false
-  },
-    {
-      $set: {
-        'lastUpdated': Date.now(),
-        'status.confirmed': false,
-        'status.declined': true
-      }
-    }, {
-      new: true
-    },
-    callback);
+    // You can only decline if you've been accepted.
+    User.findOneAndUpdate({
+            '_id': id,
+            'verified': true,
+            'status.admitted': true,
+            'status.declined': false
+        },
+        {
+            $set: {
+                'lastUpdated': Date.now(),
+                'status.confirmed': false,
+                'status.declined': true
+            }
+        }, {
+            new: true
+        },
+        callback);
 };
 
 /**
@@ -491,37 +489,37 @@ UserController.declineById = function (id, callback){
  * @param  {[type]}   token    token
  * @param  {Function} callback args(err, user)
  */
-UserController.verifyByToken = function(token, callback){
-  User.verifyEmailVerificationToken(token, function(err, email){
-    User.findOneAndUpdate({
-      email: new RegExp('^' + email + '$', 'i')
-    },{
-      $set: {
-        'verified': true
-      }
-    }, {
-      new: true
-    },
-    callback);
-  });
+UserController.verifyByToken = function (token, callback) {
+    User.verifyEmailVerificationToken(token, function (err, email) {
+        User.findOneAndUpdate({
+                email: new RegExp('^' + email + '$', 'i')
+            }, {
+                $set: {
+                    'verified': true
+                }
+            }, {
+                new: true
+            },
+            callback);
+    });
 };
 
 
-UserController.sendEmailsToNonCompleteProfiles = function(callback) {
-  User.find({"status.completedProfile": false}, 'email nickname', function (err, users) {
-    if (err) {
-      return callback(err);
-    }
-    Mailer.sendLaggerEmails(users);
-    return callback(err);
-  });
+UserController.sendEmailsToNonCompleteProfiles = function (callback) {
+    User.find({"status.completedProfile": false}, 'email nickname', function (err, users) {
+        if (err) {
+            return callback(err);
+        }
+        Mailer.sendLaggerEmails(users);
+        return callback(err);
+    });
 };
 
-UserController.sendEmailsToAdmitted = function(email, callback) {
+UserController.sendEmailsToAdmitted = function (email, callback) {
     Mailer.sendAcceptEmails(email);
 };
 
-UserController.sendPaymentVerification = function(email, callback) {
+UserController.sendPaymentVerification = function (email, callback) {
     Mailer.sendPaymentEmails(email);
 };
 
@@ -529,20 +527,20 @@ UserController.sendPaymentVerification = function(email, callback) {
 /**
  * Resend an email verification email given a user id.
  */
-UserController.sendVerificationEmailById = function(id, callback){
-  User.findOne(
-    {
-      _id: id,
-      verified: false
-    },
-    function(err, user){
-      if (err || !user){
-        return callback(err);
-      }
-      var token = user.generateEmailVerificationToken();
-      Mailer.sendVerificationEmail(user.email, token);
-      return callback(err, user);
-  });
+UserController.sendVerificationEmailById = function (id, callback) {
+    User.findOne(
+        {
+            _id: id,
+            verified: false
+        },
+        function (err, user) {
+            if (err || !user) {
+                return callback(err);
+            }
+            var token = user.generateEmailVerificationToken();
+            Mailer.sendVerificationEmail(user.email, token);
+            return callback(err, user);
+        });
 };
 
 /**
@@ -551,17 +549,17 @@ UserController.sendVerificationEmailById = function(id, callback){
  * @param  {Function} callback [description]
  * @return {[type]}            [description]
  */
-UserController.sendPasswordResetEmail = function(email, callback){
-  User
-    .findOneByEmail(email)
-    .exec(function(err, user){
-      if (err || !user){
-        return callback(err);
-      }
+UserController.sendPasswordResetEmail = function (email, callback) {
+    User
+        .findOneByEmail(email)
+        .exec(function (err, user) {
+            if (err || !user) {
+                return callback(err);
+            }
 
-      var token = user.generateTempAuthToken();
-      Mailer.sendPasswordResetEmail(email, token, callback);
-    });
+            var token = user.generateTempAuthToken();
+            Mailer.sendPasswordResetEmail(email, token, callback);
+        });
 };
 
 /**
@@ -573,34 +571,34 @@ UserController.sendPasswordResetEmail = function(email, callback){
  * @param  {[type]}   newPassword new password
  * @param  {Function} callback    args(err, user)
  */
-UserController.changePassword = function(id, oldPassword, newPassword, callback){
-  if (!id || !oldPassword || !newPassword){
-    return callback({
-      message: 'Bad arguments.'
-    });
-  }
-
-  User
-    .findById(id)
-    .select('password')
-    .exec(function(err, user){
-      if (user.checkPassword(oldPassword)) {
-        User.findOneAndUpdate({
-          _id: id
-        },{
-          $set: {
-            password: User.generateHash(newPassword)
-          }
-        }, {
-          new: true
-        },
-        callback);
-      } else {
+UserController.changePassword = function (id, oldPassword, newPassword, callback) {
+    if (!id || !oldPassword || !newPassword) {
         return callback({
-          message: 'Incorrect password'
+            message: 'Bad arguments.'
         });
-      }
-    });
+    }
+
+    User
+        .findById(id)
+        .select('password')
+        .exec(function (err, user) {
+            if (user.checkPassword(oldPassword)) {
+                User.findOneAndUpdate({
+                        _id: id
+                    }, {
+                        $set: {
+                            password: User.generateHash(newPassword)
+                        }
+                    }, {
+                        new: true
+                    },
+                    callback);
+            } else {
+                return callback({
+                    message: 'Incorrect password'
+                });
+            }
+        });
 };
 
 /**
@@ -609,43 +607,43 @@ UserController.changePassword = function(id, oldPassword, newPassword, callback)
  * @param  {String}   password    New Password
  * @param  {Function} callback    args(err, user)
  */
-UserController.resetPassword = function(token, password, callback){
-  if (!password || !token){
-    return callback({
-      message: 'Bad arguments'
-    });
-  }
-
-  if (password.length < 6){
-    return callback({
-      message: 'Password must be 6 or more characters.'
-    });
-  }
-
-  User.verifyTempAuthToken(token, function(err, id){
-
-    if(err || !id){
-      return callback(err);
+UserController.resetPassword = function (token, password, callback) {
+    if (!password || !token) {
+        return callback({
+            message: 'Bad arguments'
+        });
     }
 
-    User
-      .findOneAndUpdate({
-        _id: id
-      },{
-        $set: {
-          password: User.generateHash(password)
-        }
-      }, function(err, user){
-        if (err || !user){
-          return callback(err);
+    if (password.length < 6) {
+        return callback({
+            message: 'Password must be 6 or more characters.'
+        });
+    }
+
+    User.verifyTempAuthToken(token, function (err, id) {
+
+        if (err || !id) {
+            return callback(err);
         }
 
-        Mailer.sendPasswordChangedEmail(user.email);
-        return callback(null, {
-          message: 'Password successfully reset!'
-        });
-      });
-  });
+        User
+            .findOneAndUpdate({
+                _id: id
+            }, {
+                $set: {
+                    password: User.generateHash(password)
+                }
+            }, function (err, user) {
+                if (err || !user) {
+                    return callback(err);
+                }
+
+                Mailer.sendPasswordChangedEmail(user.email);
+                return callback(null, {
+                    message: 'Password successfully reset!'
+                });
+            });
+    });
 };
 
 /**
@@ -656,23 +654,23 @@ UserController.resetPassword = function(token, password, callback){
  * @param  {String}   user     User doing the admitting
  * @param  {Function} callback args(err, user)
  */
-UserController.admitUser = function(id, user, callback){
-  Settings.getRegistrationTimes(function(err, times){
-    User
-      .findOneAndUpdate({
-        _id: id,
-        verified: true
-      },{
-        $set: {
-          'status.admitted': true,
-          'status.admittedBy': user.email,
-          'status.confirmBy': times.timeConfirm
-        }
-      }, {
-        new: true
-      },
-      callback);
-  });
+UserController.admitUser = function (id, user, callback) {
+    Settings.getRegistrationTimes(function (err, times) {
+        User
+            .findOneAndUpdate({
+                    _id: id,
+                    verified: true
+                }, {
+                    $set: {
+                        'status.admitted': true,
+                        'status.admittedBy': user.email,
+                        'status.confirmBy': times.timeConfirm
+                    }
+                }, {
+                    new: true
+                },
+                callback);
+    });
 };
 
 /**
@@ -683,19 +681,19 @@ UserController.admitUser = function(id, user, callback){
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
-UserController.checkInById = function(id, user, callback){
-  User.findOneAndUpdate({
-    _id: id,
-    verified: true
-  },{
-    $set: {
-      'status.checkedIn': true,
-      'status.checkInTime': Date.now()
-    }
-  }, {
-    new: true
-  },
-  callback);
+UserController.checkInById = function (id, user, callback) {
+    User.findOneAndUpdate({
+            _id: id,
+            verified: true
+        }, {
+            $set: {
+                'status.checkedIn': true,
+                'status.checkInTime': Date.now()
+            }
+        }, {
+            new: true
+        },
+        callback);
 };
 
 
@@ -707,18 +705,18 @@ UserController.checkInById = function(id, user, callback){
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
-UserController.acceptPayment = function(id, user, callback){
-  User.findOneAndUpdate({
-    _id: id,
-    verified: true
-  },{
-    $set: {
-      'status.paymentMade': true
-        }
-  }, {
-    new: true
-  },
-  callback);
+UserController.acceptPayment = function (id, user, callback) {
+    User.findOneAndUpdate({
+            _id: id,
+            verified: true
+        }, {
+            $set: {
+                'status.paymentMade': true
+            }
+        }, {
+            new: true
+        },
+        callback);
 };
 /**
  * [ADMIN ONLY]
@@ -728,18 +726,18 @@ UserController.acceptPayment = function(id, user, callback){
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
-UserController.unacceptPayment = function(id, user, callback){
-  User.findOneAndUpdate({
-    _id: id,
-    verified: true
-  },{
-    $set: {
-      'status.paymentMade': false
-        }
-  }, {
-    new: true
-  },
-  callback);
+UserController.unacceptPayment = function (id, user, callback) {
+    User.findOneAndUpdate({
+            _id: id,
+            verified: true
+        }, {
+            $set: {
+                'status.paymentMade': false
+            }
+        }, {
+            new: true
+        },
+        callback);
 };
 
 /**
@@ -750,18 +748,18 @@ UserController.unacceptPayment = function(id, user, callback){
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
-UserController.checkOutById = function(id, user, callback){
-  User.findOneAndUpdate({
-    _id: id,
-    verified: true
-  },{
-    $set: {
-      'status.checkedIn': false
-    }
-  }, {
-    new: true
-  },
-  callback);
+UserController.checkOutById = function (id, user, callback) {
+    User.findOneAndUpdate({
+            _id: id,
+            verified: true
+        }, {
+            $set: {
+                'status.checkedIn': false
+            }
+        }, {
+            new: true
+        },
+        callback);
 };
 
 /**
@@ -772,18 +770,18 @@ UserController.checkOutById = function(id, user, callback){
  * @param  {String}   user     User making this person admin
  * @param  {Function} callback args(err, user)
  */
-UserController.makeAdminById = function(id, user, callback){
-  User.findOneAndUpdate({
-    _id: id,
-    verified: true
-  },{
-    $set: {
-      'admin': true
-    }
-  }, {
-    new: true
-  },
-  callback);
+UserController.makeAdminById = function (id, user, callback) {
+    User.findOneAndUpdate({
+            _id: id,
+            verified: true
+        }, {
+            $set: {
+                'admin': true
+            }
+        }, {
+            new: true
+        },
+        callback);
 };
 
 /**
@@ -794,18 +792,18 @@ UserController.makeAdminById = function(id, user, callback){
  * @param  {String}   user     User making this person admin
  * @param  {Function} callback args(err, user)
  */
-UserController.removeAdminById = function(id, user, callback){
-  User.findOneAndUpdate({
-    _id: id,
-    verified: true
-  },{
-    $set: {
-      'admin': false
-    }
-  }, {
-    new: true
-  },
-  callback);
+UserController.removeAdminById = function (id, user, callback) {
+    User.findOneAndUpdate({
+            _id: id,
+            verified: true
+        }, {
+            $set: {
+                'admin': false
+            }
+        }, {
+            new: true
+        },
+        callback);
 };
 
 
@@ -813,8 +811,8 @@ UserController.removeAdminById = function(id, user, callback){
  * [ADMIN ONLY]
  */
 
-UserController.getStats = function(callback){
-  return callback(null, Stats.getUserStats());
+UserController.getStats = function (callback) {
+    return callback(null, Stats.getUserStats());
 };
 
 module.exports = UserController;
