@@ -17,11 +17,11 @@ angular.module('reg')
 
             $scope.submitButtonDisabled = true;
 
-            // Is the student from McGill?
-            $scope.isMcGillStudent = $scope.user.email.split('@')[1] == 'mail.mcgill.edu';
+            // Is the student from RC?
+            $scope.isRCStudent = $scope.user.email.split('@')[1] == 'robcol.k12.tr';
 
             // If so, default them to adult: true
-            if ($scope.isMcGillStudent) {
+            if ($scope.isRCStudent) {
                 $scope.user.profile.adult = true;
             }
 
