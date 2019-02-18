@@ -159,6 +159,11 @@ angular.module('reg')
                     templateUrl: "views/admin/stats/stats.html",
                     controller: 'AdminStatsCtrl'
                 })
+                .state('app.admin.exportteams', {
+                    url: "/admin/exportteams",
+                    templateUrl: "views/admin/exportteams/exportteams.html",
+                    controller: 'AdminExportTeamsCtrl'
+                })
                 .state('app.admin.users', {
                     url: "/admin/users?" +
                         '&page' +
