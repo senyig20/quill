@@ -29,21 +29,21 @@ angular.module('reg')
             }
 
             UserService
-                .getPage($stateParams.page, $stateParams.size, $stateParams.query, $scope.statusFilters)
+                .getPage($stateParams.page, $stateParams.size, $stateParams.query, confirmed)
                 .success(function (data) {
                     updatePage(data);
                 });
 
             $scope.$watch('queryText', function (queryText) {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, queryText, $scope.statusFilters)
+                    .getPage($stateParams.page, $stateParams.size, queryText, confirmed)
                     .success(function (data) {
                         updatePage(data);
                     });
             });
             $scope.applyStatusFilter = function () {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, $scope.queryText, $scope.statusFilters)
+                    .getPage($stateParams.page, $stateParams.size, $scope.queryText, confirmed)
                     .success(function (data) {
                         updatePage(data);
                     });
