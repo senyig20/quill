@@ -43,7 +43,7 @@ angular.module('reg')
             $scope.settings.enableSponsors = data.enableSponsors;
             const successText = $scope.settings.enableSponsors ?
               "Sponsor selections are open." :
-              "Sponsor selections are now closed.."
+              "Sponsor selections are now close."
             swal("Looks good!", successText, "success");
           });
       };

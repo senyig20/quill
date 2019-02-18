@@ -15,7 +15,7 @@ angular.module('reg')
       $scope.EVENT_INFO = EVENT_INFO;
 
       $scope.pastConfirmation = Utils.isAfter(user.status.confirmBy);
-
+      $scope.selectionsOpen = settings.enableSponsors;
       $scope.logout = function(){
         AuthService.logout();
       };
