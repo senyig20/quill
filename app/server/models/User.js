@@ -36,10 +36,9 @@ var profile = {
     default: false,
   },
 
-  bday: {
-    type: Date,
-    min: 1,
-  },
+  bday: String,
+  bmonth: String,
+  byear: String,
   phoneNumber: Number,
   openingChoice: {
     type: String,

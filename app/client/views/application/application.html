@@ -38,14 +38,49 @@
             </div>
 
 
-          <div class="field">
-              <label>Doğum Gününüz</label>
-              <div id="bday">
-                <input name="bday"
-                       ng-model="user.profile.bday"
-                       type="date">
+            <div class="fields">
+              <label>Doğum Günün</label>
+              <div class="five wide field">
+                <div class="field">
+                  <select
+                          name="bday"
+                          ng-model="user.profile.bday">
+                    <option value="">Gün</option>
+                    <option value=1>Evet</option>
+                    <option value=0>Hayır</option>
+                  </select>
+                </div>
+
               </div>
+              <div class="six wide field">
+                <div class="field">
+                  <select
+                          name="bmonth"
+                          ng-model="user.profile.bmonth">
+                    <option value="">Ay</option>
+                    <option value=1>Evet</option>
+                    <option value=0>Hayır</option>
+                  </select>
+                </div>
+
+              </div>
+              <div class="five wide field">
+                <div class="field">
+                  <select
+                          name="byear"
+                          ng-model="user.profile.byear">
+                    <option value="">Yıl</option>
+                    <option value=1>Evet</option>
+                    <option value=0>Hayır</option>
+                  </select>
+                </div>
+
+              </div>
+
+
             </div>
+
+
 
             <div class="field">
               <div class="ui toggle checkbox">
@@ -67,10 +102,8 @@
                         name="bbqChoice"
                         ng-model="user.profile.bbqChoice">
                   <option value="">Tercihim</option>
-
                   <option value=1>Evet</option>
                   <option value=0>Hayır</option>
-
                 </select>
               </div>
 
