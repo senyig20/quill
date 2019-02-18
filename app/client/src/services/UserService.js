@@ -70,10 +70,6 @@ angular.module('reg')
                     });
                 },
 
-                getAllAdmittedCSV: function () {
-                    console.log("getAdmittedCSV");
-                    this.getCSV("admitted");
-                },
 
                 getAdmittedCSV: function () {
                     console.log("getAdmittedCSV");
