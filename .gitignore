@@ -6,4 +6,6 @@ app/client/plugins/
 .env
 .DS_Store
 package-lock.json
-
+bower_components
+test
+tests
