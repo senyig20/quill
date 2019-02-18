@@ -25,13 +25,6 @@ var profile = {
     max: 150,
   },
 
-  graduationYear: {
-    type: String,
-    enum: {
-      values: '2019,2020,2021,2022,2023,chap'.split(','),
-    },
-  },
-
   referral: {
     type: String,
     min: 0,
@@ -317,8 +310,7 @@ schema.statics.validateProfile = function(profile, cb){
   return cb(!(
     profile.name.length > 0 &&
     profile.adult &&
-    profile.school.length > 0 &&
-    ['2019', '2020', '2021', '2022', '2023', 'chap'].indexOf(profile.graduationYear) > -1     ));
+    profile.school.length > 0    ));
 };
 
 //=========================================
