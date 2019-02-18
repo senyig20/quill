@@ -161,7 +161,7 @@ angular.module('reg')
                 })
                 .state('app.admin.exportteams', {
                     url: "/admin/exportteams",
-                    templateUrl: "views/admin/exportteams/exportteams.html",
+                    templateUrl: "views/admin/exportteams/exportTeams.html",
                     controller: 'AdminExportTeamsCtrl'
                 })
                 .state('app.admin.users', {
