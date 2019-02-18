@@ -52,21 +52,3 @@ require('./app/server/routes')(app);
 // listen (start app with node server.js) ======================================
 app.listen(port);
 console.log("App listening on port " + port);
-angular
-    .module('app')
-    .factory('$exceptionHandler', function ($log) {
-      var airbrake = new airbrakeJs.Client({
-        projectId: 215046,
-        projectKey: 'd809594fe4f63dbbb10cad6bca28df2c'
-      });
-
-      airbrake.addFilter(function (notice) {
-        notice.context.environment = 'production';
-        return notice;
-      });
-
-      return function (exception, cause) {
-        $log.error(exception);
-        airbrake.notify({error: exception, params: {angular_cause: cause}});
-      };
-    });
