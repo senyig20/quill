@@ -48,7 +48,7 @@
     "watch": "gulp server",
     "prod": "gulp build && node app.js",
     "config": "cp .env.config .env",
-    "postinstall": "bower install && gulp build"
+    "postinstall": "gulp build"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
