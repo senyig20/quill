@@ -216,7 +216,7 @@ var schema = new mongoose.Schema({
    * Extension of the user model, but can only be edited after acceptance.
    */
   confirmation: confirmation,
-  sponsor: sponsor,
+  sponsors: sponsors,
   status: status,
 
 });
