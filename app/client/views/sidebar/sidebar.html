@@ -52,7 +52,13 @@
       ng-show="currentUser.admin">
       Check-in
     </div>
-
+    <div
+               ui-sref-active="active"
+               ui-sref="app.sponsor"
+               ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined"
+               class="item">
+         Sponsor Tercihi
+       </div>
 
 
   </div>

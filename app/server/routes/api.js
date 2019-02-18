@@ -110,6 +110,13 @@ module.exports = function (router) {
       }
     };
   }
+  router.put('/users/:id/sponsor', isOwnerOrAdmin, function (req, res) {
+  var sponsors = req.body.sponsors;
+  var id = req.params.id;
+
+  UserController.updateSponsorById(id, sponsors, defaultResponse(req, res));
+});
+
   router.get('/users/exportcsv', isAdmin, function(req, res, next){
 
       var type = req.query.type;

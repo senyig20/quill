@@ -565,6 +565,46 @@ UserController.sendPasswordResetEmail = function(email, callback){
 };
 
 /**
+ * Update a user's sponsor object, given an id and a sponsor.
+ *
+ * @param  {String}   id            Id of the user
+ * @param  {Object}   sponsor  Confirmation object
+ * @param  {Function} callback      Callback with args (err, user)
+ */
+UserController.updateSponsorById = function (id, sponsor, callback){
+
+  User.findById(id, function(err, user){
+
+    if(err || !user){
+      return callback(err);
+    }
+
+    // Make sure that the user followed the deadline, but if they're already confirmed
+    // that's okay.
+
+
+    // You can only confirm acceptance if you're admitted and haven't declined.
+    User.findOneAndUpdate({
+          '_id': id,
+          'verified': true,
+          'status.admitted': true,
+          'status.declined': {$ne: true}
+        },
+        {
+          $set: {
+            'lastUpdated': Date.now(),
+            'sponsor': sponsor,
+            'status.sponsorChosen': true,
+          }
+        }, {
+          new: true
+        },
+        callback);
+
+  });
+};
+
+/**
  * UNUSED
  *
  * Change a user's password, given their old password.
