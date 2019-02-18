@@ -21,6 +21,19 @@ function calculateStats() {
                 '2023': 0,
                 'chap': 0,
 
+            },
+            companiesfirst:{
+                'Tercih 1': 0,
+                'Tercih 2': 0,
+                'Tercih 3': 0,
+                'Tercih 4': 0,
+            },
+            companiessecond:{
+                'Tercih 1': 0,
+                'Tercih 2': 0,
+                'Tercih 3': 0,
+                'Tercih 4': 0,
+
             }
         },
 
@@ -97,7 +110,12 @@ function calculateStats() {
 
                 // Count graduation years
 
-
+                if (user.confirmation.firstSponsorChoice){
+                    newStats.demo.companiesfirst[user.confirmation.firstSponsorChoice] += 1;
+                }
+                if (user.confirmation.secondSponsorChoice){
+                    newStats.demo.companiessecond[user.confirmation.secondSponsorChoice] += 1;
+                }
                 // Dietary restrictions
                 if (user.confirmation.dietaryRestrictions) {
                     user.confirmation.dietaryRestrictions.forEach(function (restriction) {
@@ -107,6 +125,8 @@ function calculateStats() {
                         newStats.dietaryRestrictions[restriction] += 1;
                     });
                 }
+
+
 
                 // Count checked in
                 newStats.checkedIn += user.status.checkedIn ? 1 : 0;
