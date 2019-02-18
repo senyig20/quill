@@ -27,8 +27,6 @@ var profile = {
   chap: Boolean,
 
 
-  
-
   referral: {
     type: String,
     min: 0,
