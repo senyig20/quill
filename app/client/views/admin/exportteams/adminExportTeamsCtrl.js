@@ -158,9 +158,6 @@ angular.module('reg')
                             }, {
                                 name: 'School',
                                 value: user.profile.school
-                            }, {
-                                name: 'Graduation Year',
-                                value: user.profile.graduationYear
                             }
                         ]
                     }, {
@@ -168,10 +165,10 @@ angular.module('reg')
                         fields: [
                             {
                                 name: 'First Choice',
-                                value: user.confirmation.companiesfirst
+                                value: user.confirmation.firstSponsorChoice
                             }, {
                                 name: 'Second Choice',
-                                value: user.confirmation.companiessecond
+                                value: user.confirmation.secondSponsorChoice
                             }
                         ]
                     }
