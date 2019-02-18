@@ -52,8 +52,9 @@ angular.module('reg')
                 confirmButtonColor: "#31517e"
 
             },function() {
-                document.location.reload(true);
                 $state.go("app.dashboard");
+                document.location.reload(true);
+
               });
           }, response => {
             swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
