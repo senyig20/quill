@@ -25,7 +25,7 @@ angular.module('reg')
                 },
 
                 getAllCompaniesSelected: function(){
-                    return $http.get(base + '"confirmation.sponsorSelected": true');
+                    return $http.get(base + 'sponsorsSelected');
                 },
                 getCSV: function (type, partial, adminID) {
                     // console.log('getCSV');

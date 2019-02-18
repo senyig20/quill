@@ -229,8 +229,8 @@ UserController.sendEmailsToNonConfirmedProfiles = function (callback) {
 };
 
 
-UserController.getAllCriteria = function (criteria, callback) {
-    User.find({criteria}, callback);
+UserController.getAllSponsorSubmitted = function (criteria, callback) {
+    User.find({"confirmation.sponsorSelected": true}, callback);
 };
 
 /**

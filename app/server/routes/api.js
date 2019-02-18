@@ -208,8 +208,8 @@ module.exports = function (router) {
         }
     });
 
-    router.get('/users/:criteria', isAdmin, function (req, res) {
-            UserController.getAllCriteria(req.params.criteria, defaultResponse(req, res));
+    router.get('/users/sponsorsSelected', isAdmin, function (req, res) {
+            UserController.getAllSponsorSubmitted(defaultResponse(req, res));
 
     });
 
