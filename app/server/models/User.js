@@ -26,7 +26,7 @@ var profile = {
   },
   chap: {
    type: Boolean,
-   default: false
+   default: false,
  },
 
 
