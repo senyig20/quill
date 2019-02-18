@@ -18,7 +18,7 @@
                     </div>
 
                 </div>
-                <div class="ui form">
+                <div class="ui form" style="display: none;">
                     <div class="grouped fields">
                         <div class="field">
                             <div class="ui checkbox">
@@ -38,15 +38,11 @@
 
                 <br/>
 
-                <div class="ui divider"></div>
-
-                <button class="ui icon basic page button" ng-class="page == currentPage ? 'active pink' : ''"
-                        ng-click="goToPage(page)" ng-repeat="page in pages">
-                    {{page}}
-                </button>
-
             </div>
-            <div class="thirteen wide column" id="table-container">
+        <br/>
+        <br/>
+
+        <div class="field" id="table-container">
                 <div class="ui header">
                     Users
                 </div>
