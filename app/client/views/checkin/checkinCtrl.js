@@ -16,6 +16,7 @@ angular.module('reg')
             $('.ui.dimmer').remove();
             // Populate the size of the modal for when it appears, with an arbitrary user.
 
+
             function updatePage(data) {
                 $scope.users = data.users;
                 $scope.currentPage = data.page;
@@ -29,21 +30,21 @@ angular.module('reg')
             }
 
             UserService
-                .getPage($stateParams.page, $stateParams.size, $stateParams.query, confirmed)
+                .getPage($stateParams.page, $stateParams.size, $stateParams.query, $scope.statusFilters)
                 .success(function (data) {
                     updatePage(data);
                 });
 
             $scope.$watch('queryText', function (queryText) {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, queryText, confirmed)
+                    .getPage($stateParams.page, $stateParams.size, queryText, $scope.statusFilters)
                     .success(function (data) {
                         updatePage(data);
                     });
             });
             $scope.applyStatusFilter = function () {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, $scope.queryText, confirmed)
+                    .getPage($stateParams.page, $stateParams.size, $scope.queryText, $scope.statusFilters)
                     .success(function (data) {
                         updatePage(data);
                     });
