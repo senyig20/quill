@@ -16,7 +16,9 @@
         <div
                 ui-sref-active="active"
                 ui-sref="app.application"
-                ng-show="(!currentUser.status.declined && !currentUser.status.completedProfile) || currentUser.admin"
+                ng-show="!currentUser.status.declined && !currentUser.status.completedProfile"
+                ng-hide="currentUser.admin"
+
                 class="item">
             Başvuru
         </div>
@@ -25,6 +27,8 @@
                 ui-sref-active="active"
                 ui-sref="app.payment"
                 ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined"
+                ng-hide="currentUser.admin"
+
                 class="item">
             Ödeme Bilgileri
         </div>
@@ -32,6 +36,8 @@
                 ui-sref-active="active"
                 ui-sref="app.confirmation"
                 ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined"
+                ng-hide="currentUser.admin"
+
                 class="item">
             Teyit
         </div>
@@ -40,6 +46,8 @@
                 ui-sref-active="active"
                 ui-sref="app.sponsor"
                 ng-show="selectionsOpen"
+                ng-hide="currentUser.admin"
+
                 class="item">
             Firma Tercihi
         </div>
@@ -48,7 +56,8 @@
                 ui-sref-active="active"
                 ui-sref="app.admin.stats"
                 class="item"
-                ng-show="currentUser.admin">
+                ng-show="currentUser.admin"
+        >
             Admin
         </div>
 
@@ -64,7 +73,8 @@
     </div>
 
     <a href="mailto:info@ja-rc.org" style="text-decoration:none; color:#fff">
-        <div class="item">
+        <div class="item"
+             ng-show="currentUser.admin">
             İletişim
         </div>
     </a>
