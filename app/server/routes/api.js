@@ -139,6 +139,11 @@ module.exports = function (router) {
 
         }
     });
+    router.get('/users/checkin', isAdmin, function (req, res) {
+        var query = req.query;
+
+    }
+        UserController.getAllCheckIn(defaultResponse(req, res));
 
     router.get('/users/sponsorsSelected', isAdmin, function (req, res) {
             UserController.getAllSponsorSubmitted(defaultResponse(req, res));
