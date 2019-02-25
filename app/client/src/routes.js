@@ -121,9 +121,6 @@ angular.module('reg')
                     url: "/sponsor",
                     templateUrl: "views/sponsor/sponsor.html",
                     controller: 'SponsorCtrl',
-                    data: {
-                        requireAdmitted: true
-                    },
                     resolve: {
                         currentUser: function (UserService) {
                             return UserService.getCurrentUser();
