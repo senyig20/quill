@@ -52,9 +52,7 @@ angular.module('reg')
                             confirmButtonColor: "#31517e"
 
                         }, function () {
-                            document.location.reload(true);
                             $state.go("app.dashboard");
-
 
                         });
                     }, response => {
