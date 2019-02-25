@@ -16,8 +16,7 @@
         <div
                 ui-sref-active="active"
                 ui-sref="app.application"
-                ng-show="!currentUser.status.declined && !currentUser.status.completedProfile"
-                ng-hide="currentUser.admin"
+                ng-show="!currentUser.status.declined && !currentUser.status.completedProfile &&!currentUser.admin"
 
                 class="item">
             Başvuru
@@ -26,8 +25,7 @@
         <div
                 ui-sref-active="active"
                 ui-sref="app.payment"
-                ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined"
-                ng-hide="currentUser.admin"
+                ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined && !currentUser.admin"
 
                 class="item">
             Ödeme Bilgileri
@@ -35,8 +33,7 @@
         <div
                 ui-sref-active="active"
                 ui-sref="app.confirmation"
-                ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined"
-                ng-hide="currentUser.admin"
+                ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined && !currentUser.admin"
 
                 class="item">
             Teyit
@@ -45,8 +42,7 @@
         <div
                 ui-sref-active="active"
                 ui-sref="app.sponsor"
-                ng-show="selectionsOpen && currentUser.status.admitted"
-                ng-hide="currentUser.admin"
+                ng-show="selectionsOpen && currentUser.status.admitted && !currentUser.admin"
 
                 class="item">
             Firma Tercihi
