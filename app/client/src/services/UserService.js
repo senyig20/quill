@@ -27,10 +27,6 @@ angular.module('reg')
                 getAllCompaniesSelected: function(){
                     return $http.get(base + 'sponsorsSelected');
                 },
-                getAllCheckIn: function(){
-                    return $http.get(base + 'checkin');
-                },
-
                 getAllAdmitted: function(){
                     return $http.get(base + 'allAdmitted');
                 },

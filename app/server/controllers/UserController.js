@@ -218,9 +218,6 @@ UserController.getByToken = function (token, callback) {
 UserController.getAll = function (callback) {
     User.find({}, callback);
 };
-UserController.getAllCheckIn = function (callback) {
-    User.find({"status.confirmed": true, "status.paymentMade": true}, callback);
-};
 UserController.sendEmailsToNonConfirmedProfiles = function (callback) {
     User.find({"status.admitted": true, "status.confirmed": false}, 'email nickname', function (err, users) {
         if (err) {
