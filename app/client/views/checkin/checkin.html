@@ -1,4 +1,4 @@
-<div class="page" onload="applyStatusFilter()">
+<div class="page">
     <div class="divided title">
         Check-In
     </div>
@@ -26,8 +26,7 @@
                                         type="radio"
                                         name="confirmed"
                                         ng-model="statusFilters.confirmed"
-                                        ng-change="applyStatusFilter()"
-                                        checked = "true">
+                                        ng-change="applyStatusFilter()">
                                 <label>Confirmed</label>
                             </div>
                         </div>
