@@ -248,6 +248,61 @@ UserController.getAllFinal= function (callback) {
     User.find({"status.confirmed": true, "status.paymentMade": true}, callback);
 };
 
+UserController.getPageCheckedAndSponsor = function(query, callback){
+    var page = query.page;
+    var size = parseInt(query.size);
+    var searchText = query.text;
+
+    var findQuery = {};
+    if (searchText.length > 0){
+        var queries = [];
+        var re = new RegExp(searchText, 'i');
+        queries.push({ 'profile.name': re });
+        queries.push({ 'status.confirmed': true });
+        queries.push({ 'status.paymentMade': true });
+        queries.push({ 'confirmation.sponsorSelected': true });
+
+
+        findQuery.$and = queries;
+    }
+    else{
+        var queries = [];
+        queries.push({ 'status.confirmed': true });
+        queries.push({ 'status.paymentMade': true });
+        queries.push({ 'confirmation.sponsorSelected': true });
+        findQuery.$and = queries;
+
+    }
+
+    User
+        .find(findQuery)
+        .sort({
+            'profile.name': 'asc'
+        })
+        .select('+status.admittedBy')
+        .skip(page * size)
+        .limit(size)
+        .exec(function (err, users){
+            if (err || !users){
+                return callback(err);
+            }
+
+            User.count(findQuery).exec(function(err, count){
+
+                if (err){
+                    return callback(err);
+                }
+
+                return callback(null, {
+                    users: users,
+                    page: page,
+                    size: size,
+                    totalPages: Math.ceil(count / size)
+                });
+            });
+
+        });
+};
 
 
 UserController.getPageChecked = function(query, callback){

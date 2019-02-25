@@ -35,25 +35,18 @@ angular.module('reg')
             }
 
             UserService
-                .getPage($stateParams.page, $stateParams.size, $stateParams.query, $scope.statusFilters)
+                .getCheckedPageSponsor($stateParams.page, $stateParams.size, $stateParams.query)
                 .success(function (data) {
                     updatePage(data);
                 });
 
             $scope.$watch('queryText', function (queryText) {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, queryText, $scope.statusFilters)
+                    .getCheckedPageSponsor($stateParams.page, $stateParams.size, queryText)
                     .success(function (data) {
                         updatePage(data);
                     });
             });
-            $scope.applyStatusFilter = function () {
-                UserService
-                    .getPage($stateParams.page, $stateParams.size, $scope.queryText, $scope.statusFilters)
-                    .success(function (data) {
-                        updatePage(data);
-                    });
-            };
 
 
             $scope.goToPage = function (page) {
