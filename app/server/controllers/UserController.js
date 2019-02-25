@@ -325,50 +325,6 @@ function buildFindQuery(textQueries, statusQueries) {
  * @param  {[type]}   size     size of the page
  * @param  {Function} callback args(err, {users, page, totalPages})
  */
-UserController.getCheckinPage = function (query, callback) {
-    var page = query.page;
-    var size = parseInt(query.size);
-    var searchText = query.text;
-    var statusFilters = query.statusFilters;
-
-    // Build a query for the search text
-    var textQueries = buildTextQueries(searchText);
-    // Build a query for each status
-    var statusQueries = buildStatusQueries(statusFilters);
-
-    // Build find query
-    var findQuery = buildFindQuery(textQueries, statusQueries);
-
-    User
-        .find(findQuery)
-        .sort({
-            'profile.name': 'asc'
-        })
-        .select('+status.admittedBy')
-        .skip(page * size)
-        .limit(size)
-        .exec(function (err, users) {
-            if (err || !users) {
-                return callback(err);
-            }
-
-            User.count(findQuery).exec(function (err, count) {
-
-                if (err) {
-                    return callback(err);
-                }
-
-                return callback(null, {
-                    users: users,
-                    page: page,
-                    size: size,
-                    totalPages: Math.ceil(count / size)
-                });
-            });
-
-        });
-};
-
 UserController.getPage = function (query, callback) {
     var page = query.page;
     var size = parseInt(query.size);

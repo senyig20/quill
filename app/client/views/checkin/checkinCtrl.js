@@ -18,26 +18,18 @@ angular.module('reg')
 
 
             function updatePage(data) {
-                $scope.users = data.users;
-                $scope.currentPage = data.page;
-                $scope.pageSize = data.size;
-
-                var p = [];
-                for (var i = 0; i < data.totalPages; i++) {
-                    p.push(i);
-                }
-                $scope.pages = p;
+                $scope.users = data;
             }
 
             UserService
-                .getCheckedPage($stateParams.page, $stateParams.size, $stateParams.query, $scope.statusFilters)
+                .getAllFinal()
                 .success(function (data) {
                     updatePage(data);
                 });
 
             $scope.$watch('queryText', function (queryText) {
                 UserService
-                    .getCheckedPage($stateParams.page, $stateParams.size, queryText)
+                    .getAllFinal(queryText)
                     .success(function (data) {
                         updatePage(data);
                     });

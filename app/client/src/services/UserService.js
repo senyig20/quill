@@ -55,16 +55,6 @@ angular.module('reg')
                         })
                     );
                 },
-                getCheckedPage: function (page, size, text, statusFilters) {
-                    return $http.get(users + '?' + $.param(
-                        {
-                            text: text,
-                            page: page ? page : 0,
-                            size: size ? size : 100,
-                            statusFilters: statusFilters ? statusFilters : {confirmed}
-                        })
-                    );
-                },
 
                 updateProfile: function (id, profile) {
                     return $http.put(base + id + '/profile', {
