@@ -55,6 +55,7 @@ angular.module('reg')
                             document.location.reload(true);
                             $state.go("app.dashboard");
 
+
                         });
                     }, response => {
                         swal("Hay Aksi!", "Bir şeyler yanlış gitti.", "error");
