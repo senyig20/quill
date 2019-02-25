@@ -30,21 +30,21 @@ angular.module('reg')
             }
 
             UserService
-                .getPage($stateParams.page, $stateParams.size, $stateParams.query, statusFilters[confirmed])
+                .getPage($stateParams.page, $stateParams.size, $stateParams.query, statusFilters{"confirmed": true})
                 .success(function (data) {
                     updatePage(data);
                 });
 
             $scope.$watch('queryText', function (queryText) {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, queryText, statusFilters[confirmed])
+                    .getPage($stateParams.page, $stateParams.size, queryText,$scope.statusFilters, statusFilters{"confirmed": true})
                     .success(function (data) {
                         updatePage(data);
                     });
             });
             $scope.applyStatusFilter = function () {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, $scope.queryText, statusFilters[confirmed])
+                    .getPage($stateParams.page, $stateParams.size, $scope.queryText, statusFilters{"confirmed": true})
                     .success(function (data) {
                         updatePage(data);
                     });
