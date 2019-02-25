@@ -18,15 +18,7 @@ angular.module('reg')
 
 
             function updatePage(data) {
-                $scope.users = data.users;
-                $scope.currentPage = data.page;
-                $scope.pageSize = data.size;
-
-                var p = [];
-                for (var i = 0; i < data.totalPages; i++) {
-                    p.push(i);
-                }
-                $scope.pages = p;
+                $scope.users = data;
             }
 
             UserService
