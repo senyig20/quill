@@ -259,13 +259,19 @@ UserController.getPageChecked = function(query, callback){
     if (searchText.length > 0){
         var queries = [];
         var re = new RegExp(searchText, 'i');
-        queries.push({ email: re });
         queries.push({ 'profile.name': re });
         queries.push({ 'status.confirmed': true });
         queries.push({ 'status.paymentMade': true });
 
 
-        findQuery.$or = queries;
+        findQuery.$and = queries;
+    }
+    else{
+        var queries = [];
+        queries.push({ 'status.confirmed': true });
+        queries.push({ 'status.paymentMade': true });
+        findQuery.$and = queries;
+
     }
 
     User
