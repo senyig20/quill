@@ -140,6 +140,20 @@ module.exports = function (router) {
         }
     });
 
+    router.get('/users/tobechecked', isAdmin, function(req, res){
+        var query = req.query;
+
+        if (query.page && query.size){
+
+            UserController.getPageChecked(query, defaultResponse(req, res));
+
+        } else {
+
+            UserController.getAllFinal(defaultResponse(req, res));
+
+        }
+    });
+
     router.get('/users/sponsorsSelected', isAdmin, function (req, res) {
             UserController.getAllSponsorSubmitted(defaultResponse(req, res));
 

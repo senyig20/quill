@@ -23,6 +23,15 @@ angular.module('reg')
                 getAll: function () {
                     return $http.get(base);
                 },
+                getCheckedPage: function(page, size, text){
+                    return $http.get(base + 'tobechecked' + '?' + $.param(
+                        {
+                            text: text,
+                            page: page ? page : 0,
+                            size: size ? size : 50
+                        })
+                    );
+                },
 
                 getAllCompaniesSelected: function(){
                     return $http.get(base + 'sponsorsSelected');
