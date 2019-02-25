@@ -52,8 +52,8 @@ angular.module('reg')
                             confirmButtonColor: "#31517e"
 
                         }, function () {
-                            $state.go("app.dashboard");
                             document.location.reload(true);
+                            $state.go("app.dashboard");
 
                         });
                     }, response => {
