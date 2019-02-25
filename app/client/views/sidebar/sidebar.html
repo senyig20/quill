@@ -45,7 +45,7 @@
         <div
                 ui-sref-active="active"
                 ui-sref="app.sponsor"
-                ng-show="selectionsOpen"
+                ng-show="selectionsOpen && currentUser.status.admitted"
                 ng-hide="currentUser.admin"
 
                 class="item">
