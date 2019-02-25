@@ -30,14 +30,14 @@ angular.module('reg')
             }
 
             UserService
-                .getAllCheckIn()
+                .getAllFinal()
                 .success(function (data) {
                     updatePage(data);
                 });
 
             $scope.$watch('queryText', function (queryText) {
                 UserService
-                    .getAllCheckIn(queryText)
+                    .getAllFinal(queryText)
                     .success(function (data) {
                         updatePage(data);
                     });
