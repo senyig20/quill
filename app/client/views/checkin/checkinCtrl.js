@@ -42,6 +42,7 @@ angular.module('reg')
                         updatePage(data);
                     });
             });
+
             $scope.applyStatusFilter = function () {
                 UserService
                     .getPage($stateParams.page, $stateParams.size, $scope.queryText, $scope.statusFilters)
