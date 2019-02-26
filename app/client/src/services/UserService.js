@@ -117,7 +117,7 @@ angular.module('reg')
                 sendLaggerPaymentEmails: function () {
                     return $http.post(base + 'sendlagpayemails');
                 },
-                sendLaggerPaymentEmails: function () {
+                sendSponsor: function () {
                     return $http.post(base + 'sendSponsorEmails');
                 },
 
