@@ -15,7 +15,7 @@ angular.module('reg')
             $scope.fromNow = function (date) {
                 return moment(date).fromNow();
             };
-            $scope.sendLaggerPaymentEmails = function () {
+            $scope.sendSponsor = function () {
                 swal({
                     title: "Are you sure?",
                     text: "This will send an email to every user that are confirmed to request their selections?.",
