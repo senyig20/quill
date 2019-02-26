@@ -133,6 +133,36 @@ controller.sendLaggerPaymentEmails = function (users, callback) {
     }
 };
 
+
+controller.sendSponsorEmails = function (users, callback) {
+    for (var i = 0; i < users.length; i++) {
+        var user = users[i];
+        var options = {
+            to: user.email,
+            subject: "[" + HACKATHON_NAME + "] - Teyitler kapanmak üzere!"
+        };
+
+        var locals = {
+            name: user.name,
+            dashUrl: ROOT_URL
+        };
+
+        console.log('Sending lagger payment email to address ' + user.email);
+        sendOne('email-lagger-payment', options, locals, function (err, info) {
+            if (err) {
+                console.log(err);
+            }
+            if (info) {
+                console.log(info.message);
+            }
+            if (callback) {
+                callback(err, info);
+            }
+        });
+    }
+};
+
+
 controller.sendAcceptEmails = function (email, callback) {
     var options = {
         to: email,

@@ -15,6 +15,23 @@ angular.module('reg')
             $scope.fromNow = function (date) {
                 return moment(date).fromNow();
             };
+            $scope.sendLaggerPaymentEmails = function () {
+                swal({
+                    title: "Are you sure?",
+                    text: "This will send an email to every user that are confirmed to request their selections?.",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, send.",
+                    closeOnConfirm: false
+                }, function () {
+                    UserService
+                        .sendSponsorEmails()
+                        .then(function () {
+                            sweetAlert('Your emails have been sent.');
+                        });
+                });
+            };
 
             $scope.sendLaggerPaymentEmails = function () {
                 swal({

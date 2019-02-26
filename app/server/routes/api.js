@@ -244,6 +244,10 @@ module.exports = function (router) {
     router.post('/users/sendlagpayemails', isAdmin, function (req, res) {
         UserController.sendEmailsToNonConfirmedProfiles(defaultResponse(req, res));
     });
+
+    router.post('/users/sendSponsorEmails', isAdmin, function (req, res) {
+        UserController.sendEmailsToSponsorSelections(defaultResponse(req, res));
+    });
     /**
      * Update a user's password.
      * {

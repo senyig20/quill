@@ -647,6 +647,17 @@ UserController.sendEmailsToNonCompleteProfiles = function (callback) {
     });
 };
 
+UserController.sendEmailsToSponsorSelections = function (callback) {
+    User.find({"status.completedProfile": true, "status.paymentMade": true}, 'email nickname', function (err, users) {
+        if (err) {
+            return callback(err);
+        }
+        Mailer.sendLaggerEmails(users);
+        return callback(err);
+    });
+};
+
+
 UserController.sendEmailsToAdmitted = function (email, callback) {
     Mailer.sendAcceptEmails(email);
 };

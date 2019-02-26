@@ -117,6 +117,10 @@ angular.module('reg')
                 sendLaggerPaymentEmails: function () {
                     return $http.post(base + 'sendlagpayemails');
                 },
+                sendLaggerPaymentEmails: function () {
+                    return $http.post(base + 'sendSponsorEmails');
+                },
+
 
 
                 removeAdmin: function (id) {
