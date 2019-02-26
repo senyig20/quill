@@ -139,7 +139,7 @@ controller.sendSponsorEmails = function (users, callback) {
         var user = users[i];
         var options = {
             to: user.email,
-            subject: "[" + HACKATHON_NAME + "] - Teyitler kapanmak üzere!"
+            subject: "[" + HACKATHON_NAME + "] - Şirket Tercihleri Açıldı!"
         };
 
         var locals = {
@@ -148,7 +148,7 @@ controller.sendSponsorEmails = function (users, callback) {
         };
 
         console.log('Sending lagger payment email to address ' + user.email);
-        sendOne('email-lagger-payment', options, locals, function (err, info) {
+        sendOne('email-sponsor', options, locals, function (err, info) {
             if (err) {
                 console.log(err);
             }
