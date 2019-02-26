@@ -26,7 +26,7 @@ angular.module('reg')
                     closeOnConfirm: false
                 }, function () {
                     UserService
-                        .sendSponsorEmails()
+                        .sendSponsor()
                         .then(function () {
                             sweetAlert('Your emails have been sent.');
                         });
