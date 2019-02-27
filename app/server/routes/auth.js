@@ -1,8 +1,3 @@
-var _ = require('underscore');
-var jwt = require('jsonwebtoken');
-var validator = require('validator');
-
-var SettingsController = require('../controllers/SettingsController');
 var UserController = require('../controllers/UserController');
 
 module.exports = function (router) {
@@ -25,7 +20,7 @@ module.exports = function (router) {
      *
      */
     router.post('/login',
-        function (req, res, next) {
+        function (req, res) {
             var email = req.body.email;
             var password = req.body.password;
             var token = req.body.token;
@@ -67,7 +62,7 @@ module.exports = function (router) {
      *
      */
     router.post('/register',
-        function (req, res, next) {
+        function (req, res) {
             // Register with an email and password
             var email = req.body.email;
             var password = req.body.password;
@@ -83,7 +78,7 @@ module.exports = function (router) {
         });
 
     router.post('/reset',
-        function (req, res, next) {
+        function (req, res) {
             var email = req.body.email;
             if (!email) {
                 return res.status(400).send();
@@ -126,7 +121,7 @@ module.exports = function (router) {
      * }
      */
     router.post('/verify/resend',
-        function (req, res, next) {
+        function (req, res) {
             var id = req.body.id;
             if (id) {
                 UserController.sendVerificationEmailById(id, function (err, user) {
@@ -144,7 +139,7 @@ module.exports = function (router) {
      * Verify a user with a given token.
      */
     router.get('/verify/:token',
-        function (req, res, next) {
+        function (req, res) {
             var token = req.params.token;
             UserController.verifyByToken(token, function (err, user) {
 
