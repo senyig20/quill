@@ -36,7 +36,7 @@ angular.module('reg')
              */
 
 
-            function _updateUser(e) {
+            function _updateUser() {
                 UserService
                     .updateProfile(Session.getUserId(), $scope.user.profile)
                     .then(response => {
