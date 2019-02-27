@@ -18,7 +18,7 @@ angular.module('reg')
 
             _setupForm();
 
-            function _updateUser(e) {
+            function _updateUser() {
                 $scope.user.confirmation.sponsorSelected = true;
                 var confirmation = $scope.user.confirmation;
                 // Get the dietary restrictions as an array
