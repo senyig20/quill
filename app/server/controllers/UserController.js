@@ -52,7 +52,7 @@ function canRegister(email, password, callback) {
             if (err || !emails) {
                 return callback(err);
             }
-            for (var i = 0; i < emails.length; i++) {
+            for (let i = 0; i < emails.length; i++) {
                 if (validator.isEmail(email) && endsWith(emails[i], email)) {
                     return callback(null, true);
                 }
@@ -386,7 +386,7 @@ function buildTextQueries(searchText) {
  */
 function buildStatusQueries(statusFilters) {
     const queries = [];
-    for (var key in statusFilters) {
+    for (const key in statusFilters) {
         if (statusFilters.hasOwnProperty(key)) {
             // Convert to boolean
             const hasStatus = (statusFilters[key] === 'true');

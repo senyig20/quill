@@ -128,10 +128,7 @@ h1 {
     line-height: 100%;
     /*@editable*/
     letter-spacing: normal;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 24px;
-    margin-left: 0;
+    margin: 0 0 24px;
     /*@editable*/
     text-align: center;
 }
@@ -158,10 +155,7 @@ h2 {
     line-height: 100%;
     /*@editable*/
     letter-spacing: normal;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 10px;
-    margin-left: 0;
+    margin: 0 0 10px;
     /*@editable*/
     text-align: left;
 }
@@ -216,10 +210,7 @@ h4 {
     line-height: 100%;
     /*@editable*/
     letter-spacing: normal;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 10px;
-    margin-left: 0;
+    margin: 0 0 10px;
     /*@editable*/
     text-align: left;
 }
@@ -305,13 +296,10 @@ h4 {
     /*@editable*/
     line-height: 0;
     /*@editable*/
-    padding-top: 0;
     /*@editable*/
-    padding-right: 0;
     /*@editable*/
-    padding-bottom: 0;
     /*@editable*/
-    padding-left: 0;
+    padding: 0;
     /*@editable*/
     text-align: left;
     /*@editable*/
@@ -370,10 +358,7 @@ h4 {
     font-size: 14px;
     /*@editable*/
     line-height: 150%;
-    padding-top: 36px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
+    padding: 36px 20px 20px;
     /*@editable*/
     text-align: left;
 }
@@ -437,10 +422,7 @@ h4 {
     font-size: 10px;
     /*@editable*/
     line-height: 150%;
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
+    padding: 20px;
     /*@editable*/
     text-align: left;
 }
