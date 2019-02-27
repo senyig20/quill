@@ -16,12 +16,14 @@ var mongoose = require('mongoose');
 var port = process.env.PORT || 3000;
 var database = process.env.DATABASE || process.env.MONGODB_URI || "mongodb://localhost:27017";
 
-var settingsConfig = require('./config/settings');
-var adminConfig = require('./config/admin');
+var User = require('./app/server/models/User');
+var Settings = require('./app/server/models/Settings');
+
 
 var app = express();
 
 // Connect to mongodb
+
 mongoose.connect(database, {useMongoClient: true});
 app.use(cors());
 
@@ -36,6 +38,37 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 app.use(express.static(__dirname + '/app/client'));
+
+
+//Create admin and settings in database.
+User
+    .findOne({
+        email: ADMIN_EMAIL
+    })
+    .exec(function (err, user) {
+        if (!user) {
+            var u = new User();
+            u.email = ADMIN_EMAIL;
+            u.password = User.generateHash(ADMIN_PASSWORD);
+            u.admin = true;
+            u.verified = true;
+            u.save(function (err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
+    });
+
+Settings
+    .findOne({})
+    .exec(function(err, settings){
+        if (!settings){
+            var settings = new Settings();
+            settings.save();
+        }
+    });
+
 
 // Routers =====================================================================
 
