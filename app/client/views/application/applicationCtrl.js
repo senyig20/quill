@@ -20,11 +20,6 @@ angular.module('reg')
             // Is the student from RC?
             $scope.isRCStudent = $scope.user.email.split('@')[1] == 'robcol.k12.tr';
 
-            // If so, default them to adult: true
-            if ($scope.isRCStudent) {
-                $scope.user.profile.adult = true;
-            }
-
             $scope.$watch('user', function (newValue, oldValue) {
                 if (newValue !== oldValue) {
                     $scope.submitButtonDisabled = false;
@@ -60,25 +55,7 @@ angular.module('reg')
                     });
             }
 
-            function checkvalue(val) {
-                if (val === "others")
-                    document.getElementById('ref').style.display = 'block';
-                else
-                    document.getElementById('ref').style.display = 'none';
-            }
 
-            function isMinor() {
-                return !$scope.user.profile.adult;
-            }
-
-            function minorsAreAllowed() {
-                return Settings.data.allowMinors;
-            }
-
-            function minorsValidation() {
-                // Are minors allowed to register?
-                return !(isMinor() && !minorsAreAllowed());
-            }
 
             $scope.formatDate = function (date) {
                 if (!date) {
@@ -117,10 +94,6 @@ angular.module('reg')
             };
 
             function _setupForm() {
-                // Custom minors validation rule
-                $.fn.form.settings.rules.allowMinors = function (value) {
-                    return minorsValidation();
-                };
 
                 // Semantic-UI form validation
                 $('.ui.form').form({

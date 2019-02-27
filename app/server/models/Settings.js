@@ -39,9 +39,6 @@ var schema = new mongoose.Schema({
     confirmationText: {
         type: String
     },
-    allowMinors: {
-        type: Boolean
-    },
     enableSponsors: {
         type: Boolean
     }

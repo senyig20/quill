@@ -24,17 +24,6 @@ angular.module('reg')
 
             // Additional Options --------------------------------------
 
-            $scope.updateAllowMinors = function () {
-                SettingsService
-                    .updateAllowMinors($scope.settings.allowMinors)
-                    .success(function (data) {
-                        $scope.settings.allowMinors = data.allowMinors;
-                        const successText = $scope.settings.allowMinors ?
-                            "Minors are now allowed to register." :
-                            "Minors are no longer allowed to register.";
-                        swal("Looks good!", successText, "success");
-                    });
-            };
 
             $scope.updateSelectSponsors = function () {
                 SettingsService

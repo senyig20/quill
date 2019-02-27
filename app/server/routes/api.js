@@ -362,7 +362,6 @@ module.exports = function (router) {
      *   timeToConfirm: Number,
      *   acceptanceText: String,
      *   confirmationText: String,
-     *   allowMinors: Boolean
      * }
      */
     router.get('/settings', function (req, res) {
@@ -457,17 +456,6 @@ module.exports = function (router) {
         res.sendStatus(200);
     });
 
-    /* [ADMIN ONLY]
-     * {
-     *   allowMinors: Boolean
-     * }
-     * res: Settings
-     *
-     */
-    router.put('/settings/minors', isAdmin, function (req, res) {
-        var allowMinors = req.body.allowMinors;
-        SettingsController.updateField('allowMinors', allowMinors, defaultResponse(req, res));
-    });
     router.put('/settings/sponsors', isAdmin, function (req, res) {
         var selectSponsors = req.body.selectSponsors;
         SettingsController.updateField('enableSponsors', selectSponsors, defaultResponse(req, res));
