@@ -6,7 +6,7 @@ angular.module('reg')
         '$window',
         'Session',
         function ($http, $rootScope, $state, $window, Session) {
-            var authService = {};
+            const authService = {};
 
             function loginSuccess(data, cb) {
                 // Winner winner you get a token
@@ -45,7 +45,7 @@ angular.module('reg')
                     });
             };
 
-            authService.loginWithToken = function (token, onSuccess, onFailure) {
+            authService.loginWithToken = function (token, onSuccess) {
                 return $http
                     .post('/auth/login', {
                         token: token
@@ -97,7 +97,7 @@ angular.module('reg')
                     });
             };
 
-            authService.resendVerificationEmail = function (onSuccess, onFailure) {
+            authService.resendVerificationEmail = function () {
                 return $http
                     .post('/auth/verify/resend', {
                         id: Session.getUserId()

@@ -1,4 +1,4 @@
-var app = angular.module('reg', [
+const app = angular.module('reg', [
     'ui.router',
 ]);
 
@@ -17,7 +17,7 @@ app
         function (AuthService, Session) {
 
             // Startup, login if there's  a token.
-            var token = Session.getToken();
+            const token = Session.getToken();
             if (token) {
                 AuthService.loginWithToken(token);
             }

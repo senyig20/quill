@@ -229,12 +229,12 @@ angular.module('reg')
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
             });
 
-            $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-                var requireLogin = toState.data.requireLogin;
-                var requireAdmin = toState.data.requireAdmin;
-                var requireVerified = toState.data.requireVerified;
-                var requireAdmitted = toState.data.requireAdmitted;
-                var requireCompletedProfile = toState.data.requireCompletedProfile;
+            $rootScope.$on('$stateChangeStart', function (event, toState) {
+                const requireLogin = toState.data.requireLogin;
+                const requireAdmin = toState.data.requireAdmin;
+                const requireVerified = toState.data.requireVerified;
+                const requireAdmitted = toState.data.requireAdmitted;
+                const requireCompletedProfile = toState.data.requireCompletedProfile;
 
 
                 if (requireLogin && !Session.getToken()) {
