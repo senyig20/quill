@@ -1,4 +1,3 @@
-var _ = require('underscore');
 var User = require('../models/User');
 var Settings = require('../models/Settings');
 var Mailer = require('../services/email');
@@ -658,11 +657,11 @@ UserController.sendEmailsToSponsorSelections = function (callback) {
 };
 
 
-UserController.sendEmailsToAdmitted = function (email, callback) {
+UserController.sendEmailsToAdmitted = function (email) {
     Mailer.sendAcceptEmails(email);
 };
 
-UserController.sendPaymentVerification = function (email, callback) {
+UserController.sendPaymentVerification = function (email) {
     Mailer.sendPaymentEmails(email);
 };
 
