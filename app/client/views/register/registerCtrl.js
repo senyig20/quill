@@ -9,7 +9,7 @@ angular.module('reg')
         function ($scope, $http, $state, settings, Utils, AuthService) {
 
             // Is registration open?
-            var Settings = settings.data;
+            const Settings = settings.data;
             $scope.regIsOpen = Utils.isRegOpen(Settings);
 
             // Start state for login

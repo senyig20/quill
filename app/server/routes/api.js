@@ -1,6 +1,6 @@
-var UserController = require('../controllers/UserController');
-var SettingsController = require('../controllers/SettingsController');
-var request = require('request');
+const UserController = require('../controllers/UserController');
+const SettingsController = require('../controllers/SettingsController');
+const request = require('request');
 
 jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
@@ -18,7 +18,7 @@ module.exports = function (router) {
      */
     function isAdmin(req, res, next) {
 
-        var token = getToken(req);
+        const token = getToken(req);
 
         UserController.getByToken(token, function (err, user) {
 
@@ -48,8 +48,8 @@ module.exports = function (router) {
      * want I suppose!
      */
     function isOwnerOrAdmin(req, res, next) {
-        var token = getToken(req);
-        var userId = req.params.id;
+        const token = getToken(req);
+        const userId = req.params.id;
 
         UserController.getByToken(token, function (err, user) {
 
@@ -126,7 +126,7 @@ module.exports = function (router) {
      * ex. Paginate with ?page=0&size=100
      */
     router.get('/users', isAdmin, function (req, res) {
-        var query = req.query;
+        const query = req.query;
 
         if (query.page && query.size) {
 
@@ -140,7 +140,7 @@ module.exports = function (router) {
     });
 
     router.get('/users/tobechecked', isAdmin, function (req, res) {
-        var query = req.query;
+        const query = req.query;
 
         if (query.page && query.size) {
 
@@ -154,7 +154,7 @@ module.exports = function (router) {
     });
 
     router.get('/users/sponsorList', isAdmin, function (req, res) {
-        var query = req.query;
+        const query = req.query;
 
         if (query.page && query.size) {
 
@@ -211,8 +211,8 @@ module.exports = function (router) {
      * PUT - Update a specific user's profile.
      */
     router.put('/users/:id/profile', isOwnerOrAdmin, function (req, res) {
-        var profile = req.body.profile;
-        var id = req.params.id;
+        const profile = req.body.profile;
+        const id = req.params.id;
 
         UserController.updateProfileById(id, profile, defaultResponse(req, res));
     });
@@ -223,8 +223,8 @@ module.exports = function (router) {
      * PUT - Update a specific user's confirmation information.
      */
     router.put('/users/:id/confirm', isOwnerOrAdmin, function (req, res) {
-        var confirmation = req.body.confirmation;
-        var id = req.params.id;
+        const confirmation = req.body.confirmation;
+        const id = req.params.id;
 
         UserController.updateConfirmationById(id, confirmation, defaultResponse(req, res));
     });
@@ -235,7 +235,7 @@ module.exports = function (router) {
      * POST - Decline an acceptance.
      */
     router.post('/users/:id/decline', isOwnerOrAdmin, function (req, res) {
-        var id = req.params.id;
+        const id = req.params.id;
 
         UserController.declineById(id, defaultResponse(req, res));
     });
@@ -275,8 +275,8 @@ module.exports = function (router) {
      */
     router.post('/users/:id/admit', isAdmin, function (req, res) {
         // Accept the hacker. Admin only
-        var id = req.params.id;
-        var user = req.user;
+        const id = req.params.id;
+        const user = req.user;
         UserController.admitUser(id, user, defaultResponse(req, res));
     });
 
@@ -284,8 +284,8 @@ module.exports = function (router) {
      * Check in a user. ADMIN ONLY, DUH
      */
     router.post('/users/:id/checkin', isAdmin, function (req, res) {
-        var id = req.params.id;
-        var user = req.user;
+        const id = req.params.id;
+        const user = req.user;
         UserController.checkInById(id, user, defaultResponse(req, res));
     });
 
@@ -293,8 +293,8 @@ module.exports = function (router) {
      * Check in a user. ADMIN ONLY, DUH
      */
     router.post('/users/:id/checkout', isAdmin, function (req, res) {
-        var id = req.params.id;
-        var user = req.user;
+        const id = req.params.id;
+        const user = req.user;
         UserController.checkOutById(id, user, defaultResponse(req, res));
     });
 
@@ -309,20 +309,20 @@ module.exports = function (router) {
      * Send emails to accepted applicants
      */
     router.post('/users/:email/sendacceptemails/', isAdmin, function (req, res) {
-        var email = req.params.email;
+        const email = req.params.email;
         UserController.sendEmailsToAdmitted(email, defaultResponse(req, res));
     });
 
     router.post('/users/:email/sendpaymentemails/', isAdmin, function (req, res) {
-        var email = req.params.email;
+        const email = req.params.email;
         UserController.sendPaymentVerification(email, defaultResponse(req, res));
     });
     /**
      * Make user an admin
      */
     router.post('/users/:id/makeadmin', isAdmin, function (req, res) {
-        var id = req.params.id;
-        var user = req.user;
+        const id = req.params.id;
+        const user = req.user;
         UserController.makeAdminById(id, user, defaultResponse(req, res));
     });
 
@@ -330,20 +330,20 @@ module.exports = function (router) {
      * Demote user
      */
     router.post('/users/:id/removeadmin', isAdmin, function (req, res) {
-        var id = req.params.id;
-        var user = req.user;
+        const id = req.params.id;
+        const user = req.user;
         UserController.removeAdminById(id, user, defaultResponse(req, res));
     });
 
     router.post('/users/:id/acceptpayment', isAdmin, function (req, res) {
-        var id = req.params.id;
-        var user = req.user;
+        const id = req.params.id;
+        const user = req.user;
         UserController.acceptPayment(id, user, defaultResponse(req, res));
     });
 
     router.post('/users/:id/unacceptpayment', isAdmin, function (req, res) {
-        var id = req.params.id;
-        var user = req.user;
+        const id = req.params.id;
+        const user = req.user;
         UserController.unacceptPayment(id, user, defaultResponse(req, res));
     });
 
@@ -373,7 +373,7 @@ module.exports = function (router) {
      * }
      */
     router.put('/settings/waitlist', isAdmin, function (req, res) {
-        var text = req.body.text;
+        const text = req.body.text;
         SettingsController.updateField('waitlistText', text, defaultResponse(req, res));
     });
 
@@ -384,7 +384,7 @@ module.exports = function (router) {
      * }
      */
     router.put('/settings/acceptance', isAdmin, function (req, res) {
-        var text = req.body.text;
+        const text = req.body.text;
         SettingsController.updateField('acceptanceText', text, defaultResponse(req, res));
     });
 
@@ -395,7 +395,7 @@ module.exports = function (router) {
      * }
      */
     router.put('/settings/confirmation', isAdmin, function (req, res) {
-        var text = req.body.text;
+        const text = req.body.text;
         SettingsController.updateField('confirmationText', text, defaultResponse(req, res));
     });
 
@@ -406,7 +406,7 @@ module.exports = function (router) {
      * }
      */
     router.put('/settings/confirm-by', isAdmin, function (req, res) {
-        var time = req.body.time;
+        const time = req.body.time;
         SettingsController.updateField('timeConfirm', time, defaultResponse(req, res));
     });
 
@@ -418,8 +418,8 @@ module.exports = function (router) {
      * }
      */
     router.put('/settings/times', isAdmin, function (req, res) {
-        var open = req.body.timeOpen;
-        var close = req.body.timeClose;
+        const open = req.body.timeOpen;
+        const close = req.body.timeClose;
         SettingsController.updateRegistrationTimes(open, close, defaultResponse(req, res));
     });
 
@@ -443,7 +443,7 @@ module.exports = function (router) {
      *
      */
     router.put('/settings/whitelist', isAdmin, function (req, res) {
-        var emails = req.body.emails;
+        const emails = req.body.emails;
         SettingsController.updateWhitelistedEmails(emails, defaultResponse(req, res));
     });
 
@@ -455,7 +455,7 @@ module.exports = function (router) {
     });
 
     router.put('/settings/sponsors', isAdmin, function (req, res) {
-        var selectSponsors = req.body.selectSponsors;
+        const selectSponsors = req.body.selectSponsors;
         SettingsController.updateField('enableSponsors', selectSponsors, defaultResponse(req, res));
     });
 

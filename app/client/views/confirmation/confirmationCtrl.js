@@ -9,7 +9,7 @@ angular.module('reg')
         function ($scope, $rootScope, $state, currentUser, Utils, UserService) {
 
             // Set up the user
-            var user = currentUser.data;
+            const user = currentUser.data;
             $scope.user = user;
 
             $scope.pastConfirmation = Date.now() > user.status.confirmBy;
@@ -19,7 +19,7 @@ angular.module('reg')
             _setupForm();
 
             function _updateUser(e) {
-                var confirmation = $scope.user.confirmation;
+                const confirmation = $scope.user.confirmation;
                 // Get the dietary restrictions as an array
 
                 UserService

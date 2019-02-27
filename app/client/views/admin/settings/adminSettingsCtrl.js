@@ -78,8 +78,8 @@ angular.module('reg')
 
             $scope.updateRegistrationTimes = function () {
                 // Clean the dates and turn them to ms.
-                var open = cleanDate($scope.settings.timeOpen).getTime();
-                var close = cleanDate($scope.settings.timeClose).getTime();
+                const open = cleanDate($scope.settings.timeOpen).getTime();
+                const close = cleanDate($scope.settings.timeClose).getTime();
 
                 if (open < 0 || close < 0 || open === undefined || close === undefined) {
                     return swal('Oops...', 'You need to enter valid times.', 'error');
@@ -100,7 +100,7 @@ angular.module('reg')
             // Confirmation Time -----------------------------
 
             $scope.updateConfirmationTime = function () {
-                var confirmBy = cleanDate($scope.settings.timeConfirm).getTime();
+                const confirmBy = cleanDate($scope.settings.timeConfirm).getTime();
 
                 SettingsService
                     .updateConfirmationTime(confirmBy)
@@ -112,14 +112,14 @@ angular.module('reg')
 
             // Acceptance / Confirmation Text ----------------
 
-            var converter = new showdown.Converter();
+            const converter = new showdown.Converter();
 
             $scope.markdownPreview = function (text) {
                 return $sce.trustAsHtml(converter.makeHtml(text));
             };
 
             $scope.updateWaitlistText = function () {
-                var text = $scope.settings.waitlistText;
+                const text = $scope.settings.waitlistText;
                 SettingsService
                     .updateWaitlistText(text)
                     .success(function (data) {
@@ -129,7 +129,7 @@ angular.module('reg')
             };
 
             $scope.updateAcceptanceText = function () {
-                var text = $scope.settings.acceptanceText;
+                const text = $scope.settings.acceptanceText;
                 SettingsService
                     .updateAcceptanceText(text)
                     .success(function (data) {
@@ -139,7 +139,7 @@ angular.module('reg')
             };
 
             $scope.updateConfirmationText = function () {
-                var text = $scope.settings.confirmationText;
+                const text = $scope.settings.confirmationText;
                 SettingsService
                     .updateConfirmationText(text)
                     .success(function (data) {

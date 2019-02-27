@@ -1,30 +1,30 @@
-var path = require('path');
-var nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
+const path = require('path');
+const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
 
-var templatesDir = path.join(__dirname, '../templates');
-var emailTemplates = require('email-templates');
+const templatesDir = path.join(__dirname, '../templates');
+const emailTemplates = require('email-templates');
 
-var ROOT_URL = process.env.ROOT_URL;
+const ROOT_URL = process.env.ROOT_URL;
 
-var HACKATHON_NAME = process.env.HACKATHON_NAME;
-var EMAIL_ADDRESS = process.env.EMAIL_ADDRESS;
-var TWITTER_HANDLE = process.env.TWITTER_HANDLE;
-var FACEBOOK_HANDLE = process.env.FACEBOOK_HANDLE;
+const HACKATHON_NAME = process.env.HACKATHON_NAME;
+const EMAIL_ADDRESS = process.env.EMAIL_ADDRESS;
+const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
+const FACEBOOK_HANDLE = process.env.FACEBOOK_HANDLE;
 
-var EMAIL_HOST = process.env.EMAIL_HOST;
-var EMAIL_USER = process.env.EMAIL_USER;
-var EMAIL_PASS = process.env.EMAIL_PASS;
-var EMAIL_PORT = process.env.EMAIL_PORT;
-var EMAIL_CONTACT = process.env.EMAIL_CONTACT;
-var EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
+const EMAIL_HOST = process.env.EMAIL_HOST;
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
+const EMAIL_PORT = process.env.EMAIL_PORT;
+const EMAIL_CONTACT = process.env.EMAIL_CONTACT;
+const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
 // if(EMAIL_HEADER_IMAGE.indexOf("https") == -1){
 //   EMAIL_HEADER_IMAGE = ROOT_URL + EMAIL_HEADER_IMAGE;
 // }
 
-var NODE_ENV = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV;
 
-var options = {
+const options = {
     host: EMAIL_HOST,
     port: EMAIL_PORT,
     secure: true,
@@ -34,9 +34,9 @@ var options = {
     }
 };
 
-var transporter = nodemailer.createTransport(smtpTransport(options));
+const transporter = nodemailer.createTransport(smtpTransport(options));
 
-var controller = {};
+const controller = {};
 
 controller.transporter = transporter;
 
@@ -78,14 +78,14 @@ function sendOne(templateName, options, data, callback) {
 }
 
 controller.sendLaggerEmails = function (users, callback) {
-    for (var i = 0; i < users.length; i++) {
-        var user = users[i];
-        var options = {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const options = {
             to: user.email,
             subject: "[" + HACKATHON_NAME + "] - Başvurular kapanmak üzere!"
         };
 
-        var locals = {
+        const locals = {
             name: user.name,
             dashUrl: ROOT_URL
         };
@@ -106,14 +106,14 @@ controller.sendLaggerEmails = function (users, callback) {
 };
 
 controller.sendLaggerPaymentEmails = function (users, callback) {
-    for (var i = 0; i < users.length; i++) {
-        var user = users[i];
-        var options = {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const options = {
             to: user.email,
             subject: "[" + HACKATHON_NAME + "] - Teyitler kapanmak üzere!"
         };
 
-        var locals = {
+        const locals = {
             name: user.name,
             dashUrl: ROOT_URL
         };
@@ -135,14 +135,14 @@ controller.sendLaggerPaymentEmails = function (users, callback) {
 
 
 controller.sendSponsorEmails = function (users, callback) {
-    for (var i = 0; i < users.length; i++) {
-        var user = users[i];
-        var options = {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const options = {
             to: user.email,
             subject: "[" + HACKATHON_NAME + "] - Şirket Tercihleri Açıldı!"
         };
 
-        var locals = {
+        const locals = {
             name: user.name,
             dashUrl: ROOT_URL
         };
@@ -164,12 +164,12 @@ controller.sendSponsorEmails = function (users, callback) {
 
 
 controller.sendAcceptEmails = function (email, callback) {
-    var options = {
+    const options = {
         to: email,
         subject: "[" + HACKATHON_NAME + "] -  Kabul Edildin!"
     };
 
-    var locals = {
+    const locals = {
         dashUrl: ROOT_URL
     };
 
@@ -188,12 +188,12 @@ controller.sendAcceptEmails = function (email, callback) {
 };
 
 controller.sendPaymentEmails = function (email, callback) {
-    var options = {
+    const options = {
         to: email,
         subject: "[" + HACKATHON_NAME + "] -  Ödemeni Doğruladık!"
     };
 
-    var locals = {
+    const locals = {
         dashUrl: ROOT_URL
     };
 
@@ -213,12 +213,12 @@ controller.sendPaymentEmails = function (email, callback) {
 
 
 controller.sendApplicationEmail = function (user, callback) {
-    var options = {
+    const options = {
         to: user.email,
         subject: "[" + HACKATHON_NAME + "] - Başvurunu Aldık!"
     };
 
-    var locals = {
+    const locals = {
         nickname: user.nickname,
         dashUrl: ROOT_URL
     };
@@ -245,12 +245,12 @@ controller.sendApplicationEmail = function (user, callback) {
  */
 controller.sendVerificationEmail = function (email, token, callback) {
 
-    var options = {
+    const options = {
         to: email,
         subject: "[" + HACKATHON_NAME + "] - E-Postanı Doğrula"
     };
 
-    var locals = {
+    const locals = {
         verifyUrl: ROOT_URL + '/verify/' + token
     };
 
@@ -282,12 +282,12 @@ controller.sendVerificationEmail = function (email, token, callback) {
  */
 controller.sendPasswordResetEmail = function (email, token, callback) {
 
-    var options = {
+    const options = {
         to: email,
         subject: "[" + HACKATHON_NAME + "] - Şifre Değişikliği İstendi!"
     };
 
-    var locals = {
+    const locals = {
         title: 'Şifre Değişikliği İsteği',
         subtitle: '',
         description: 'Birisi (umarız sen!) şifreni değiştirmek için bir istekte bulundu. Eğer ' +
@@ -323,12 +323,12 @@ controller.sendPasswordResetEmail = function (email, token, callback) {
  */
 controller.sendPasswordChangedEmail = function (email, callback) {
 
-    var options = {
+    const options = {
         to: email,
         subject: "[" + HACKATHON_NAME + "] - Şifren Değişti!"
     };
 
-    var locals = {
+    const locals = {
         title: 'Şifren Değişti',
         body: 'Birisi (umarız sen!) şifreni değiştirdi. Bu e-posta bilgilendirme amaçlı gönderildi.',
     };

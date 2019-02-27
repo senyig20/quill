@@ -9,7 +9,7 @@ angular.module('reg')
         function ($scope, $http, $state, settings, Utils, AuthService) {
 
             // Is registration open?
-            var Settings = settings.data;
+            const Settings = settings.data;
             $scope.regIsOpen = Utils.isRegOpen(Settings);
 
             // Start state for login
@@ -48,7 +48,7 @@ angular.module('reg')
             };
 
             $scope.sendResetEmail = function () {
-                var email = $scope.email;
+                const email = $scope.email;
                 AuthService.sendResetEmail(email);
                 sweetAlert({
                     title: "E-Posta Kutunu Kontrol Et!",

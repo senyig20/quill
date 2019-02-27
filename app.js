@@ -1,26 +1,26 @@
 // Load the dotfiles.
 require('dotenv').load({silent: true});
 
-var express = require('express');
+const express = require('express');
 
 // Middleware!
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 
 // cors configuration
-var cors = require('cors');
+const cors = require('cors');
 
-var mongoose = require('mongoose');
-var port = process.env.PORT || 3000;
-var database = process.env.DATABASE || process.env.MONGODB_URI || "mongodb://localhost:27017";
+const mongoose = require('mongoose');
+const port = process.env.PORT || 3000;
+const database = process.env.DATABASE || process.env.MONGODB_URI || "mongodb://localhost:27017";
 
-var User = require('./app/server/models/User');
-var Settings = require('./app/server/models/Settings');
+const User = require('./app/server/models/User');
+const Settings = require('./app/server/models/Settings');
 
 
-var app = express();
+const app = express();
 
 // Connect to mongodb
 
@@ -48,7 +48,7 @@ User
     })
     .exec(function (err, user) {
         if (!user) {
-            var u = new User();
+            const u = new User();
             u.email = process.env.ADMIN_EMAIL;
             u.password = User.generateHash(process.env.ADMIN_EMAIL);
             u.admin = true;
@@ -73,11 +73,11 @@ Settings
 
 // Routers =====================================================================
 
-var apiRouter = express.Router();
+const apiRouter = express.Router();
 require('./app/server/routes/api')(apiRouter);
 app.use('/api', apiRouter);
 
-var authRouter = express.Router();
+const authRouter = express.Router();
 require('./app/server/routes/auth')(authRouter);
 app.use('/auth', authRouter);
 

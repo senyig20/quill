@@ -23,8 +23,8 @@ angular.module('reg')
                 $scope.currentPage = data.page;
                 $scope.pageSize = data.size;
 
-                var p = [];
-                for (var i = 0; i < data.totalPages; i++) {
+                const p = [];
+                for (let i = 0; i < data.totalPages; i++) {
                     p.push(i);
                 }
                 $scope.pages = p;
@@ -107,13 +107,13 @@ angular.module('reg')
 
 
             function openInNewTab(url) {
-                var win = window.open(url, '_blank');
+                const win = window.open(url, '_blank');
                 win.focus();
             }
 
             function drawLabel(name, school) {
-                var canvas = document.getElementById("labelCanvas");
-                var context = canvas.getContext("2d");
+                const canvas = document.getElementById("labelCanvas");
+                const context = canvas.getContext("2d");
 
                 // Clear canvas
                 context.clearRect(0, 0, canvas.width, canvas.height);
@@ -121,7 +121,7 @@ angular.module('reg')
                 context.fillText(name, canvas.width / 2 - context.measureText(name).width / 2, 100);
                 context.font = '23px Open Sans';
                 context.fillText(school, canvas.width / 2 - context.measureText(school).width / 2, 140);
-                var dataURL = canvas.toDataURL("image/png");
+                const dataURL = canvas.toDataURL("image/png");
                 openInNewTab(dataURL);
             }
 

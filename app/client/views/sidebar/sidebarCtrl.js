@@ -9,8 +9,8 @@ angular.module('reg')
         'EVENT_INFO',
         function ($rootScope, $scope, Settings, Utils, AuthService, Session, EVENT_INFO) {
 
-            var settings = Settings.data;
-            var user = $rootScope.currentUser;
+            const settings = Settings.data;
+            const user = $rootScope.currentUser;
 
             $scope.EVENT_INFO = EVENT_INFO;
 

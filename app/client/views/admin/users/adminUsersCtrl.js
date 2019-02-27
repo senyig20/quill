@@ -27,8 +27,8 @@ angular.module('reg')
                 $scope.currentPage = data.page;
                 $scope.pageSize = data.size;
 
-                var p = [];
-                for (var i = 0; i < data.totalPages; i++) {
+                const p = [];
+                for (let i = 0; i < data.totalPages; i++) {
                     p.push(i);
                 }
                 $scope.pages = p;
@@ -240,8 +240,8 @@ angular.module('reg')
 
                         let j;
                         let i;
-                        var output = '"sep=;"\n"';
-                        var titles = generateSections(data[0]);
+                        let output = '"sep=;"\n"';
+                        const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j === titles[i].fields.length) {
@@ -253,7 +253,7 @@ angular.module('reg')
                         }
                         output += '\n';
 
-                        for (var rows = 0; rows < data.length; rows++) {
+                        for (let rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
                             for (i = 0; i < row.length; i++) {
                                 for (j = 0; j < row[i].fields.length; j++) {
@@ -261,7 +261,7 @@ angular.module('reg')
                                         output += ";";
                                         continue;
                                     }
-                                    var field = row[i].fields[j].value;
+                                    const field = row[i].fields[j].value;
                                     try {
                                         output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
                                     } catch (err) {
@@ -272,7 +272,7 @@ angular.module('reg')
                             output += "\n";
                         }
 
-                        var element = document.createElement('a');
+                        const element = document.createElement('a');
                         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
                         element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
                         element.style.display = 'none';
@@ -291,8 +291,8 @@ angular.module('reg')
 
                         let i;
                         let j;
-                        var output = '"sep=;"\n"';
-                        var titles = generateSections(data[0]);
+                        let output = '"sep=;"\n"';
+                        const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
@@ -304,7 +304,7 @@ angular.module('reg')
                         }
                         output += '\n';
 
-                        for (var rows = 0; rows < data.length; rows++) {
+                        for (let rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
                             for (i = 0; i < row.length; i++) {
                                 for (j = 0; j < row[i].fields.length; j++) {
@@ -312,7 +312,7 @@ angular.module('reg')
                                         output += ";";
                                         continue;
                                     }
-                                    var field = row[i].fields[j].value;
+                                    const field = row[i].fields[j].value;
                                     try {
                                         output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
                                     } catch (err) {
@@ -323,7 +323,7 @@ angular.module('reg')
                             output += "\n";
                         }
 
-                        var element = document.createElement('a');
+                        const element = document.createElement('a');
                         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
                         element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
                         element.style.display = 'none';
@@ -342,8 +342,8 @@ angular.module('reg')
 
                         let j;
                         let i;
-                        var output = '"sep=;"\n"';
-                        var titles = generateSections(data[0]);
+                        let output = '"sep=;"\n"';
+                        const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
@@ -355,7 +355,7 @@ angular.module('reg')
                         }
                         output += '\n';
 
-                        for (var rows = 0; rows < data.length; rows++) {
+                        for (let rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
                             for (i = 0; i < row.length; i++) {
                                 for (j = 0; j < row[i].fields.length; j++) {
@@ -363,7 +363,7 @@ angular.module('reg')
                                         output += ";";
                                         continue;
                                     }
-                                    var field = row[i].fields[j].value;
+                                    const field = row[i].fields[j].value;
                                     try {
                                         output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
                                     } catch (err) {
@@ -374,7 +374,7 @@ angular.module('reg')
                             output += "\n";
                         }
 
-                        var element = document.createElement('a');
+                        const element = document.createElement('a');
                         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
                         element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
                         element.style.display = 'none';
@@ -392,8 +392,8 @@ angular.module('reg')
 
                         let j;
                         let i;
-                        var output = '"sep=;"\n"';
-                        var titles = generateSections(data[0]);
+                        let output = '"sep=;"\n"';
+                        const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
@@ -405,7 +405,7 @@ angular.module('reg')
                         }
                         output += '\n';
 
-                        for (var rows = 0; rows < data.length; rows++) {
+                        for (let rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
                             for (i = 0; i < row.length; i++) {
                                 for (j = 0; j < row[i].fields.length; j++) {
@@ -413,7 +413,7 @@ angular.module('reg')
                                         output += ";";
                                         continue;
                                     }
-                                    var field = row[i].fields[j].value;
+                                    const field = row[i].fields[j].value;
                                     try {
                                         output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
                                     } catch (err) {
@@ -424,7 +424,7 @@ angular.module('reg')
                             output += "\n";
                         }
 
-                        var element = document.createElement('a');
+                        const element = document.createElement('a');
                         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
                         element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
                         element.style.display = 'none';
@@ -443,8 +443,8 @@ angular.module('reg')
 
                         let i;
                         let j;
-                        var output = '"sep=;"\n"';
-                        var titles = generateSections(data[0]);
+                        let output = '"sep=;"\n"';
+                        const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
@@ -456,7 +456,7 @@ angular.module('reg')
                         }
                         output += '\n';
 
-                        for (var rows = 0; rows < data.length; rows++) {
+                        for (let rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
                             for (i = 0; i < row.length; i++) {
                                 for (j = 0; j < row[i].fields.length; j++) {
@@ -464,7 +464,7 @@ angular.module('reg')
                                         output += ";";
                                         continue;
                                     }
-                                    var field = row[i].fields[j].value;
+                                    const field = row[i].fields[j].value;
                                     try {
                                         output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
                                     } catch (err) {
@@ -475,7 +475,7 @@ angular.module('reg')
                             output += "\n";
                         }
 
-                        var element = document.createElement('a');
+                        const element = document.createElement('a');
                         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
                         element.setAttribute('download', "Remixopolis Export " + new Date().toDateString() + ".csv");
                         element.style.display = 'none';

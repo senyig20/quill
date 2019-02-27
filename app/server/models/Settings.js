@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var validator = require('validator');
+const mongoose = require('mongoose');
+const validator = require('validator');
 
 mongoose.Promise = global.Promise;
 
@@ -11,7 +11,7 @@ mongoose.Promise = global.Promise;
  *
  * @type {mongoose}
  */
-var schema = new mongoose.Schema({
+const schema = new mongoose.Schema({
     status: String,
     timeOpen: {
         type: Number,

@@ -4,7 +4,7 @@ angular.module('reg')
         '$stateParams',
         'AuthService',
         function ($scope, $stateParams, AuthService) {
-            var token = $stateParams.token;
+            const token = $stateParams.token;
 
             $scope.loading = true;
 

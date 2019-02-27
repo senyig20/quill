@@ -80,7 +80,7 @@ angular.module('reg')
 
             $scope.updateRegistrationTimes = function () {
                 // Clean the dates and turn them to ms.
-                var bday = cleanDate($scope.settings.timeOpen).getTime();
+                const bday = cleanDate($scope.settings.timeOpen).getTime();
 
                 if (bday < 0 || bday === undefined) {
                     return swal('Oops...', 'You need to enter valid times.', 'error');

@@ -7,18 +7,8 @@
 }
 
 /* Force Outlook to provide a "view in browser" message */
-.ReadMsgBody {
-    width: 100%;
-}
-
-.ExternalClass {
-    width: 100%;
-}
 
 /* Force Hotmail to display emails at full width */
-.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
-    line-height: 100%;
-}
 
 /* Force Hotmail to display normal line spacing */
 body, table, td, p, a, li, blockquote {
@@ -28,8 +18,8 @@ body, table, td, p, a, li, blockquote {
 
 /* Prevent WebKit and Windows mobile changing default text sizes */
 table, td {
-    mso-table-lspace: 0pt;
-    mso-table-rspace: 0pt;
+    mso-table-lspace: 0;
+    mso-table-rspace: 0;
 }
 
 /* Remove spacing between tables in Outlook 2007 and up */
@@ -222,46 +212,18 @@ h4 {
 * @tip Set the background color and bottom border for your email's preheader area.
 * @theme header
 */
-#templatePreheader {
-    /*@editable*/
-    background-color: #F4F4F4;
-    /*@editable*/
-    border-bottom: 1px solid #CCCCCC;
-}
 
 /**
 * @tab Header
 * @section preheader text
 * @tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
 */
-.preheaderContent {
-    /*@editable*/
-    color: #808080;
-    /*@editable*/
-    font-family: 'Montserrat', Helvetica;
-    /*@editable*/
-    font-size: 10px;
-    /*@editable*/
-    line-height: 125%;
-    /*@editable*/
-    text-align: left;
-}
 
 /**
 * @tab Header
 * @section preheader link
 * @tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
 */
-.preheaderContent a:link, .preheaderContent a:visited, /* Yahoo! Mail Override */
-.preheaderContent a .yshortcuts /* Yahoo! Mail Override */
-{
-    /*@editable*/
-    color: #606060;
-    /*@editable*/
-    font-weight: normal;
-    /*@editable*/
-    text-decoration: underline;
-}
 
 /**
 * @tab Header
@@ -310,16 +272,6 @@ h4 {
 * @section header link
 * @tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
 */
-.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */
-.headerContent a .yshortcuts /* Yahoo! Mail Override */
-{
-    /*@editable*/
-    color: #EB4102;
-    /*@editable*/
-    font-weight: normal;
-    /*@editable*/
-    text-decoration: underline;
-}
 
 #headerImage {
     height: auto;
@@ -367,16 +319,6 @@ h4 {
 * @section body link
 * @tip Set the styling for your email's main content links. Choose a color that helps them stand out from your text.
 */
-.bodyContent a:link, .bodyContent a:visited, /* Yahoo! Mail Override */
-.bodyContent a .yshortcuts /* Yahoo! Mail Override */
-{
-    /*@editable*/
-    color: #EB4102;
-    /*@editable*/
-    font-weight: normal;
-    /*@editable*/
-    text-decoration: underline;
-}
 
 .bodyContent img {
     display: inline;
@@ -431,16 +373,6 @@ h4 {
 * @section footer link
 * @tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
 */
-.footerContent a:link, .footerContent a:visited, /* Yahoo! Mail Override */
-.footerContent a .yshortcuts, .footerContent a span /* Yahoo! Mail Override */
-{
-    /*@editable*/
-    color: #606060;
-    /*@editable*/
-    font-weight: normal;
-    /*@editable*/
-    text-decoration: underline;
-}
 
 /* /\/\/\/\/\/\/\/\/ MOBILE STYLES /\/\/\/\/\/\/\/\/ */
 
@@ -524,10 +456,6 @@ h4 {
     }
 
     /* ======== Header Styles ======== */
-    #templatePreheader {
-        display: none !important;
-    }
-
     /* Hide the template preheader to save space */
     /**
     * @tab Mobile Styles
@@ -560,14 +488,6 @@ h4 {
     * @section body image
     * @tip Make the main body image fluid for portrait or landscape view adaptability, and set the image's original width as the max-width. If a fluid setting doesn't work, set the image width to half its original size instead.
     */
-    #bodyImage {
-        height: auto !important;
-        /*@editable*/
-        max-width: 560px !important;
-        /*@editable*/
-        width: 100% !important;
-    }
-
     /**
     * @tab Mobile Styles
     * @section body text

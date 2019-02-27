@@ -1,12 +1,12 @@
-var User = require('../models/User');
-var Settings = require('../models/Settings');
-var Mailer = require('../services/email');
-var Stats = require('../services/stats');
+const User = require('../models/User');
+const Settings = require('../models/Settings');
+const Mailer = require('../services/email');
+const Stats = require('../services/stats');
 
-var validator = require('validator');
-var moment = require('moment');
+const validator = require('validator');
+const moment = require('moment');
 
-var UserController = {};
+const UserController = {};
 
 
 // Tests a string if it ends with target s
@@ -32,7 +32,7 @@ function canRegister(email, password, callback) {
             callback(err);
         }
 
-        var now = Date.now();
+        const now = Date.now();
 
         if (now < times.timeOpen) {
             return callback({
@@ -117,9 +117,9 @@ UserController.loginWithPassword = function (email, password, callback) {
             }
 
             // yo dope nice login here's a token for your troubles
-            var token = user.generateAuthToken();
+            const token = user.generateAuthToken();
 
-            var u = user.toJSON();
+            const u = user.toJSON();
 
             delete u.password;
 
@@ -172,7 +172,7 @@ UserController.createUser = function (email, password, confirmpassword, callback
                 } else {
 
                     // Make a new user
-                    var u = new User();
+                    const u = new User();
                     u.email = email;
                     u.password = User.generateHash(password);
                     u.save(function (err) {
@@ -182,10 +182,10 @@ UserController.createUser = function (email, password, confirmpassword, callback
                             });
                         } else {
                             // yay! success.
-                            var token = u.generateAuthToken();
+                            const token = u.generateAuthToken();
 
                             // Send over a verification email
-                            var verificationToken = u.generateEmailVerificationToken();
+                            const verificationToken = u.generateEmailVerificationToken();
                             Mailer.sendVerificationEmail(email, verificationToken);
 
                             return callback(
@@ -249,14 +249,14 @@ UserController.getAllFinal = function (callback) {
 
 UserController.getPageCheckedAndSponsor = function (query, callback) {
     let queries;
-    var page = query.page;
-    var size = parseInt(query.size);
-    var searchText = query.text;
+    const page = query.page;
+    const size = parseInt(query.size);
+    const searchText = query.text;
 
-    var findQuery = {};
+    const findQuery = {};
     if (searchText.length > 0) {
         queries = [];
-        var re = new RegExp(searchText, 'i');
+        const re = new RegExp(searchText, 'i');
         queries.push({'profile.name': re});
         queries.push({'status.confirmed': true});
         queries.push({'status.paymentMade': true});
@@ -306,14 +306,14 @@ UserController.getPageCheckedAndSponsor = function (query, callback) {
 
 UserController.getPageChecked = function (query, callback) {
     let queries;
-    var page = query.page;
-    var size = parseInt(query.size);
-    var searchText = query.text;
+    const page = query.page;
+    const size = parseInt(query.size);
+    const searchText = query.text;
 
     let findQuery = {};
     if (searchText.length > 0) {
         queries = [];
-        var re = new RegExp(searchText, 'i');
+        const re = new RegExp(searchText, 'i');
         queries.push({'profile.name': re});
         queries.push({'status.confirmed': true});
         queries.push({'status.paymentMade': true});
@@ -390,9 +390,9 @@ function buildStatusQueries(statusFilters) {
             // Convert to boolean
             const hasStatus = (statusFilters[key] === 'true');
             if (hasStatus) {
-                var q = {};
+                const q = {};
                 // Verified is a prop on user object
-                var queryKey = (key === 'verified' ? key : 'status.' + key);
+                const queryKey = (key === 'verified' ? key : 'status.' + key);
                 q[queryKey] = true;
                 queries.push(q);
             }
@@ -415,7 +415,7 @@ function buildStatusQueries(statusFilters) {
 function buildFindQuery(textQueries, statusQueries) {
     const findQuery = {};
     if (textQueries.length > 0 && statusQueries.length > 0) {
-        var queryRoot = [];
+        const queryRoot = [];
         queryRoot.push({'$or': textQueries});
         queryRoot.push({'$and': statusQueries});
         findQuery.$and = queryRoot;
@@ -435,18 +435,18 @@ function buildFindQuery(textQueries, statusQueries) {
  * @param  {Function} callback args(err, {users, page, totalPages})
  */
 UserController.getPage = function (query, callback) {
-    var page = query.page;
-    var size = parseInt(query.size);
-    var searchText = query.text;
-    var statusFilters = query.statusFilters;
+    const page = query.page;
+    const size = parseInt(query.size);
+    const searchText = query.text;
+    const statusFilters = query.statusFilters;
 
     // Build a query for the search text
-    var textQueries = buildTextQueries(searchText);
+    const textQueries = buildTextQueries(searchText);
     // Build a query for each status
-    var statusQueries = buildStatusQueries(statusFilters);
+    const statusQueries = buildStatusQueries(statusFilters);
 
     // Build find query
-    var findQuery = buildFindQuery(textQueries, statusQueries);
+    const findQuery = buildFindQuery(textQueries, statusQueries);
 
     User
         .find(findQuery)
@@ -510,7 +510,7 @@ UserController.updateProfileById = function (id, profile, callback) {
                 callback(err);
             }
 
-            var now = Date.now();
+            const now = Date.now();
 
             if (now < times.timeOpen) {
                 return callback({
@@ -679,7 +679,7 @@ UserController.sendVerificationEmailById = function (id, callback) {
             if (err || !user) {
                 return callback(err);
             }
-            var token = user.generateEmailVerificationToken();
+            const token = user.generateEmailVerificationToken();
             Mailer.sendVerificationEmail(user.email, token);
             return callback(err, user);
         });
@@ -699,7 +699,7 @@ UserController.sendPasswordResetEmail = function (email, callback) {
                 return callback(err);
             }
 
-            var token = user.generateTempAuthToken();
+            const token = user.generateTempAuthToken();
             Mailer.sendPasswordResetEmail(email, token, callback);
         });
 };

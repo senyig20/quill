@@ -1,16 +1,16 @@
 require('dotenv').load({silent: true});
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var concat = require('gulp-concat');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var ngAnnotate = require('gulp-ng-annotate');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const minifyCss = require('gulp-minify-css');
+const concat = require('gulp-concat');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const ngAnnotate = require('gulp-ng-annotate');
 
-var environment = process.env.NODE_ENV;
+const environment = process.env.NODE_ENV;
 
-var nodemon = require('gulp-nodemon');
+const nodemon = require('gulp-nodemon');
 
 function swallowError(error) {
     //If you want details of the error in the console

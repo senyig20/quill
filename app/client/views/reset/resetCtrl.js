@@ -5,13 +5,13 @@ angular.module('reg')
         '$state',
         'AuthService',
         function ($scope, $stateParams, $state, AuthService) {
-            var token = $stateParams.token;
+            const token = $stateParams.token;
 
             $scope.loading = true;
 
             $scope.changePassword = function () {
-                var password = $scope.password;
-                var confirm = $scope.confirm;
+                const password = $scope.password;
+                const confirm = $scope.confirm;
 
                 if (password !== confirm) {
                     $scope.error = "Şifreler uyuşmuyor!";
