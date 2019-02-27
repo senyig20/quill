@@ -65,7 +65,6 @@ angular.module('reg')
             };
 
 
-
             function formatTime(time) {
                 if (time) {
                     return moment(time).format('MMMM Do YYYY, h:mm:ss a');
@@ -96,10 +95,12 @@ angular.module('reg')
                     .getAllCompaniesSelected()
                     .success(function (data) {
 
+                        let i;
+                        let j;
                         var output = '"sep=;"\n"';
                         var titles = generateSections(data[0]);
-                        for (var i = 0; i < titles.length; i++) {
-                            for (var j = 0; j < titles[i].fields.length; j++) {
+                        for (i = 0; i < titles.length; i++) {
+                            for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
                                     output += titles[i].fields[j].name + '";';
                                 } else {
@@ -111,8 +112,8 @@ angular.module('reg')
 
                         for (var rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
-                            for (var i = 0; i < row.length; i++) {
-                                for (var j = 0; j < row[i].fields.length; j++) {
+                            for (i = 0; i < row.length; i++) {
+                                for (j = 0; j < row[i].fields.length; j++) {
                                     if (!row[i].fields[j].value) {
                                         output += ";";
                                         continue;
@@ -137,7 +138,7 @@ angular.module('reg')
                         document.body.removeChild(element);
 
                     });
-            }
+            };
 
 
             function generateSections(user) {

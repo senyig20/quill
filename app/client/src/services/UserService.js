@@ -23,7 +23,7 @@ angular.module('reg')
                 getAll: function () {
                     return $http.get(base);
                 },
-                getCheckedPage: function(page, size, text){
+                getCheckedPage: function (page, size, text) {
                     return $http.get(base + 'tobechecked' + '?' + $.param(
                         {
                             text: text,
@@ -32,7 +32,7 @@ angular.module('reg')
                         })
                     );
                 },
-                getCheckedPageSponsor: function(page, size, text){
+                getCheckedPageSponsor: function (page, size, text) {
                     return $http.get(base + 'sponsorList' + '?' + $.param(
                         {
                             text: text,
@@ -42,21 +42,21 @@ angular.module('reg')
                     );
                 },
 
-                getAllCompaniesSelected: function(){
+                getAllCompaniesSelected: function () {
                     return $http.get(base + 'sponsorsSelected');
                 },
-                getAllAdmitted: function(){
+                getAllAdmitted: function () {
                     return $http.get(base + 'allAdmitted');
                 },
-                getAllConfirmed: function(){
+                getAllConfirmed: function () {
                     return $http.get(base + 'allConfirmed');
                 },
-                getAllUnpaid: function(){
-                    return $http.get(base+ 'allUnpaid');
+                getAllUnpaid: function () {
+                    return $http.get(base + 'allUnpaid');
                 },
 
-                getAllFinal: function(){
-                    return $http.get(base+ 'allFinal');
+                getAllFinal: function () {
+                    return $http.get(base + 'allFinal');
                 },
 
                 getPage: function (page, size, text, statusFilters) {
@@ -97,11 +97,9 @@ angular.module('reg')
                 admitUser: function (id) {
                     return $http.post(base + id + '/admit');
                 },
-
                 checkIn: function (id) {
                     return $http.post(base + id + '/checkin');
                 },
-
                 checkOut: function (id) {
                     return $http.post(base + id + '/checkout');
                 },
@@ -120,13 +118,9 @@ angular.module('reg')
                 sendSponsor: function () {
                     return $http.post(base + 'sendSponsorEmails');
                 },
-
-
-
                 removeAdmin: function (id) {
                     return $http.post(base + id + '/removeadmin');
                 },
-
                 sendLaggerEmails: function () {
                     return $http.post(base + 'sendlagemails');
                 },

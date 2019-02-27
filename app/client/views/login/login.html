@@ -19,22 +19,22 @@
                         <form ng-submit="login()">
                             <div class="field">
                                 <label> E-Posta</label>
-                                <input type="email"
-                                       id='email'
+                                <input id='email'
+                                       ng-model="email"
                                        placeholder="foo@bar.edu"
-                                       ng-model="email">
+                                       type="email">
                             </div>
                             <div class="field">
                                 <label> Şifre</label>
-                                <input type="password"
-                                       id='password'
+                                <input id='password'
+                                       ng-model="password"
                                        placeholder="Şifre (En az 6 karakter)"
-                                       ng-model="password" required>
+                                       required type="password">
                             </div>
                             <div class="field">
-                                <button id="login-password"
-                                        type="submit"
-                                        class="fluid ui login button">
+                                <button class="fluid ui login button"
+                                        id="login-password"
+                                        type="submit">
                                     Giriş Yap
                                 </button>
                             </div>
@@ -44,10 +44,10 @@
                     <div class="ui form" ng-show="regIsOpen">
                         <div class="ui divider"></div>
                         <div class="field">
-                            <button id="register"
-                                    type="submit"
-                                    class="fluid ui register button"
-                                    ng-click="goToRegister()">
+                            <button class="fluid ui register button"
+                                    id="register"
+                                    ng-click="goToRegister()"
+                                    type="submit">
                                 Kayıt Ol
                             </button>
                         </div>
@@ -59,15 +59,15 @@
                         <form ng-submit="sendResetEmail()">
                             <div class="field">
                                 <label> E-Posta</label>
-                                <input type="email"
-                                       id='email'
+                                <input id='emailForgot'
+                                       ng-model="email"
                                        placeholder="foo@bar.edu"
-                                       ng-model="email">
+                                       type="email">
                             </div>
                             <div class="field">
-                                <button id="forgot-password"
-                                        type="submit"
-                                        class="fluid ui login button">
+                                <button class="fluid ui login button"
+                                        id="forgot-password"
+                                        type="submit">
                                     Şifremi Sıfırla
                                 </button>
                             </div>
@@ -77,13 +77,13 @@
 
                 <div class="ui divider"></div>
 
-                <div ng-show="loginState === 'login'" class="forgot">
+                <div class="forgot" ng-show="loginState === 'login'">
                     <a href="#" ng-click="setLoginState('forgot')">
                         Şifreni mi unuttun?
                     </a>
                 </div>
 
-                <div ng-show="loginState === 'forgot'" class="forgot">
+                <div class="forgot" ng-show="loginState === 'forgot'">
                     <a href="#" ng-click="setLoginState('login')">
                         {{regIsOpen ? 'Giriş yap veya kaydol' : 'Giriş'}}
                     </a>

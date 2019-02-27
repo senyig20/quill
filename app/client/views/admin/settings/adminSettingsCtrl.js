@@ -31,7 +31,7 @@ angular.module('reg')
                         $scope.settings.allowMinors = data.allowMinors;
                         const successText = $scope.settings.allowMinors ?
                             "Minors are now allowed to register." :
-                            "Minors are no longer allowed to register."
+                            "Minors are no longer allowed to register.";
                         swal("Looks good!", successText, "success");
                     });
             };
@@ -43,7 +43,7 @@ angular.module('reg')
                         $scope.settings.enableSponsors = data.enableSponsors;
                         const successText = $scope.settings.enableSponsors ?
                             "Sponsor selections are open." :
-                            "Sponsor selections are now close."
+                            "Sponsor selections are now close.";
                         swal("Looks good!", successText, "success");
                     });
             };

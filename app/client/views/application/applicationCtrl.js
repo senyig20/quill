@@ -77,10 +77,7 @@ angular.module('reg')
 
             function minorsValidation() {
                 // Are minors allowed to register?
-                if (isMinor() && !minorsAreAllowed()) {
-                    return false;
-                }
-                return true;
+                return !(isMinor() && !minorsAreAllowed());
             }
 
             $scope.formatDate = function (date) {

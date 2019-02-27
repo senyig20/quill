@@ -1,88 +1,87 @@
-<div class="page" >
+<div class="page">
     <div class="divided title">
         Check-In
     </div>
     <div class="ui segment">
 
-         <div class="ui header">
-                    Search
+        <div class="ui header">
+            Search
+        </div>
+
+        <div class="ui form">
+            <div class="field">
+                <div class="ui icon fluid input">
+                    <input ng-model="queryText" ng-model-options="{debounce: 300}" placeholder="Search..."
+                           type="text">
+                    <i class="search icon"></i>
                 </div>
+            </div>
 
-                <div class="ui form">
-                    <div class="field">
-                        <div class="ui icon fluid input">
-                            <input ng-model="queryText" ng-model-options="{debounce: 300}" placeholder="Search..."
-                                   type="text">
-                            <i class="search icon"></i>
-                        </div>
-                    </div>
+        </div>
+        <div class="ui form">
+            <div class="grouped fields">
+                <div class="field">
+
 
                 </div>
-                <div class="ui form">
-                    <div class="grouped fields">
-                        <div class="field">
-
-
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
 
 
         <br/>
 
         <div class="field" id="table-container">
-                <div class="ui header">
-                    Users
-                </div>
-
-                <table
-                        class="ui celled selectable compact users table">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>School</th>
-                        <th>Check In Attendee</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr
-                            ng-class="rowClass(user)"
-                            ng-click="selectUser(user)"
-                            ng-repeat="user in users">
-                        <td>
-                            <strong>
-                                {{user.profile.name}}
-                                &nbsp;
-
-                            </strong>
-                        </td>
-                        <td>{{user.profile.school}}</td>
-
-                        <td
-                                class="aligned">
-
-                            <button
-                                    class="ui circular mini basic green icon button"
-                                    ng-click="toggleCheckIn($event, user, $index)">
-
-                                <i
-                                        class="flag outline icon"
-                                        ng-if="!user.status.checkedIn"></i>
-
-                                <i
-                                        class="green flag icon"
-                                        ng-if="user.status.checkedIn"></i>
-
-                            </button>
-
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <canvas height="299" id="labelCanvas" style="border-style: none; display: none;" width="520"></canvas>
-
+            <div class="ui header">
+                Users
             </div>
-        </div>
 
+            <table
+                    class="ui celled selectable compact users table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>School</th>
+                    <th>Check In Attendee</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                        ng-class="rowClass(user)"
+                        ng-click="selectUser(user)"
+                        ng-repeat="user in users">
+                    <td>
+                        <strong>
+                            {{user.profile.name}}
+                            &nbsp;
+
+                        </strong>
+                    </td>
+                    <td>{{user.profile.school}}</td>
+
+                    <td
+                            class="aligned">
+
+                        <button
+                                class="ui circular mini basic green icon button"
+                                ng-click="toggleCheckIn($event, user, $index)">
+
+                            <i
+                                    class="flag outline icon"
+                                    ng-if="!user.status.checkedIn"></i>
+
+                            <i
+                                    class="green flag icon"
+                                    ng-if="user.status.checkedIn"></i>
+
+                        </button>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <canvas height="299" id="labelCanvas" style="border-style: none; display: none;" width="520"></canvas>
+
+        </div>
     </div>
+
 </div>

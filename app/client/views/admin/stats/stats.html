@@ -125,9 +125,9 @@
                 Send reminder emails for users who have not submitted application:
             </strong>
             <div class="field" style="margin-bottom:5px">
-                <button type="submit"
-                        class="fluid ui sea-serpent button"
-                        ng-click="sendLaggerEmails()">
+                <button class="fluid ui sea-serpent button"
+                        ng-click="sendLaggerEmails()"
+                        type="submit">
                     Send!
                 </button>
             </div>
@@ -140,9 +140,9 @@
                 Send sponsor selection emails:
             </strong>
             <div class="field" style="margin-bottom:5px">
-                <button type="submit"
-                        class="fluid ui sea-serpent button"
-                        ng-click="sendSponsor()">
+                <button class="fluid ui sea-serpent button"
+                        ng-click="sendSponsor()"
+                        type="submit">
                     Send!
                 </button>
             </div>
@@ -154,9 +154,9 @@
             Send reminder emails for users who have not confirmed (Filled in the form) in application:
         </strong>
         <div class="field" style="margin-bottom:5px">
-            <button type="submit"
-                    class="fluid ui sea-serpent button"
-                    ng-click="sendLaggerPaymentEmails()">
+            <button class="fluid ui sea-serpent button"
+                    ng-click="sendLaggerPaymentEmails()"
+                    type="submit">
                 Send!
             </button>
         </div>
@@ -209,7 +209,6 @@
                     <div class="ui red mini label">
                         Declined: {{school.stats.declined}}
                     </div>
-                    </p>
                     <div class="ui divider"></div>
                 </div>
             </div>

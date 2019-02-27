@@ -140,10 +140,10 @@ module.exports = function (router) {
         }
     });
 
-    router.get('/users/tobechecked', isAdmin, function(req, res){
+    router.get('/users/tobechecked', isAdmin, function (req, res) {
         var query = req.query;
 
-        if (query.page && query.size){
+        if (query.page && query.size) {
 
             UserController.getPageChecked(query, defaultResponse(req, res));
 
@@ -154,10 +154,10 @@ module.exports = function (router) {
         }
     });
 
-    router.get('/users/sponsorList', isAdmin, function(req, res){
+    router.get('/users/sponsorList', isAdmin, function (req, res) {
         var query = req.query;
 
-        if (query.page && query.size){
+        if (query.page && query.size) {
 
             UserController.getPageCheckedAndSponsor(query, defaultResponse(req, res));
 
@@ -169,7 +169,7 @@ module.exports = function (router) {
     });
 
     router.get('/users/sponsorsSelected', isAdmin, function (req, res) {
-            UserController.getAllSponsorSubmitted(defaultResponse(req, res));
+        UserController.getAllSponsorSubmitted(defaultResponse(req, res));
 
     });
     router.get('/users/allConfirmed', isAdmin, function (req, res) {

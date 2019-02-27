@@ -1,4 +1,4 @@
-<div id="dashboard" class="page">
+<div class="page" id="dashboard">
     <div class="divided title">
         Ana Sayfa
     </div>
@@ -26,8 +26,8 @@
 
 
                 <div
-                        ng-if="showWaitlist"
-                        class="waitlist state">
+                        class="waitlist state"
+                        ng-if="showWaitlist">
                     Bekleme Listesinde
                 </div>
 
@@ -44,8 +44,8 @@
                 </div>
 
                 <div
-                        ng-if="dashState('unverified')"
-                        class="description">
+                        class="description"
+                        ng-if="dashState('unverified')">
                     <p>
                         <strong>
                             E-Postanı ({{user.email}}) daha doğrulamamışsın!
@@ -81,8 +81,8 @@
                 </div>
                 <br>
                 <div
-                        ng-if="dashState('openAndIncomplete')"
-                        class="description">
+                        class="description"
+                        ng-if="dashState('openAndIncomplete')">
                     <p>
                         <strong>
                             {{ DASHBOARD.INCOMPLETE_TITLE }}
@@ -100,8 +100,8 @@
                 </div>
 
                 <div
-                        ng-if="dashState('openAndSubmitted')"
-                        class="description">
+                        class="description"
+                        ng-if="dashState('openAndSubmitted')">
                     <p>
                         <strong>
                             {{ DASHBOARD.SUBMITTED_TITLE }}
@@ -127,8 +127,8 @@
                 </div>
 
                 <div
-                        ng-if="dashState('closedAndSubmitted')"
-                        class="description">
+                        class="description"
+                        ng-if="dashState('closedAndSubmitted')">
 
                     <div
                             class="markdown"
@@ -216,8 +216,8 @@
                         ng-if="dashState('confirmed')">
 
                     <div
-                            ng-show="!pastConfirmation"
-                            class="markdown">
+                            class="markdown"
+                            ng-show="!pastConfirmation">
                         <h4>
                             {{ DASHBOARD.CONFIRMED_NOT_PAST_TITLE }}
                         </h4>

@@ -13,7 +13,7 @@
                 <fieldset ng-disabled="pastConfirmation">
                     <div class="field">
                         <div class="ui toggle checkbox">
-                            <input type="checkbox" ng-model="user.confirmation.groupPayment">
+                            <input ng-model="user.confirmation.groupPayment" type="checkbox">
                             <label> Ödeme grup olarak yapıldı</label>
                         </div>
                     </div>
@@ -25,18 +25,18 @@
                             Lütfen dekontunuzu buraya yükleyin!
                         </p>
                         <a
-                                target="_blank"
+                                class="ui pink button"
                                 href="https://www.dropbox.com/request/E40v7fVAkSbZjhtdbTq0"
-                                class="ui pink button">
+                                target="_blank">
                             Yükle
                         </a>
                     </div>
                     <div class="field">
                         <div class="ui toggle checkbox">
                             <input
-                                    type="checkbox"
                                     name="receiptConfirmation"
                                     ng-model="user.confirmation.receiptConfirmation"
+                                    type="checkbox"
                             >
                             <label>Dekontumu yüklediğimi teyit ediyorum.</label>
                         </div>
@@ -48,15 +48,15 @@
 
                     <div class="field">
                         <div class="ui toggle checkbox">
-                            <input type="checkbox" ng-model="user.confirmation.wantsReceipt">
+                            <input ng-model="user.confirmation.wantsReceipt" type="checkbox">
                             <label> Fatura kesilmesini talep ediyorum </label>
                         </div>
                     </div>
 
                     <div class="field" ng-show="user.confirmation.wantsReceipt">
                         <label>Fatura Isim ve Soyismi</label>
-                        <div id="groupid">
-                            <input name="groupid"
+                        <div id="billName">
+                            <input name="billName"
                                    ng-model="user.confirmation.namesurname"
                                    type="text">
                         </div>
@@ -64,16 +64,16 @@
 
                     <div class="field" ng-show="user.confirmation.wantsReceipt">
                         <label>Fatura Adresi</label>
-                        <div id="groupid">
+                        <div id="billAddress">
                      <textarea
-                             name="address" ng-model="user.confirmation.address" type="text"></textarea>
+                             name="billAddress" ng-model="user.confirmation.address" type="text"></textarea>
                         </div>
                     </div>
 
                     <div class="field" ng-show="user.confirmation.wantsReceipt">
                         <label>Telefon Numarası</label>
-                        <div id="groupid">
-                            <input name="groupid"
+                        <div id="billPhone">
+                            <input name="billPhone"
                                    ng-model="user.confirmation.phoneNumber"
                                    pattern="[0-9.]+" type="number">
                         </div>
@@ -81,8 +81,8 @@
 
                     <div class="field" ng-show="user.confirmation.wantsReceipt">
                         <label>TC Kimlik Numarası</label>
-                        <div id="groupid">
-                            <input name="groupid"
+                        <div id="billID">
+                            <input name="billID"
                                    ng-model="user.confirmation.idNumber"
                                    pattern="[0-9.]+" type="number">
                         </div>
@@ -99,8 +99,8 @@
                         <label> Katılım Şartnamesi </label>
                         <p>
                             <a
-                                    target="_blank"
-                                    href="https://go.hackmit.org/liability-waiver">
+                                    href="https://go.hackmit.org/liability-waiver"
+                                    target="_blank">
                                 Şartname
                             </a>
                         </p>
@@ -112,10 +112,10 @@
                             Aşağıdaki kutuya ismimi yazarak yukarıda bulunan Katılım Şartnamesi'ni okuduğumu ve
                             şartlarını kabul ettiğimi beyan ederim.
                         </p>
-                        <input type="text"
-                               name="signatureLiabilityWaiver"
+                        <input name="signatureLiabilityWaiver"
+                               ng-model="user.confirmation.signatureLiability"
                                placeholder="İsminiz ve Soyisminiz."
-                               ng-model="user.confirmation.signatureLiability">
+                               type="text">
                     </div>
 
 
@@ -134,9 +134,9 @@
                     </div>
 
                     <div class="field" ng-hide="regIsClosed">
-                        <button type="submit"
-                                class="fluid ui purple button"
-                                ng-click="submitForm()">
+                        <button class="fluid ui purple button"
+                                ng-click="submitForm()"
+                                type="submit">
                             Gönder
                         </button>
                     </div>

@@ -240,36 +240,36 @@ UserController.getAllAdmitted = function (callback) {
 UserController.getAllConfirmed = function (callback) {
     User.find({"status.confirmed": true}, callback);
 };
-UserController.getAllUnpaid= function (callback) {
+UserController.getAllUnpaid = function (callback) {
     User.find({"status.confirmed": true, "status.paymentMade": false}, callback);
 };
 
-UserController.getAllFinal= function (callback) {
+UserController.getAllFinal = function (callback) {
     User.find({"status.confirmed": true, "status.paymentMade": true}, callback);
 };
 
-UserController.getPageCheckedAndSponsor = function(query, callback){
+UserController.getPageCheckedAndSponsor = function (query, callback) {
+    let queries;
     var page = query.page;
     var size = parseInt(query.size);
     var searchText = query.text;
 
     var findQuery = {};
-    if (searchText.length > 0){
-        var queries = [];
+    if (searchText.length > 0) {
+        queries = [];
         var re = new RegExp(searchText, 'i');
-        queries.push({ 'profile.name': re });
-        queries.push({ 'status.confirmed': true });
-        queries.push({ 'status.paymentMade': true });
-        queries.push({ 'confirmation.sponsorSelected': true });
+        queries.push({'profile.name': re});
+        queries.push({'status.confirmed': true});
+        queries.push({'status.paymentMade': true});
+        queries.push({'confirmation.sponsorSelected': true});
 
 
         findQuery.$and = queries;
-    }
-    else{
-        var queries = [];
-        queries.push({ 'status.confirmed': true });
-        queries.push({ 'status.paymentMade': true });
-        queries.push({ 'confirmation.sponsorSelected': true });
+    } else {
+        queries = [];
+        queries.push({'status.confirmed': true});
+        queries.push({'status.paymentMade': true});
+        queries.push({'confirmation.sponsorSelected': true});
         findQuery.$and = queries;
 
     }
@@ -282,14 +282,14 @@ UserController.getPageCheckedAndSponsor = function(query, callback){
         .select('+status.admittedBy')
         .skip(page * size)
         .limit(size)
-        .exec(function (err, users){
-            if (err || !users){
+        .exec(function (err, users) {
+            if (err || !users) {
                 return callback(err);
             }
 
-            User.count(findQuery).exec(function(err, count){
+            User.count(findQuery).exec(function (err, count) {
 
-                if (err){
+                if (err) {
                     return callback(err);
                 }
 
@@ -305,26 +305,26 @@ UserController.getPageCheckedAndSponsor = function(query, callback){
 };
 
 
-UserController.getPageChecked = function(query, callback){
+UserController.getPageChecked = function (query, callback) {
+    let queries;
     var page = query.page;
     var size = parseInt(query.size);
     var searchText = query.text;
 
-    var findQuery = {};
-    if (searchText.length > 0){
-        var queries = [];
+    let findQuery = {};
+    if (searchText.length > 0) {
+        queries = [];
         var re = new RegExp(searchText, 'i');
-        queries.push({ 'profile.name': re });
-        queries.push({ 'status.confirmed': true });
-        queries.push({ 'status.paymentMade': true });
+        queries.push({'profile.name': re});
+        queries.push({'status.confirmed': true});
+        queries.push({'status.paymentMade': true});
 
 
         findQuery.$and = queries;
-    }
-    else{
-        var queries = [];
-        queries.push({ 'status.confirmed': true });
-        queries.push({ 'status.paymentMade': true });
+    } else {
+        queries = [];
+        queries.push({'status.confirmed': true});
+        queries.push({'status.paymentMade': true});
         findQuery.$and = queries;
 
     }
@@ -337,14 +337,14 @@ UserController.getPageChecked = function(query, callback){
         .select('+status.admittedBy')
         .skip(page * size)
         .limit(size)
-        .exec(function (err, users){
-            if (err || !users){
+        .exec(function (err, users) {
+            if (err || !users) {
                 return callback(err);
             }
 
-            User.count(findQuery).exec(function(err, count){
+            User.count(findQuery).exec(function (err, count) {
 
-                if (err){
+                if (err) {
                     return callback(err);
                 }
 

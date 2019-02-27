@@ -1,4 +1,4 @@
-<div id="register">
+<div id="registerPage">
     <div class="container">
         <div class="content">
             <div class="ui segment">
@@ -18,24 +18,24 @@
                     <form ng-submit="register()">
                         <div class="field">
                             <label> E-Posta</label>
-                            <input type="email"
-                                   id='email'
+                            <input id='email'
+                                   ng-model="email"
                                    placeholder="foo@bar.edu"
-                                   ng-model="email">
+                                   type="email">
                         </div>
                         <div class="field">
                             <label> Şifre</label>
-                            <input type="password"
-                                   id='password'
+                            <input id='password'
+                                   ng-model="password"
                                    placeholder="Şifre (En az 6 karakter)"
-                                   ng-model="password" required>
+                                   required type="password">
                         </div>
                         <div class="field">
                             <label> Şifreni Doğrula</label>
-                            <input type="password"
-                                   id='confirmpassword'
+                            <input id='confirmpassword'
+                                   ng-model="confirmpassword"
                                    placeholder="Şifreni Doğrula"
-                                   ng-model="confirmpassword" required>
+                                   required type="password">
                         </div>
                     </form>
                 </div>
@@ -43,10 +43,10 @@
                 <div class="ui form" ng-show="regIsOpen">
                     <div class="ui divider"></div>
                     <div class="field">
-                        <button id="register"
-                                type="submit"
-                                class="fluid ui register button"
-                                ng-click="register()">
+                        <button class="fluid ui register button"
+                                id="register"
+                                ng-click="register()"
+                                type="submit">
                             Kayıt Ol
                         </button>
                     </div>
@@ -55,8 +55,8 @@
                 <div class="ui form">
                     <div class="ui divider"></div>
                     <div class="field">
-                        <button id="login"
-                                class="fluid ui login button"
+                        <button class="fluid ui login button"
+                                id="login"
                                 ng-click="loginPage()">
                             Giriş Sayfasına Dön
                         </button>
@@ -69,5 +69,4 @@
         </div>
     </div>
 
-</div>
 </div>

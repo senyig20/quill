@@ -152,15 +152,15 @@
 
                     <div class="field">
                         <div class="ui toggle checkbox">
-                            <input type="checkbox" ng-model="user.profile.chap">
+                            <input ng-model="user.profile.chap" type="checkbox">
                             <label> Danışman öğretmen olarak katılıyorum. </label>
                         </div>
                     </div>
 
                     <div class="field">
                         <label>Cep Telefonu Numaranız</label>
-                        <input pattern="[0-9. ]+" type="number" ng-model="user.profile.phoneNumber"
-                               placeholder="05xxxxxxxxx (Boşluksuz)" name="phoneNumber">
+                        <input name="phoneNumber" ng-model="user.profile.phoneNumber" pattern="[0-9. ]+"
+                               placeholder="05xxxxxxxxx (Boşluksuz)" type="number">
                     </div>
 
 

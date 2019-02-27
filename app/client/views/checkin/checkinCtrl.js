@@ -14,6 +14,7 @@ angular.module('reg')
             // multiple modals if you change state. Kill the top level dimmer node on initial load
             // to prevent this.
             $('.ui.dimmer').remove();
+
             // Populate the size of the modal for when it appears, with an arbitrary user.
 
 
@@ -42,7 +43,6 @@ angular.module('reg')
                         updatePage(data);
                     });
             });
-
 
 
             $scope.goToPage = function (page) {
@@ -104,7 +104,6 @@ angular.module('reg')
                     return 'warning';
                 }
             };
-
 
 
             function openInNewTab(url) {

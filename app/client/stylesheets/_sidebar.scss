@@ -68,7 +68,7 @@
     z-index: 9999;
 
     // Is not visible unless mobile.
-    visibility: 'hidden';
+    visibility: "hidden";
     opacity: 0;
 
     @include transform(translate3d($sidebar-width, 0, 0));

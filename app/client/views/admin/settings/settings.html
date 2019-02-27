@@ -3,8 +3,8 @@
 
         <!-- Reigstration Open/Close -->
         <div
-                ng-class="{'loading': loading}"
-                class="ui red segment">
+                class="ui red segment"
+                ng-class="{'loading': loading}">
             <div class="ui form">
 
                 <div class="ui header">
@@ -19,14 +19,14 @@
                     <label>
                         Opens: {{ formatDate(settings.timeOpen) }}
                     </label>
-                    <input type="datetime-local" ng-model="settings.timeOpen">
+                    <input ng-model="settings.timeOpen" type="datetime-local">
                 </div>
 
                 <div class="field">
                     <label>
                         Closes: {{ formatDate(settings.timeClose) }}
                     </label>
-                    <input type="datetime-local" ng-model="settings.timeClose">
+                    <input ng-model="settings.timeClose" type="datetime-local">
                 </div>
 
                 <div class="ui field">
@@ -44,8 +44,8 @@
 
         <!-- Confirmation Date -->
         <div
-                ng-class="{'loading': loading}"
-                class="ui orange segment">
+                class="ui orange segment"
+                ng-class="{'loading': loading}">
             <div class="ui form">
 
                 <div class="ui header">
@@ -60,7 +60,7 @@
                     <label>
                         Confirm By: {{ formatDate(settings.timeConfirm) }}
                     </label>
-                    <input type="datetime-local" ng-model="settings.timeConfirm">
+                    <input ng-model="settings.timeConfirm" type="datetime-local">
                 </div>
 
                 <div class="ui field">

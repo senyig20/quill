@@ -23,13 +23,13 @@ function calculateStats() {
                 'other': 0,
 
             },
-            companiesfirst:{
+            companiesfirst: {
                 'Tercih 1': 0,
                 'Tercih 2': 0,
                 'Tercih 3': 0,
                 'Tercih 4': 0,
             },
-            companiessecond:{
+            companiessecond: {
                 'Tercih 1': 0,
                 'Tercih 2': 0,
                 'Tercih 3': 0,
@@ -111,10 +111,10 @@ function calculateStats() {
 
                 // Count graduation years
 
-                if (user.confirmation.firstSponsorChoice){
+                if (user.confirmation.firstSponsorChoice) {
                     newStats.demo.companiesfirst[user.confirmation.firstSponsorChoice] += 1;
                 }
-                if (user.confirmation.secondSponsorChoice){
+                if (user.confirmation.secondSponsorChoice) {
                     newStats.demo.companiessecond[user.confirmation.secondSponsorChoice] += 1;
                 }
                 // Dietary restrictions
@@ -126,7 +126,6 @@ function calculateStats() {
                         newStats.dietaryRestrictions[restriction] += 1;
                     });
                 }
-
 
 
                 // Count checked in

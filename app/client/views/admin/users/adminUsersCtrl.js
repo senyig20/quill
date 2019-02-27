@@ -238,11 +238,13 @@ angular.module('reg')
                     .getAll()
                     .success(function (data) {
 
+                        let j;
+                        let i;
                         var output = '"sep=;"\n"';
                         var titles = generateSections(data[0]);
-                        for (var i = 0; i < titles.length; i++) {
-                            for (var j = 0; j < titles[i].fields.length; j++) {
-                                if (j == titles[i].fields.length) {
+                        for (i = 0; i < titles.length; i++) {
+                            for (j = 0; j < titles[i].fields.length; j++) {
+                                if (j === titles[i].fields.length) {
                                     output += titles[i].fields[j].name + '";';
                                 } else {
                                     output += titles[i].fields[j].name + '"; "';
@@ -253,8 +255,8 @@ angular.module('reg')
 
                         for (var rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
-                            for (var i = 0; i < row.length; i++) {
-                                for (var j = 0; j < row[i].fields.length; j++) {
+                            for (i = 0; i < row.length; i++) {
+                                for (j = 0; j < row[i].fields.length; j++) {
                                     if (!row[i].fields[j].value) {
                                         output += ";";
                                         continue;
@@ -279,7 +281,7 @@ angular.module('reg')
                         document.body.removeChild(element);
 
                     });
-            }
+            };
 
 
             $scope.getAllAdmittedCSV = function () {
@@ -287,10 +289,12 @@ angular.module('reg')
                     .getAllAdmitted()
                     .success(function (data) {
 
+                        let i;
+                        let j;
                         var output = '"sep=;"\n"';
                         var titles = generateSections(data[0]);
-                        for (var i = 0; i < titles.length; i++) {
-                            for (var j = 0; j < titles[i].fields.length; j++) {
+                        for (i = 0; i < titles.length; i++) {
+                            for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
                                     output += titles[i].fields[j].name + '";';
                                 } else {
@@ -302,8 +306,8 @@ angular.module('reg')
 
                         for (var rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
-                            for (var i = 0; i < row.length; i++) {
-                                for (var j = 0; j < row[i].fields.length; j++) {
+                            for (i = 0; i < row.length; i++) {
+                                for (j = 0; j < row[i].fields.length; j++) {
                                     if (!row[i].fields[j].value) {
                                         output += ";";
                                         continue;
@@ -328,7 +332,7 @@ angular.module('reg')
                         document.body.removeChild(element);
 
                     });
-            }
+            };
 
             $scope.getConfirmedCSV = function () {
                 console.log("Requesting server to export confirmed users as CSV file");
@@ -336,10 +340,12 @@ angular.module('reg')
                     .getAllConfirmed()
                     .success(function (data) {
 
+                        let j;
+                        let i;
                         var output = '"sep=;"\n"';
                         var titles = generateSections(data[0]);
-                        for (var i = 0; i < titles.length; i++) {
-                            for (var j = 0; j < titles[i].fields.length; j++) {
+                        for (i = 0; i < titles.length; i++) {
+                            for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
                                     output += titles[i].fields[j].name + '";';
                                 } else {
@@ -351,8 +357,8 @@ angular.module('reg')
 
                         for (var rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
-                            for (var i = 0; i < row.length; i++) {
-                                for (var j = 0; j < row[i].fields.length; j++) {
+                            for (i = 0; i < row.length; i++) {
+                                for (j = 0; j < row[i].fields.length; j++) {
                                     if (!row[i].fields[j].value) {
                                         output += ";";
                                         continue;
@@ -377,17 +383,19 @@ angular.module('reg')
                         document.body.removeChild(element);
 
                     });
-            }
+            };
             $scope.getUnpaidCSV = function () {
                 console.log("Requesting server to export confirmed users as CSV file");
                 UserService
                     .getAllUnpaid()
                     .success(function (data) {
 
+                        let j;
+                        let i;
                         var output = '"sep=;"\n"';
                         var titles = generateSections(data[0]);
-                        for (var i = 0; i < titles.length; i++) {
-                            for (var j = 0; j < titles[i].fields.length; j++) {
+                        for (i = 0; i < titles.length; i++) {
+                            for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
                                     output += titles[i].fields[j].name + '";';
                                 } else {
@@ -399,8 +407,8 @@ angular.module('reg')
 
                         for (var rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
-                            for (var i = 0; i < row.length; i++) {
-                                for (var j = 0; j < row[i].fields.length; j++) {
+                            for (i = 0; i < row.length; i++) {
+                                for (j = 0; j < row[i].fields.length; j++) {
                                     if (!row[i].fields[j].value) {
                                         output += ";";
                                         continue;
@@ -425,7 +433,7 @@ angular.module('reg')
                         document.body.removeChild(element);
 
                     });
-            }
+            };
 
             $scope.getFinalCSV = function () {
                 console.log("Requesting server to export confirmed users as CSV file");
@@ -433,10 +441,12 @@ angular.module('reg')
                     .getAllFinal()
                     .success(function (data) {
 
+                        let i;
+                        let j;
                         var output = '"sep=;"\n"';
                         var titles = generateSections(data[0]);
-                        for (var i = 0; i < titles.length; i++) {
-                            for (var j = 0; j < titles[i].fields.length; j++) {
+                        for (i = 0; i < titles.length; i++) {
+                            for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
                                     output += titles[i].fields[j].name + '";';
                                 } else {
@@ -448,8 +458,8 @@ angular.module('reg')
 
                         for (var rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
-                            for (var i = 0; i < row.length; i++) {
-                                for (var j = 0; j < row[i].fields.length; j++) {
+                            for (i = 0; i < row.length; i++) {
+                                for (j = 0; j < row[i].fields.length; j++) {
                                     if (!row[i].fields[j].value) {
                                         output += ";";
                                         continue;
@@ -474,7 +484,7 @@ angular.module('reg')
                         document.body.removeChild(element);
 
                     });
-            }
+            };
 
             function generateSections(user) {
                 return [

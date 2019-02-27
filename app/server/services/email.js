@@ -185,7 +185,7 @@ controller.sendAcceptEmails = function (email, callback) {
             callback(err, info);
         }
     });
-}
+};
 
 controller.sendPaymentEmails = function (email, callback) {
     var options = {
@@ -209,7 +209,7 @@ controller.sendPaymentEmails = function (email, callback) {
             callback(err, info);
         }
     });
-}
+};
 
 
 controller.sendApplicationEmail = function (user, callback) {
@@ -234,7 +234,7 @@ controller.sendApplicationEmail = function (user, callback) {
             callback(err, info);
         }
     });
-}
+};
 
 /**
  * Send a verification email to a user, with a verification token to enter.
