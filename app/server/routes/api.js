@@ -6,7 +6,6 @@ jwt = require('jsonwebtoken');
 JWT_SECRET = process.env.JWT_SECRET;
 
 
-var uuidv4 = require('uuid/v4');
 module.exports = function (router) {
 
     function getToken(req) {
@@ -96,7 +95,7 @@ module.exports = function (router) {
                                     })
                                 }
                             },
-                            function (error, response, body) {
+                            function (error) {
                                 return res.status(500).send({
                                     message: "Your error has been recorded, we'll get right on it!" + error
                                 });
@@ -236,7 +235,6 @@ module.exports = function (router) {
      * POST - Decline an acceptance.
      */
     router.post('/users/:id/decline', isOwnerOrAdmin, function (req, res) {
-        var confirmation = req.body.confirmation;
         var id = req.params.id;
 
         UserController.declineById(id, defaultResponse(req, res));
