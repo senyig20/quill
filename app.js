@@ -41,15 +41,16 @@ app.use(express.static(__dirname + '/app/client'));
 
 
 //Create admin and settings in database.
+
 User
     .findOne({
-        email: ADMIN_EMAIL
+        email: process.env.ADMIN_EMAIL
     })
     .exec(function (err, user) {
         if (!user) {
             var u = new User();
-            u.email = ADMIN_EMAIL;
-            u.password = User.generateHash(ADMIN_PASSWORD);
+            u.email = process.env.ADMIN_EMAIL;
+            u.password = User.generateHash(process.env.ADMIN_EMAIL);
             u.admin = true;
             u.verified = true;
             u.save(function (err) {
