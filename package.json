@@ -5,6 +5,7 @@
   "private": "true",
   "dependencies": {
     "async": "^1.4.2",
+    "angular": "1.4.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.8.4",
     "cookie-parser": "^1.4.3",
