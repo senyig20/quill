@@ -9,7 +9,6 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.8.4",
     "cookie-parser": "^1.4.3",
-    "cors": "^2.8.4",
     "dotenv": "^1.2.0",
     "email-templates": "^2.0.1",
     "csv-express": "^1.2.2",

@@ -9,8 +9,6 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 
-// cors configuration
-const cors = require('cors');
 
 const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
@@ -25,7 +23,6 @@ const app = express();
 // Connect to mongodb
 
 mongoose.connect(database, {useMongoClient: true});
-app.use(cors());
 
 app.use(morgan('dev'));
 app.use(cookieParser());
