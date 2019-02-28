@@ -518,11 +518,18 @@ angular.module('reg')
                                 name: 'School',
                                 value: user.profile.school
                             }, {
-                                name: 'Graduation Year',
-                                value: user.profile.graduationYear
+                                name: 'BirthDay Year',
+                                value: user.profile.byear
+                            }, {
+                                name: 'BirthDay Month',
+                                value: user.profile.bmonth
+                            }, {
+                                name: 'BirthDay Day',
+                                value: user.profile.bday
                             }
                         ]
                     }, {
+
                         name: 'Confirmation',
                         fields: [
                             {
@@ -541,20 +548,29 @@ angular.module('reg')
                                 name: 'ReceiptUploaded?',
                                 value: user.confirmation.receiptConfirmation
                             }, {
-                                name: 'Additional Notes',
-                                value: user.confirmation.notes
-                            }, {
                                 name: 'Payment Controlled by JARC and Approved?',
                                 value: user.status.paymentMade
                             }, {
-                                name: 'Group Payment?',
-                                value: user.confirmation.groupPayment
+                                name: 'First company selection',
+                                value: user.confirmation.firstSponsorChoice
                             }, {
-                                name: 'Group Payment ID (If by group)',
-                                value: user.confirmation.groupid
+                                name: 'Second company selection',
+                                value: user.confirmation.secondSponsorChoice
                             }, {
-                                name: 'Receipt Upload Verification (If by themselves) OR Group Payment ID Verification',
-                                value: user.confirmation.receiptConfirmation
+                                name: 'Wants Receipt?',
+                                value: user.confirmation.wantsReceipt
+                            }, {
+                                name: 'Receipt Name',
+                                value: user.confirmation.namesurname
+                            }, {
+                                name: 'Receipt Address',
+                                value: user.confirmation.address
+                            }, {
+                                name: 'Receipt ID Number',
+                                value: user.confirmation.idNumber
+                            }, {
+                                name: 'Receipt Phone',
+                                value: user.confirmation.phoneNumber
                             }
                         ]
                     }
