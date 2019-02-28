@@ -238,16 +238,16 @@ angular.module('reg')
                     .getAll()
                     .success(function (data) {
 
-                        let j;
                         let i;
+                        let j;
                         let output = '"sep=;"\n"';
                         const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
-                                if (j === titles[i].fields.length) {
-                                    output += titles[i].fields[j].name + '";';
+                                if (j == titles[i].fields.length) {
+                                    output += titles[i].fields[j].name + ';';
                                 } else {
-                                    output += titles[i].fields[j].name + '"; "';
+                                    output += titles[i].fields[j].name + '; ';
                                 }
                             }
                         }
@@ -263,9 +263,9 @@ angular.module('reg')
                                     }
                                     const field = row[i].fields[j].value;
                                     try {
-                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                        output += ' ' + field.replace(/(\r\n|\n|\r)/gm, " ") + ';';
                                     } catch (err) {
-                                        output += ' "' + field + '";';
+                                        output += ' ' + field + ';';
                                     }
                                 }
                             }
@@ -296,9 +296,9 @@ angular.module('reg')
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
-                                    output += titles[i].fields[j].name + '";';
+                                    output += titles[i].fields[j].name + ';';
                                 } else {
-                                    output += titles[i].fields[j].name + '"; "';
+                                    output += titles[i].fields[j].name + '; ';
                                 }
                             }
                         }
@@ -314,9 +314,9 @@ angular.module('reg')
                                     }
                                     const field = row[i].fields[j].value;
                                     try {
-                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                        output += ' ' + field.replace(/(\r\n|\n|\r)/gm, " ") + ';';
                                     } catch (err) {
-                                        output += ' "' + field + '";';
+                                        output += ' ' + field + ';';
                                     }
                                 }
                             }
@@ -340,16 +340,16 @@ angular.module('reg')
                     .getAllConfirmed()
                     .success(function (data) {
 
-                        let j;
                         let i;
+                        let j;
                         let output = '"sep=;"\n"';
                         const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
-                                    output += titles[i].fields[j].name + '";';
+                                    output += titles[i].fields[j].name + ';';
                                 } else {
-                                    output += titles[i].fields[j].name + '"; "';
+                                    output += titles[i].fields[j].name + '; ';
                                 }
                             }
                         }
@@ -365,9 +365,9 @@ angular.module('reg')
                                     }
                                     const field = row[i].fields[j].value;
                                     try {
-                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                        output += ' ' + field.replace(/(\r\n|\n|\r)/gm, " ") + ';';
                                     } catch (err) {
-                                        output += ' "' + field + '";';
+                                        output += ' ' + field + ';';
                                     }
                                 }
                             }
@@ -390,16 +390,16 @@ angular.module('reg')
                     .getAllUnpaid()
                     .success(function (data) {
 
-                        let j;
                         let i;
+                        let j;
                         let output = '"sep=;"\n"';
                         const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
-                                    output += titles[i].fields[j].name + '";';
+                                    output += titles[i].fields[j].name + ';';
                                 } else {
-                                    output += titles[i].fields[j].name + '"; "';
+                                    output += titles[i].fields[j].name + '; ';
                                 }
                             }
                         }
@@ -415,9 +415,9 @@ angular.module('reg')
                                     }
                                     const field = row[i].fields[j].value;
                                     try {
-                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                        output += ' ' + field.replace(/(\r\n|\n|\r)/gm, " ") + ';';
                                     } catch (err) {
-                                        output += ' "' + field + '";';
+                                        output += ' ' + field + ';';
                                     }
                                 }
                             }
@@ -448,9 +448,9 @@ angular.module('reg')
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
                                 if (j == titles[i].fields.length) {
-                                    output += titles[i].fields[j].name + '";';
+                                    output += titles[i].fields[j].name + ';';
                                 } else {
-                                    output += titles[i].fields[j].name + '"; "';
+                                    output += titles[i].fields[j].name + '; ';
                                 }
                             }
                         }
@@ -466,9 +466,9 @@ angular.module('reg')
                                     }
                                     const field = row[i].fields[j].value;
                                     try {
-                                        output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
+                                        output += ' ' + field.replace(/(\r\n|\n|\r)/gm, " ") + ';';
                                     } catch (err) {
-                                        output += ' "' + field + '";';
+                                        output += ' ' + field + ';';
                                     }
                                 }
                             }
