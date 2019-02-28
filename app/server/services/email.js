@@ -90,7 +90,6 @@ controller.sendLaggerEmails = function (users, callback) {
             dashUrl: ROOT_URL
         };
 
-        console.log('Sending lagger email to address ' + user.email);
         sendOne('email-lagger', options, locals, function (err, info) {
             if (err) {
                 console.log(err);
@@ -118,7 +117,6 @@ controller.sendLaggerPaymentEmails = function (users, callback) {
             dashUrl: ROOT_URL
         };
 
-        console.log('Sending lagger payment email to address ' + user.email);
         sendOne('email-lagger-payment', options, locals, function (err, info) {
             if (err) {
                 console.log(err);
@@ -147,7 +145,6 @@ controller.sendSponsorEmails = function (users, callback) {
             dashUrl: ROOT_URL
         };
 
-        console.log('Sending lagger payment email to address ' + user.email);
         sendOne('email-sponsor', options, locals, function (err, info) {
             if (err) {
                 console.log(err);
@@ -173,7 +170,6 @@ controller.sendAcceptEmails = function (email, callback) {
         dashUrl: ROOT_URL
     };
 
-    console.log('Sending accepted email to address ' + email);
     sendOne('email-accept', options, locals, function (err, info) {
         if (err) {
             console.log(err);
@@ -197,7 +193,6 @@ controller.sendPaymentEmails = function (email, callback) {
         dashUrl: ROOT_URL
     };
 
-    console.log('Sending accepted email to address ' + email);
     sendOne('email-payment', options, locals, function (err, info) {
         if (err) {
             console.log(err);

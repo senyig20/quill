@@ -6,7 +6,6 @@ const User = require('../models/User');
 let stats = {};
 
 function calculateStats() {
-    console.log('Calculating stats...');
     const newStats = {
         lastUpdated: 0,
 
@@ -157,7 +156,6 @@ function calculateStats() {
                 newStats.demo.schools = schools;
 
 
-                console.log('Stats updated!');
                 newStats.lastUpdated = new Date();
                 stats = newStats;
             });

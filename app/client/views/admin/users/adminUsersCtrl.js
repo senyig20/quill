@@ -335,7 +335,6 @@ angular.module('reg')
             };
 
             $scope.getConfirmedCSV = function () {
-                console.log("Requesting server to export confirmed users as CSV file");
                 UserService
                     .getAllConfirmed()
                     .success(function (data) {
@@ -385,7 +384,6 @@ angular.module('reg')
                     });
             };
             $scope.getUnpaidCSV = function () {
-                console.log("Requesting server to export confirmed users as CSV file");
                 UserService
                     .getAllUnpaid()
                     .success(function (data) {
@@ -436,7 +434,6 @@ angular.module('reg')
             };
 
             $scope.getFinalCSV = function () {
-                console.log("Requesting server to export confirmed users as CSV file");
                 UserService
                     .getAllFinal()
                     .success(function (data) {
