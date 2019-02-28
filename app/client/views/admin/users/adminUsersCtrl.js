@@ -523,7 +523,6 @@ angular.module('reg')
                             }
                         ]
                     }, {
-
                         name: 'Confirmation',
                         fields: [
                             {
