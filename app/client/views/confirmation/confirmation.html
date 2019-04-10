@@ -57,15 +57,9 @@
 
                     <div class="divided title">Fatura Bilgileri</div>
 
-                    <div class="field">
-                        <div class="ui toggle checkbox">
-                            <input ng-model="user.confirmation.wantsReceipt" type="checkbox">
-                            <label> Fatura kesilmesini talep ediyorum </label>
-                        </div>
-                    </div>
 
-                    <div class="field" ng-show="user.confirmation.wantsReceipt">
-                        <label>Fatura Isim ve Soyismi</label>
+                    <div class="field">
+                        <label>Fatura Isim ve Soyismi, veya Şirket İsmi</label>
                         <div id="billName">
                             <input name="billName"
                                    ng-model="user.confirmation.namesurname"
@@ -73,7 +67,7 @@
                         </div>
                     </div>
 
-                    <div class="field" ng-show="user.confirmation.wantsReceipt">
+                    <div class="field">
                         <label>Fatura Adresi</label>
                         <div id="billAddress">
                      <textarea
@@ -81,7 +75,7 @@
                         </div>
                     </div>
 
-                    <div class="field" ng-show="user.confirmation.wantsReceipt">
+                    <div class="field" >
                         <label>Telefon Numarası</label>
                         <div id="billPhone">
                             <input name="billPhone"
@@ -90,7 +84,7 @@
                         </div>
                     </div>
 
-                    <div class="field" ng-show="user.confirmation.wantsReceipt">
+                    <div class="field" >
                         <label>TC Kimlik Numarası</label>
                         <div id="billID">
                             <input name="billID"
