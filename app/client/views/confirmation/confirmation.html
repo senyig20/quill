@@ -17,6 +17,17 @@
                             <label> Ödeme grup olarak yapıldı</label>
                         </div>
                     </div>
+                    
+                    <div class="field" ng-show="user.confirmation.groupPayment>
+                                                <label>
+                            Ödeme kimler için yapıldı?
+                        </label>
+                         <textarea
+                                ng-model="user.confirmation.notes"></textarea>
+
+                    </div>
+                    
+                                           
 
 
                     <div class="field">
