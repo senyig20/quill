@@ -53,6 +53,43 @@ angular.module('reg')
                                 }
                             ]
                         },
+                        billPhone: {
+                            identifier: 'billPhone',
+                            rules: [
+                                {
+                                    type: 'checked',
+                                    prompt: 'Lütfen telefon numaranı gir.'
+                                }
+                            ]
+                        },
+                        billID: {
+                            identifier: 'billID',
+                            rules: [
+                                {
+                                    type: 'checked',
+                                    prompt: 'Lütfen kimlik numaranı gir.'
+                                }
+                            ]
+                        },
+                        billAddress: {
+                            identifier: 'billAddress',
+                            rules: [
+                                {
+                                    type: 'checked',
+                                    prompt: 'Lütfen adresini gir.'
+                                }
+                            ]
+                        },
+                        billName: {
+                            identifier: 'billName',
+                            rules: [
+                                {
+                                    type: 'checked',
+                                    prompt: 'Lütfen fatura ismini gir.'
+                                }
+                            ]
+                        },
+
                         receiptConfirmation: {
                             identifier: 'receiptConfirmation',
                             rules: [
