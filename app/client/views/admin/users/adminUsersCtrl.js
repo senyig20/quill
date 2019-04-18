@@ -25,7 +25,7 @@ angular.module('reg')
             function updatePage(data) {
                 $scope.users = data.users;
                 $scope.currentPage = data.page;
-                $scope.pageSize = data.size;
+                $scope.pageSize = 1000;
 
                 const p = [];
                 for (let i = 0; i < data.totalPages; i++) {
@@ -35,21 +35,21 @@ angular.module('reg')
             }
 
             UserService
-                .getPage($stateParams.page, $stateParams.size, $stateParams.query, $scope.statusFilters)
+                .getPage($stateParams.page, 1000, $stateParams.query, $scope.statusFilters)
                 .success(function (data) {
                     updatePage(data);
                 });
 
             $scope.$watch('queryText', function (queryText) {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, queryText, $scope.statusFilters)
+                    .getPage($stateParams.page, 1000, queryText, $scope.statusFilters)
                     .success(function (data) {
                         updatePage(data);
                     });
             });
             $scope.applyStatusFilter = function () {
                 UserService
-                    .getPage($stateParams.page, $stateParams.size, $scope.queryText, $scope.statusFilters)
+                    .getPage($stateParams.page, 1000, $scope.queryText, $scope.statusFilters)
                     .success(function (data) {
                         updatePage(data);
                     });
