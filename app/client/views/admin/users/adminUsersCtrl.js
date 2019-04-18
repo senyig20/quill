@@ -59,7 +59,7 @@ angular.module('reg')
             $scope.goToPage = function (page) {
                 $state.go('app.admin.users', {
                     page: page,
-                    size: $stateParams.size || 100
+                    size: $stateParams.size || 1000
                 });
             };
 
