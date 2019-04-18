@@ -60,6 +60,7 @@ angular.module('reg')
                 $state.go('app.admin.users', {
                     page: page,
                     size: $stateParams.size || 1000
+
                 });
             };
 
