@@ -57,7 +57,7 @@ angular.module('reg')
                             identifier: 'billPhone',
                             rules: [
                                 {
-                                    type: 'checked',
+                                    type: 'empty',
                                     prompt: 'Lütfen telefon numaranı gir.'
                                 }
                             ]
@@ -66,7 +66,7 @@ angular.module('reg')
                             identifier: 'billID',
                             rules: [
                                 {
-                                    type: 'checked',
+                                    type: 'empty',
                                     prompt: 'Lütfen kimlik numaranı gir.'
                                 }
                             ]
@@ -75,7 +75,7 @@ angular.module('reg')
                             identifier: 'billAddress',
                             rules: [
                                 {
-                                    type: 'checked',
+                                    type: 'empty',
                                     prompt: 'Lütfen adresini gir.'
                                 }
                             ]
@@ -84,7 +84,7 @@ angular.module('reg')
                             identifier: 'billName',
                             rules: [
                                 {
-                                    type: 'checked',
+                                    type: 'empty',
                                     prompt: 'Lütfen fatura ismini gir.'
                                 }
                             ]
