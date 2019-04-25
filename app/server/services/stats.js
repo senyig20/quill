@@ -23,17 +23,14 @@ function calculateStats() {
 
             },
             companiesfirst: {
-                'Tercih 1': 0,
-                'Tercih 2': 0,
-                'Tercih 3': 0,
-                'Tercih 4': 0,
+                'ING': 0,
+                'Siemens': 0,
+                'Istinye': 0,
             },
             companiessecond: {
-                'Tercih 1': 0,
-                'Tercih 2': 0,
-                'Tercih 3': 0,
-                'Tercih 4': 0,
-
+                'ING': 0,
+                'Siemens': 0,
+                'Istinye': 0,
             }
         },
 
