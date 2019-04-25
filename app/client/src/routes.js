@@ -118,7 +118,7 @@ angular.module('reg')
                     }
                 })
                 .state('app.sponsor', {
-                    url: "/sponsor",
+                    url: "/caseSelection",
                     templateUrl: "views/sponsor/sponsor.html",
                     controller: 'SponsorCtrl',
                     data: {
