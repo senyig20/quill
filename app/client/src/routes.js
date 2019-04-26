@@ -191,9 +191,8 @@ angular.module('reg')
                 .state('app.godMode', {
                     views: {
                         '': {
-
                             templateUrl: "views/godMode/admin.html",
-                            controller: 'GAdminCtrl'
+                            controller: 'AdminCtrl'
                         }
                     },
                     data: {
@@ -203,12 +202,12 @@ angular.module('reg')
                 .state('app.godMode.stats', {
                     url: "/godMode",
                     templateUrl: "views/godMode/stats/stats.html",
-                    controller: 'GAdminStatsCtrl'
+                    controller: 'AdminStatsCtrl'
                 })
                 .state('app.godMode.exportteams', {
                     url: "/godMode/exportteams",
                     templateUrl: "views/godMode/exportteams/exportTeams.html",
-                    controller: 'GAdminExportTeamsCtrl'
+                    controller: 'AdminExportTeamsCtrl'
                 })
                 .state('app.godMode.users', {
                     url: "/godMode/users?" +
@@ -216,12 +215,12 @@ angular.module('reg')
                         '&size' +
                         '&query',
                     templateUrl: "views/godMode/users/users.html",
-                    controller: 'GAdminUsersCtrl'
+                    controller: 'AdminUsersCtrl'
                 })
                 .state('app.godMode.user', {
                     url: "/godMode/users/:id",
                     templateUrl: "views/godMode/user/user.html",
-                    controller: 'GAdminUserCtrl',
+                    controller: 'AdminUserCtrl',
                     resolve: {
                         'user': function ($stateParams, UserService) {
                             return UserService.get($stateParams.id);
@@ -231,7 +230,7 @@ angular.module('reg')
                 .state('app.godMode.settings', {
                     url: "/godMode/settings",
                     templateUrl: "views/godMode/settings/settings.html",
-                    controller: 'GAdminSettingsCtrl',
+                    controller: 'AdminSettingsCtrl',
                 })
 
 
