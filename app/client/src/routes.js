@@ -187,53 +187,6 @@ angular.module('reg')
                     templateUrl: "views/admin/settings/settings.html",
                     controller: 'AdminSettingsCtrl',
                 })
-
-                .state('app.godMode', {
-                    views: {
-                        '': {
-                            templateUrl: "views/godMode/admin.html",
-                            controller: 'AdminCtrl'
-                        }
-                    },
-                    data: {
-                        requireAdmin: true
-                    }
-                })
-                .state('app.godMode.stats', {
-                    url: "/godMode",
-                    templateUrl: "views/godMode/stats/stats.html",
-                    controller: 'AdminStatsCtrl'
-                })
-                .state('app.godMode.exportteams', {
-                    url: "/godMode/exportteams",
-                    templateUrl: "views/godMode/exportteams/exportTeams.html",
-                    controller: 'AdminExportTeamsCtrl'
-                })
-                .state('app.godMode.users', {
-                    url: "/godMode/users?" +
-                        '&page' +
-                        '&size' +
-                        '&query',
-                    templateUrl: "views/godMode/users/users.html",
-                    controller: 'AdminUsersCtrl'
-                })
-                .state('app.godMode.user', {
-                    url: "/godMode/users/:id",
-                    templateUrl: "views/godMode/user/user.html",
-                    controller: 'AdminUserCtrl',
-                    resolve: {
-                        'user': function ($stateParams, UserService) {
-                            return UserService.get($stateParams.id);
-                        }
-                    }
-                })
-                .state('app.godMode.settings', {
-                    url: "/godMode/settings",
-                    templateUrl: "views/godMode/settings/settings.html",
-                    controller: 'AdminSettingsCtrl',
-                })
-
-
                 .state('reset', {
                     url: "/reset/:token",
                     templateUrl: "views/reset/reset.html",
