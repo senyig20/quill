@@ -1,0 +1,210 @@
+<div class="ui stackable two column grid">
+    <div class="column">
+
+        <!-- Reigstration Open/Close -->
+        <div
+                class="ui red segment"
+                ng-class="{'loading': loading}">
+            <div class="ui form">
+
+                <div class="ui header">
+                    Open/Close Registration
+                </div>
+
+                <p>
+                    Users will be able to register new accounts within the time period specified.
+                </p>
+
+                <div class="field">
+                    <label>
+                        Opens: {{ formatDate(settings.timeOpen) }}
+                    </label>
+                    <input ng-model="settings.timeOpen" type="datetime-local">
+                </div>
+
+                <div class="field">
+                    <label>
+                        Closes: {{ formatDate(settings.timeClose) }}
+                    </label>
+                    <input ng-model="settings.timeClose" type="datetime-local">
+                </div>
+
+                <div class="ui field">
+                    <div
+                            class="ui green button"
+                            ng-click="updateRegistrationTimes()">
+                        Update
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="column">
+
+        <!-- Confirmation Date -->
+        <div
+                class="ui orange segment"
+                ng-class="{'loading': loading}">
+            <div class="ui form">
+
+                <div class="ui header">
+                    Confirmation Date
+                </div>
+
+                <p>
+                    Any users that are accepted will have to confirm by the date selected.
+                </p>
+
+                <div class="field">
+                    <label>
+                        Confirm By: {{ formatDate(settings.timeConfirm) }}
+                    </label>
+                    <input ng-model="settings.timeConfirm" type="datetime-local">
+                </div>
+
+                <div class="ui field">
+                    <div
+                            class="ui green button"
+                            ng-click="updateConfirmationTime()">
+                        Update
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Additional Options -->
+<div
+        ng-class="{'loading': loading}"
+        class="ui green segment">
+
+    <div class="ui header">
+        Additional Options
+    </div>
+
+    <div class="column">
+        <div class="ui form">
+            <div class="grouped fields">
+                <div class="field">
+                    <div class="ui toggle checkbox">
+                        <input
+                                type="checkbox"
+                                name="allowCompany"
+                                ng-class="{true: 'checked', false: ''}[settings.enableSponsors]"
+                                ng-model="settings.enableSponsors"
+                                ng-change="updateSelectSponsors()">
+                        <label>Open Company Selections</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Waitlist Text Editor -->
+<div
+        ng-class="{'loading': loading}"
+        class="ui blue segment">
+    <div class="ui header">
+        Waitlist Text
+    </div>
+    <div class="ui stackable two column grid">
+        <div class="column">
+            <div class="ui form">
+                <div class="field">
+          <textarea
+                  class="ui input"
+                  type="text"
+                  ng-model="settings.waitlistText">
+          </textarea>
+                </div>
+                <div class="field">
+                    <div
+                            class="ui green button"
+                            ng-click="updateWaitlistText()">
+                        Update
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div
+                    class="preview ui segment"
+                    ng-bind-html="markdownPreview(settings.waitlistText)">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Acceptance Text Editor -->
+<div
+        ng-class="{'loading': loading}"
+        class="ui pink segment">
+    <div class="ui header">
+        Acceptance Text
+    </div>
+    <div class="ui stackable two column grid">
+        <div class="column">
+            <div class="ui form">
+                <div class="field">
+          <textarea
+                  class="ui input"
+                  type="text"
+                  ng-model="settings.acceptanceText">
+          </textarea>
+                </div>
+                <div class="field">
+                    <div
+                            class="ui green button"
+                            ng-click="updateAcceptanceText()">
+                        Update
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div
+                    class="preview ui segment"
+                    ng-bind-html="markdownPreview(settings.acceptanceText)">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div
+        ng-class="{'loading': loading}"
+        class="ui orange segment">
+    <div class="ui header">
+        Confirmation Text
+    </div>
+    <div class="ui stackable two column grid">
+        <div class="column">
+            <div class="ui form">
+                <div class="field">
+          <textarea
+                  class="ui input"
+                  type="text"
+                  ng-model="settings.confirmationText">
+          </textarea>
+                </div>
+                <div class="field">
+                    <div
+                            class="ui green button"
+                            ng-click="updateConfirmationText()">
+                        Update
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div
+                    class="preview ui segment"
+                    ng-bind-html="markdownPreview(settings.confirmationText)">
+            </div>
+        </div>
+    </div>
+</div>

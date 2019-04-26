@@ -332,8 +332,6 @@ angular.module('reg')
                 const requireCompletedProfile = toState.data.requireCompletedProfile;
 
 
-
-
                 if (requireLogin && !Session.getToken()) {
                     event.preventDefault();
                     $state.go('login');
