@@ -254,6 +254,9 @@
                     <td
                             class="collapsing">
 
+                        <button
+                                class="ui circular mini basic green icon button"
+                                ng-click="acceptPayment($event, user, $index)">
 
                             <i
                                     class="lira sign icon"
@@ -263,6 +266,7 @@
                                     class="green lira sign icon"
                                     ng-if="user.status.paymentMade"></i>
 
+                        </button>
 
                     </td>
 
