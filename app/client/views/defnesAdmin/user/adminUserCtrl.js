@@ -14,17 +14,6 @@ angular.module('reg')
              * TODO: JANK WARNING
              */
 
-            $scope.updateProfile = function () {
-                UserService
-                    .updateProfile($scope.selectedUser._id, $scope.selectedUser.profile)
-                    .success(function (data) {
-                        $selectedUser = data;
-                        swal("Updated!", "Profile updated.", "success");
-                    })
-                    .error(function () {
-                        swal("Oops, you forgot something.");
-                    });
-            };
 
             $scope.formatTime = function (time) {
                 return moment(time).format('MMMM Do YYYY, h:mm:ss a');

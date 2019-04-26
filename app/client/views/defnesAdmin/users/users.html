@@ -248,28 +248,18 @@
                                 ng-if="user.status.cancelled">
                         </i>
 
+                        <i
+                                class="lira sign icon"
+                                ng-if="!user.status.paymentMade">
+                        </i>
+                        <i
+                                class="green lira sign icon"
+                                ng-if="user.status.paymentMade">
+                        </i>
+
                     </td>
 
                     <!-- Host -->
-                    <td
-                            class="collapsing">
-
-                        <button
-                                class="ui circular mini basic green icon button"
-                                ng-click="acceptPayment($event, user, $index)">
-
-                            <i
-                                    class="lira sign icon"
-                                    ng-if="!user.status.paymentMade"></i>
-
-                            <i
-                                    class="green lira sign icon"
-                                    ng-if="user.status.paymentMade"></i>
-
-                        </button>
-
-                    </td>
-
 
                     <td
                             class="collapsing">
@@ -280,44 +270,6 @@
                         </button>
                     </td>
 
-                    <td
-                            class="right aligned collapsing">
-
-                        <button
-                                class="accept ui circular mini basic green icon button"
-                                ng-click="acceptUser($event, user, $index)">
-                            <i class="add user icon"></i>
-                        </button>
-
-                        <button
-                                class="ui circular mini basic green icon button"
-                                ng-click="toggleCheckIn($event, user, $index)">
-
-                            <i
-                                    class="flag outline icon"
-                                    ng-if="!user.status.checkedIn"></i>
-
-                            <i
-                                    class="green flag icon"
-                                    ng-if="user.status.checkedIn"></i>
-
-                        </button>
-
-                        <button
-                                class="ui circular mini basic green icon button"
-                                ng-click="toggleAdmin($event, user, $index)">
-
-                            <i
-                                    class="spy outline icon"
-                                    ng-if="!user.admin"></i>
-
-                            <i
-                                    class="green spy icon"
-                                    ng-if="user.admin"></i>
-
-                        </button>
-
-                    </td>
                 </tr>
                 </tbody>
             </table>

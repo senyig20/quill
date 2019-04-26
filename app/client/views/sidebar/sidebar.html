@@ -59,6 +59,15 @@
 
         <div
                 class="item"
+                ng-show="isDefneSaylik || isYigitSen"
+                ui-sref="app.defnesAdmin.stats"
+                ui-sref-active="active"
+        >
+            Admin
+        </div>
+
+        <div
+                class="item"
                 ng-show="currentUser.admin"
                 ui-sref="app.checkin"
                 ui-sref-active="active">
