@@ -1,0 +1,71 @@
+<div class="ui segment">
+
+    <div class="ui stackable grid">
+        <div class="three wide column">
+            <div class="ui header">
+                Search
+            </div>
+            <div class="ui form">
+                <div class="field">
+                    <div class="ui icon fluid input">
+                        <input ng-model="queryText" ng-model-options="{debounce: 300}" placeholder="Search..."
+                               type="text">
+                        <i class="search icon"></i>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <br/>
+            <button class="ui pink button" ng-click="exportCSV()" style="margin-top: 20px; width:180px;"
+                    type="button">Export Team Creation Data
+            </button>
+
+            <div class="ui divider"></div>
+
+            <button class="ui icon basic page button" ng-class="page == currentPage ? 'active pink' : ''"
+                    ng-click="goToPage(page)" ng-repeat="page in pages">
+                {{page}}
+            </button>
+
+        </div>
+        <div class="thirteen wide column" id="table-container">
+            <div class="ui header">
+                Users
+            </div>
+
+            <table
+                    class="ui celled selectable compact users table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>School</th>
+                    <th>First Choice</th>
+                    <th>Second Choice</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                        ng-class="rowClass(user)"
+                        ng-click="selectUser(user)"
+                        ng-repeat="user in users">
+                    <td>
+                        <strong>
+                            {{user.profile.name}}
+                            &nbsp;
+
+                        </strong>
+                    </td>
+                    <td>{{user.profile.school}}</td>
+                    <td>{{user.confirmation.firstSponsorChoice}}</td>
+                    <td>{{user.confirmation.secondSponsorChoice}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
