@@ -33,8 +33,6 @@ angular.module('reg')
                     return false;
                 }
             }
-
-
             $scope.isYigitSen = function (user) {
                 if (user.email == "saydef.20@robcol.k12.tr"){
                     return true;
