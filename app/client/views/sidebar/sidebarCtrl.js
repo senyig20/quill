@@ -26,12 +26,8 @@ angular.module('reg')
             };
 
             $scope.isDefneSaylik = function (user) {
-                if (user.email == "saydef.20@robcol.k12.tr"){
-                    return true;
-                }
-                else{
                     return false;
-                }
+
             };
 
             $scope.isYigitSen = function (user) {
