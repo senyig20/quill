@@ -23,12 +23,12 @@ function calculateStats() {
 
             },
             companiesfirst: {
-                'ING': 0,
+                'Yapi': 0,
                 'Siemens': 0,
                 'Istinye': 0,
             },
             companiessecond: {
-                'ING': 0,
+                'Yapi': 0,
                 'Siemens': 0,
                 'Istinye': 0,
             }
