@@ -504,6 +504,9 @@ angular.module('reg')
                             }, {
                                 name: 'Email',
                                 value: user.email
+                            }, {
+                                name: 'Status',
+                                value: user.status.name
                             }
                         ]
                     }, {
