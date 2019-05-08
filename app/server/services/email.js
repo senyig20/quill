@@ -2,7 +2,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 let aws = require('aws-sdk');
 
-aws.config.loadFromPath('../config.json');
+aws.config.loadFromPath('./config.json');
 
 const templatesDir = path.join(__dirname, '../templates');
 const emailTemplates = require('email-templates');
