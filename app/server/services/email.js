@@ -23,9 +23,11 @@ const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
 const NODE_ENV = process.env.NODE_ENV;
 
 let transporter = nodemailer.createTransport({
-    SES: new aws.SES({
-        apiVersion: '2010-12-01'
-    })
+    service: '"SES-US-EAST-1"', // no need to set host or port etc.
+    auth: {
+        user: 'AKIA5ZBLDOCV5USKYL56',
+        pass: 'BOJKkIfyI099r9WmMPLq+0B2hRpp2DjrnzYCaS5hrIrX'
+    }
 });
 
 const controller = {};
