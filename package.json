@@ -29,7 +29,8 @@
     "nodemailer-smtp-transport": "^1.0.3",
     "request": "^2.60.0",
     "underscore": "^1.8.3",
-    "validator": "^3.40.1"
+    "validator": "^3.40.1",
+    "nodemailer-sendgrid-transport": "^0.2.0"
   },
   "scripts": {
     "mongo": "mongod --dbpath db",
