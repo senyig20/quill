@@ -1,6 +1,6 @@
 const path = require('path');
 const nodemailer = require('nodemailer');
-const smtpTransport = require('nodemailer-smtp-transport');
+var sgTransport = require('nodemailer-sendgrid-transport');
 
 const templatesDir = path.join(__dirname, '../templates');
 const emailTemplates = require('email-templates');
@@ -12,10 +12,6 @@ const EMAIL_ADDRESS = process.env.EMAIL_ADDRESS;
 const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
 const FACEBOOK_HANDLE = process.env.FACEBOOK_HANDLE;
 
-const EMAIL_HOST = process.env.EMAIL_HOST;
-const EMAIL_USER = process.env.EMAIL_USER;
-const EMAIL_PASS = process.env.EMAIL_PASS;
-const EMAIL_PORT = process.env.EMAIL_PORT;
 const EMAIL_CONTACT = process.env.EMAIL_CONTACT;
 const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
 // if(EMAIL_HEADER_IMAGE.indexOf("https") == -1){
@@ -25,16 +21,13 @@ const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
 const NODE_ENV = process.env.NODE_ENV;
 
 const options = {
-    host: EMAIL_HOST,
-    port: EMAIL_PORT,
-    secure: true,
     auth: {
-        user: EMAIL_USER,
-        pass: EMAIL_PASS
+        user: 'devops@ja-r.org',
+        pass: 'Edw3afx1.'
     }
 };
 
-const transporter = nodemailer.createTransport(smtpTransport(options));
+const transporter = nodemailer.createTransport(sgTransport(options));
 
 const controller = {};
 
