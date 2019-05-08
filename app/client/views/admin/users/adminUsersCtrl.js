@@ -5,7 +5,7 @@ angular.module('reg')
         '$stateParams',
         'UserService',
         'AuthService',
-        function ($scope, $state, $stateParams, UserService) {
+        function ($scope, $state, $stateParams, UserService, AuthService) {
 
             $scope.pages = [];
             $scope.users = [];
@@ -458,7 +458,6 @@ angular.module('reg')
 
                     });
             };
-
             $scope.getFinalCSV = function () {
                 UserService
                     .getAllFinal()
@@ -508,7 +507,6 @@ angular.module('reg')
 
                     });
             };
-
             function generateSections(user) {
                 return [
                     {
@@ -602,7 +600,6 @@ angular.module('reg')
                     }
                 ];
             }
-
             $scope.selectUser = selectUser;
 
         }]);
