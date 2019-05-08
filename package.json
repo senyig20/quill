@@ -30,7 +30,9 @@
     "request": "^2.60.0",
     "underscore": "^1.8.3",
     "validator": "^3.40.1",
-    "nodemailer-sendgrid-transport": "^0.2.0"
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "nodemailer-mailgun-transport": "^1.4.0",
+    "aws-sdk": "^2.451.0"
   },
   "scripts": {
     "mongo": "mongod --dbpath db",

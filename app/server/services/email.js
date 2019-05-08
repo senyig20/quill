@@ -1,6 +1,8 @@
 const path = require('path');
 const nodemailer = require('nodemailer');
-var sgTransport = require('nodemailer-sendgrid-transport');
+let aws = require('aws-sdk');
+
+aws.config.loadFromPath('config.json');
 
 const templatesDir = path.join(__dirname, '../templates');
 const emailTemplates = require('email-templates');
@@ -11,7 +13,6 @@ const HACKATHON_NAME = process.env.HACKATHON_NAME;
 const EMAIL_ADDRESS = process.env.EMAIL_ADDRESS;
 const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
 const FACEBOOK_HANDLE = process.env.FACEBOOK_HANDLE;
-const API_KEY = process.env.SENDGRID_API_KEY;
 
 const EMAIL_CONTACT = process.env.EMAIL_CONTACT;
 const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
@@ -22,12 +23,12 @@ const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
 const NODE_ENV = process.env.NODE_ENV;
 
 const options = {
-    auth: {
-        api_key: API_KEY
-    }
+    SES: new aws.SES({
+        apiVersion: '2010-12-01'
+    })
 };
 
-const transporter = nodemailer.createTransport(sgTransport(options));
+const transporter = nodemailer.createTransport(options);
 
 const controller = {};
 
