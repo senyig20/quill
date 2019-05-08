@@ -22,13 +22,11 @@ const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
 
 const NODE_ENV = process.env.NODE_ENV;
 
-const options = {
+let transporter = nodemailer.createTransport({
     SES: new aws.SES({
         apiVersion: '2010-12-01'
     })
-};
-
-const transporter = nodemailer.createTransport(options);
+});
 
 const controller = {};
 
