@@ -11,6 +11,7 @@ const HACKATHON_NAME = process.env.HACKATHON_NAME;
 const EMAIL_ADDRESS = process.env.EMAIL_ADDRESS;
 const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
 const FACEBOOK_HANDLE = process.env.FACEBOOK_HANDLE;
+const API_KEY = process.env.SENDGRID_API_KEY;
 
 const EMAIL_CONTACT = process.env.EMAIL_CONTACT;
 const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
@@ -22,7 +23,7 @@ const NODE_ENV = process.env.NODE_ENV;
 
 const options = {
     auth: {
-        api_key: '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'
+        api_key: SENDGRID_API_KEY
     }
 };
 
