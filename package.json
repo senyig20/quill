@@ -30,7 +30,8 @@
     "request": "^2.60.0",
     "underscore": "^1.8.3",
     "validator": "^3.40.1",
-    "nodemailer-sendgrid-transport": "^0.2.0"
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "snyk": "^1.162.0"
   },
   "scripts": {
     "mongo": "mongod --dbpath db",
@@ -39,7 +40,9 @@
     "watch": "gulp server",
     "prod": "gulp build && node app.js",
     "config": "cp .env.config .env",
-    "postinstall": "gulp build"
+    "postinstall": "gulp build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
@@ -54,5 +57,6 @@
   },
   "engines": {
     "node": "7.4.0"
-  }
+  },
+  "snyk": true
 }
