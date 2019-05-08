@@ -11,7 +11,7 @@ const HACKATHON_NAME = process.env.HACKATHON_NAME;
 const EMAIL_ADDRESS = process.env.EMAIL_ADDRESS;
 const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
 const FACEBOOK_HANDLE = process.env.FACEBOOK_HANDLE;
-const API_KEY = process.env.SENDGRID_API_KEY;
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 
 const EMAIL_CONTACT = process.env.EMAIL_CONTACT;
 const EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
