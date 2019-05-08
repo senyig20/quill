@@ -8,7 +8,8 @@ const templatesDir = path.join(__dirname, '../templates');
 const emailTemplates = require('email-templates');
 
 const ROOT_URL = process.env.ROOT_URL;
-
+const AWS_USER = process.env.AWS_USER;
+const AWS_PASS = process.env.AWS_PASS;
 const HACKATHON_NAME = process.env.HACKATHON_NAME;
 const EMAIL_ADDRESS = process.env.EMAIL_ADDRESS;
 const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
@@ -25,8 +26,8 @@ const NODE_ENV = process.env.NODE_ENV;
 let transporter = nodemailer.createTransport({
     service: '"SES-US-EAST-1"', // no need to set host or port etc.
     auth: {
-        user: 'AKIA5ZBLDOCV5USKYL56',
-        pass: 'BOJKkIfyI099r9WmMPLq+0B2hRpp2DjrnzYCaS5hrIrX'
+        user: AWS_USER,
+        pass: AWS_PASS
     }
 });
 
