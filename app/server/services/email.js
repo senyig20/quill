@@ -22,8 +22,7 @@ const NODE_ENV = process.env.NODE_ENV;
 
 const options = {
     auth: {
-        user: 'devops@ja-r.org',
-        pass: 'Edw3afx1.'
+        api_key: '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'
     }
 };
 
