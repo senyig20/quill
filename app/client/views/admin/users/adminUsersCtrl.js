@@ -4,6 +4,7 @@ angular.module('reg')
         '$state',
         '$stateParams',
         'UserService',
+        'AuthService',
         function ($scope, $state, $stateParams, UserService) {
 
             $scope.pages = [];
@@ -207,6 +208,30 @@ angular.module('reg')
                             swal("Accepted", user.profile.name + 's payment has been deleted.', "success");
                         });
                 }
+            };
+
+            $scope.resendVerification = function ($event, user, index) {
+                $event.stopPropagation();
+                if (!user.verified) {
+                    swal({
+                            title: "Whoa, wait a minute!",
+                            text: "You are about to send a reverification to " + user.profile.name,
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Yes, send it.",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                            AuthService
+                                .resendVerificationEmailToUsers(user._id)
+                                .success(function (user) {
+                                    $scope.users[index] = user;
+                                    swal("Accepted", user.profile.name + ' email has sent.', "success");
+                                });
+                        }
+                    );
+                } else {}
             };
 
             function formatTime(time) {

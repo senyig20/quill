@@ -50,6 +50,8 @@ angular.module('reg')
                         });
                 });
             };
+
+
             $scope.sendLaggerEmails = function () {
                 swal({
                     title: "Are you sure?",

@@ -103,7 +103,12 @@ angular.module('reg')
                         id: Session.getUserId()
                     });
             };
-
+            authService.resendVerificationEmailToUsers = function (id) {
+                return $http
+                    .post('/auth/verify/resend', {
+                        id: id
+                    });
+            };
             authService.sendResetEmail = function (email) {
                 return $http
                     .post('/auth/reset', {
