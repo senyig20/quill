@@ -539,6 +539,9 @@ angular.module('reg')
                                 name: 'Name',
                                 value: user.profile.name
                             }, {
+                                name: 'Is Chap',
+                                value: user.profile.chap
+                            },{
                                 name: 'School',
                                 value: user.profile.school
                             }, {
