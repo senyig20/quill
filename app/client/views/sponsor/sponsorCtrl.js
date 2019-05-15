@@ -75,6 +75,58 @@ angular.module('reg')
                                 }
                             ]
                         },
+                        wshop1: {
+                            identifier: 'wshop1',
+                            rules: [
+                                {
+                                    type: 'different[wshop2]',
+                                    prompt: 'Lütfen tercihlerini farklı şirketlerden yap.'
+                                },
+                                {
+                                    type: 'different[wshop3]',
+                                    prompt: 'Lütfen tercihlerini farklı şirketlerden yap.'
+                                },
+                                {
+                                    type: 'empty',
+                                    prompt: 'Lütfen tercihini yap.'
+                                }
+                            ]
+                        },
+                        wshop2: {
+                            identifier: 'wshop2',
+                            rules: [
+                                {
+                                    type: 'different[wshop1]',
+                                    prompt: 'Lütfen tercihlerini farklı şirketlerden yap.'
+                                },
+                                {
+                                    type: 'different[wshop3]',
+                                    prompt: 'Lütfen tercihlerini farklı şirketlerden yap.'
+                                },
+                                {
+                                    type: 'empty',
+                                    prompt: 'Lütfen tercihini yap.'
+                                }
+                            ]
+                        },
+                        wshop3: {
+                            identifier: 'wshop3',
+                            rules: [
+                                {
+                                    type: 'different[wshop2]',
+                                    prompt: 'Lütfen tercihlerini farklı şirketlerden yap.'
+                                },
+                                {
+                                    type: 'different[wshop1]',
+                                    prompt: 'Lütfen tercihlerini farklı şirketlerden yap.'
+                                },
+                                {
+                                    type: 'empty',
+                                    prompt: 'Lütfen tercihini yap.'
+                                }
+                            ]
+                        },
+
                     }
                 });
             }
