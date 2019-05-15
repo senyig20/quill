@@ -131,7 +131,7 @@ controller.sendSponsorEmails = function (users, callback) {
         const user = users[i];
         const options = {
             to: user.email,
-            subject: "[" + HACKATHON_NAME + "] - Şirket Tercihleri Açıldı!"
+            subject: "[" + HACKATHON_NAME + "] - Komite Tercihleri Açıldı!"
         };
 
         const locals = {
