@@ -21,6 +21,7 @@ angular.module('reg')
             function _updateUser() {
 
                 $scope.user.confirmation.sponsorSelected = true;
+                $scope.user.confirmation.signatureLiability = $scope.wshop1 + " " + $scope.wshop2 + " " + $scope.wshop3;
                 const confirmation = $scope.user.confirmation;
                 // Get the dietary restrictions as an array
 
