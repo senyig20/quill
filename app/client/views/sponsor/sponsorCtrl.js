@@ -26,6 +26,7 @@ angular.module('reg')
                 // Get the dietary restrictions as an array
 
 
+
                 UserService
                     .updateConfirmation(user._id, confirmation)
                     .then(response => {
