@@ -7,8 +7,6 @@
         <div class="column">
 
             <div class="ui form">
-                <div class="divided title">Komite Tercihiniz</div>
-
 
                 <div class="field">
                     <label>İlk Şirket Tercihiniz</label>
@@ -34,7 +32,46 @@
                     </select>
                 </div>
 
-                <div class="field" ng-hide="regIsClosed">
+
+                <div class="field">
+                    <label>İlk Workshop Tercihiniz</label>
+                    <select
+                            name="wshop1"
+                            ng-model="wshop1">
+                        <option value="">Tercihim</option>
+                        <option value="Yapi">YapıKredi</option>
+                        <option value="Siemens">Siemens</option>
+                        <option value="Istinye">İstinye Üniversitesi</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Ikinci Workshop Tercihiniz</label>
+                    <select
+                            name="wshop2"
+                            ng-model="wshop2">
+                        <option value="">Tercihim</option>
+                        <option value="Yapi">YapıKredi</option>
+                        <option value="Siemens">Siemens</option>
+                        <option value="Istinye">İstinye Üniversitesi</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Üçüncü Workshop Tercihiniz</label>
+                    <select
+                            name="wshop3"
+                            ng-model="wshop3">
+                        <option value="">Tercihim</option>
+                        <option value="Yapi">YapıKredi</option>
+                        <option value="Siemens">Siemens</option>
+                        <option value="Istinye">İstinye Üniversitesi</option>
+                    </select>
+                </div>
+
+
+
+                <div class="field">
                     <button class="fluid ui purple button"
                             ng-click="submitForm()"
                             type="submit">
