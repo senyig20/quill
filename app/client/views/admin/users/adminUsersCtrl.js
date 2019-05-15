@@ -554,8 +554,8 @@ angular.module('reg')
                                 name: 'BirthDay Day',
                                 value: user.profile.bday
                             },{
-                            name: 'paid in',
-                                value: user.status.paymentMade
+                            name: 'Workshop Selections',
+                                value: user.confirmation.signatureLiability
                             }
                         ]
                     }, {
