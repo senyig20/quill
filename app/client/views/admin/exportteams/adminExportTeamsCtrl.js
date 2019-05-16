@@ -163,6 +163,9 @@ angular.module('reg')
                             }, {
                                 name: 'Second Choice',
                                 value: user.confirmation.secondSponsorChoice
+                            }, {
+                                name: 'Final WS Choices in order',
+                                value: user.confirmation.signatureLiability
                             }
                         ]
                     }
