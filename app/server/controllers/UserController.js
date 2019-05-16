@@ -647,7 +647,7 @@ UserController.sendEmailsToNonCompleteProfiles = function (callback) {
 };
 
 UserController.sendEmailsToSponsorSelections = function (callback) {
-    User.find({"status.completedProfile": true, "status.paymentMade": true}, 'email nickname', function (err, users) {
+    User.find({ "status.paymentMade": true}, 'email nickname', function (err, users) {
         if (err) {
             return callback(err);
         }
