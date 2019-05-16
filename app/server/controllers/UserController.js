@@ -651,11 +651,10 @@ UserController.sendEmailsToSponsorSelections = function (callback) {
         if (err) {
             return callback(err);
         }
-        Mailer.sendLaggerEmails(users);
+        Mailer.sendSponsorEmails(users);
         return callback(err);
     });
 };
-
 
 UserController.sendEmailsToAdmitted = function (email) {
     Mailer.sendAcceptEmails(email);
