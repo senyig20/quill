@@ -656,7 +656,6 @@ UserController.sendEmailsToSponsorSelections = function (callback) {
     });
 };
 
-
 UserController.sendEmailsToAdmitted = function (email) {
     Mailer.sendAcceptEmails(email);
 };
