@@ -79,7 +79,6 @@ angular.module('reg')
                                 .success(function (user) {
                                     $scope.users[index] = user;
                                     swal("Accepted", user.profile.name + ' has been checked in.', "success");
-                                    drawLabel(user.profile.name, user.profile.school);
                                 });
                         }
                     );
