@@ -57,7 +57,7 @@ module.exports = function (router) {
                 return res.status(500).send(err);
             }
 
-            if (user._id == userId || user.admin) {
+            if (user._id === userId || user.admin) {
                 return next();
             }
             return res.status(400).send({
@@ -68,6 +68,7 @@ module.exports = function (router) {
 
     /**
      * Default response to send an error and the data.
+     * @param req
      * @param  {[type]} res [description]
      * @return {[type]}     [description]
      */
@@ -75,7 +76,7 @@ module.exports = function (router) {
         return function (err, data) {
             if (err) {
                 // SLACK ALERT!
-                if (process.env.NODE_ENV === 'production') {
+                if ('production' === process.env.NODE_ENV) {
                     request
                         .post(process.env.SLACK_HOOK,
                             {

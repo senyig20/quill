@@ -11,7 +11,7 @@
         <div class="ui form">
             <div class="field">
                 <div class="ui icon fluid input">
-                    <input ng-model="queryText" ng-model-options="{debounce: 300}" placeholder="Search..."
+                    <input placeholder="Search..."
                            type="text">
                     <i class="search icon"></i>
                 </div>
@@ -46,9 +46,7 @@
                 </thead>
                 <tbody>
                 <tr
-                        ng-class="rowClass(user)"
-                        ng-click="selectUser(user)"
-                        ng-repeat="user in users">
+                >
                     <td>
                         <strong>
                             {{user.profile.name}}
@@ -63,15 +61,15 @@
 
                         <button
                                 class="ui circular mini basic green icon button"
-                                ng-click="toggleCheckIn($event, user, $index)">
+                        >
 
                             <i
                                     class="flag outline icon"
-                                    ng-if="!user.status.checkedIn"></i>
+                            ></i>
 
                             <i
                                     class="green flag icon"
-                                    ng-if="user.status.checkedIn"></i>
+                            ></i>
 
                         </button>
 

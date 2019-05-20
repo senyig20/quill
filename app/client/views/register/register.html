@@ -10,42 +10,38 @@
                 <div class="ui divider"></div>
 
                 <div class="ui small error message"
-                     ng-show="error">
+                >
                     {{error}}
                 </div>
 
                 <div class="ui login-password form">
-                    <form ng-submit="register()">
+                    <form>
                         <div class="field">
                             <label> E-Posta</label>
                             <input id='email'
-                                   ng-model="email"
                                    placeholder="foo@bar.edu"
                                    type="email">
                         </div>
                         <div class="field">
                             <label> Şifre</label>
                             <input id='password'
-                                   ng-model="password"
                                    placeholder="Şifre (En az 6 karakter)"
                                    required type="password">
                         </div>
                         <div class="field">
                             <label> Şifreni Doğrula</label>
                             <input id='confirmpassword'
-                                   ng-model="confirmpassword"
                                    placeholder="Şifreni Doğrula"
                                    required type="password">
                         </div>
                     </form>
                 </div>
 
-                <div class="ui form" ng-show="regIsOpen">
+                <div class="ui form">
                     <div class="ui divider"></div>
                     <div class="field">
                         <button class="fluid ui register button"
                                 id="registerBtn"
-                                ng-click="register()"
                                 type="submit">
                             Kayıt Ol
                         </button>
@@ -57,7 +53,7 @@
                     <div class="field">
                         <button class="fluid ui login button"
                                 id="login"
-                                ng-click="loginPage()">
+                        >
                             Giriş Sayfasına Dön
                         </button>
                     </div>

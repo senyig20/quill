@@ -1,3 +1,5 @@
+import moment from "moment";
+
 angular.module('reg')
     .factory('Utils', [
         function () {
