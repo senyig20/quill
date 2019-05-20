@@ -37,7 +37,6 @@ app.use(methodOverride());
 app.use(express.static(__dirname + '/app/client'));
 
 
-
 //Create admin and settings in database.
 
 User
