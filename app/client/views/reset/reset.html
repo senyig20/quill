@@ -10,23 +10,21 @@
                 <div class="ui divider"></div>
 
                 <div class="ui small error message"
-                     ng-show="error">
+                >
                     {{error}}
                 </div>
 
                 <div class="ui login-password form">
-                    <form ng-submit="changePassword()">
+                    <form>
                         <div class="field">
                             <label> Yeni Şifre</label>
                             <input id='password'
-                                   ng-model="password"
                                    placeholder="Password (at least 6 characters)"
                                    required type="password">
                         </div>
                         <div class="field">
                             <label> Şifreni Doğrula</label>
                             <input id='confirm'
-                                   ng-model="confirm"
                                    placeholder="Just making sure you got it!"
                                    required type="password">
                         </div>

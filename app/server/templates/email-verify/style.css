@@ -74,7 +74,7 @@ body, #bodyTable, #bodyCell {
 */
 body, #bodyTable {
     /*@editable*/
-    background-color: #FFF;
+    background-color: #ffffff;
 }
 
 /**
@@ -93,7 +93,7 @@ body, #bodyTable {
 */
 #templateContainer {
     /*@editable*/
-    border: 1px solid #BBBBBB;
+    border: 1px solid #bbbbbb;
 }
 
 /**
@@ -231,11 +231,11 @@ h4 {
 */
 #templateHeader {
     /*@editable*/
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     /*@editable*/
-    border-top: 1px solid #FFFFFF;
+    border-top: 1px solid #ffffff;
     /*@editable*/
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
 }
 
 /**
@@ -285,11 +285,11 @@ h4 {
 */
 #templateBody {
     /*@editable*/
-    background-color: #FFF;
+    background-color: #ffffff;
     /*@editable*/
-    border-top: 1px solid #FFFFFF;
+    border-top: 1px solid #ffffff;
     /*@editable*/
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
 }
 
 /**
@@ -327,7 +327,7 @@ h4 {
 .pink.button {
     background: #305080;
     padding: 12px 24px;
-    color: white;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -342,9 +342,9 @@ h4 {
 */
 #templateFooter {
     /*@editable*/
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     /*@editable*/
-    border-top: 1px solid #FFFFFF;
+    border-top: 1px solid #ffffff;
 }
 
 /**

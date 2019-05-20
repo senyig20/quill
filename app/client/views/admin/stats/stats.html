@@ -1,6 +1,6 @@
 <div id="stats">
 
-    <div class="ui green segment" ng-class="{'loading': loading}">
+    <div class="ui green segment">
         <div class="ui header">
             Stats
         </div>
@@ -124,9 +124,8 @@
             <strong>
                 Send reminder emails for users who have not submitted application:
             </strong>
-            <div class="field" style="margin-bottom:5px">
+            <div class="field" style="margin-bottom:5px;">
                 <button class="fluid ui sea-serpent button"
-                        ng-click="sendLaggerEmails()"
                         type="submit">
                     Send!
                 </button>
@@ -139,9 +138,8 @@
             <strong>
                 Send sponsor selection emails:
             </strong>
-            <div class="field" style="margin-bottom:5px">
+            <div class="field" style="margin-bottom:5px;">
                 <button class="fluid ui sea-serpent button"
-                        ng-click="sendSponsor()"
                         type="submit">
                     Send!
                 </button>
@@ -153,9 +151,8 @@
         <strong>
             Send reminder emails for users who have not confirmed (Filled in the form) in application:
         </strong>
-        <div class="field" style="margin-bottom:5px">
+        <div class="field" style="margin-bottom:5px;">
             <button class="fluid ui sea-serpent button"
-                    ng-click="sendLaggerPaymentEmails()"
                     type="submit">
                 Send!
             </button>
@@ -163,7 +160,7 @@
     </div>
 
 
-    <div class="ui pink segment" ng-class="{'loading': loading}">
+    <div class="ui pink segment">
         <div class="ui header">
             Demographics
         </div>
@@ -178,7 +175,7 @@
         <div class="ui divider"></div>
         <div class="ui header">First company selections</div>
         <div class="ui list">
-            <div class="item" ng-repeat="(key, value) in stats.demo.companiesfirst">
+            <div class="item">
                 <strong>{{key}}:</strong> {{value}} ({{value / stats.total * 100 | number: 1}}%)
             </div>
         </div>
@@ -186,13 +183,13 @@
 
         <div class="ui header">Second company selections</div>
         <div class="ui list">
-            <div class="item" ng-repeat="(key, value) in stats.demo.companiessecond">
+            <div class="item">
                 <strong>{{key}}:</strong> {{value}} ({{value / stats.total * 100 | number: 1}}%)
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="ui list">
-            <div class="item" ng-repeat="school in stats.demo.schools | orderBy: '-count'">
+            <div class="item">
                 <div class="content">
                     <strong>{{school.email}}</strong> : {{school.count}} ({{school.count / stats.total * 100 | number:
                     1}}%)

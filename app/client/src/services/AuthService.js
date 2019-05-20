@@ -54,7 +54,7 @@ angular.module('reg')
                         loginSuccess(data, onSuccess);
                     })
                     .error(function (data, statusCode) {
-                        if (statusCode === 400) {
+                        if (400 === statusCode) {
                             Session.destroy(loginFailure);
                         }
                     });

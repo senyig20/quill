@@ -17,22 +17,24 @@ function endsWith(s, test) {
 /**
  * Determine whether or not a user can register.
  * @param  {String}   email    Email of the user
+ * @param password
  * @param  {Function} callback args(err, true, false)
  * @return {[type]}            [description]
  */
 function canRegister(email, password, callback) {
 
-    if (!password || password.length < 6) {
+    if (!password || 6 > password.length) {
         return callback({message: "Password must be 6 or more characters."}, false);
     }
 
     // Check if its within the registration window.
     Settings.getRegistrationTimes(function (err, times) {
+        var now;
         if (err) {
             callback(err);
         }
 
-        const now = Date.now();
+        now = Date.now();
 
         if (now < times.timeOpen) {
             return callback({
@@ -48,10 +50,11 @@ function canRegister(email, password, callback) {
 
         // Check for emails.
         Settings.getWhitelistedEmails(function (err, emails) {
+            var i;
             if (err || !emails) {
                 return callback(err);
             }
-            for (let i = 0; i < emails.length; i++) {
+            for (i = 0; i < emails.length; i++) {
                 if (validator.isEmail(email) && endsWith(emails[i], email)) {
                     return callback(null, true);
                 }
@@ -86,7 +89,7 @@ UserController.loginWithToken = function (token, callback) {
  */
 UserController.loginWithPassword = function (email, password, callback) {
 
-    if (!password || password.length === 0) {
+    if (!password || 0 === password.length) {
         return callback({
             message: 'Please enter a password'
         });
@@ -102,6 +105,8 @@ UserController.loginWithPassword = function (email, password, callback) {
         .findOneByEmail(email)
         .select('+password')
         .exec(function (err, user) {
+            var token;
+            var u;
             if (err) {
                 return callback(err);
             }
@@ -117,9 +122,9 @@ UserController.loginWithPassword = function (email, password, callback) {
             }
 
             // yo dope nice login here's a token for your troubles
-            const token = user.generateAuthToken();
+            token = user.generateAuthToken();
 
-            const u = user.toJSON();
+            u = user.toJSON();
 
             delete u.password;
 
@@ -131,11 +136,12 @@ UserController.loginWithPassword = function (email, password, callback) {
  * Create a new user given an email and a password.
  * @param  {String}   email    User's email.
  * @param  {String}   password [description]
+ * @param confirmpassword
  * @param  {Function} callback args(err, user)
  */
 UserController.createUser = function (email, password, confirmpassword, callback) {
 
-    if (typeof email !== "string") {
+    if ("string" !== typeof email) {
         return callback({
             message: "Not a valid email."
         });
@@ -161,6 +167,7 @@ UserController.createUser = function (email, password, confirmpassword, callback
             .findOneByEmail(email)
             .exec(function (err, user) {
 
+                var u: *;
                 if (err) {
                     return callback(err);
                 }
@@ -172,20 +179,22 @@ UserController.createUser = function (email, password, confirmpassword, callback
                 } else {
 
                     // Make a new user
-                    const u = new User();
+                    u = new User();
                     u.email = email;
                     u.password = User.generateHash(password);
                     u.save(function (err) {
+                        var token;
+                        var verificationToken;
                         if (err) {
                             return callback({
                                 message: "Not a valid email."
                             });
                         } else {
                             // yay! success.
-                            const token = u.generateAuthToken();
+                            token = u.generateAuthToken();
 
                             // Send over a verification email
-                            const verificationToken = u.generateEmailVerificationToken();
+                            verificationToken = u.generateEmailVerificationToken();
                             Mailer.sendVerificationEmail(email, verificationToken);
 
                             return callback(
@@ -248,15 +257,16 @@ UserController.getAllFinal = function (callback) {
 };
 
 UserController.getPageCheckedAndSponsor = function (query, callback) {
+    var re: *;
     let queries;
     const page = query.page;
     const size = parseInt(query.size);
     const searchText = query.text;
 
     const findQuery = {};
-    if (searchText.length > 0) {
+    if (0 < searchText.length) {
         queries = [];
-        const re = new RegExp(searchText, 'i');
+        re = new RegExp(searchText, 'i');
         queries.push({'profile.name': re});
         queries.push({'status.confirmed': true});
         queries.push({'status.paymentMade': true});
@@ -305,15 +315,16 @@ UserController.getPageCheckedAndSponsor = function (query, callback) {
 
 
 UserController.getPageChecked = function (query, callback) {
+    var re: *;
     let queries;
     const page = query.page;
     const size = parseInt(query.size);
     const searchText = query.text;
 
     let findQuery = {};
-    if (searchText.length > 0) {
+    if (0 < searchText.length) {
         queries = [];
-        const re = new RegExp(searchText, 'i');
+        re = new RegExp(searchText, 'i');
         queries.push({'profile.name': re});
         queries.push({'status.confirmed': true});
         queries.push({'status.paymentMade': true});
@@ -366,9 +377,10 @@ UserController.getPageChecked = function (query, callback) {
  * @returns {Object} queries    text queries
  */
 function buildTextQueries(searchText) {
+    var re: *;
     const queries = [];
-    if (searchText.length > 0) {
-        const re = new RegExp(searchText, 'i');
+    if (0 < searchText.length) {
+        re = new RegExp(searchText, 'i');
         queries.push({'email': re});
         queries.push({'profile.name': re});
         queries.push({'profile.school': re});
@@ -384,15 +396,19 @@ function buildTextQueries(searchText) {
  * @returns {Object} queries  status queries
  */
 function buildStatusQueries(statusFilters) {
+    var key;
+    var hasStatus;
+    var q;
+    var queryKey;
     const queries = [];
-    for (const key in statusFilters) {
+    for (key in statusFilters) {
         if (statusFilters.hasOwnProperty(key)) {
             // Convert to boolean
-            const hasStatus = (statusFilters[key] === 'true');
+            hasStatus = ('true' === statusFilters[key]);
             if (hasStatus) {
-                const q = {};
+                q = {};
                 // Verified is a prop on user object
-                const queryKey = (key === 'verified' ? key : 'status.' + key);
+                queryKey = ('verified' === key ? key : 'status.' + key);
                 q[queryKey] = true;
                 queries.push(q);
             }
@@ -413,15 +429,16 @@ function buildStatusQueries(statusFilters) {
  * @returns {Object} findQuery     query object
  */
 function buildFindQuery(textQueries, statusQueries) {
+    var queryRoot: Array;
     const findQuery = {};
-    if (textQueries.length > 0 && statusQueries.length > 0) {
-        const queryRoot = [];
+    if (0 < textQueries.length && 0 < statusQueries.length) {
+        queryRoot = [];
         queryRoot.push({'$or': textQueries});
         queryRoot.push({'$and': statusQueries});
         findQuery.$and = queryRoot;
-    } else if (textQueries.length > 0) {
+    } else if (0 < textQueries.length) {
         findQuery.$or = textQueries;
-    } else if (statusQueries.length > 0) {
+    } else if (0 < statusQueries.length) {
         findQuery.$and = statusQueries;
     }
     return findQuery;
@@ -430,8 +447,7 @@ function buildFindQuery(textQueries, statusQueries) {
 
 /**
  * Get a page of users.
- * @param  {[type]}   page     page number
- * @param  {[type]}   size     size of the page
+ * @param query
  * @param  {Function} callback args(err, {users, page, totalPages})
  */
 UserController.getPage = function (query, callback) {
@@ -506,11 +522,12 @@ UserController.updateProfileById = function (id, profile, callback) {
 
         // Check if its within the registration window.
         Settings.getRegistrationTimes(function (err, times) {
+            var now;
             if (err) {
                 callback(err);
             }
 
-            const now = Date.now();
+            now = Date.now();
 
             if (now < times.timeOpen) {
                 return callback({
@@ -675,10 +692,11 @@ UserController.sendVerificationEmailById = function (id, callback) {
             verified: false
         },
         function (err, user) {
+            var token;
             if (err || !user) {
                 return callback(err);
             }
-            const token = user.generateEmailVerificationToken();
+            token = user.generateEmailVerificationToken();
             Mailer.sendVerificationEmail(user.email, token);
             return callback(err, user);
         });
@@ -694,11 +712,12 @@ UserController.sendPasswordResetEmail = function (email, callback) {
     User
         .findOneByEmail(email)
         .exec(function (err, user) {
+            var token;
             if (err || !user) {
                 return callback(err);
             }
 
-            const token = user.generateTempAuthToken();
+            token = user.generateTempAuthToken();
             Mailer.sendPasswordResetEmail(email, token, callback);
         });
 };
@@ -755,7 +774,7 @@ UserController.resetPassword = function (token, password, callback) {
         });
     }
 
-    if (password.length < 6) {
+    if (6 > password.length) {
         return callback({
             message: 'Password must be 6 or more characters.'
         });
@@ -791,7 +810,7 @@ UserController.resetPassword = function (token, password, callback) {
  * [ADMIN ONLY]
  *
  * Admit a user.
- * @param  {String}   userId   User id of the admit
+ * @param id
  * @param  {String}   user     User doing the admitting
  * @param  {Function} callback args(err, user)
  */
@@ -818,7 +837,7 @@ UserController.admitUser = function (id, user, callback) {
  * [ADMIN ONLY]
  *
  * Check in a user.
- * @param  {String}   userId   User id of the user getting checked in.
+ * @param id
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
@@ -842,7 +861,7 @@ UserController.checkInById = function (id, user, callback) {
  * [ADMIN ONLY]
  *
  * Check in a user.
- * @param  {String}   userId   User id of the user getting checked in.
+ * @param id
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
@@ -863,7 +882,7 @@ UserController.acceptPayment = function (id, user, callback) {
  * [ADMIN ONLY]
  *
  * Check in a user.
- * @param  {String}   userId   User id of the user getting checked in.
+ * @param id
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
@@ -885,7 +904,7 @@ UserController.unacceptPayment = function (id, user, callback) {
  * [ADMIN ONLY]
  *
  * Check out a user.
- * @param  {String}   userId   User id of the user getting checked out.
+ * @param id
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
@@ -907,7 +926,7 @@ UserController.checkOutById = function (id, user, callback) {
  * [ADMIN ONLY]
  *
  * Make user an admin
- * @param  {String}   userId   User id of the user being made admin
+ * @param id
  * @param  {String}   user     User making this person admin
  * @param  {Function} callback args(err, user)
  */
@@ -929,7 +948,7 @@ UserController.makeAdminById = function (id, user, callback) {
  * [ADMIN ONLY]
  *
  * Remove user as admin
- * @param  {String}   userId   User id of the user being made admin
+ * @param id
  * @param  {String}   user     User making this person admin
  * @param  {Function} callback args(err, user)
  */

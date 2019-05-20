@@ -2,7 +2,7 @@
   "name": "hackmit-reg",
   "description": "mean stack registration system",
   "version": "0.0.1",
-  "private": "true",
+  "private": true,
   "dependencies": {
     "async": "^1.4.2",
     "bcrypt-nodejs": "0.0.3",

@@ -13,27 +13,26 @@
 
                 <div
                         class="state"
-                        ng-class="user.status.name"
-                        ng-if="!showWaitlist && !dashState('admittedAndCannotConfirm')">
+                >
                     {{user.status.name}}
                 </div>
 
                 <div
                         class="declined state"
-                        ng-if="dashState('admittedAndCannotConfirm')">
+                >
                     Başvuru Geçerlilik Süresi Geçmiş
                 </div>
 
 
                 <div
                         class="waitlist state"
-                        ng-if="showWaitlist">
+                >
                     Bekleme Listesinde
                 </div>
 
                 <div class="ui divider"></div>
 
-                <div ng-if="user.profile.name.length > 0">
+                <div>
                     <p>
                         <strong>
                             Merhaba {{user.profile.name}}!
@@ -45,7 +44,7 @@
 
                 <div
                         class="description"
-                        ng-if="dashState('unverified')">
+                >
                     <p>
                         <strong>
                             E-Postanı ({{user.email}}) daha doğrulamamışsın!
@@ -54,14 +53,13 @@
                     <p>
                         {{ DASHBOARD.UNVERIFIED }}
                     </p>
-                    <div class="ui purple button" ng-click="resendEmail()">
+                    <div class="ui purple button">
                         Doğrulama E-Postasını Tekrar Gönder
                     </div>
                 </div>
 
                 <div
-                        ng-class="settings.timeClose"
-                        ng-if="!dashState('admittedAndCanConfirm') || !dashState('admittedAndCannotConfirm') || !dashState('confirmed') || !dashState('declined')">
+                >
                     <strong>
                         Son Kayıt Tarihi:
                     </strong>
@@ -69,8 +67,7 @@
                 </div>
 
                 <div
-                        ng-class="settings.timeConfirm"
-                        ng-if="dashState('admittedAndCanConfirm') || dashState('admittedAndCannotConfirm') || dashState('confirmed') || dashState('declined')">
+                >
                     <strong>
                         Son Teyit Tarihi:
                     </strong>
@@ -82,7 +79,7 @@
                 <br>
                 <div
                         class="description"
-                        ng-if="dashState('openAndIncomplete')">
+                >
                     <p>
                         <strong>
                             {{ DASHBOARD.INCOMPLETE_TITLE }}
@@ -93,7 +90,7 @@
                     </p>
 
                     <div class="ui purple button"
-                         ui-sref="app.application">
+                    >
                         Başvurunu Tamamla
                     </div>
 
@@ -101,7 +98,7 @@
 
                 <div
                         class="description"
-                        ng-if="dashState('openAndSubmitted')">
+                >
                     <p>
                         <strong>
                             {{ DASHBOARD.SUBMITTED_TITLE }}
@@ -115,7 +112,7 @@
                 </div>
 
                 <div
-                        ng-if="dashState('closedAndIncomplete')">
+                >
                     <p>
                         <strong>
                             {{ DASHBOARD.CLOSED_AND_INCOMPLETE_TITLE }}
@@ -128,11 +125,11 @@
 
                 <div
                         class="description"
-                        ng-if="dashState('closedAndSubmitted')">
+                >
 
                     <div
                             class="markdown"
-                            ng-bind-html="waitlistText">
+                    >
                     </div>
 
 
@@ -140,7 +137,7 @@
 
                 <div
                         class="description"
-                        ng-if="dashState('admittedAndCanConfirm')">
+                >
 
                     <div class="markdown">
                         <h4>
@@ -150,7 +147,7 @@
 
                     <div
                             class="markdown"
-                            ng-bind-html="acceptanceText">
+                    >
                     </div>
 
                     <div class="markdown">
@@ -160,12 +157,12 @@
                     </div>
 
                     <div class="ui purple button"
-                         ui-sref="app.confirmation">
+                    >
                         Katılımını Teyit Et
                     </div>
 
                     <div class="ui red button"
-                         ng-click="declineAdmission()">
+                    >
                         Katılımını Reddet
                     </div>
 
@@ -173,7 +170,7 @@
 
                 <div
                         class="description"
-                        ng-if="dashState('admittedAvaitingPayment')">
+                >
                     <p>
                         <strong>
                             {{ DASHBOARD.PAYMENT_TITLE }}
@@ -184,12 +181,12 @@
                     </p>
 
                     <div class="ui purple button"
-                         ui-sref="app.confirmation">
+                    >
                         Teyit formunu düzenle
                     </div>
 
                     <div class="ui red button"
-                         ng-click="declineAdmission()">
+                    >
                         Katılımını Reddet
                     </div>
 
@@ -197,7 +194,7 @@
 
                 <div
                         class="description"
-                        ng-if="dashState('admittedAndCannotConfirm')">
+                >
 
                     <div class="markdown">
                         <h4>
@@ -213,11 +210,11 @@
 
                 <div
                         class="description"
-                        ng-if="dashState('confirmed')">
+                >
 
                     <div
                             class="markdown"
-                            ng-show="!pastConfirmation">
+                    >
                         <h4>
                             {{ DASHBOARD.CONFIRMED_NOT_PAST_TITLE }}
                         </h4>
@@ -225,16 +222,16 @@
 
                     <div
                             class="markdown"
-                            ng-bind-html="confirmationText">
+                    >
                     </div>
 
                     <div class="ui purple button"
-                         ui-sref="app.confirmation">
+                    >
                         Teyit Bilgilerini {{pastConfirmation ? 'Görüntüle' : 'Düzenle'}}
                     </div>
 
                     <div class="ui red button"
-                         ng-click="declineAdmission()">
+                    >
                         Katılımı Reddet
                     </div>
 
@@ -242,7 +239,7 @@
 
                 <div
                         class="description"
-                        ng-if="dashState('declined')">
+                >
 
                     <p>
                         {{ DASHBOARD.DECLINED }}

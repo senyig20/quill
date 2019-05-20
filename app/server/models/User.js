@@ -256,7 +256,7 @@ schema.statics.generateHash = function (password) {
 /**
  * Verify an an email verification token.
  * @param  {[type]}   token token
- * @param  {Function} cb    args(err, email)
+ * @param callback
  */
 schema.statics.verifyEmailVerificationToken = function (token, callback) {
     jwt.verify(token, JWT_SECRET, function (err, email) {
@@ -308,8 +308,8 @@ schema.statics.getByToken = function (token, callback) {
 
 schema.statics.validateProfile = function (profile, cb) {
     return cb(!(
-        profile.name.length > 0 &&
-        profile.school.length > 0));
+        0 < profile.name.length &&
+        0 < profile.school.length));
 };
 
 //=========================================
