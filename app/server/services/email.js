@@ -1,6 +1,6 @@
 const path = require('path');
 const nodemailer = require('nodemailer');
-const sgTransport = require('nodemailer-sendgrid-transport');
+var sgTransport = require('nodemailer-sendgrid-transport');
 
 const templatesDir = path.join(__dirname, '../templates');
 const emailTemplates = require('email-templates');
@@ -36,7 +36,7 @@ controller.transporter = transporter;
 
 function sendOne(templateName, options, data, callback) {
 
-    if ("dev" === NODE_ENV) {
+    if (NODE_ENV === "dev") {
         console.log(templateName);
         console.log(JSON.stringify(data, "", 2));
     }
@@ -72,18 +72,14 @@ function sendOne(templateName, options, data, callback) {
 }
 
 controller.sendLaggerEmails = function (users, callback) {
-    var i;
-    var user;
-    var options;
-    var locals;
-    for (i = 0; i < users.length; i++) {
-        user = users[i];
-        options = {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const options = {
             to: user.email,
             subject: "[" + HACKATHON_NAME + "] - Başvurular kapanmak üzere!"
         };
 
-        locals = {
+        const locals = {
             name: user.name,
             dashUrl: ROOT_URL
         };
@@ -103,18 +99,14 @@ controller.sendLaggerEmails = function (users, callback) {
 };
 
 controller.sendLaggerPaymentEmails = function (users, callback) {
-    var i;
-    var user;
-    var options;
-    var locals;
-    for (i = 0; i < users.length; i++) {
-        user = users[i];
-        options = {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const options = {
             to: user.email,
             subject: "[" + HACKATHON_NAME + "] - Teyitler kapanmak üzere!"
         };
 
-        locals = {
+        const locals = {
             name: user.name,
             dashUrl: ROOT_URL
         };
@@ -135,18 +127,14 @@ controller.sendLaggerPaymentEmails = function (users, callback) {
 
 
 controller.sendSponsorEmails = function (users, callback) {
-    var i;
-    var user;
-    var options;
-    var locals;
-    for (i = 0; i < users.length; i++) {
-        user = users[i];
-        options = {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const options = {
             to: user.email,
             subject: "[" + HACKATHON_NAME + "] - Komite Tercihleri Açıldı!"
         };
 
-        locals = {
+        const locals = {
             name: user.name,
             dashUrl: ROOT_URL
         };
@@ -241,9 +229,10 @@ controller.sendApplicationEmail = function (user, callback) {
  * Send a verification email to a user, with a verification token to enter.
  * @param  {[type]}   email    [description]
  * @param  {[type]}   token    [description]
+ * @param  {Function} callback [description]
  * @return {[type]}            [description]
  */
-controller.sendVerificationEmail = function (email, token) {
+controller.sendVerificationEmail = function (email, token, callback) {
 
     const options = {
         to: email,
@@ -319,8 +308,9 @@ controller.sendPasswordResetEmail = function (email, token, callback) {
 /**
  * Send a password recovery email.
  * @param  {[type]}   email    [description]
+ * @param  {Function} callback [description]
  */
-controller.sendPasswordChangedEmail = function (email) {
+controller.sendPasswordChangedEmail = function (email, callback) {
 
     const options = {
         to: email,

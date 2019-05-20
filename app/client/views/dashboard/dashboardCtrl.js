@@ -1,5 +1,3 @@
-import * as showdown from "aws-sdk/clients/dynamodb";
-
 angular.module('reg')
     .controller('DashboardCtrl', [
         '$rootScope',
@@ -13,10 +11,6 @@ angular.module('reg')
         'EVENT_INFO',
         'DASHBOARD',
         function ($rootScope, $scope, $sce, currentUser, settings, Utils, AuthService, UserService, EVENT_INFO, DASHBOARD) {
-            var msg;
-            var regIsOpen;
-            var pastConfirmation;
-            var converter: showdown.Converter;
             const Settings = settings.data;
             const user = currentUser.data;
             $scope.user = user;
@@ -25,7 +19,7 @@ angular.module('reg')
 
             $scope.DASHBOARD = DASHBOARD;
 
-            for (msg in $scope.DASHBOARD) {
+            for (let msg in $scope.DASHBOARD) {
                 if ($scope.DASHBOARD[msg].includes('[APP_DEADLINE]')) {
                     $scope.DASHBOARD[msg] = $scope.DASHBOARD[msg].replace('[APP_DEADLINE]', Utils.formatTime(Settings.timeClose));
                 }
@@ -35,10 +29,10 @@ angular.module('reg')
             }
 
             // Is registration open?
-            regIsOpen = $scope.regIsOpen = Utils.isRegOpen(Settings);
+            const regIsOpen = $scope.regIsOpen = Utils.isRegOpen(Settings);
 
             // Is it past the user's confirmation time?
-            pastConfirmation = $scope.pastConfirmation = Utils.isAfter(user.status.confirmBy);
+            const pastConfirmation = $scope.pastConfirmation = Utils.isAfter(user.status.confirmBy);
 
             $scope.dashState = function (status) {
                 const user = $scope.user;
@@ -89,7 +83,7 @@ angular.module('reg')
             // -----------------------------------------------------
             // Text!
             // -----------------------------------------------------
-            converter = new showdown.Converter();
+            const converter = new showdown.Converter();
             $scope.acceptanceText = $sce.trustAsHtml(converter.makeHtml(Settings.acceptanceText));
             $scope.confirmationText = $sce.trustAsHtml(converter.makeHtml(Settings.confirmationText));
             $scope.waitlistText = $sce.trustAsHtml(converter.makeHtml(Settings.waitlistText));

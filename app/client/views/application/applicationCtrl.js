@@ -1,5 +1,3 @@
-import moment from "moment";
-
 angular.module('reg')
     .controller('ApplicationCtrl', [
         '$scope',
@@ -20,7 +18,7 @@ angular.module('reg')
             $scope.submitButtonDisabled = true;
 
             // Is the student from RC?
-            $scope.isRCStudent = 'robcol.k12.tr' === $scope.user.email.split('@')[1];
+            $scope.isRCStudent = $scope.user.email.split('@')[1] == 'robcol.k12.tr';
 
             $scope.$watch('user', function (newValue, oldValue) {
                 if (newValue !== oldValue) {
@@ -84,7 +82,7 @@ angular.module('reg')
                 // Clean the dates and turn them to ms.
                 const bday = cleanDate($scope.settings.timeOpen).getTime();
 
-                if (0 > bday || bday === undefined) {
+                if (bday < 0 || bday === undefined) {
                     return swal('Oops...', 'You need to enter valid times.', 'error');
                 }
 

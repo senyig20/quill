@@ -23,7 +23,7 @@ gulp.task('default', function () {
 });
 
 gulp.task('js', function () {
-    if ('dev' !== environment) {
+    if (environment !== 'dev') {
         // Minify for non-development
         gulp.src(['app/client/src/**/*.js', 'app/client/views/**/*.js'])
             .pipe(sourcemaps.init())

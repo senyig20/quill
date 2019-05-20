@@ -1,80 +1,94 @@
 <div id="sidebar"
->
+     ng-class="{open: showSidebar}">
     <div class="logo item"
-    >
+         ui-sref="app.dashboard">
         <img src="assets/images/logo.svg">
     </div>
 
     <div class="item"
-    >
+         ui-sref="app.dashboard"
+         ui-sref-active="active">
         Ana Sayfa
     </div>
 
-    <div>
+    <div ng-show="currentUser.verified">
 
         <div
                 class="item"
+                ng-show="!currentUser.status.declined && !currentUser.status.completedProfile &&!currentUser.admin"
+                ui-sref="app.application"
 
-        >
+                ui-sref-active="active">
             Başvuru
         </div>
 
         <div
                 class="item"
+                ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined && !currentUser.admin"
+                ui-sref="app.payment"
 
-        >
+                ui-sref-active="active">
             Ödeme Bilgileri
         </div>
         <div
                 class="item"
+                ng-show="!pastConfirmation && currentUser.status.admitted && !currentUser.status.declined && !currentUser.admin"
+                ui-sref="app.confirmation"
 
-        >
+                ui-sref-active="active">
             Teyit
         </div>
 
         <div
                 class="item"
+                ng-show="selectionsOpen && currentUser.status.paymentMade && !currentUser.admin"
+                ui-sref="app.sponsor"
 
-        >
+                ui-sref-active="active">
             Şirket Tercihi
         </div>
 
         <div
                 class="item"
+                ng-show="currentUser.admin"
+                ui-sref="app.admin.stats"
+                ui-sref-active="active"
         >
             Admin
         </div>
 
         <div
                 class="item"
-        >
+                ng-show="currentUser.admin"
+                ui-sref="app.checkin"
+                ui-sref-active="active">
             Check-in
         </div>
 
 
     </div>
 
-    <a href="mailto:info@ja-rc.org" style="text-decoration:none; color:#ffffff;">
+    <a href="mailto:info@ja-rc.org" style="text-decoration:none; color:#fff">
         <div class="item"
-        >
+             ng-hide="currentUser.admin">
             İletişim
         </div>
     </a>
 
     <div class="item"
-    >
+         ng-click="logout()">
         Çıkış Yap
     </div>
 
     <div class="note">
-        <a href="https://www.remixopolis.org" style="text-decoration:none; color:#ffffff;" target="_blank">© Remixopolis
+        <a href="https://www.remixopolis.org" style="text-decoration:none; color:#fff" target="_blank">© Remixopolis
             2019</a>
     </div>
 
 </div>
 
 <div class="tab"
->
-    <i class="inverted big bars icon"></i>
-    <span class="close">&#x2715</span>
+     ng-click="toggleSidebar()">
+    <i ng-show="!showSidebar" class="inverted big bars icon"></i>
+    <span class="close" ng-show="showSidebar">&#x2715</span>
 </div>

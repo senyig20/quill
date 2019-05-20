@@ -5,7 +5,7 @@
 
     <div class="ui stackable page grid">
         <div class="column">
-            <fieldset>
+            <fieldset ng-disabled="pastConfirmation">
                 <div class="field">
                     <div class="small title">
                         Ücret Bilgileri:
@@ -56,7 +56,7 @@
                         <br>
                     <div
                             class="state"
-                    >{{user.profile.name}} - JARC Remixopolis 2019 Bireysel
+                            ng-class="user.profile.name">{{user.profile.name}} - JARC Remixopolis 2019 Bireysel
                         Katılımcı
                 </div>
                 <br>
@@ -71,7 +71,7 @@
                         <br>
                     <div
                             class="state"
-                    > JARC Remixopolis 2019 Toplu
+                            ng-class="user.profile.name"> JARC Remixopolis 2019 Toplu
                         Katılımcı Ödemeleri (ve ödeyenlerin isim-soyisimleri)
                 </div>
 
