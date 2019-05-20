@@ -13,10 +13,10 @@ angular.module('reg')
         'EVENT_INFO',
         'DASHBOARD',
         function ($rootScope, $scope, $sce, currentUser, settings, Utils, AuthService, UserService, EVENT_INFO, DASHBOARD) {
-            let msg;
-            let regIsOpen;
-            let pastConfirmation;
-            let converter: showdown.Converter;
+            var msg;
+            var regIsOpen;
+            var pastConfirmation;
+            var converter: showdown.Converter;
             const Settings = settings.data;
             const user = currentUser.data;
             $scope.user = user;

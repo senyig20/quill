@@ -26,8 +26,8 @@ angular.module('reg')
             });
 
             function updatePage(data) {
-                let p: Array;
-                let i;
+                var p: Array;
+                var i;
                 $scope.users = data.users;
                 $scope.currentPage = data.page;
                 $scope.pageSize = 100000;
@@ -268,9 +268,9 @@ angular.module('reg')
                     .getAll()
                     .success(function (data) {
 
-                        let rows;
-                        let field;
-                        let element;
+                        var rows;
+                        var field;
+                        var element;
                         let j;
                         let i;
                         let output = '"sep=;"\n"';
@@ -322,9 +322,9 @@ angular.module('reg')
                     .getAllAdmitted()
                     .success(function (data) {
 
-                        let rows;
-                        let field;
-                        let element;
+                        var rows;
+                        var field;
+                        var element;
                         let i;
                         let j;
                         let output = '"sep=;"\n"';
@@ -375,9 +375,9 @@ angular.module('reg')
                     .getAllConfirmed()
                     .success(function (data) {
 
-                        let rows;
-                        let field;
-                        let element;
+                        var rows;
+                        var field;
+                        var element;
                         let j;
                         let i;
                         let output = '"sep=;"\n"';
@@ -427,9 +427,9 @@ angular.module('reg')
                     .getAllUnpaid()
                     .success(function (data) {
 
-                        let rows;
-                        let field;
-                        let element;
+                        var rows;
+                        var field;
+                        var element;
                         let j;
                         let i;
                         let output = '"sep=;"\n"';
@@ -479,9 +479,9 @@ angular.module('reg')
                     .getAllFinal()
                     .success(function (data) {
 
-                        let rows;
-                        let field;
-                        let element;
+                        var rows;
+                        var field;
+                        var element;
                         let i;
                         let j;
                         let output = '"sep=;"\n"';

@@ -45,7 +45,7 @@ User
         email: process.env.ADMIN_EMAIL
     })
     .exec(function (err, user) {
-        let u: *;
+        var u: *;
         if (!user) {
             u = new User();
             u.email = process.env.ADMIN_EMAIL;
