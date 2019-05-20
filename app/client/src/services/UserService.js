@@ -1,3 +1,5 @@
+import * as $ from "express/lib/router";
+
 angular.module('reg')
     .factory('UserService', [
         '$http',

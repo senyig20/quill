@@ -10,20 +10,24 @@
 
                 <div class="divided title">Ödeme Bilgileri</div>
 
-                <fieldset ng-disabled="pastConfirmation">
+                <fieldset>
                     <div class="field">
                         <div class="ui toggle checkbox">
-                            <input ng-model="user.confirmation.groupPayment" type="checkbox">
+                            <label>
+                                <input type="checkbox">
+                            </label>
                             <label> Ödeme grup olarak yapıldı</label>
                         </div>
                     </div>
                     
-                    <div class="field" ng-show="user.confirmation.groupPayment">
+                    <div class="field">
                                                 <label>
                             Ödeme kimler için yapıldı?
                         </label>
-                         <textarea
-                                ng-model="user.confirmation.notes"></textarea>
+                        <label>
+<textarea
+></textarea>
+                        </label>
 
                     </div>
                     
@@ -44,11 +48,12 @@
                     </div>
                     <div class="field">
                         <div class="ui toggle checkbox">
-                            <input
-                                    name="receiptConfirmation"
-                                    ng-model="user.confirmation.receiptConfirmation"
-                                    type="checkbox"
-                            >
+                            <label>
+                                <input
+                                        name="receiptConfirmation"
+                                        type="checkbox"
+                                >
+                            </label>
                             <label>Dekontumu yüklediğimi teyit ediyorum.</label>
                         </div>
                     </div>
@@ -61,35 +66,40 @@
                     <div class="field">
                         <label>Fatura Isim ve Soyismi, veya Şirket İsmi</label>
                         <div id="billName">
-                            <input name="billName"
-                                   ng-model="user.confirmation.namesurname"
-                                   type="text">
+                            <label>
+                                <input name="billName"
+                                       type="text">
+                            </label>
                         </div>
                     </div>
 
                     <div class="field">
                         <label>Fatura Adresi</label>
                         <div id="billAddress">
-                     <textarea
-                             name="billAddress" ng-model="user.confirmation.address" type="text"></textarea>
+                            <label>
+<textarea
+        name="billAddress"></textarea>
+                            </label>
                         </div>
                     </div>
 
                     <div class="field" >
                         <label>Telefon Numarası</label>
                         <div id="billPhone">
-                            <input name="billPhone"
-                                   ng-model="user.confirmation.phoneNumber"
-                                   pattern="[0-9.]+" type="number">
+                            <label>
+                                <input name="billPhone"
+                                       pattern="[0-9.]+" type="number">
+                            </label>
                         </div>
                     </div>
 
                     <div class="field" >
                         <label>TC Kimlik Numarası</label>
                         <div id="billID">
-                            <input name="billID"
-                                   ng-model="user.confirmation.idNumber"
-                                   pattern="[0-9.]+" type="number">
+                            <label>
+                                <input name="billID"
+                                       pattern="[0-9.]+" type="number">
+                            </label>
                         </div>
                     </div>
 
@@ -118,7 +128,6 @@
                             şartlarını kabul ettiğimi beyan ederim.
                         </p>
                         <input name="signatureLiabilityWaiver"
-                               ng-model="user.confirmation.signatureLiability"
                                placeholder="İsminiz ve Soyisminiz."
                                type="text">
                     </div>
@@ -127,9 +136,8 @@
                     <br>
                     <br>
 
-                    <div class="field" ng-hide="regIsClosed">
+                    <div class="field">
                         <button class="fluid ui purple button"
-                                ng-click="submitForm()"
                                 type="submit">
                             Gönder
                         </button>

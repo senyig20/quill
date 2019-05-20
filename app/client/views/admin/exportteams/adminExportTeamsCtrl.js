@@ -1,3 +1,5 @@
+import moment from "moment";
+
 angular.module('reg')
     .controller('AdminExportTeamsCtrl', [
         '$scope',
@@ -23,12 +25,14 @@ angular.module('reg')
             });
 
             function updatePage(data) {
+                var p: Array;
+                var i;
                 $scope.users = data.users;
                 $scope.currentPage = data.page;
                 $scope.pageSize = data.size;
 
-                const p = [];
-                for (let i = 0; i < data.totalPages; i++) {
+                p = [];
+                for (i = 0; i < data.totalPages; i++) {
                     p.push(i);
                 }
                 $scope.pages = p;
@@ -95,13 +99,16 @@ angular.module('reg')
                     .getAllCompaniesSelected()
                     .success(function (data) {
 
+                        var rows;
+                        var field;
+                        var element;
                         let i;
                         let j;
                         let output = '"sep=;"\n"';
                         const titles = generateSections(data[0]);
                         for (i = 0; i < titles.length; i++) {
                             for (j = 0; j < titles[i].fields.length; j++) {
-                                if (j == titles[i].fields.length) {
+                                if (j === titles[i].fields.length) {
                                     output += titles[i].fields[j].name + '";';
                                 } else {
                                     output += titles[i].fields[j].name + '"; "';
@@ -110,7 +117,7 @@ angular.module('reg')
                         }
                         output += '\n';
 
-                        for (let rows = 0; rows < data.length; rows++) {
+                        for (rows = 0; rows < data.length; rows++) {
                             row = generateSections(data[rows]);
                             for (i = 0; i < row.length; i++) {
                                 for (j = 0; j < row[i].fields.length; j++) {
@@ -118,7 +125,7 @@ angular.module('reg')
                                         output += ";";
                                         continue;
                                     }
-                                    const field = row[i].fields[j].value;
+                                    field = row[i].fields[j].value;
                                     try {
                                         output += ' "' + field.replace(/(\r\n|\n|\r)/gm, " ") + '";';
                                     } catch (err) {
@@ -129,7 +136,7 @@ angular.module('reg')
                             output += "\n";
                         }
 
-                        const element = document.createElement('a');
+                        element = document.createElement('a');
                         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
                         element.setAttribute('download', "Remixopolis Team Export " + new Date().toDateString() + ".csv");
                         element.style.display = 'none';

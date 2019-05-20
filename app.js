@@ -45,8 +45,9 @@ User
         email: process.env.ADMIN_EMAIL
     })
     .exec(function (err, user) {
+        var u: *;
         if (!user) {
-            const u = new User();
+            u = new User();
             u.email = process.env.ADMIN_EMAIL;
             u.password = User.generateHash(process.env.ADMIN_EMAIL);
             u.admin = true;
@@ -62,8 +63,9 @@ User
 Settings
     .findOne({})
     .exec(function(err, settings){
+        var settings;
         if (!settings){
-            var settings = new Settings();
+            settings = new Settings();
             settings.save();
         }
     });
