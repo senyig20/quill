@@ -25,8 +25,8 @@ angular.module('reg')
             });
 
             function updatePage(data) {
-                var p: Array;
-                var i;
+                let p: Array;
+                let i;
                 $scope.users = data.users;
                 $scope.currentPage = data.page;
                 $scope.pageSize = data.size;
@@ -99,9 +99,9 @@ angular.module('reg')
                     .getAllCompaniesSelected()
                     .success(function (data) {
 
-                        var rows;
-                        var field;
-                        var element;
+                        let rows;
+                        let field;
+                        let element;
                         let i;
                         let j;
                         let output = '"sep=;"\n"';

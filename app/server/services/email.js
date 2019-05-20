@@ -72,10 +72,10 @@ function sendOne(templateName, options, data, callback) {
 }
 
 controller.sendLaggerEmails = function (users, callback) {
-    var i;
-    var user;
-    var options;
-    var locals;
+    let i;
+    let user;
+    let options;
+    let locals;
     for (i = 0; i < users.length; i++) {
         user = users[i];
         options = {
@@ -103,10 +103,10 @@ controller.sendLaggerEmails = function (users, callback) {
 };
 
 controller.sendLaggerPaymentEmails = function (users, callback) {
-    var i;
-    var user;
-    var options;
-    var locals;
+    let i;
+    let user;
+    let options;
+    let locals;
     for (i = 0; i < users.length; i++) {
         user = users[i];
         options = {
@@ -135,10 +135,10 @@ controller.sendLaggerPaymentEmails = function (users, callback) {
 
 
 controller.sendSponsorEmails = function (users, callback) {
-    var i;
-    var user;
-    var options;
-    var locals;
+    let i;
+    let user;
+    let options;
+    let locals;
     for (i = 0; i < users.length; i++) {
         user = users[i];
         options = {

@@ -20,7 +20,7 @@ angular.module('reg')
 
             function _updateUser() {
 
-                var confirmation;
+                let confirmation;
                 $scope.user.confirmation.sponsorSelected = true;
                 $scope.user.confirmation.signatureLiability = $scope.wshop1 + " " + $scope.wshop2 + " " + $scope.wshop3;
                 confirmation = $scope.user.confirmation;

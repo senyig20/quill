@@ -19,8 +19,8 @@ angular.module('reg')
 
 
             function updatePage(data) {
-                var p: Array;
-                var i;
+                let p: Array;
+                let i;
                 $scope.users = data.users;
                 $scope.currentPage = data.page;
                 $scope.pageSize = data.size;
@@ -113,7 +113,7 @@ angular.module('reg')
             }
 
             function drawLabel(name, school) {
-                var dataURL;
+                let dataURL;
                 const canvas = document.getElementById("labelCanvas");
                 const context = canvas.getContext("2d");
 

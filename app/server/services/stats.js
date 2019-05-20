@@ -130,7 +130,7 @@ function calculateStats() {
                 callback(); // let async know we've finished
             }, function () {
                 // Transform dietary restrictions into a series of objects
-                var schools: Array;
+                let schools: Array;
                 const restrictions = [];
                 _.keys(newStats.dietaryRestrictions)
                     .forEach(function (key) {

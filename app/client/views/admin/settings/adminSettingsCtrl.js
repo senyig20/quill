@@ -8,7 +8,7 @@ angular.module('reg')
         'SettingsService',
         function ($scope, $sce, SettingsService) {
 
-            var converter: showdown.Converter;
+            let converter: showdown.Converter;
             $scope.settings = {};
             SettingsService
                 .getPublicSettings()
@@ -33,7 +33,7 @@ angular.module('reg')
                 SettingsService
                     .updateSelectSponsors($scope.settings.enableSponsors)
                     .success(function (data) {
-                        var successText;
+                        let successText;
                         $scope.settings.enableSponsors = data.enableSponsors;
                         successText = $scope.settings.enableSponsors ?
                             "Sponsor selections are open." :

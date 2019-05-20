@@ -29,7 +29,7 @@ function canRegister(email, password, callback) {
 
     // Check if its within the registration window.
     Settings.getRegistrationTimes(function (err, times) {
-        var now;
+        let now;
         if (err) {
             callback(err);
         }
@@ -50,7 +50,7 @@ function canRegister(email, password, callback) {
 
         // Check for emails.
         Settings.getWhitelistedEmails(function (err, emails) {
-            var i;
+            let i;
             if (err || !emails) {
                 return callback(err);
             }
@@ -105,8 +105,8 @@ UserController.loginWithPassword = function (email, password, callback) {
         .findOneByEmail(email)
         .select('+password')
         .exec(function (err, user) {
-            var token;
-            var u;
+            let token;
+            let u;
             if (err) {
                 return callback(err);
             }
@@ -167,7 +167,7 @@ UserController.createUser = function (email, password, confirmpassword, callback
             .findOneByEmail(email)
             .exec(function (err, user) {
 
-                var u: *;
+                let u: *;
                 if (err) {
                     return callback(err);
                 }
@@ -183,8 +183,8 @@ UserController.createUser = function (email, password, confirmpassword, callback
                     u.email = email;
                     u.password = User.generateHash(password);
                     u.save(function (err) {
-                        var token;
-                        var verificationToken;
+                        let token;
+                        let verificationToken;
                         if (err) {
                             return callback({
                                 message: "Not a valid email."
@@ -257,7 +257,7 @@ UserController.getAllFinal = function (callback) {
 };
 
 UserController.getPageCheckedAndSponsor = function (query, callback) {
-    var re: *;
+    let re: *;
     let queries;
     const page = query.page;
     const size = parseInt(query.size);
@@ -315,7 +315,7 @@ UserController.getPageCheckedAndSponsor = function (query, callback) {
 
 
 UserController.getPageChecked = function (query, callback) {
-    var re: *;
+    let re: *;
     let queries;
     const page = query.page;
     const size = parseInt(query.size);
@@ -377,7 +377,7 @@ UserController.getPageChecked = function (query, callback) {
  * @returns {Object} queries    text queries
  */
 function buildTextQueries(searchText) {
-    var re: *;
+    let re: *;
     const queries = [];
     if (0 < searchText.length) {
         re = new RegExp(searchText, 'i');
@@ -396,10 +396,10 @@ function buildTextQueries(searchText) {
  * @returns {Object} queries  status queries
  */
 function buildStatusQueries(statusFilters) {
-    var key;
-    var hasStatus;
-    var q;
-    var queryKey;
+    let key;
+    let hasStatus;
+    let q;
+    let queryKey;
     const queries = [];
     for (key in statusFilters) {
         if (statusFilters.hasOwnProperty(key)) {
@@ -429,7 +429,7 @@ function buildStatusQueries(statusFilters) {
  * @returns {Object} findQuery     query object
  */
 function buildFindQuery(textQueries, statusQueries) {
-    var queryRoot: Array;
+    let queryRoot: Array;
     const findQuery = {};
     if (0 < textQueries.length && 0 < statusQueries.length) {
         queryRoot = [];
@@ -522,7 +522,7 @@ UserController.updateProfileById = function (id, profile, callback) {
 
         // Check if its within the registration window.
         Settings.getRegistrationTimes(function (err, times) {
-            var now;
+            let now;
             if (err) {
                 callback(err);
             }
@@ -692,7 +692,7 @@ UserController.sendVerificationEmailById = function (id, callback) {
             verified: false
         },
         function (err, user) {
-            var token;
+            let token;
             if (err || !user) {
                 return callback(err);
             }
@@ -712,7 +712,7 @@ UserController.sendPasswordResetEmail = function (email, callback) {
     User
         .findOneByEmail(email)
         .exec(function (err, user) {
-            var token;
+            let token;
             if (err || !user) {
                 return callback(err);
             }
