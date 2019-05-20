@@ -5,9 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>*|MC:SUBJECT|*</title>
 </head>
-<body>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
 <div style="text-align: center;">
-    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" id="bodyTable">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
         <tr>
             <td align="center" valign="top" id="bodyCell">
                 <!-- BEGIN TEMPLATE // -->
@@ -19,7 +19,8 @@
                                 <tr>
                                     <td valign="top" class="headerContent">
                                         <img src="{{ emailHeaderImage }}" style="max-width:600px;" id="headerImage"
-                                        />
+                                             mc:label="header_image" mc:edit="header_image" mc:allowdesigner
+                                             mc:allowtext/>
                                     </td>
                                 </tr>
                             </table>
@@ -31,16 +32,16 @@
                             <!-- BEGIN BODY // -->
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
                                 <tr>
-                                    <td valign="top" style="text-align: center;" class="bodyContent"
-                                    >
+                                    <td valign="top" style="text-align: center" class="bodyContent"
+                                        mc:edit="body_content00">
                                         <h1>{{title}}</h1>
                                         <h3>{{subtitle}}</h3>
                                         {{body}}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="text-align: center;" class="bodyContent"
-                                    >
+                                    <td valign="top" style="text-align: center" class="bodyContent"
+                                        mc:edit="body_content00">
                                         Teşekkürler,
                                         <br/>
                                         {{ hackathonName }} Ekibi
@@ -57,7 +58,7 @@
                             <!-- BEGIN FOOTER // -->
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter">
                                 <tr>
-                                    <td valign="top" class="footerContent">
+                                    <td valign="top" class="footerContent" mc:edit="footer_content00">
                                         <a href="https://twitter.com/{{ twitterHandle }}">Twitter'dan Takip Et</a>&nbsp;&nbsp;&nbsp;
                                         <a href="https://facebook.com/{{ facebookHandle }}">Facebook'ta bizi Beğen</a>&nbsp;&nbsp;&nbsp;
                                         <a href="https://www.instagram.com/remixopolis/">Remixopolis'i Instagram'da
@@ -68,7 +69,7 @@
                                 </tr>
                                 <tr>
                                     <td valign="top" class="footerContent" style="padding-top:0;"
-                                    >
+                                        mc:edit="footer_content01">
                                         <em>Copyright &copy; {{ hackathonName }} 2019.</em>
                                         <br/>
                                     </td>

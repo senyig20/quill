@@ -3,7 +3,7 @@
     <div class="ui header">
         {{selectedUser.profile.name ? selectedUser.profile.name : selectedUser.email}}
         <span
-        >
+                ng-show="selectedUser.admin">
       (Admin)
     </span>
     </div>
@@ -29,7 +29,7 @@
 
     <div class="ui form">
 
-        <fieldset>
+        <fieldset ng-disabled="false">
 
             <div class="ui header">
                 Basic Info
@@ -52,9 +52,7 @@
 
             <div class="field">
                 <label> Email </label>
-                <label>
-                    <input type="text"/>
-                </label>
+                <input type="text" ng-model="selectedUser.email"/>
             </div>
 
 
@@ -66,7 +64,7 @@
 
     <div class="ui form">
 
-        <fieldset>
+        <fieldset ng-disabled="false">
 
             <div class="ui header">
                 Profile
@@ -74,90 +72,77 @@
 
             <div class="field">
                 <label> Email </label>
-                <label>
-                    <input type="email"
-                           name="email"
-                           disabled="disabled"
-                    >
-                </label>
+                <input type="email"
+                       name="email"
+                       disabled="disabled"
+                       ng-model="selectedUser.email">
             </div>
 
             <div class="field">
                 <label> Full Name </label>
-                <label>
-                    <input type="text"
-                           name="name"
-                    >
-                </label>
+                <input type="text"
+                       name="name"
+                       ng-model="selectedUser.profile.name">
             </div>
 
 
             <div class="field">
                 <label> School </label>
-                <label>
-                    <input type="text"
-                           name="school"
-                    >
-                </label>
+                <input type="text"
+                       name="school"
+                       ng-model="selectedUser.profile.school">
             </div>
 
 
             <div class="field">
                 <label>Barbekü Gecesi'ne katılacak mısınız?</label>
-                <label>
-                    <select
-                            name="bbqChoice"
-                    >
-                        <option value="">Tercihim</option>
+                <select
+                        name="bbqChoice"
+                        ng-model="selectedUser.profile.bbqChoice">
+                    <option value="">Tercihim</option>
 
-                        <option value=1>Evet</option>
-                        <option value=0>Hayır</option>
+                    <option value=1>Evet</option>
+                    <option value=0>Hayır</option>
 
-                    </select>
-                </label>
+                </select>
             </div>
 
 
             <div class="field">
                 <label>Açılış Yemeği'ne katılacak mısınız?</label>
-                <label>
-                    <select
-                            name="openingChoice"
-                    >
-                        <option value="">Tercihim</option>
+                <select
+                        name="openingChoice"
+                        ng-model="selectedUser.profile.openingChoice">
+                    <option value="">Tercihim</option>
 
-                        <option value=1>Evet</option>
-                        <option value=0>Hayır</option>
+                    <option value=1>Evet</option>
+                    <option value=0>Hayır</option>
 
-                    </select>
-                </label>
+                </select>
             </div>
 
             <div class="field">
                 <label>Vejeteryan mısınız?</label>
-                <label>
-                    <select
-                            name="veggie"
-                    >
-                        <option value="">Tercihim</option>
+                <select
+                        name="veggie"
+                        ng-model="selectedUser.profile.veggie">
+                    <option value="">Tercihim</option>
 
-                        <option value=1>Evet</option>
-                        <option value=0>Hayır</option>
+                    <option value=1>Evet</option>
+                    <option value=0>Hayır</option>
 
-                    </select>
-                </label>
+                </select>
             </div>
 
             <div class="field">
                 <label>Remixopolis'i nasıl öğrendiniz?</label>
-                <label>
-                    <input
-                            type="text">
-                </label>
+                <input ng-model="selectedUser.profile.referral"
+                       type="text">
             </div>
 
             <div class="field">
                 <div
+                        ng-click="updateProfile()"
                         class="ui positive right labeled icon button">
                     Update Profile
                     <i class="checkmark icon"></i>
@@ -171,7 +156,7 @@
 
     <div class="ui form">
 
-        <fieldset>
+        <fieldset ng-disabled="false">
 
             <div class="ui header">
                 Confirmation
@@ -180,18 +165,14 @@
 
             <div class="field">
                 <label> Receipt </label>
-                <label>
-                    <input type="url"/>
-                </label>
+                <input type="url" ng-model="selectedUser.confirmation.receipt"/>
             </div>
 
             <div class="ui divider"></div>
 
             <div class="field">
                 <label> Additional Notes </label>
-                <label>
-                    <textarea></textarea>
-                </label>
+                <textarea ng-model="selectedUser.confirmation.notes"></textarea>
             </div>
 
         </fieldset>

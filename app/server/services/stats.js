@@ -78,16 +78,16 @@ function calculateStats() {
                 newStats.confirmed += user.status.confirmed ? 1 : 0;
 
                 // Count confirmed that are mit
-                newStats.confirmedMcGill += user.status.confirmed && "robcol.k12.tr" === email ? 1 : 0;
+                newStats.confirmedMcGill += user.status.confirmed && email === "robcol.k12.tr" ? 1 : 0;
 
 
                 // Count declined
                 newStats.declined += user.status.declined ? 1 : 0;
-                newStats.openingDinner += "1" === user.profile.openingChoice ? 1 : 0;
+                newStats.openingDinner += user.profile.openingChoice === "1" ? 1 : 0;
 
-                newStats.bbqNight += "1" === user.profile.bbqChoice ? 1 : 0;
+                newStats.bbqNight += user.profile.bbqChoice === "1" ? 1 : 0;
 
-                newStats.veggie += "1" === user.profile.veggie ? 1 : 0;
+                newStats.veggie += user.profile.veggie === "1" ? 1 : 0;
                 newStats.receiptStatus += user.confirmation.receiptConfirmation ? 1 : 0;
                 newStats.paid += user.status.paymentMade ? 1 : 0;
 
@@ -130,7 +130,6 @@ function calculateStats() {
                 callback(); // let async know we've finished
             }, function () {
                 // Transform dietary restrictions into a series of objects
-                var schools: Array;
                 const restrictions = [];
                 _.keys(newStats.dietaryRestrictions)
                     .forEach(function (key) {
@@ -142,7 +141,7 @@ function calculateStats() {
                 newStats.dietaryRestrictions = restrictions;
 
                 // Transform schools into an array of objects
-                schools = [];
+                const schools = [];
                 _.keys(newStats.demo.schools)
                     .forEach(function (key) {
                         schools.push({

@@ -19,14 +19,12 @@ angular.module('reg')
 
 
             function updatePage(data) {
-                var p: Array;
-                var i;
                 $scope.users = data.users;
                 $scope.currentPage = data.page;
                 $scope.pageSize = data.size;
 
-                p = [];
-                for (i = 0; i < data.totalPages; i++) {
+                const p = [];
+                for (let i = 0; i < data.totalPages; i++) {
                     p.push(i);
                 }
                 $scope.pages = p;
@@ -113,7 +111,6 @@ angular.module('reg')
             }
 
             function drawLabel(name, school) {
-                var dataURL;
                 const canvas = document.getElementById("labelCanvas");
                 const context = canvas.getContext("2d");
 
@@ -123,7 +120,7 @@ angular.module('reg')
                 context.fillText(name, canvas.width / 2 - context.measureText(name).width / 2, 100);
                 context.font = '23px Open Sans';
                 context.fillText(school, canvas.width / 2 - context.measureText(school).width / 2, 140);
-                dataURL = canvas.toDataURL("image/png");
+                const dataURL = canvas.toDataURL("image/png");
                 openInNewTab(dataURL);
             }
 

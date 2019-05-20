@@ -1,6 +1,3 @@
-import * as showdown from "aws-sdk/clients/dynamodb";
-import moment from "moment";
-
 angular.module('reg')
     .controller('AdminSettingsCtrl', [
         '$scope',
@@ -8,7 +5,6 @@ angular.module('reg')
         'SettingsService',
         function ($scope, $sce, SettingsService) {
 
-            var converter: showdown.Converter;
             $scope.settings = {};
             SettingsService
                 .getPublicSettings()
@@ -33,9 +29,8 @@ angular.module('reg')
                 SettingsService
                     .updateSelectSponsors($scope.settings.enableSponsors)
                     .success(function (data) {
-                        var successText;
                         $scope.settings.enableSponsors = data.enableSponsors;
-                        successText = $scope.settings.enableSponsors ?
+                        const successText = $scope.settings.enableSponsors ?
                             "Sponsor selections are open." :
                             "Sponsor selections are now close.";
                         swal("Looks good!", successText, "success");
@@ -86,7 +81,7 @@ angular.module('reg')
                 const open = cleanDate($scope.settings.timeOpen).getTime();
                 const close = cleanDate($scope.settings.timeClose).getTime();
 
-                if (0 > open || 0 > close || open === undefined || close === undefined) {
+                if (open < 0 || close < 0 || open === undefined || close === undefined) {
                     return swal('Oops...', 'You need to enter valid times.', 'error');
                 }
                 if (open >= close) {
@@ -117,7 +112,7 @@ angular.module('reg')
 
             // Acceptance / Confirmation Text ----------------
 
-            converter = new showdown.Converter();
+            const converter = new showdown.Converter();
 
             $scope.markdownPreview = function (text) {
                 return $sce.trustAsHtml(converter.makeHtml(text));
