@@ -4,7 +4,7 @@
         <!-- Reigstration Open/Close -->
         <div
                 class="ui red segment"
-        >
+                ng-class="{'loading': loading}">
             <div class="ui form">
 
                 <div class="ui header">
@@ -19,24 +19,20 @@
                     <label>
                         Opens: {{ formatDate(settings.timeOpen) }}
                     </label>
-                    <label>
-                        <input type="datetime-local">
-                    </label>
+                    <input ng-model="settings.timeOpen" type="datetime-local">
                 </div>
 
                 <div class="field">
                     <label>
                         Closes: {{ formatDate(settings.timeClose) }}
                     </label>
-                    <label>
-                        <input type="datetime-local">
-                    </label>
+                    <input ng-model="settings.timeClose" type="datetime-local">
                 </div>
 
                 <div class="ui field">
                     <div
                             class="ui green button"
-                    >
+                            ng-click="updateRegistrationTimes()">
                         Update
                     </div>
                 </div>
@@ -49,7 +45,7 @@
         <!-- Confirmation Date -->
         <div
                 class="ui orange segment"
-        >
+                ng-class="{'loading': loading}">
             <div class="ui form">
 
                 <div class="ui header">
@@ -64,15 +60,13 @@
                     <label>
                         Confirm By: {{ formatDate(settings.timeConfirm) }}
                     </label>
-                    <label>
-                        <input type="datetime-local">
-                    </label>
+                    <input ng-model="settings.timeConfirm" type="datetime-local">
                 </div>
 
                 <div class="ui field">
                     <div
                             class="ui green button"
-                    >
+                            ng-click="updateConfirmationTime()">
                         Update
                     </div>
                 </div>
@@ -84,6 +78,7 @@
 
 <!-- Additional Options -->
 <div
+        ng-class="{'loading': loading}"
         class="ui green segment">
 
     <div class="ui header">
@@ -95,12 +90,12 @@
             <div class="grouped fields">
                 <div class="field">
                     <div class="ui toggle checkbox">
-                        <label>
-                            <input
-                                    type="checkbox"
-                                    name="allowCompany"
-                            >
-                        </label>
+                        <input
+                                type="checkbox"
+                                name="allowCompany"
+                                ng-class="{true: 'checked', false: ''}[settings.enableSponsors]"
+                                ng-model="settings.enableSponsors"
+                                ng-change="updateSelectSponsors()">
                         <label>Open Company Selections</label>
                     </div>
                 </div>
@@ -110,6 +105,7 @@
 </div>
 <!-- Waitlist Text Editor -->
 <div
+        ng-class="{'loading': loading}"
         class="ui blue segment">
     <div class="ui header">
         Waitlist Text
@@ -118,17 +114,16 @@
         <div class="column">
             <div class="ui form">
                 <div class="field">
-                    <label>
-<textarea
-        class="ui input"
->
-</textarea>
-                    </label>
+          <textarea
+                  class="ui input"
+                  type="text"
+                  ng-model="settings.waitlistText">
+          </textarea>
                 </div>
                 <div class="field">
                     <div
                             class="ui green button"
-                    >
+                            ng-click="updateWaitlistText()">
                         Update
                     </div>
                 </div>
@@ -137,7 +132,7 @@
         <div class="column">
             <div
                     class="preview ui segment"
-            >
+                    ng-bind-html="markdownPreview(settings.waitlistText)">
             </div>
         </div>
     </div>
@@ -146,6 +141,7 @@
 
 <!-- Acceptance Text Editor -->
 <div
+        ng-class="{'loading': loading}"
         class="ui pink segment">
     <div class="ui header">
         Acceptance Text
@@ -154,17 +150,16 @@
         <div class="column">
             <div class="ui form">
                 <div class="field">
-                    <label>
-<textarea
-        class="ui input"
->
-</textarea>
-                    </label>
+          <textarea
+                  class="ui input"
+                  type="text"
+                  ng-model="settings.acceptanceText">
+          </textarea>
                 </div>
                 <div class="field">
                     <div
                             class="ui green button"
-                    >
+                            ng-click="updateAcceptanceText()">
                         Update
                     </div>
                 </div>
@@ -173,7 +168,7 @@
         <div class="column">
             <div
                     class="preview ui segment"
-            >
+                    ng-bind-html="markdownPreview(settings.acceptanceText)">
             </div>
         </div>
     </div>
@@ -181,6 +176,7 @@
 </div>
 
 <div
+        ng-class="{'loading': loading}"
         class="ui orange segment">
     <div class="ui header">
         Confirmation Text
@@ -189,17 +185,16 @@
         <div class="column">
             <div class="ui form">
                 <div class="field">
-                    <label>
-<textarea
-        class="ui input"
->
-</textarea>
-                    </label>
+          <textarea
+                  class="ui input"
+                  type="text"
+                  ng-model="settings.confirmationText">
+          </textarea>
                 </div>
                 <div class="field">
                     <div
                             class="ui green button"
-                    >
+                            ng-click="updateConfirmationText()">
                         Update
                     </div>
                 </div>
@@ -208,7 +203,7 @@
         <div class="column">
             <div
                     class="preview ui segment"
-            >
+                    ng-bind-html="markdownPreview(settings.confirmationText)">
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
             <div class="ui form">
                 <div class="field">
                     <div class="ui icon fluid input">
-                        <input placeholder="Search..."
+                        <input ng-model="queryText" ng-model-options="{debounce: 300}" placeholder="Search..."
                                type="text">
                         <i class="search icon"></i>
                     </div>
@@ -18,14 +18,14 @@
 
 
             <br/>
-            <button class="ui pink button" style="margin-top: 20px; width:180px;"
+            <button class="ui pink button" ng-click="exportCSV()" style="margin-top: 20px; width:180px;"
                     type="button">Export Team Creation Data
             </button>
 
             <div class="ui divider"></div>
 
-            <button class="ui icon basic page button"
-            >
+            <button class="ui icon basic page button" ng-class="page == currentPage ? 'active pink' : ''"
+                    ng-click="goToPage(page)" ng-repeat="page in pages">
                 {{page}}
             </button>
 
@@ -48,7 +48,9 @@
                 </thead>
                 <tbody>
                 <tr
-                >
+                        ng-class="rowClass(user)"
+                        ng-click="selectUser(user)"
+                        ng-repeat="user in users">
                     <td>
                         <strong>
                             {{user.profile.name}}

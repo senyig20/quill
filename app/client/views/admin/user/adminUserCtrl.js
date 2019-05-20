@@ -1,5 +1,3 @@
-import moment from "moment";
-
 angular.module('reg')
     .controller('AdminUserCtrl', [
         '$scope',
