@@ -12,7 +12,7 @@
     "email-templates": "^2.0.1",
     "csv-express": "^1.2.2",
     "express": "^4.9.8",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-minify-css": "^1.2.0",
     "gulp-ng-annotate": "^1.1.0",
@@ -32,7 +32,8 @@
     "validator": "^3.40.1",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemailer-mailgun-transport": "^1.4.0",
-    "aws-sdk": "^2.451.0"
+    "aws-sdk": "^2.451.0",
+    "snyk": "^1.179.1"
   },
   "scripts": {
     "mongo": "mongod --dbpath db",
@@ -41,10 +42,12 @@
     "watch": "gulp server",
     "prod": "gulp build && node app.js",
     "config": "cp .env.config .env",
-    "postinstall": "gulp build"
+    "postinstall": "gulp build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^4.0.0",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.0",
     "gulp-ng-annotate": "^1.0.0",
@@ -56,5 +59,6 @@
   },
   "engines": {
     "node": "7.4.0"
-  }
+  },
+  "snyk": true
 }
